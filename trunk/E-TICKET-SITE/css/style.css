@@ -1329,7 +1329,7 @@ table.edit td label {
 }*/
 	
 .listing-tr-thumb td.show {
-	width: 270px;
+	width: 240px;
 	line-height: 120%;/*width: 303px;*/
 	
 }
@@ -1343,7 +1343,7 @@ table.edit td label {
 .listing-tr-thumb td.city,
 .listing-tr td.city {
 	
-	width: 210px; 
+	width: 100px; 
 	padding: 5px 0 5px 15px; 
 	line-height: 170%;  
 	text-align: left;
@@ -1352,7 +1352,7 @@ table.edit td label {
 
 .listing-tr-thumb td.date {
 	
-	width: 40px;
+	width: 50px;
 	text-align:center;
 	padding: 5px 0; 
 	line-height: 170%;
@@ -3462,7 +3462,7 @@ div#body div{
 div#body  div#featured{
 	width: 960px;
 	position: relative;
-	top:-50px;
+	top:0px;
 	margin-bottom: 200px;
 }
 div#body  div#featured ul{
@@ -3663,7 +3663,7 @@ div#body div div#content ul li p a:hover{
 /*********End OF About Style**********/
 /*********Start OF Blog Style**********/
 div#body div div#content div.content{
-	width: 620px;
+	width: 940px;
 	float: left;
 	margin-right: 20px;
 	padding-right: 10px;
