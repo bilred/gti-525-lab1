@@ -9,6 +9,7 @@
 	<![endif]-->
 </head>
 <body>
+<form>
 	<div id="header">
 		<div>
 			<a href="index.html"><img class="logo" src="images/logo.png" width="477" height="220" alt=""> </a>
@@ -24,6 +25,10 @@
 				</li>
 				<li>
 					<a href="blog.html">CART</a>
+				</li>
+                <li>
+					<img src="images/red2.png"> 
+					<INPUT type="text" placeholder="Search.." align="left" >
 				</li>
 			</ul>
 		</div>
@@ -42,8 +47,7 @@
 		              <th class="city" align="left">Ville</th>
 		              <th class="date">Date</th>
 		              <th class="time">Heure</th>
-		              <th class="buy_tickets">&nbsp;</th>
-		              <th class="info">&nbsp;</th>
+		              <th width="121" class="buy_tickets">&nbsp;</th>
 	                </tr>
 		            <tr class="listing-tr-thumb">
 		              <td class="thumb"><a href="http://www.evenko.ca/fr/show/evenement/christopher-owens-6848"><img src="images/thumb_004.jpg" alt="" height="60" width="102"></a></td>
@@ -54,9 +58,16 @@
 		                <div class="day">19</div>
 		                <div class="weekday">sAT</div></td>
 		              <td class="time"> 20h00 </td>
-		              <td class="buy_tickets"><a href="http://www.evenko.ca/fr/buytickets/event/6848/fr" target="_blank"><img src="images/btt_tickets_r.png" alt="Billets" class="imgover" height="26"></a></td>
-		              <td class="info"><a href="http://www.evenko.ca/fr/show/evenement/christopher-owens-6848"><img src="images/btt_info_r.png" alt="Info " class="imgover" height="26" width="81"></a></td>
-                    <tr class="listing-tr-thumb">
+		              <td class="buy_tickets"><SELECT>
+		                <OPTION>0</OPTION>
+		                <OPTION>1</OPTION>
+		                <OPTION>2</OPTION>
+		                <OPTION>3</OPTION>
+		                <OPTION>4</OPTION>
+		                <OPTION>5</OPTION>
+		                <OPTION>6</OPTION>
+		                </SELECT></td>
+	                <tr class="listing-tr-thumb">
 		              <td class="thumb"><a href="http://www.evenko.ca/fr/show/evenement/christopher-owens-6848"><img src="images/thumb_004.jpg" alt="" height="60" width="102"></a></td>
 		              <td class="show"><a href="http://www.evenko.ca/fr/show/evenement/josh-ritter-&-the-royal-city-band-6758">JOSH RITTER &amp; THE ROYAL CITY BAND</a><br>
 	                  Cabaret Mile-End</td>
@@ -65,9 +76,16 @@
 		                <div class="day">20</div>
 		                <div class="weekday">SUN</div></td>
 		              <td class="time"> 20h00 </td>
-		              <td class="buy_tickets"><a href="http://www.evenko.ca/fr/buytickets/event/6848/fr" target="_blank"><img src="images/btt_tickets_r.png" alt="Billets" class="imgover" height="26"></a></td>
-		              <td class="info"><a href="http://www.evenko.ca/fr/show/evenement/christopher-owens-6848"><img src="images/btt_info_r.png" alt="Info " class="imgover" height="26" width="81"></a></td>
-                    <tr class="listing-tr-thumb">
+		              <td class="buy_tickets"><SELECT>
+		                <OPTION>0</OPTION>
+		                <OPTION>1</OPTION>
+		                <OPTION>2</OPTION>
+		                <OPTION>3</OPTION>
+		                <OPTION>4</OPTION>
+		                <OPTION>5</OPTION>
+		                <OPTION>6</OPTION>
+		                </SELECT></td>
+	                <tr class="listing-tr-thumb">
 		              <td class="thumb"><a href="http://www.evenko.ca/fr/show/evenement/christopher-owens-6848"><img src="images/thumb_004.jpg" alt="" height="60" width="102"></a></td>
 		              <td class="show"><a href="http://www.evenko.ca/fr/show/evenement/josh-ritter-&-the-royal-city-band-6758">JOSH RITTER &amp; THE ROYAL CITY BAND</a><br>
 	                  Mdma Square</td>
@@ -76,14 +94,22 @@
 		                <div class="day">26</div>
 		                <div class="weekday">sam</div></td>
 		              <td class="time"> 20h00 </td>
-		              <td class="buy_tickets"><a href="http://www.evenko.ca/fr/buytickets/event/6848/fr" target="_blank"><img src="images/btt_tickets_r.png" alt="Billets" class="imgover" height="26"></a></td>
-		              <td class="info"><a href="http://www.evenko.ca/fr/show/evenement/christopher-owens-6848"><img src="images/btt_info_r.png" alt="Info " class="imgover" height="26" width="81"></a></td>
-	                
-                
-	                
-                
-	                
-                </table></td>                
+		              <td class="buy_tickets"><SELECT>
+		                <OPTION>0</OPTION>
+		                <OPTION>1</OPTION>
+		                <OPTION>2</OPTION>
+		                <OPTION>3</OPTION>
+		                <OPTION>4</OPTION>
+		                <OPTION>5</OPTION>
+		                <OPTION>6</OPTION>
+		                </SELECT></td>
+	                <tr class="listing-tr-thumb">
+		                <td colspan="4" class="thumb">&nbsp;</td>
+		                <td class="time"><input type="submit" value="Add to Cart"></td>
+		                <td class="buy_tickets"><span class="date">
+		                  <input type="submit" value="Reset">
+		                  </span></td>
+                  </table></td>                
 			  </table>
 			</div>
 			<blockquote>&nbsp;	</blockquote>
@@ -126,5 +152,6 @@
 			</div>
 		</div>
 	</div>
+    <form>
 </body>
 </html>
