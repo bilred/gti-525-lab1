@@ -2957,7 +2957,9 @@ ul.cal_utilities li.rss img {
 table.calendar {
 	width: 942px;
 }
-
+table.shows {
+	width: 940px;
+}
 table.calendar img.calendar_thumb {
 	border: 1px solid #999;
 	margin-bottom: 0.5em;
