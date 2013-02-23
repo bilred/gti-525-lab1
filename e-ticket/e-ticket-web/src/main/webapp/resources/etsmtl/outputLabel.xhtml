@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:composite="http://java.sun.com/jsf/composite"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <!-- INTERFACE -->
+    <composite:interface>
+        <composite:attribute name="labelHelp" required="false" default="#{cc.attrs.label}" ></composite:attribute>
+        <composite:attribute name="label" required="true" ></composite:attribute>
+        <composite:attribute name="valeur" required="true" default="" ></composite:attribute>
+        <composite:attribute name="_id" required="true" ></composite:attribute>
+        <composite:attribute name="marginInputLabel" required="false" shortDescription="La marge entre le label et le champ text" ></composite:attribute>
+    </composite:interface>
+
+    <!-- IMPLEMENTATION -->
+    <composite:implementation>
+        <h:outputLabel for="#{cc.attrs._id}" value="#{cc.attrs.label}: " title="#{cc.attrs.label}" />  
+        <h:outputText id="#{cc.attrs._id}" value="#{cc.attrs.valeur}" style="margin-left:#{cc.attrs.marginInputLabel}px; font-weight:bold;" >
+        
+        <composite:insertChildren /> <!-- INSERTION DE CONVERTISEUR, BALISE F  ou action AJAX-->
+<!--        <f:convertDateTime for="{cc.attrs._id}"  type="date" pattern="dd/MM/yyyy" locale="fr" />    -->
+        </h:outputText>
+    </composite:implementation>
+</html>
