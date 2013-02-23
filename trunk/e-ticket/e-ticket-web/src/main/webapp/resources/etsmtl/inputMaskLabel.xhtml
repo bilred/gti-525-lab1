@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:composite="http://java.sun.com/jsf/composite"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+    <!-- INTERFACE  -->
+    <composite:interface>
+        <composite:attribute name="label" required="true" ></composite:attribute>
+        <composite:attribute name="labelInputHelp" required="false" default="#{cc.attrs.label}" shortDescription="La légende sur le champ text" ></composite:attribute>        
+        <composite:attribute name="valeur" required="true"></composite:attribute>
+        <composite:attribute name="_id" required="true"></composite:attribute>
+        <composite:attribute name="mask" required="true" ></composite:attribute>  
+        <composite:attribute name="sizeInput" required="false" ></composite:attribute>         
+        <composite:attribute name="marginInputLabel" required="false" ></composite:attribute>
+        <composite:attribute name="readonly" required="false" default="false" shortDescription="En lecture seul pour le champ text" ></composite:attribute>
+        <composite:attribute name="required" required="false" default="false" shortDescription="Choix obligatoire/non obligatoire" ></composite:attribute>        
+        <composite:attribute name="requiredMessage" required="false" shortDescription="Mesage du loadBundle" ></composite:attribute>        
+    </composite:interface>
+
+    <!-- IMPLEMENTATION -->
+    <composite:implementation>
+        &nbsp;
+        <h:outputLabel for="#{cc.attrs._id}" title="#{cc.attrs.label}" >#{cc.attrs.label}</h:outputLabel><c:if test="#{cc.attrs.required}" > <h:outputLabel value="*" style="color: red "/> </c:if>&nbsp;
+        <p:inputMask id="#{cc.attrs._id}" value="#{cc.attrs.valeur}" readonly="#{cc.attrs.readonly}" mask="#{cc.attrs.mask}" required="#{cc.attrs.required}" requiredMessage="#{cc.attrs.requiredMessage}" style="margin-left:#{cc.attrs.marginInputLabel}px;" size="#{cc.attrs.sizeInput}" >
+
+
+            <composite:insertChildren /> <!-- INSERTION DE CONVERTISEUR, BALISE F  ou action AJAX-->
+
+        </p:inputMask>
+        <p:watermark for="#{cc.attrs._id}" value="#{cc.attrs.labelInputHelp}"  />&nbsp;
+
+
+        <c:if test="#{not empty cc.attrs.requiredMessage}" >
+            <p:spacer width="11px"/> <!-- <div style="  display: inline;     left: 70px;    position: absolute;    top: 80px; ">            -->
+            <h:message showSummary="true" showDetail="false" style="color: red; border-color: red; padding-right: 11px" for="#{cc.attrs._id}"/>                    
+        </c:if>
+
+    </composite:implementation>
+</html>
