@@ -547,7 +547,7 @@ div#footer div div.section div div ul li ul.connect li a.googleplus{
 	width: 37px;
 }
 div#footer div div.section div div ul li ul.connect li a.googleplus:hover{
-	background: url(#{resource['images:icon.png']) no-repeat scroll 0 -150px transparent;
+	background: url("#{resource['images:icon.png']") no-repeat scroll 0 -150px transparent;
 }
 div#footer div div.footnote{
 	width: 960px;
