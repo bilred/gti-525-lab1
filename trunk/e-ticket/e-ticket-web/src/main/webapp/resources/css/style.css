@@ -29,7 +29,7 @@ td.date .day {
 body{
 	margin:0;
 	padding:0;
-	background: url("#{resource['images:bg-pattern.png']}");
+	background: url("#{resource['tpl_images:bg-pattern.png']}");
 	line-height:25px;
 }
 a{
@@ -39,7 +39,7 @@ img{
 	border:0;
 }
 div#header{
-	background: transparent url("#{resource['images:bg-header.png']}");
+	background: transparent url("#{resource['tpl_images:bg-header.png']}");
 	background-position:top;
 	background-repeat: repeat-x;
 	height: 147px;
@@ -105,7 +105,7 @@ div#header div ul.navigation li a.active{
 }
 /*************End OF Header ***************/
 div#body{
-	background: transparent url("#{resource['images:bg-body.png']}");
+	background: transparent url("#{resource['tpl_images:bg-body.png']}");
 	background-position: top;
 	background-repeat: repeat-x;
 	margin:0;
@@ -131,7 +131,7 @@ div#body  div#featured ul{
 div#body  div#featured ul li{
 	float: left;
 	margin:0 10px;
-	background: transparent url("#{resource['images:bg-frame.png']}");
+	background: transparent url("#{resource['tpl_images:bg-frame.png']}");
 	background-repeat: no-repeat;
 	background-position: center center;
 	height: 144px;
@@ -166,7 +166,7 @@ div#body  div#featured ul li.first h2{
 	letter-spacing: 2px;
 }
 div#body  div#featured ul li.first a.button{
-	background: transparent url("#{resource['images:button-1.png']}");
+	background: transparent url("#{resource['tpl_images:button-1.png']}");
 	background-repeat: no-repeat;
 	background-position: center center;
 	height: 30px;
