@@ -9,9 +9,10 @@ import javax.persistence.Table;
 @Entity()
 @Table(name="SHOW_ARTISTE")
 public class Artiste implements Serializable {
-	
+        private static final long serialVersionUID = 1L;
+    
         @Id
-        @Column(name="NOM", unique=true)
+        @Column(name="NOM")
 	private String nom;
         @Column(name="PHOTO")
 	private String lienPhoto;

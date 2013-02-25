@@ -13,15 +13,15 @@ public class MenuControleur {
 
 
     public String doHomme(){
-        return "index";
+        return "eticket.index";
     }
     
     public String doCart(){
-        return "cart";
+        return "eticket.pageCart";
     }
 
     public String doShow(){
-        return "show";
+        return "eticket.pageShows";
     }
     
     /**
