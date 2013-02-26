@@ -3,11 +3,77 @@
 <ui:composition template="/resources/tpl/pageCorpsTemplate.xhtml"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:p="http://primefaces.org/ui">
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:etsmtl="http://java.sun.com/jsf/composite/etsmtl">
 
 
     <ui:define name="content">
-     
+        <br/><br/>
+        <h:form>  
+            <p:growl id="growl" sticky="true" showDetail="true"/>  
+
+            <p:wizard widgetVar="wiz" flowListener="#{processPaiementCtrl.onFlowProcess}" >
+
+                <p:tab id="tickets" title="Tickets">  
+
+                    <p:panel header="Checkout Your Tickets">  
+
+                        <h:messages errorClass="error"/>  
+
+                        <h:panelGrid columns="2" columnClasses="label, value" styleClass="grid">
+                            Affiche tableau avec les toto du panier
+                        </h:panelGrid>  
+                    </p:panel>  
+                </p:tab>  
+
+                <p:tab id="client" title="Client">  
+                    <p:panel header="Client Details">  
+
+                        <h:messages errorClass="error"/>  
+
+                        <h:panelGrid columns="2" columnClasses="label, value">
+                            <!-- juste a revoir il manque quelque proporiété 
+                            <etsmtl:inputTextLabel _id="nom" label="First Name" valeur="#{processPaiementCtrl.client.nom}" required="false" />
+                            <etsmtl:inputTextLabel _id="prenom" label="Last Name" valeur="#{processPaiementCtrl.client.prenom}" required="false" />
+                            <etsmtl:inputTextLabel _id="mail" label="E-mail" valeur="#{processPaiementCtrl.client.mail}" required="false" />
+                            <etsmtl:inputTextLabel _id="rue" label="Street Address" valeur="#{processPaiementCtrl.client.adresseClient.rue}" required="false" />
+                            <etsmtl:inputTextLabel _id="ville" label="City" valeur="#{processPaiementCtrl.client.adresseClient.region}" required="false" />
+                            <etsmtl:inputTextLabel _id="codepost" label="Postal Code" valeur="#{processPaiementCtrl.client.adresseClient.codePostal}" required="false" />
+                            <etsmtl:inputMaskLabel _id="phone" label="Phone" mask="999-999-9999" valeur="#{processPaiementCtrl.client.phone}" required="true"  />
+                            <etsmtl:inputTextLabel _id="pays" label="Country" valeur="#{processPaiementCtrl.client.adresseClient.ville}" required="false" />
+                            -->
+                        </h:panelGrid>  
+                    </p:panel>  
+                </p:tab>  
+
+                <p:tab id="creditCard" title="Credit Card">  
+                    <p:panel header="Credit Card Information">  
+
+                        <h:messages errorClass="error"/>  
+
+                        <h:panelGrid columns="2" columnClasses="label, value">
+                            <etsmtl:inputTextLabel _id="catecredi" label="Credit Card Number" valeur="#{processPaiementCtrl.carteCredit.numCarteCredit}" required="true" />
+                            <etsmtl:calendarLabel _id="dateexpiration" label="Expiration Date" valeur="#{processPaiementCtrl.carteCredit.dateTransaction}" required="true" />
+                            <etsmtl:inputTextLabel _id="codesecrt" label="Security Code (CVV)" valeur="#{processPaiementCtrl.carteCredit.numSecurite}" required="true" />                            
+                        </h:panelGrid>  
+                    </p:panel>  
+                </p:tab>  
+
+                <p:tab id="confirm" title="Confirmation">  
+                    <p:panel header="Confirmation">  
+
+                        <h:panelGrid id="confirmation" columns="6">
+                        </h:panelGrid>  
+
+                        <p:commandButton value="validate payment" update="growl" actionListener="#{processPaiementCtrl.save}" />
+
+                    </p:panel>  
+                </p:tab>  
+
+            </p:wizard>  
+
+        </h:form>          
+
     </ui:define>
 
 
