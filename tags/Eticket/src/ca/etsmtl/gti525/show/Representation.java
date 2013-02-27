@@ -14,7 +14,7 @@ public class Representation extends DomainePresentation {
 	private Integer nbBilletsDispo;
 	private Float prix;
 	private String nom;
-	private String adresse;	
+//	private String adresse;	
 	private Date dateDebut;
 	private Date dateFin;
 	private Boolean isAnnulation;  
@@ -61,13 +61,13 @@ public class Representation extends DomainePresentation {
 		this.nom = nom;
 	}
 
-	public String getAdresse() {
-		return adresse;
-	}
-
-	public void setAdresse(String adresse) {
-		this.adresse = adresse;
-	}
+//	public String getAdresse() {
+//		return adresse;
+//	}
+//
+//	public void setAdresse(String adresse) {
+//		this.adresse = adresse;
+//	}
 
 	public Date getDateDebut() {
 		return dateDebut;
