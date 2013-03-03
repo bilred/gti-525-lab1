@@ -25,7 +25,12 @@
             <groupId>${project.groupId}</groupId>
             <artifactId>ApiJavaEtsmtl</artifactId>
             <version>${project.version}</version>
-        </dependency>        
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>e-ticket-jpa</artifactId>
+            <version>${project.version}</version>
+        </dependency>                
         
         <dependency>
             <groupId>org.primefaces</groupId>
@@ -71,12 +76,12 @@
             <artifactId>javax.persistence</artifactId>
             <version>2.0.3</version>
         </dependency>
-       
-        
+  
+  
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
-            <version>1.2.9</version>
+            <version>1.2.16</version>
         </dependency>
         <dependency>
             <groupId>javax</groupId>
