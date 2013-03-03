@@ -1,8 +1,8 @@
 package ca.etsmtl.gti525.vente;
 
-import ca.etsmtl.gti525.presentation.beans.Billet;
-import ca.etsmtl.gti525.vente.beans.CarteCredit;
-import ca.etsmtl.gti525.vente.beans.Client;
+import ca.etsmtl.gti525.beans.presentation.Billet;
+import ca.etsmtl.gti525.beans.vente.CarteCredit;
+import ca.etsmtl.gti525.beans.vente.Client;
 import java.io.Serializable;
 import java.util.logging.Logger;
 import javax.faces.application.FacesMessage;
