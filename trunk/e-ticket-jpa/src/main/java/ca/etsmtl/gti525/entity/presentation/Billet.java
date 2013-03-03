@@ -17,7 +17,6 @@ import javax.persistence.Table;
 
 @Entity()
 @Table(name="SHOW_BILLET")
-
 public class Billet implements Serializable{
 	@Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
