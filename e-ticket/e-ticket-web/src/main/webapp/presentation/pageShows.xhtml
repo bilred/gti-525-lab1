@@ -1,11 +1,41 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition template="/resources/tpl/pageCorpsTemplate.xhtml"
-                xmlns:ui="http://java.sun.com/jsf/facelets" >
+                xmlns:ui="http://java.sun.com/jsf/facelets" 
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core">
 
 
     <ui:define name="content">
-        content the 2 page 
+        Composant DataGrid :
+        http://www.primefaces.org/showcase/ui/datagrid.jsf <br/>
+
+        <h:form id="form">  
+
+            <p:dataGrid var="spec" value="#{menuCtrl.spectacles}" columns="3"  
+                        rows="12" paginator="true"  
+                        paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"  
+                        rowsPerPageTemplate="9,12,15">  
+
+                <p:panel header="#{spec.nom}" style="text-align:center">  
+                    <h:panelGrid columns="1" style="width:100%">  
+                        <!--<p:graphicImage value="/images/cars/{spec.lienImage}.jpg"/>-->   
+
+                        <h:outputText value="#{spec.description}" />  
+
+<!--                        <p:commandLink update=":form:carDetail" oncomplete="carDialog.show()" title="View Detail">  
+                            <h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />   
+                            <f:setPropertyActionListener value="{spec}"   
+                                                         target="{tableBean.selectedCar}" />  
+                        </p:commandLink>  -->
+                    </h:panelGrid>  
+                </p:panel>  
+
+            </p:dataGrid> 
+        </h:form>
+
+
     </ui:define>
 
 
