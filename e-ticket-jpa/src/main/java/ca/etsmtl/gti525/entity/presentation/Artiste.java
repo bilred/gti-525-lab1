@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity()
+@Entity
 @Table(name="SHOW_ARTISTE")
 public class Artiste implements Serializable {
         private static final long serialVersionUID = 1L;

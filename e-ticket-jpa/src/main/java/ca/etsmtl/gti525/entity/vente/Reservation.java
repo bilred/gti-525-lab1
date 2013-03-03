@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 
-@Entity()
+@Entity
 @Table(name="SHOW_RESERVATION")
 public class Reservation  {
 	
