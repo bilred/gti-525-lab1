@@ -1,11 +1,25 @@
 package ca.etsmtl.gti525.entity.presentation;
 
+import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-public class Salle {
-	
+@Entity()
+@Table(name="SHOW_SALLE")
+public class Salle implements Serializable{
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        @Column(name = "ID")	
 	private Double idSalle;
+        @Column(name="NAME")
 	private String nom;
+        @Column(name="NB_Place")
 	private Integer nbPlace;
+        @Column(name="ADRESSE_SALLE")
 	private String adresseSalle; //pas besoin d'etre d�composer.	
 	
 	private Representation representation;

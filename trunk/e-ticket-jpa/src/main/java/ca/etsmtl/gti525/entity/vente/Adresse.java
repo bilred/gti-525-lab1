@@ -1,15 +1,44 @@
 package ca.etsmtl.gti525.entity.vente;
 
-public class Adresse {
-	
+import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity()
+@Table(name="SHOW_ADRESSE")
+public class Adresse implements Serializable{
+	@Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        @Column(name = "ID")
+        private String idAdresse;
+    
+        @Column(name = "RUE")
 	private String rue;
+        
+        @Column(name = "APPARTEMENT")
 	private String appartement;
+        
+        @Column(name = "VILLE")
 	private String ville;
+        
+        @Column(name = "REGION")
 	private String region;
+        
+        @Column(name = "CODE_POSTAL")
 	private String codePostal;
 	
 	
-	
+	public String getIdAdresse() {
+        return idAdresse;
+        }
+
+        public void setIdAdresse(String idAdresse) {
+        this.idAdresse = idAdresse;
+        }
 	public String getRue() {
 		return rue;
 	}
