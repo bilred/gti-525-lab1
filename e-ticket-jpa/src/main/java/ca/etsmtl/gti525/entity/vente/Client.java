@@ -1,84 +1,108 @@
 package ca.etsmtl.gti525.entity.vente;
 
 import ca.etsmtl.gti525.entity.presentation.Billet;
+import java.io.Serializable;
 import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-public class Client {
-	
-	private String nom;
-	private String prenom;
-	private String nomCivique;
-	private String mail;
-	private String phone;
-	
-	private Adresse adresseClient;
-	private CarteCredit carteCredit;
-	private List<Billet> billets;   //c'est la seul interface avec le module Presentation de l'Application
-		
-	
-	
-	public String getMail() {
-		return mail;
-	}
+@Entity
+@Table(name = "VENTE_CLIENT")
+public class Client implements Serializable {
+    private static final long serialVersionUID = 1L;
 
-	public void setMail(String mail) {
-		this.mail = mail;
-	}
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @Column(name="NOM")
+    private String nom;  
+    @Column(name="PRENOM")
+    private String prenom;
+    @Column(name="NOM_CIVIQUE")
+    private String nomCivique;
+    @Column(name="MAIL")
+    private String mail;
+    @Column(name="PHONE")
+    private String phone;
+    
+    private Adresse adresseClient;
+    private CarteCredit carteCredit;
+    private List<Billet> billets;   //c'est la seul interface avec le module Presentation de l'Application
 
-	public String getPhone() {
-		return phone;
-	}
+    
+    public String getMail() {
+        return mail;
+    }
 
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
 
-	public CarteCredit getCarteCredit() {
-		return carteCredit;
-	}
+    public String getPhone() {
+        return phone;
+    }
 
-	public void setCarteCredit(CarteCredit carteCredit) {
-		this.carteCredit = carteCredit;
-	}
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 
-	public String getNom() {
-		return nom;
-	}
+    public CarteCredit getCarteCredit() {
+        return carteCredit;
+    }
 
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
-	public List<Billet> getBillets() {
-		return billets;
-	}
+    public void setCarteCredit(CarteCredit carteCredit) {
+        this.carteCredit = carteCredit;
+    }
 
-	public void setBillets(List<Billet> billets) {
-		this.billets = billets;
-	}
+    public String getNom() {
+        return nom;
+    }
 
-	public String getPrenom() {
-		return prenom;
-	}
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
 
-	public void setPrenom(String prenom) {
-		this.prenom = prenom;
-	}
+    public List<Billet> getBillets() {
+        return billets;
+    }
 
-	public String getNomCivique() {
-		return nomCivique;
-	}
+    public void setBillets(List<Billet> billets) {
+        this.billets = billets;
+    }
 
-	public void setNomCivique(String nomCivique) {
-		this.nomCivique = nomCivique;
-	}
+    public String getPrenom() {
+        return prenom;
+    }
 
-	public Adresse getAdresseClient() {
-		return adresseClient;
-	}
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
 
-	public void setAdresseClient(Adresse adresseClient) {
-		this.adresseClient = adresseClient;
-	}	
-	
+    public String getNomCivique() {
+        return nomCivique;
+    }
 
+    public void setNomCivique(String nomCivique) {
+        this.nomCivique = nomCivique;
+    }
+
+    public Adresse getAdresseClient() {
+        return adresseClient;
+    }
+
+    public void setAdresseClient(Adresse adresseClient) {
+        this.adresseClient = adresseClient;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 }
