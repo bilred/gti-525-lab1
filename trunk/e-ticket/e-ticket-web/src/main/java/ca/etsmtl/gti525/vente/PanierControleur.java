@@ -1,10 +1,9 @@
 package ca.etsmtl.gti525.vente;
 
-import ca.etsmtl.gti525.entity.ArtisteFacadeLocal;
 import java.io.Serializable;
-import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import org.apache.log4j.Logger;
 
 /**
  *
@@ -14,13 +13,12 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class PanierControleur implements Serializable {
     
-    @EJB private ArtisteFacadeLocal ArtisteFacade;
+    private static final Logger log = Logger.getLogger(PanierControleur.class);
     private int count; 
     
 
     public void increment() {
-        if(ArtisteFacade==null) System.out.println("Conteneur d'EJB tés là == null Ooops!!!");
-        else System.out.println("Conteneur d'EJB tés là != null Magnico o_O");
+        log.info("Appel de la méthode increment(), valeur initial: "+count);
         count++;  
     }  
     
