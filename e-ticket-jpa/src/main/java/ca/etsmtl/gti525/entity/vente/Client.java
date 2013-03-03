@@ -31,7 +31,7 @@ public class Client implements Serializable {
     
     private Adresse adresseClient;
     private CarteCredit carteCredit;
-    private List<Billet> billets;   //c'est la seul interface avec le module Presentation de l'Application
+//    private List<Billet> billets;   //c'est la seul interface avec le module Presentation de l'Application
 
     
     public String getMail() {
@@ -66,13 +66,13 @@ public class Client implements Serializable {
         this.nom = nom;
     }
 
-    public List<Billet> getBillets() {
-        return billets;
-    }
-
-    public void setBillets(List<Billet> billets) {
-        this.billets = billets;
-    }
+//    public List<Billet> getBillets() {
+//        return billets;
+//    }
+//
+//    public void setBillets(List<Billet> billets) {
+//        this.billets = billets;
+//    }
 
     public String getPrenom() {
         return prenom;
