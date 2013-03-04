@@ -1,4 +1,4 @@
-package ca.etsmtl.gti525.dao;
+package ca.etsmtl.gti525.dao.presentation;
 
 import ca.etsmtl.gti525.entity.presentation.Artiste;
 import ca.etsmtl.gti525.entity.presentation.Representation;
@@ -11,13 +11,14 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 @Transactional
-public class DaoJpa implements IDao, Serializable {
+public class DaoJpaPresentation implements IDaoPresentation, Serializable {
 
   private static final long serialVersionUID = 1L;
   @PersistenceContext
   private EntityManager em;
 
   // liste des clients
+    @Override
   public List<Artiste> getAllArtistes() {
     try {
       return em.createQuery("select rc from Artiste rc").getResultList();
@@ -28,6 +29,7 @@ public class DaoJpa implements IDao, Serializable {
   }
 
  
+    @Override
   public List<Spectacle> getAllSpectacle() {
     try {
       return em.createQuery("select rm from Spectacle rm").getResultList();
@@ -38,6 +40,7 @@ public class DaoJpa implements IDao, Serializable {
   }
   
  
+    @Override
   public List<Representation> getAllRepresentation() {
     try {
       return em.createQuery("select rm from Representation rm").getResultList();
