@@ -9,67 +9,71 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="SHOW_ADRESSE")
-public class Adresse implements Serializable{
-	@Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        @Column(name = "ID")
-        private String idAdresse;
+@Table(name = "VENTE_ADRESSE")
+public class Adresse implements Serializable {
+    private static final long serialVersionUID = 1L;
     
-        @Column(name = "RUE")
-	private String rue;
-        
-        @Column(name = "APPARTEMENT")
-	private String appartement;
-        
-        @Column(name = "VILLE")
-	private String ville;
-        
-        @Column(name = "REGION")
-	private String region;
-        
-        @Column(name = "CODE_POSTAL")
-	private String codePostal;
-	
-	
-	public String getIdAdresse() {
-        return idAdresse;
-        }
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
+    private Long id;
+    @Column(name = "RUE")
+    private String rue;
+    @Column(name = "APPARTEMENT")
+    private String appartement;
+    @Column(name = "VILLE")
+    private String ville;
+    @Column(name = "REGION")
+    private String region;
+    @Column(name = "CODE_POSTAL")
+    private String codePostal;
 
-        public void setIdAdresse(String idAdresse) {
-        this.idAdresse = idAdresse;
-        }
-	public String getRue() {
-		return rue;
-	}
-	public void setRue(String rue) {
-		this.rue = rue;
-	}
-	public String getAppartement() {
-		return appartement;
-	}
-	public void setAppartement(String appartement) {
-		this.appartement = appartement;
-	}
-	public String getVille() {
-		return ville;
-	}
-	public void setVille(String ville) {
-		this.ville = ville;
-	}
-	public String getRegion() {
-		return region;
-	}
-	public void setRegion(String region) {
-		this.region = region;
-	}
-	public String getCodePostal() {
-		return codePostal;
-	}
-	public void setCodePostal(String codePostal) {
-		this.codePostal = codePostal;
-	}
-	
-	
+    
+    public Long getId() {
+        return id;
+    }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getRue() {
+        return rue;
+    }
+
+    public void setRue(String rue) {
+        this.rue = rue;
+    }
+
+    public String getAppartement() {
+        return appartement;
+    }
+
+    public void setAppartement(String appartement) {
+        this.appartement = appartement;
+    }
+
+    public String getVille() {
+        return ville;
+    }
+
+    public void setVille(String ville) {
+        this.ville = ville;
+    }
+
+    public String getRegion() {
+        return region;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
+    }
+
+    public String getCodePostal() {
+        return codePostal;
+    }
+
+    public void setCodePostal(String codePostal) {
+        this.codePostal = codePostal;
+    }
 }

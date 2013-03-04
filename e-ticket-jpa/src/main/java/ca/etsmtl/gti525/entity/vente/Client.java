@@ -1,11 +1,15 @@
 package ca.etsmtl.gti525.entity.vente;
 
+import ca.etsmtl.gti525.entity.presentation.Billet;
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -27,11 +31,14 @@ public class Client implements Serializable {
     @Column(name="PHONE")
     private String phone;
     
+    @OneToOne
     private Adresse adresseClient;
+    @OneToOne
     private CarteCredit carteCredit;
     
-    ////Arevoir
-//    private List<Billet> billets;   //c'est la seul interface avec le module Presentation de l'Application
+
+    @OneToMany
+    private List<Billet> billets;   //c'est la seul interface avec le module Presentation de l'Application
 
     
     public String getMail() {
@@ -66,13 +73,13 @@ public class Client implements Serializable {
         this.nom = nom;
     }
 
-//    public List<Billet> getBillets() {
-//        return billets;
-//    }
-//
-//    public void setBillets(List<Billet> billets) {
-//        this.billets = billets;
-//    }
+    public List<Billet> getBillets() {
+        return billets;
+    }
+
+    public void setBillets(List<Billet> billets) {
+        this.billets = billets;
+    }
 
     public String getPrenom() {
         return prenom;

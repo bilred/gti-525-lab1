@@ -34,8 +34,7 @@ public class CarteCredit implements Serializable {
     @Column(name="DATE_TRANSACTION")
     @Temporal(TemporalType.DATE)
     private Date dateTransaction;
-
-//    private Client detenteurCarte;
+    
     
     public Date getDateExpiration() {
         return dateExpiration;
@@ -86,4 +85,13 @@ public class CarteCredit implements Serializable {
     public void setNumSecurite(String numSecurite) {
         this.numSecurite = numSecurite;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+    
 }
