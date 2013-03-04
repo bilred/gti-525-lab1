@@ -1,8 +1,6 @@
 package ca.etsmtl.gti525.entity.vente;
 
-import ca.etsmtl.gti525.entity.presentation.Billet;
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -31,6 +29,8 @@ public class Client implements Serializable {
     
     private Adresse adresseClient;
     private CarteCredit carteCredit;
+    
+    ////Arevoir
 //    private List<Billet> billets;   //c'est la seul interface avec le module Presentation de l'Application
 
     

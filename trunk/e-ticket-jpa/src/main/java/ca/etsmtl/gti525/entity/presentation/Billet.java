@@ -1,6 +1,5 @@
 package ca.etsmtl.gti525.entity.presentation;
 
-import ca.etsmtl.gti525.entity.vente.Reservation;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -31,6 +30,8 @@ public class Billet implements Serializable{
 	
 	private Salle salle; //pour avoir des information comme Num�ro de Siege.
 	private Representation representation; //en les recup�re d'ici : private Date dateDebut; private Date dateFin;
+        
+        //Arevoir
 //	private Reservation reservation;  //-les 10 ou 20 1er minut de la connexion Client -s'il est vendu il est reserv� a vie
 	//Reservation == c'est la seul interface avec le module Vente de l'Application	
 	
