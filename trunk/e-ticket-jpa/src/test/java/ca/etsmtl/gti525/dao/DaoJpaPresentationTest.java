@@ -1,6 +1,6 @@
 package ca.etsmtl.gti525.dao;
 
-import ca.etsmtl.gti525.entity.presentation.Artiste;
+import ca.etsmtl.gti525.dao.presentation.IDaoPresentation;
 import ca.etsmtl.gti525.entity.presentation.Spectacle;
 import java.util.Date;
 import java.util.List;
@@ -18,12 +18,12 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  *
  * @author REDOUANE
  */
-public class DaoJpaTest {
+public class DaoJpaPresentationTest extends AbstractDaoJpaTest {
 
-    public DaoJpaTest() {
+    public DaoJpaPresentationTest() {
     }
     // couche [dao] testée
-    private static IDao dao;
+    private static IDaoPresentation dao;
     // date du jour
     Date jour = new Date();
 
@@ -31,7 +31,7 @@ public class DaoJpaTest {
     public static void init() throws NamingException {
         // instanciation couche [dao]
         ApplicationContext ctx = new ClassPathXmlApplicationContext("spring-config-dao.xml");
-        dao = (IDao) ctx.getBean("dao");
+        dao = (IDaoPresentation) ctx.getBean("daoPresentation");
     }
 
     /**
