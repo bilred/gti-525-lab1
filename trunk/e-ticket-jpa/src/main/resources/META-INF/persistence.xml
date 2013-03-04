@@ -4,6 +4,12 @@
     <class>ca.etsmtl.gti525.entity.presentation.Artiste</class>
     <class>ca.etsmtl.gti525.entity.presentation.Representation</class>
     <class>ca.etsmtl.gti525.entity.presentation.Spectacle</class>
+    <class>ca.etsmtl.gti525.entity.presentation.Billet</class>
+    <class>ca.etsmtl.gti525.entity.presentation.Salle</class>
+    <class>ca.etsmtl.gti525.entity.vente.Adresse</class>
+    <class>ca.etsmtl.gti525.entity.vente.CarteCredit</class>
+    <class>ca.etsmtl.gti525.entity.vente.Client</class>
+    <class>ca.etsmtl.gti525.entity.vente.Reservation</class>
   </persistence-unit>
 </persistence>
 <!--    <properties>
