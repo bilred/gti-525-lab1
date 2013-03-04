@@ -1,6 +1,6 @@
 package ca.etsmtl.gti525.commun;
 
-import ca.etsmtl.gti525.dao.IDao;
+import ca.etsmtl.gti525.dao.presentation.IDaoPresentation;
 import ca.etsmtl.gti525.entity.presentation.Artiste;
 import ca.etsmtl.gti525.entity.presentation.Representation;
 import ca.etsmtl.gti525.entity.presentation.Spectacle;
@@ -23,7 +23,7 @@ public class MenuControleur implements Serializable {
     private static final Logger log = Logger.getLogger(ApplicationControleur.class);
     
     //@Ingection couche model et métier
-    private IDao dao;
+    private IDaoPresentation dao;
     // cache
     private List<Spectacle> spectacles;
     private List<Representation> representations;
@@ -33,7 +33,7 @@ public class MenuControleur implements Serializable {
     public void init() {
         // instanciation couche [métier]
         ApplicationContext ctx = new ClassPathXmlApplicationContext("spring-config-dao.xml");
-        dao = (IDao) ctx.getBean("dao");
+        dao = (IDaoPresentation) ctx.getBean("daoPresentation");
 
         this.spectacles = dao.getAllSpectacle();
         this.representations = dao.getAllRepresentation();
