@@ -4,7 +4,8 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd">
 
     <!-- couches applicatives -->
-    <bean id="dao" class="ca.etsmtl.gti525.dao.DaoJpa" />
+    <bean id="daoVente" class="ca.etsmtl.gti525.dao.vente.DaoJpaVente" />
+    <bean id="daoPresentation" class="ca.etsmtl.gti525.dao.presentation.DaoJpaPresentation" />
   
     <!-- EntityManagerFactory -->
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
@@ -25,7 +26,7 @@
         <property name="driverClassName" value="org.postgresql.Driver"/> 
         <property name="url" value="jdbc:postgresql://localhost:5432/e-ticket"/>
         <property name="username" value="postgres"/>
-        <property name="password" value="******"/>                    
+        <property name="password" value="admin"/>                    
     </bean>
 
         <!-- Data source pour MySql -->
