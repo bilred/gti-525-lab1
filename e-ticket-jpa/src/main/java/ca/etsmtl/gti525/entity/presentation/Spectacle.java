@@ -2,7 +2,9 @@ package ca.etsmtl.gti525.entity.presentation;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,10 +27,10 @@ public class Spectacle implements Serializable {
     @Column(name = "ID")
     private Long id;
 
-//    @ElementCollection  
-//    @CollectionTable(name = "T_TYPES_SPECTACLE")
-//    @Column(name = "TYPES_SPECTACLE")    
-//    private List<String> typesSpectacle;
+    @ElementCollection  
+    @CollectionTable(name = "T_TYPES_SPECTACLE")
+    @Column(name = "TYPES_SPECTACLE")    
+    private List<String> typesSpectacle;
     @Column(name="DESCRIPTION")
     private String description;
     @Column(name="LIEN_VIDEO")
@@ -41,14 +43,14 @@ public class Spectacle implements Serializable {
     @OneToMany(mappedBy = "spectacle")
     private List<Representation> representations;
 
+    
+    public List<String> getTypesSpectacle() {
+        return typesSpectacle;
+    }
 
-//    public List<String> getTypesSpectacle() {
-//        return typesSpectacle;
-//    }
-//
-//    public void setTypesSpectacle(List<String> typesSpectacle) {
-//        this.typesSpectacle = typesSpectacle;
-//    }
+    public void setTypesSpectacle(List<String> typesSpectacle) {
+        this.typesSpectacle = typesSpectacle;
+    }
 
     public String getDescription() {
         return description;
