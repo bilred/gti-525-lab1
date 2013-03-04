@@ -1,6 +1,6 @@
 package ca.etsmtl.gti525.presentation;
 
-import ca.etsmtl.gti525.commun.ApplicationControleur;
+import ca.etsmtl.gti525.commun.MenuControleur;
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -16,8 +16,8 @@ import org.apache.log4j.Logger;
 public class SpectacleControleur implements Serializable {
     private static final Logger log = Logger.getLogger(SpectacleControleur.class);
     
-    @ManagedProperty(value = "#{appliCtrl}")
-    private ApplicationControleur applicationControleur;
+    @ManagedProperty(value = "#{menuCtrl}")
+    private MenuControleur menuControleur;
     
 //    public List<Spectacle> getSpectacles(){
 //        log.info("sonar source : "+applicationControleur.getSpectacles());
@@ -30,12 +30,8 @@ public class SpectacleControleur implements Serializable {
     public SpectacleControleur() {
     }
 
-    public ApplicationControleur getApplicationControleur() {
-        return applicationControleur;
-    }
-
-    public void setApplicationControleur(ApplicationControleur applicationControleur) {
-        this.applicationControleur = applicationControleur;
+    public MenuControleur getMenuControleur() {
+        return menuControleur;
     }
        
 }
