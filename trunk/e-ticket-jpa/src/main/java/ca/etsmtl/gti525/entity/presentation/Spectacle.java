@@ -31,6 +31,7 @@ public class Spectacle implements Serializable {
     @CollectionTable(name = "T_TYPES_SPECTACLE")
     @Column(name = "TYPES_SPECTACLE")    
     private List<String> typesSpectacle;
+    
     @Column(name="NOM_SPECTACLE")
     private String nomSpectacle;
     
@@ -54,6 +55,7 @@ public class Spectacle implements Serializable {
     public void setTypesSpectacle(List<String> typesSpectacle) {
         this.typesSpectacle = typesSpectacle;
     }
+
     public String getNomSpectacle() {
         return nomSpectacle;
     }
@@ -61,6 +63,7 @@ public class Spectacle implements Serializable {
     public void setNomSpectacle(String nomSpectacle) {
         this.nomSpectacle = nomSpectacle;
     }
+
 
     public String getDescription() {
         return description;
