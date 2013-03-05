@@ -1,4 +1,4 @@
-﻿INSERT INTO show_spectacle(description, lien_image, artiste_nom, nom_spectacle) VALUES ('description1', 'img_cw_spec', 'CHRISTOPHER OWENS','Tournée Canada 2013');
+INSERT INTO show_spectacle(description, lien_image, artiste_nom, nom_spectacle) VALUES ('description1', 'img_cw_spec', 'CHRISTOPHER OWENS','Tournée Canada 2013');
 INSERT INTO show_spectacle(description, lien_image, artiste_nom, nom_spectacle) VALUES ('description2', 'img_cw_spec', 'CHRISTOPHER OWENS','Tournée USA 2013');
 INSERT INTO show_spectacle(description, lien_image, artiste_nom, nom_spectacle) VALUES ('description3', 'img_cw_spec', 'CHRISTOPHER OWENS','Tournée Europe 2013');
 
