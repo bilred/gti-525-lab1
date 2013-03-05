@@ -1,6 +1,5 @@
 package ca.etsmtl.gti525.commun;
 
-import ca.etsmtl.gti525.dao.presentation.IDaoPresentation;
 import ca.etsmtl.gti525.entity.presentation.Artiste;
 import ca.etsmtl.gti525.entity.presentation.Representation;
 import ca.etsmtl.gti525.entity.presentation.Spectacle;
@@ -10,8 +9,6 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import org.apache.log4j.Logger;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  *
@@ -19,11 +16,9 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  */
 @ManagedBean(name = "menuCtrl")
 @ApplicationScoped
-public class MenuControleur implements Serializable {
+public class MenuControleur extends AbstractControleur implements Serializable {
     private static final Logger log = Logger.getLogger(ApplicationControleur.class);
     
-    //@Ingection couche model et métier
-    private IDaoPresentation dao;
     // cache
     private List<Spectacle> spectacles;
     private List<Representation> representations;
@@ -32,12 +27,11 @@ public class MenuControleur implements Serializable {
     @PostConstruct
     public void init() {
         // instanciation couche [métier]
-        ApplicationContext ctx = new ClassPathXmlApplicationContext("spring-config-dao.xml");
-        dao = (IDaoPresentation) ctx.getBean("daoPresentation");
+        super.initPresentation();
 
-        this.spectacles = dao.getAllSpectacle();
-        this.representations = dao.getAllRepresentation();
-        this.artistes = dao.getAllArtistes(); 
+        this.spectacles = this.daoPresentation.getAllSpectacle();
+        this.representations = this.daoPresentation.getAllRepresentation();
+        this.artistes = this.daoPresentation.getAllArtistes(); 
         
         log.info("sonar source Spectacle : " + this.spectacles);
         log.info("sonar source Representation : " + this.representations);
