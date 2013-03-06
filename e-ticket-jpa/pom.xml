@@ -86,5 +86,21 @@
             <version>3.1.1.RELEASE</version>
             <type>jar</type>
         </dependency>
+        <!--        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>ApiJavaEtsmtl</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-web-api</artifactId>
+            <version>6.0</version>
+            <type>jar</type>
+        </dependency>-->
+        <dependency>
+            <groupId>net.sf.opencsv</groupId>
+            <artifactId>opencsv</artifactId>
+            <version>2.3</version>
+        </dependency>
     </dependencies>
 </project>
