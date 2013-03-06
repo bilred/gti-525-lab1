@@ -3,11 +3,53 @@
 <ui:composition template="/resources/tpl/pageCorpsTemplate.xhtml"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:p="http://primefaces.org/ui">
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core">
 
 
     <ui:define name="content">
-     
+     <h:form>  
+  
+    <p:dataTable id="dataTable" var="rep" value="#{menuCtrl.representations}" widgetVar="representationsTable"   
+            emptyMessage="Pas de représentation trouvée avec les criteres précisés" filteredValue="#{menuCtrl.representationsFiltrees}">  
+  
+         <f:facet name="header">  
+            <p:outputPanel>  
+                <h:outputText value="Search all fields:" />  
+                <p:inputText id="globalFilter" onkeyup="representationsTable.filter()" style="width:150px" />  
+            </p:outputPanel>  
+        </f:facet>  
+  
+        <p:column id="priceColumn" filterBy="#{rep.prix}"   
+                headerText="Prix" footerText="contains"  
+                filterMatchMode="contains">  
+            <h:outputText value="#{rep.prix}" />  
+        </p:column>  
+  
+        <p:column id="addColumn" filterBy="#{rep.adresse}"  
+                headerText="Adresse" footerText="contains"  
+                filterMatchMode="contains">  
+            <h:outputText value="#{rep.adresse}" />  
+        </p:column>  
+  
+          
+        <p:column id="dispColumn" filterBy="#{rep.nbBilletsDispo}"  
+                headerText="Disponibilité" footerText="contains" filterMatchMode="contains">  
+            <h:outputText value="#{rep.nbBilletsDispo}" />  
+        </p:column>
+       
+        <p:column id="dateDebutColumn" filterBy="#{rep.dateDebut}"  
+                headerText="Date de début" footerText="startsWith">  
+            <h:outputText value="#{rep.dateDebut}" 
+                          id="popupDate">
+              <f:convertDateTime pattern="d/M/yyyy"/>  
+            </h:outputText>
+            
+        </p:column> 
+                     
+    </p:dataTable>  
+      
+</h:form>  
     </ui:define>
 
 
