@@ -692,6 +692,45 @@ public class StubPresentation {
                 }
         spec18.setRepresentations(sousListe18);
         
+        
+        spectacles.add(spec1);
+        spectacles.add(spec2);
+        spectacles.add(spec3);
+        spectacles.add(spec4);
+        spectacles.add(spec5);
+        spectacles.add(spec6);
+        spectacles.add(spec7);
+        spectacles.add(spec8);
+        spectacles.add(spec9);
+        spectacles.add(spec10);
+        spectacles.add(spec11);
+        spectacles.add(spec12);
+        spectacles.add(spec13);
+        spectacles.add(spec14);
+        spectacles.add(spec15);
+        spectacles.add(spec16);
+        spectacles.add(spec17);
+        spectacles.add(spec18);
+        
+        salles.add(sal1);
+        salles.add(sal2);
+        salles.add(sal3);
+        salles.add(sal4);
+        salles.add(sal5);
+        salles.add(sal6);
+        salles.add(sal7);
+        salles.add(sal8);
+        salles.add(sal9);
+        
+        artistes.add(art1);
+        artistes.add(art2);
+        artistes.add(art3);
+        artistes.add(art4);
+        artistes.add(art5);
+        artistes.add(art6);
+        
+        
+        
         //fin séquence de passation des paramètres
     }
 }
