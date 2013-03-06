@@ -23,6 +23,9 @@ public class MenuControleur extends AbstractControleur implements Serializable {
     private List<Spectacle> spectacles;
     private List<Representation> representations;
     private List<Artiste> artistes;
+    private List<Representation> representationsFiltrees;
+
+    
 
     @PostConstruct
     public void init() {
@@ -38,7 +41,13 @@ public class MenuControleur extends AbstractControleur implements Serializable {
         log.info("sonar source Artiste : " + this.artistes);
     }    
     
-    
+    public List<Representation> getRepresentationsFiltrees() {
+        return representationsFiltrees;
+    }
+
+    public void setRepresentationsFiltrees(List<Representation> representationsFiltrees) {
+        this.representationsFiltrees = representationsFiltrees;
+    }
     public String doHomme(){
         return "eticket.index";
     }

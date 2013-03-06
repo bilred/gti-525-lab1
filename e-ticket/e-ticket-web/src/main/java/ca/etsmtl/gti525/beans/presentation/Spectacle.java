@@ -14,13 +14,21 @@ public class Spectacle {
 	private String description;
 	private String lienVideo;  //type Blop
 	private String lienImage;
-	
+	private String nomSpectacle;
+
+    
 	private Artiste artiste;
 	private List<Representation> representations;
 	
 	
 	
-	
+	public String getNomSpectacle() {
+        return nomSpectacle;
+        }
+
+        public void setNomSpectacle(String nomSpectacle) {
+        this.nomSpectacle = nomSpectacle;
+        }
 	public ArrayList<String> getTypesSpectacle() {
 		return typesSpectacle;
 	}
