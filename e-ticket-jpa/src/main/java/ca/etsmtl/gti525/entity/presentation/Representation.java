@@ -41,7 +41,9 @@ public class Representation implements Serializable {
     private Date dateFin;
     @Column(name = "IS_ANNULATION")
     private Boolean isAnnulation;
-                    
+    private Salle salle;               
+
+    
     @ManyToOne
     private Spectacle spectacle;
 
@@ -73,7 +75,6 @@ public class Representation implements Serializable {
     public Float getPrix() {
         return prix;
     }
-
     public void setPrix(Float prix) {
         this.prix = prix;
     }
@@ -116,5 +117,12 @@ public class Representation implements Serializable {
 
     public void setIsAnnulation(Boolean isAnnulation) {
         this.isAnnulation = isAnnulation;
+    }
+    public Salle getSalle() {
+        return salle;
+    }
+
+    public void setSalle(Salle salle) {
+        this.salle = salle;
     }
 }
