@@ -9,6 +9,15 @@ import javax.persistence.Table;
 @Entity
 @Table(name="SHOW_ARTISTE")
 public class Artiste implements Serializable {
+
+    public Artiste() {
+    }
+
+    public Artiste(String nom, String lienPhoto, String Description) {
+        this.nom = nom;
+        this.lienPhoto = lienPhoto;
+        this.Description = Description;
+    }
         private static final long serialVersionUID = 1L;
     
         @Id
