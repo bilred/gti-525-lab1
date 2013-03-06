@@ -8,11 +8,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 /**
+ * Remarque : peu importe la date et l'heur une représantation ce fait que dans une seul salle a la fois. (pour un même spectacle)
  * @author REDOUANE
  *
  */
@@ -41,7 +43,9 @@ public class Representation implements Serializable {
     private Date dateFin;
     @Column(name = "IS_ANNULATION")
     private Boolean isAnnulation;
-    private Salle salle;               
+
+    @OneToOne(mappedBy = "representation")
+    private Salle salle;
 
     
     @ManyToOne
@@ -118,6 +122,7 @@ public class Representation implements Serializable {
     public void setIsAnnulation(Boolean isAnnulation) {
         this.isAnnulation = isAnnulation;
     }
+
     public Salle getSalle() {
         return salle;
     }
@@ -125,4 +130,5 @@ public class Representation implements Serializable {
     public void setSalle(Salle salle) {
         this.salle = salle;
     }
+    
 }

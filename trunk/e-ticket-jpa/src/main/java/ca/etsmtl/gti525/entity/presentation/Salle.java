@@ -24,7 +24,7 @@ public class Salle implements Serializable {
     private Integer nbPlace;
     @Column(name = "ADRESSE_SALLE")
     private String adresseSalle; //pas besoin d'etre d�composer.
-    
+       
     @OneToOne
     private Representation representation;
 
