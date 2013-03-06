@@ -19,12 +19,89 @@ public class StubPresentation {
     private List<Billet> billets;
     
     public StubPresentation(){
+        
+        // Début Séquence instaciation
+        
         Artiste art1 = new Artiste();
         Artiste art2 = new Artiste();
         Artiste art3 = new Artiste();
         Artiste art4 = new Artiste();
         Artiste art5 = new Artiste();
         Artiste art6 = new Artiste();
+        
+        Salle sal1 = new Salle();
+        Salle sal2 = new Salle();
+        Salle sal3 = new Salle();
+        Salle sal4 = new Salle();
+        Salle sal5 = new Salle();
+        Salle sal6 = new Salle();
+        Salle sal7 = new Salle();
+        Salle sal8 = new Salle();
+        Salle sal9 = new Salle();
+        Salle sal10 = new Salle();
+        Salle sal11 = new Salle();
+        Salle sal12 = new Salle();
+        Salle sal13 = new Salle();
+        Salle sal14 = new Salle();
+        Salle sal15 = new Salle();
+        Salle sal16 = new Salle();
+        Salle sal17 = new Salle();
+        Salle sal18 = new Salle();
+        Salle sal19 = new Salle();
+        Salle sal20 = new Salle();
+        Salle sal21 = new Salle();
+        Salle sal22 = new Salle();
+        Salle sal23 = new Salle();
+        Salle sal24 = new Salle();
+        Salle sal25 = new Salle();
+        Salle sal26 = new Salle();
+        Salle sal27 = new Salle();
+        Salle sal28 = new Salle();
+        Salle sal29 = new Salle();
+        Salle sal30 = new Salle();
+        Salle sal31 = new Salle();
+        Salle sal32 = new Salle();
+        Salle sal33 = new Salle();
+        Salle sal34 = new Salle();
+        Salle sal35 = new Salle();
+        Salle sal36 = new Salle();
+        
+        Representation rep1 = new Representation ();
+        Representation rep2 = new Representation ();
+        Representation rep3 = new Representation ();
+        Representation rep4 = new Representation ();
+        Representation rep5 = new Representation ();
+        Representation rep6 = new Representation ();
+        Representation rep7 = new Representation ();
+        Representation rep8 = new Representation ();
+        Representation rep9 = new Representation ();
+        Representation rep10 = new Representation ();
+        Representation rep11 = new Representation ();
+        Representation rep12 = new Representation ();
+        Representation rep13 = new Representation ();
+        Representation rep14 = new Representation ();
+        Representation rep15 = new Representation ();
+        Representation rep16 = new Representation ();
+        Representation rep17 = new Representation ();
+        Representation rep18 = new Representation ();
+        Representation rep19 = new Representation ();
+        Representation rep20 = new Representation ();
+        Representation rep21 = new Representation ();
+        Representation rep22 = new Representation ();
+        Representation rep23 = new Representation ();
+        Representation rep24 = new Representation ();
+        Representation rep25 = new Representation ();
+        Representation rep26 = new Representation ();
+        Representation rep27 = new Representation ();
+        Representation rep28 = new Representation ();
+        Representation rep29 = new Representation ();
+        Representation rep30 = new Representation ();
+        Representation rep31 = new Representation ();
+        Representation rep32 = new Representation ();
+        Representation rep33 = new Representation ();
+        Representation rep34 = new Representation ();
+        Representation rep35 = new Representation ();
+        Representation rep36 = new Representation ();
         
         Spectacle spec1 = new Spectacle();
         Spectacle spec2 = new Spectacle();
@@ -44,6 +121,11 @@ public class StubPresentation {
         Spectacle spec16 = new Spectacle();
         Spectacle spec17 = new Spectacle();
         Spectacle spec18 = new Spectacle();
+        
+        //fin séquence initiation
+        
+        //début séquence de passation des paramètres, on ne peut passer par les constructeurs paramétrés car ils sont interdits dans les beans,
+        //l'instanciation est loin d'etre optimale et certaines valeurs devront etre changées, Mohammed pourrait s'en occuper.
         
         art1.setNom("CHRISTOPHER OWENS ");
         art1.setLienPhoto("img_cw_art");
@@ -74,15 +156,12 @@ public class StubPresentation {
         spec1.setDescription("Description1");
         spec1.setId(Long.MIN_VALUE);
         spec1.setArtiste(art1);
-        
-        
-        
+                        
         spec2.setNomSpectacle("Tournée USA 2013");
         spec2.setDescription("Description2");
         spec2.setId(Long.MIN_VALUE);
         spec2.setArtiste(art1);
         
-
         spec3.setNomSpectacle("Tournée Europe 2013");
         spec3.setDescription("Description3");
         spec3.setId(Long.MIN_VALUE);
@@ -163,5 +242,6 @@ public class StubPresentation {
         spec18.setId(Long.MIN_VALUE);
         spec18.setArtiste(art6);
         
+        //fin séquence de passation des paramètres
     }
 }
