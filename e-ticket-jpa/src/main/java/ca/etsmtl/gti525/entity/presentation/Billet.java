@@ -11,8 +11,10 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
- * Un Billet repr�sant un acc�s a une salle. (avec une date D�but et Fin == Date
- * a la quel la repr�sentation passe) OK.
+ * Un Billet représant un accés a une salle. (avec une date Debut et Fin == Date
+ * a la quel la représentation passe) OK.
+ * 
+ * Contenu de cette entity : les billets disponnibles.
  *
  * @author REDOUANE
  *
