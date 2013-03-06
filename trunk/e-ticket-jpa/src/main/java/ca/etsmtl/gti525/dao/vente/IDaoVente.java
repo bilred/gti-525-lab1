@@ -1,10 +1,15 @@
 package ca.etsmtl.gti525.dao.vente;
 
+import ca.etsmtl.gti525.entity.vente.Adresse;
+import ca.etsmtl.gti525.entity.vente.Client;
+
 
 public interface IDaoVente {
 
-//  // liste des clients
-//  public List<Artiste> getAllArtistes();
+  // Cree Client 
+  public void createClient(Client client);  
+  // Cree des Adresse
+  public void createAdresse(Adresse adresse);
 //  // liste des Médecins
 //  public List<Spectacle> getAllSpectacle();
 //  public List<Representation> getAllRepresentation();
