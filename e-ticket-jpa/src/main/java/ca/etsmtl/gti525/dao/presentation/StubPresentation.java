@@ -38,33 +38,6 @@ public class StubPresentation {
         Salle sal7 = new Salle();
         Salle sal8 = new Salle();
         Salle sal9 = new Salle();
-        Salle sal10 = new Salle();
-        Salle sal11 = new Salle();
-        Salle sal12 = new Salle();
-        Salle sal13 = new Salle();
-        Salle sal14 = new Salle();
-        Salle sal15 = new Salle();
-        Salle sal16 = new Salle();
-        Salle sal17 = new Salle();
-        Salle sal18 = new Salle();
-        Salle sal19 = new Salle();
-        Salle sal20 = new Salle();
-        Salle sal21 = new Salle();
-        Salle sal22 = new Salle();
-        Salle sal23 = new Salle();
-        Salle sal24 = new Salle();
-        Salle sal25 = new Salle();
-        Salle sal26 = new Salle();
-        Salle sal27 = new Salle();
-        Salle sal28 = new Salle();
-        Salle sal29 = new Salle();
-        Salle sal30 = new Salle();
-        Salle sal31 = new Salle();
-        Salle sal32 = new Salle();
-        Salle sal33 = new Salle();
-        Salle sal34 = new Salle();
-        Salle sal35 = new Salle();
-        Salle sal36 = new Salle();
         
         Representation rep1 = new Representation ();
         Representation rep2 = new Representation ();
@@ -151,6 +124,25 @@ public class StubPresentation {
         art6.setLienPhoto("img_tm_art");
         art6.setDescription("Description6");
         
+        
+        sal1.setNom("Centre Bell");
+        
+        sal2.setNom("Ontario Hall");
+        
+        sal3.setNom("Vancouver Mega-Center");
+        
+        sal4.setNom("");
+        
+        sal5.setNom(null);
+        
+        sal6.setNom(null);
+        
+        sal7.setNom(null);
+        
+        sal8.setNom(null);
+        
+        sal9.setNom(null);
+     
         
         spec1.setNomSpectacle("Tournée Canada 2013");
         spec1.setDescription("Description1");
