@@ -7,7 +7,8 @@ import ca.etsmtl.gti525.entity.vente.Client;
 public interface IDaoVente {
 
   // Cree Client 
-  public void createClient(Client client);  
+  public void createClient(Client client);
+  public Adresse findAdresse(Long id);
   // Cree des Adresse
   public void createAdresse(Adresse adresse);
 //  // liste des Médecins

@@ -3,6 +3,7 @@ package ca.etsmtl.gti525.batch.vente;
 import au.com.bytecode.opencsv.CSVReader;
 import ca.etsmtl.gti525.batch.commun.InitDao;
 import ca.etsmtl.gti525.entity.vente.Adresse;
+import ca.etsmtl.gti525.entity.vente.Client;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -13,17 +14,19 @@ import java.util.logging.Logger;
  *
  * @author benabid.aichouche
  */
-public class AdresseBatch extends InitDao {
+public class ClientBatch extends InitDao {
  static String currentDir =System.getProperty("user.dir");   
- private static final String ADRESSE_FILE = currentDir + "\\src\\main\\java\\ca\\etsmtl\\gti525\\batch\\csv\\vente\\DataAdresse.csv";
+ private static final String CLIENT_FILE = currentDir + "\\src\\main\\java\\ca\\etsmtl\\gti525\\batch\\csv\\vente\\DataClient.csv";
  
 
   private static final int ID = 0;
-  private static final int RUE = 1;
-  private static final int APPARTEMENT = 2;  
-  private static final int VILLE = 3;
-  private static final int REGION = 4;
-  private static final int CODE_POSTAL = 5;
+  private static final int NOM = 1;
+  private static final int PRENOM = 2;  
+  private static final int NOM_CIVIQUE = 3;
+  private static final int MAIL = 4;
+  private static final int PHONE = 5;
+  private static final int ID_ADRESSE = 6;
+  private static final int ID_CARTE_CREDIT = 7;  
   
   /**
      * @param args the command line arguments
@@ -40,18 +43,21 @@ public class AdresseBatch extends InitDao {
             while ((nextLine = reader.readNext()) != null ) {
                 if (first > 0) {
                      
-                      Adresse adresse = new Adresse();
+                      Client client = new Client();
                       
-                      adresse.setId( Long.valueOf(nextLine[ID]) ); //pour les listes ne mes pas ID (même pour la BD deja)
-                      adresse.setRue(nextLine[RUE]);
-                      adresse.setAppartement(nextLine[APPARTEMENT]);
-                      adresse.setVille(nextLine[VILLE]);
-                      adresse.setRegion(nextLine[REGION]);
-                      adresse.setCodePostal(nextLine[CODE_POSTAL]);
-
+                      client.setId( Long.valueOf(nextLine[ID]) ); //pour les listes ne mes pas ID (même pour la BD deja)
+                      client.setNom(nextLine[NOM]);
+                      client.setPrenom(nextLine[PRENOM]);
+                      client.setNomCivique(nextLine[NOM_CIVIQUE]);
+                      client.setMail(nextLine[MAIL]);
+                      client.setPhone(nextLine[PHONE]);
+                      
+                      //System.out.println("----------"+();
+                      client.setAdresseClient(  stubsDaoVente.findAdresse(Long.valueOf(nextLine[ID_ADRESSE])) );  
+                              
                       //Cree l'Adreese.
                       new AdresseBatch().initStubsVante(); //init stubsDaoVente
-                      stubsDaoVente.createAdresse(adresse);                    
+                      stubsDaoVente.createClient(client);                    
                 }
                 first++;
             }
@@ -67,7 +73,7 @@ public class AdresseBatch extends InitDao {
     
   
     public static void main(String[] args) {        
-          AdresseBatch.batch(ADRESSE_FILE);
+          ClientBatch.batch(CLIENT_FILE);
     }  
     
 }
