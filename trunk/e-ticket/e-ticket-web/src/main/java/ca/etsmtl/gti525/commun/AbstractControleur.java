@@ -1,32 +1,38 @@
 package ca.etsmtl.gti525.commun;
 
-import ca.etsmtl.gti525.dao.presentation.IDaoPresentation;
-import ca.etsmtl.gti525.dao.vente.IDaoVente;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import ca.etsmtl.gti525.batch.commun.InitDao;
 
 /**
- *
+ *  En peu faire du Polymorphisme (injecter du code en plus de l'existant)
  * @author REDOUANE
  */
-public class AbstractControleur {
+public abstract class AbstractControleur extends InitDao{
     
     //@Ingection couche model et métier
-    protected IDaoPresentation daoPresentation;
-    //@Ingection couche model et métier
-    protected IDaoVente daoVente;    
+      //Fait dans InitDAO
     
+    
+    
+    @Override
     public void initPresentation() {
-        // instanciation couche [métier]
-        ApplicationContext ctx = new ClassPathXmlApplicationContext("spring-config-dao.xml");
-        daoPresentation = (IDaoPresentation) ctx.getBean("daoPresentation"); 
-        
+        super.initPresentation();
+        //this.daoPresentation;
     }
-    
+
+    @Override
     public void initVante() {
-        // instanciation couche [métier]
-        ApplicationContext ctx = new ClassPathXmlApplicationContext("spring-config-dao.xml");
-        daoVente = (IDaoVente) ctx.getBean("daoVente");      
-    }    
+        super.initVante();
+    }
+
+    @Override
+    public void initStubsPresentation() {
+        super.initStubsPresentation();
+        //InitDao.stubsDaoPresentation
+    }
+
+    @Override
+    public void initStubsVante() {
+        super.initStubsVante();
+    }   
     
 }
