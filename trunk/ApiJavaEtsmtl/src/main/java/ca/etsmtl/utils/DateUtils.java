@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author zennad.nassima
+ * @author B.REDOUANE
  */
 public class DateUtils {
     /*
