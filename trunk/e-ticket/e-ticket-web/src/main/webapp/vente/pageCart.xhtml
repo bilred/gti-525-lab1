@@ -3,21 +3,64 @@
 <ui:composition template="/resources/tpl/pageCorpsTemplate.xhtml"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:p="http://primefaces.org/ui">
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:etsmtl="http://java.sun.com/jsf/composite/etsmtl">
 
 
     <ui:define name="content">
-        Contenu du panier :<br/>
+        <h:form id="formPanier" >         
+
+            <etsmtl:tableCrud id="tableCrudPanier" emptyMessage="Veuille sélectionner des représentations" titleTable="Les paniers sélectionnés par le client" updateDetails="formPanier:representationDetail" 
+                              handleTableCrud="#{panierCtrl.tableCrudPanier}" rowKey="#{item.nomSpectacle}" >
+
+                
+                <p:column headerText="Icon Artiste" filterBy="#{item.nomSpectacle}" sortBy="#{item.nomSpectacle}" >
+                    <h:outputLabel value="#{item.nomSpectacle}"  />  
+                </p:column>
+                
+                <p:column headerText="Quantity" filterBy="#{item.nomSpectacle}" sortBy="#{item.nomSpectacle}" >
+                    <h:outputLabel value="#{item.nomSpectacle}"  />  
+                </p:column>
+                
+                <p:column headerText="Show" filterBy="#{item.nomSpectacle}" sortBy="#{item.nomSpectacle}" >
+                    <h:outputLabel value="#{item.nomSpectacle}"  />  
+                </p:column>
+                
+                <p:column headerText="Town" filterBy="#{item.nomSpectacle}" sortBy="#{item.nomSpectacle}" >
+                    <h:outputLabel value="#{item.nomSpectacle}"  />  
+                </p:column>
+
+                <p:column headerText="Date" filterBy="#{item.dateReprésantation}" sortBy="#{item.dateReprésantation}" >
+                    <h:outputLabel value="#{item.dateReprésantation}" />  
+                </p:column>
+                
+                <p:column headerText="Hour" filterBy="#{item.dateReprésantation}" sortBy="#{item.dateReprésantation}" >
+                    <h:outputLabel value="#{item.dateReprésantation}" />  
+                </p:column> 
+
+
+            </etsmtl:tableCrud>        
+
+            <etsmtl:dialogDetails id="representationDetail" >
+
+            </etsmtl:dialogDetails>
+
+        </h:form>
         
-        <h:form>  
+            <h:form>
+                <p:button outcome="pageCheckout" value="BUY" icon="ui-icon-suitcase" ></p:button> <p:spacer width="40px"/> <p:button type="reset" value="CANCEL" icon="ui-icon-cancel" ></p:button>
+            </h:form>    
+
+
+<!--            Contenu du panier : <p:commandButton value="Panier" actionListener="{panierCtrl.increment}" update="txt_count" icon="ui-icon-cart" /> 
             <h:panelGrid columns="2" cellpadding="5">  
                 <h:outputText value="votre panier: " />  
-                <h:outputText id="txt_count" value="#{panierCtrl.count}" />        
-            </h:panelGrid>  
+                <h:outputText id="txt_count" value="{panierCtrl.count}" />        
+            </h:panelGrid>  -->
+              
 
-            <p:commandButton value="Panier"  
-                             actionListener="#{panierCtrl.increment}" update="txt_count" icon="ui-icon-cart" />  
-        </h:form>        
+
+
     </ui:define>
 
 

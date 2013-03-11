@@ -31,18 +31,18 @@
 
                         <h:messages errorClass="error"/>  
 
-                        <h:panelGrid columns="2" columnClasses="label, value">
-                            <!-- juste a revoir il manque quelque proporiété 
+                        <h:panelGrid columns="2" >    
                             <etsmtl:inputTextLabel _id="nom" label="First Name" valeur="#{processPaiementCtrl.client.nom}" required="false" />
                             <etsmtl:inputTextLabel _id="prenom" label="Last Name" valeur="#{processPaiementCtrl.client.prenom}" required="false" />
                             <etsmtl:inputTextLabel _id="mail" label="E-mail" valeur="#{processPaiementCtrl.client.mail}" required="false" />
-                            <etsmtl:inputTextLabel _id="rue" label="Street Address" valeur="#{processPaiementCtrl.client.adresseClient.rue}" required="false" />
+                            <etsmtl:inputTextLabel _id="rue" label="Street Address" valeur="#{processPaiementCtrl.client.adresseClient}" required="false" />
+                            
                             <etsmtl:inputTextLabel _id="ville" label="City" valeur="#{processPaiementCtrl.client.adresseClient.region}" required="false" />
                             <etsmtl:inputTextLabel _id="codepost" label="Postal Code" valeur="#{processPaiementCtrl.client.adresseClient.codePostal}" required="false" />
-                            <etsmtl:inputMaskLabel _id="phone" label="Phone" mask="999-999-9999" valeur="#{processPaiementCtrl.client.phone}" required="true"  />
+                            <!--<etsmtl:inputMaskLabel _id="phone" label="Phone" mask="999-999-9999" valeur="{processPaiementCtrl.client.phone}" required="false"  />-->
                             <etsmtl:inputTextLabel _id="pays" label="Country" valeur="#{processPaiementCtrl.client.adresseClient.ville}" required="false" />
-                            -->
-                        </h:panelGrid>  
+                        </h:panelGrid>
+                        
                     </p:panel>  
                 </p:tab>  
 
