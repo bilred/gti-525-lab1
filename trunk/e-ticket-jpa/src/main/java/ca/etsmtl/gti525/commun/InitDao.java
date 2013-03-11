@@ -18,12 +18,10 @@ public abstract class InitDao {
     protected static IDaoPresentation stubsDaoPresentation;
     protected static IDaoVente stubsDaoVente;
 
-    
-//        ApplicationContext ctx = new ClassPathXmlApplicationContext(new String[] {"spring-config-dao.xml"});
-//        dao = (IDaoPresentation) ctx.getBean("customerServiceProxy");    
+        
     public void initPresentation() {
-        ApplicationContext ctx = new ClassPathXmlApplicationContext("spring-config-dao.xml");
-        daoPresentation = (IDaoPresentation) ctx.getBean("daoPresentation");
+        ApplicationContext ctx = new ClassPathXmlApplicationContext(new String[] {"spring-config-dao.xml"});
+        daoPresentation = (IDaoPresentation) ctx.getBean("customerServiceProxy"); //daoPresentation
     }
 
     public void initVante() {
