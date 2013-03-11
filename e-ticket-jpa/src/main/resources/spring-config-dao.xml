@@ -23,7 +23,9 @@
     <bean id="customerAdvisor" class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
         <property name="patterns">
             <list>
+                <value>.*getAllArtistes.*</value>
                 <value>.*getAllSpectacle.*</value>
+                <value>.*getAllRepresentation.*</value>
             </list>
         </property>
 
