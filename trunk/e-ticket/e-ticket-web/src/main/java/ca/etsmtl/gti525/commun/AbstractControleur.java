@@ -1,7 +1,5 @@
 package ca.etsmtl.gti525.commun;
 
-import ca.etsmtl.gti525.batch.commun.InitDao;
-
 /**
  *  En peu faire du Polymorphisme (injecter du code en plus de l'existant)
  * @author REDOUANE
@@ -11,7 +9,7 @@ public abstract class AbstractControleur extends InitDao{
     //@Ingection couche model et métier
       //Fait dans InitDAO
     
-    
+
     
     @Override
     public void initPresentation() {

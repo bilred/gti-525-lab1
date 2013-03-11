@@ -23,10 +23,11 @@ public class MenuControleur extends AbstractControleur implements Serializable {
     private List<Spectacle> spectacles;
     private List<Representation> representations;
     private List<Artiste> artistes;
+    
+    
     private List<Representation> representationsFiltrees;
 
     
-
     @PostConstruct
     public void init() {
         // instanciation couche [métier]
@@ -36,9 +37,9 @@ public class MenuControleur extends AbstractControleur implements Serializable {
         this.representations = this.daoPresentation.getAllRepresentation();
         this.artistes = this.daoPresentation.getAllArtistes(); 
         
-        log.info("sonar source Spectacle : " + this.spectacles);
-        log.info("sonar source Representation : " + this.representations);
-        log.info("sonar source Artiste : " + this.artistes);
+        log.info("sonar source Spectacle 1: " + this.spectacles);
+        log.info("sonar source Representation 1: " + this.representations);
+        log.info("sonar source Artiste 1: " + this.artistes);
     }    
     
     public List<Representation> getRepresentationsFiltrees() {
@@ -48,6 +49,9 @@ public class MenuControleur extends AbstractControleur implements Serializable {
     public void setRepresentationsFiltrees(List<Representation> representationsFiltrees) {
         this.representationsFiltrees = representationsFiltrees;
     }
+    
+    
+    
     public String doHomme(){
         return "eticket.index";
     }
