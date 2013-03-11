@@ -1,7 +1,7 @@
 package ca.etsmtl.gti525.batch.vente;
 
 import au.com.bytecode.opencsv.CSVReader;
-import ca.etsmtl.gti525.batch.commun.InitDao;
+import ca.etsmtl.gti525.commun.InitDao;
 import ca.etsmtl.gti525.entity.vente.Adresse;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
