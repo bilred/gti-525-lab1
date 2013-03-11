@@ -145,7 +145,7 @@
             <url>http://repository.primefaces.org/</url>
             <id>primefaces</id>
             <layout>default</layout>
-            <name>Repository for library PrimeFaces 3.2</name>
+            <name>Repository for library PrimeFaces 3.5</name>
         </repository>
         <repository>
             <url>http://download.eclipse.org/rt/eclipselink/maven.repo/</url>
