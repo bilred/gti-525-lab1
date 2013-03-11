@@ -86,6 +86,13 @@
             <version>3.1.1.RELEASE</version>
             <type>jar</type>
         </dependency>
+        
+        <!-- AOP dependency -->
+        <dependency>
+            <groupId>cglib</groupId>
+            <artifactId>cglib</artifactId>
+            <version>2.2</version>
+        </dependency>        
         <!--        <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>ApiJavaEtsmtl</artifactId>
