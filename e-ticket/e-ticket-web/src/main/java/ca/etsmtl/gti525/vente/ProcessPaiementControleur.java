@@ -53,7 +53,7 @@ public class ProcessPaiementControleur implements Serializable {
         }  
         else {  
             return event.getNewStep();  
-        }  
+        }
     }
     
     

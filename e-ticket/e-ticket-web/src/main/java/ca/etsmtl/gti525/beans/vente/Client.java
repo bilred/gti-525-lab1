@@ -4,81 +4,78 @@ import ca.etsmtl.gti525.beans.presentation.Billet;
 import java.util.List;
 
 public class Client {
-	
-	private String nom;
-	private String prenom;
-	private String nomCivique;
-	private String mail;
-	private String phone;
-	
-	private Adresse adresseClient;
-	private CarteCredit carteCredit;
-	private List<Billet> billets;   //c'est la seul interface avec le module Presentation de l'Application
-		
-	
-	
-	public String getMail() {
-		return mail;
-	}
 
-	public void setMail(String mail) {
-		this.mail = mail;
-	}
+    private String nom;
+    private String prenom;
+    private String nomCivique;
+    private String mail;
+    private String phone;
+    private Adresse adresse;
+    private CarteCredit carteCredit;
+    private List<Billet> billets;   //c'est la seul interface avec le module Presentation de l'Application
 
-	public String getPhone() {
-		return phone;
-	}
+    
+    public String getMail() {
+        return mail;
+    }
 
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
 
-	public CarteCredit getCarteCredit() {
-		return carteCredit;
-	}
+    public String getPhone() {
+        return phone;
+    }
 
-	public void setCarteCredit(CarteCredit carteCredit) {
-		this.carteCredit = carteCredit;
-	}
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 
-	public String getNom() {
-		return nom;
-	}
+    public CarteCredit getCarteCredit() {
+        return carteCredit;
+    }
 
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
-	public List<Billet> getBillets() {
-		return billets;
-	}
+    public void setCarteCredit(CarteCredit carteCredit) {
+        this.carteCredit = carteCredit;
+    }
 
-	public void setBillets(List<Billet> billets) {
-		this.billets = billets;
-	}
+    public String getNom() {
+        return nom;
+    }
 
-	public String getPrenom() {
-		return prenom;
-	}
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
 
-	public void setPrenom(String prenom) {
-		this.prenom = prenom;
-	}
+    public List<Billet> getBillets() {
+        return billets;
+    }
 
-	public String getNomCivique() {
-		return nomCivique;
-	}
+    public void setBillets(List<Billet> billets) {
+        this.billets = billets;
+    }
 
-	public void setNomCivique(String nomCivique) {
-		this.nomCivique = nomCivique;
-	}
+    public String getPrenom() {
+        return prenom;
+    }
 
-	public Adresse getAdresseClient() {
-		return adresseClient;
-	}
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
 
-	public void setAdresseClient(Adresse adresseClient) {
-		this.adresseClient = adresseClient;
-	}	
-	
+    public String getNomCivique() {
+        return nomCivique;
+    }
 
+    public void setNomCivique(String nomCivique) {
+        this.nomCivique = nomCivique;
+    }
+
+    public Adresse getAdresse() {
+        return adresse;
+    }
+
+    public void setAdresse(Adresse adresse) {
+        this.adresse = adresse;
+    }
 }
