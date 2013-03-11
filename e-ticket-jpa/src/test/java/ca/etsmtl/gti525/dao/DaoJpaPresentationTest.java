@@ -30,8 +30,10 @@ public class DaoJpaPresentationTest extends AbstractDaoJpaTest {
     @BeforeClass
     public static void init() throws NamingException {
         // instanciation couche [dao]
-        ApplicationContext ctx = new ClassPathXmlApplicationContext("spring-config-dao.xml");
-        dao = (IDaoPresentation) ctx.getBean("daoPresentation");
+        ApplicationContext ctx = new ClassPathXmlApplicationContext(new String[] {"spring-config-dao.xml"});
+        dao = (IDaoPresentation) ctx.getBean("customerServiceProxy");         
+//        ApplicationContext ctx = new ClassPathXmlApplicationContext("spring-config-dao.xml");
+//        dao = (IDaoPresentation) ctx.getBean("daoPresentation");
     }
 
     /**
