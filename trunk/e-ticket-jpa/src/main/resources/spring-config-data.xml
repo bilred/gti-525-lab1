@@ -7,6 +7,6 @@
     <!-- couches initialisation DATA -->
     <bean id="stubsDaoVente" class="ca.etsmtl.gti525.dao.vente.StubDaoVente" />
     <!-- bean id="dataPresentation" class="ca.etsmtl.gti525.dao.presentation.DaoJpaPresentation" -->    
-          
+     <bean id="stubsDaoPresentation" class="ca.etsmtl.gti525.dao.presentation.StubDaoPresentation" />     
     
 </beans>

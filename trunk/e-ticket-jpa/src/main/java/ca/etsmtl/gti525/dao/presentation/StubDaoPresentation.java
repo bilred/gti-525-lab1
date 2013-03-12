@@ -9,21 +9,21 @@ import java.util.List;
  *
  * @author REDOUANE
  */
-public class ListsDataPresentation implements IDaoPresentation{
-
+public class StubDaoPresentation implements IDaoPresentation{
+private StubPresentation sp = new StubPresentation();
     @Override
     public List<Artiste> getAllArtistes() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return sp.getArtistes();
     }
 
     @Override
     public List<Spectacle> getAllSpectacle() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return sp.getSpectacles();
     }
 
     @Override
     public List<Representation> getAllRepresentation() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return sp.getRepresentations();
     }
     
 }
