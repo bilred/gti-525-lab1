@@ -7,5 +7,6 @@ Cette opération s'effectue avec Maven en tapant la commande suivante:
 
 commande suivant :
 mvn install:install-file -Dfile=<lib.jar> -DgroupId=<groupId> -DartifactId=<artifactId> -Dversion=<version> -Dpackaging=<packaging>
+mvn install:install-file -Dfile=GTI525-paiement.jar -DgroupId=gti525.paiement -DartifactId=GTI525-paiement -Dversion=1.0-SNAPSHOT -Dpackaging=jar
 
 Il faut remplacer chaque paramètre entre < et > par la valeur appropriée qui dépend de la lib à installer.
