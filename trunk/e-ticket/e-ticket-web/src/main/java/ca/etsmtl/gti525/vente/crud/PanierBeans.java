@@ -18,7 +18,7 @@ public class PanierBeans implements ColonneTableModel {
     private String ville;
     private Date dateRepresentation;
     private String heurRepresantation;
-    
+   // private ligneRepresentation 
     //a supprimé
     private List<Representation> represantations;
     private Integer nbBiller;
