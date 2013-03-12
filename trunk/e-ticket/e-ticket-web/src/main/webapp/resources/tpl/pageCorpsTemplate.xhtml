@@ -49,8 +49,8 @@
                                 <li>
                                     <h:link outcome="#{menuCtrl.doCart()}" value="#{bundle.app_menu3}" />
                                 </li>
-                                <li><p:spacer width="100" /></li>
-                                <li>
+                                <li><p:spacer width="100px" /></li>
+                                <li style="margin-top: 32px">
                                     <h:form>
                                         <h:selectOneMenu value="#{languageCtrl.localeCode}" onchange="submit()"
                                                          valueChangeListener="#{languageCtrl.countryLocaleCodeChanged}">
@@ -65,15 +65,21 @@
 
 
                 <p:layoutUnit position="center" >
+                    <p:growl sticky="true" showDetail="true" globalOnly="true" autoUpdate="true" />
+<!--                    <p:messages showDetail="true"  globalOnly="true" autoUpdate="true">
+                        <p:effect type="pulsate" event="load" delay="1000">  
+                            <f:param name="mode" value="'show'" />
+                        </p:effect>
+                    </p:messages>-->
                     <div id="body" >
                         <ui:insert name="content">[Content] Welcome to PrimeFaces</ui:insert>
                     </div>
                 </p:layoutUnit>
 
 
-                <p:layoutUnit position="south" size="63" resizable="false" closable="true" collapsible="true" effect="drop" style="height: 0px;" >
-                    <p align="center">&copy; Copyright 2012. All rights reserved.</p>
-                </p:layoutUnit>
+                <!--                <p:layoutUnit position="south" size="63" resizable="false" closable="true" collapsible="true" effect="drop" style="height: 0px;" >
+                                    <p align="center">&copy; Copyright 2012. All rights reserved.</p>
+                                </p:layoutUnit>-->
 
             </p:layout>    
         </h:body>
