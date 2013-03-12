@@ -1,0 +1,11 @@
+Comment installer un fichier jar dans le dépôt local de Maven
+Sur mon projet nous utilisons Maven pour effectuer la compilation. Maven permet de télécharger automatiquement toutes les dépendances nécessaires à la compilation du projet.
+Cependant aujourd'hui lors de l'ajout d'une nouvelle librairie le téléchargement automatique n'a pas fonctionné car la librairie en question n'est pas disponible en ligne.
+Comme il s'agit d'une phase de test et d'investigation je ne souhaite pas télécharger la librairie sur le dépôt officiel du projet.
+Il me reste une solution installé la libraire localement pour que Maven la trouve lors de la compilation.
+Cette opération s'effectue avec Maven en tapant la commande suivante:
+
+commande suivant :
+mvn install:install-file -Dfile=<lib.jar> -DgroupId=<groupId> -DartifactId=<artifactId> -Dversion=<version> -Dpackaging=<packaging>
+
+Il faut remplacer chaque paramètre entre < et > par la valeur appropriée qui dépend de la lib à installer.
