@@ -1,4 +1,4 @@
-﻿INSERT INTO show_representation(adresse, nb_billets_dispo, prix, spectacle_id)VALUES ('Montréal', 100, 25, 116);
+INSERT INTO show_representation(adresse, nb_billets_dispo, prix, spectacle_id)VALUES ('Montréal', 100, 25, 116);
 INSERT INTO show_representation(adresse, nb_billets_dispo, prix, spectacle_id)VALUES ('Québec', 100, 25, 116);
 INSERT INTO show_representation(adresse, nb_billets_dispo, prix, spectacle_id)VALUES ('Ontario', 100, 25, 116);
 INSERT INTO show_representation(adresse, nb_billets_dispo, prix, spectacle_id)VALUES ('Seattle', 100, 25, 117);
