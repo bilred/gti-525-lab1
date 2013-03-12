@@ -7,7 +7,6 @@ package ca.etsmtl.gti525.dao.presentation;
 import ca.etsmtl.gti525.entity.presentation.*;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -15,11 +14,11 @@ import java.util.List;
  * @author shonguiz
  */
 public class StubPresentation {
-    private List<Spectacle> spectacles;
-    private List<Representation> representations;
-    private List<Artiste> artistes;
-    private List<Salle> salles;
-    private List<Billet> billets;
+    private List<Spectacle> spectacles= new ArrayList<Spectacle>();
+    private List<Representation> representations = new ArrayList<Representation>();
+    private List<Artiste> artistes = new ArrayList<Artiste>();
+    private List<Salle> salles = new ArrayList<Salle>();
+    private List<Billet> billets = new ArrayList<Billet>();
     
     public StubPresentation(){
         
@@ -733,4 +732,48 @@ public class StubPresentation {
         
         //fin séquence de passation des paramètres
     }
+    public List<Spectacle> getSpectacles() {
+        return spectacles;
+    }
+
+    public void setSpectacles(List<Spectacle> spectacles) {
+        this.spectacles = spectacles;
+    }
+
+    public List<Representation> getRepresentations() {
+        return representations;
+    }
+
+    public void setRepresentations(List<Representation> representations) {
+        this.representations = representations;
+    }
+
+    public List<Artiste> getArtistes() {
+        return artistes;
+    }
+
+    public void setArtistes(List<Artiste> artistes) {
+        this.artistes = artistes;
+    }
+
+    public List<Salle> getSalles() {
+        return salles;
+    }
+
+    public void setSalles(List<Salle> salles) {
+        this.salles = salles;
+    }
+
+    public List<Billet> getBillets() {
+        return billets;
+    }
+
+    public void setBillets(List<Billet> billets) {
+        this.billets = billets;
+    }
+    public static void main(String[] args) {
+		// TODO Auto-generated method stub
+        StubPresentation sp = new StubPresentation();
+        
+	}
 }
