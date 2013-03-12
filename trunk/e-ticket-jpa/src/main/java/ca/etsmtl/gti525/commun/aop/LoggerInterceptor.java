@@ -12,7 +12,7 @@ public class LoggerInterceptor implements MethodInterceptor {
 
     @Override
     public Object invoke(MethodInvocation methodInvocation) throws Throwable {
-//        System.out.println("************Debut du Log*************");
+        System.out.println("************Debut du Log*************");
         LOGGER.log(Level.INFO, "Before: {0}", methodInvocation.getMethod().getName());
         
         Object[] params = methodInvocation.getArguments();
@@ -31,7 +31,7 @@ public class LoggerInterceptor implements MethodInterceptor {
             throw ex;
         } finally {
             LOGGER.log(Level.INFO, "After:  {0}", methodInvocation.getMethod().getName());
-//            System.out.println("**********Fin du Log***************");
+            System.out.println("**********Fin du Log***************");
         }
     }
 }
