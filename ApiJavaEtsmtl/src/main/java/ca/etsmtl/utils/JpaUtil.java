@@ -9,7 +9,6 @@ import javax.persistence.Persistence;
  * 
  * Entre autre utilisé pour les batchs.
  * 
- * @creator Dalil
  */
 
 public final class JpaUtil {
