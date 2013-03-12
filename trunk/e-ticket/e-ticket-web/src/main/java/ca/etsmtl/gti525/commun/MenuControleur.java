@@ -3,13 +3,11 @@ package ca.etsmtl.gti525.commun;
 import ca.etsmtl.gti525.entity.presentation.Artiste;
 import ca.etsmtl.gti525.entity.presentation.Representation;
 import ca.etsmtl.gti525.entity.presentation.Spectacle;
-import ca.etsmtl.gti525.vente.crud.PanierBeans;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
-import javax.faces.context.FacesContext;
 import org.apache.log4j.Logger;
 
 /**
@@ -21,15 +19,17 @@ import org.apache.log4j.Logger;
 public class MenuControleur extends AbstractControleur implements Serializable {
     private static final Logger log = Logger.getLogger(ApplicationControleur.class);
     
-    private PanierBeans[] selectedRep;
+    private Representation[] selectedRep;
 
-    public PanierBeans[] getSelectedRep() {
+    public Representation[] getSelectedRep() {
         return selectedRep;
     }
 
-    public void setSelectedRep(PanierBeans[] selectedRep) {
+    public void setSelectedRep(Representation[] selectedRep) {
         this.selectedRep = selectedRep;
     }
+
+
     
     // cache
     private List<Spectacle> spectacles;

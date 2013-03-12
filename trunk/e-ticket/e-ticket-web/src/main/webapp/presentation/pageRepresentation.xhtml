@@ -12,7 +12,7 @@
 
             <p:dataTable id="dataTable" var="rep" value="#{menuCtrl.specSelec.representations}" widgetVar="representationsTable"   
                          emptyMessage="Pas de représentation trouvée avec les criteres précisés" filteredValue="#{menuCtrl.representationsFiltrees}" paginator="true" rows="10"
-                         style="background: none"      >  
+                         style="background: none" rowKey="#{rep.id}" selection="#{menuCtrl.selectedRep}" >  
 
                 <f:facet name="header">  
                     <p:outputPanel>  
@@ -21,7 +21,7 @@
                     </p:outputPanel>  
                 </f:facet>  
                 
-                  
+                <p:column selectionMode="multiple" style="width:2%" />  
                 <p:column id="photoArtiste"  headerText="Artiste"  >  
                     <ui:param name="imgPath" value="images:#{menuCtrl.specSelec.artiste.lienPhoto}.png" />
                     <p:graphicImage value="#{resource[imgPath]}" />  
