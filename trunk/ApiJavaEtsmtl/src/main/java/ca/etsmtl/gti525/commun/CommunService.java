@@ -6,7 +6,7 @@ import javax.faces.context.FacesContext;
 
 /**
  * 
- * @author Hadjout Dalil
+ * @author B.REDOUANE
  */
 public class CommunService {
     
