@@ -16,7 +16,7 @@ import javax.faces.bean.ViewScoped;
 public class RepresentationControleur implements Serializable {
     
     //pour recuprér le spectacle selectionner
-    @ManagedProperty(value = "#{SpectacleCtrl}")
+    @ManagedProperty(value = "#{spectacleCtrl}")
     private SpectacleControleur spectacleCtrl;     
   
     private Representation[] selectedRep;
