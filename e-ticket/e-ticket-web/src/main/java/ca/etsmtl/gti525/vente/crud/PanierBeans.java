@@ -15,49 +15,65 @@ public class PanierBeans implements ColonneTableModel  {
     private String nomSpectacle;
     private String ville;
     private Date dateRepresentation;
-    private String heurRepresantation; 
+//    private String heurRepresantation;
+    private Float prix;
+
+    public PanierBeans() { 
+    super();
+    }
 
     
     
     public String getIconArtiste() {
+        if(iconArtiste==null) iconArtiste = new String();
         return iconArtiste;
     }
 
     public void setIconArtiste(String iconArtiste) {
+        if(iconArtiste==null) iconArtiste = new String();
         this.iconArtiste = iconArtiste;
     }
 
     public Integer getQuantity() {
+        if(quantity==null) quantity = new Integer(0);
         return quantity;
     }
 
     public void setQuantity(Integer quantity) {
+        if(quantity==null) quantity = new Integer(0);
         this.quantity = quantity;
     }
 
     public String getVille() {
+        if(ville==null) ville = new String();
         return ville;
     }
 
     public void setVille(String ville) {
+        if(ville==null) ville = new String();
         this.ville = ville;
     }
 
     public Date getDateRepresentation() {
+        if(dateRepresentation==null) dateRepresentation = new Date();
         return dateRepresentation;
     }
 
     public void setDateRepresentation(Date dateRepresentation) {
+        if(dateRepresentation==null) dateRepresentation = new Date();
         this.dateRepresentation = dateRepresentation;
     }
 
-    public String getHeurRepresantation() {
-        return heurRepresantation;
+    public Float getPrix() {
+        if(prix==null) prix = new Float(0.0);
+        return prix;
     }
 
-    public void setHeurRepresantation(String heurRepresantation) {
-        this.heurRepresantation = heurRepresantation;
+    public void setPrix(Float prix) {
+        if(prix==null) prix = new Float(0.0);
+        this.prix = prix;
     }
+
     
     public void setNomSpectacle(String nomSpectacle) {
         if(nomSpectacle==null) nomSpectacle = new String();

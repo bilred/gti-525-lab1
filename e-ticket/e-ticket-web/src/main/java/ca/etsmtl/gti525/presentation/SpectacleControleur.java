@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import org.apache.log4j.Logger;
 
 /**
@@ -15,17 +15,19 @@ import org.apache.log4j.Logger;
  * @author REDOUANE
  */
 @ManagedBean(name = "spectacleCtrl")
-@SessionScoped
+@ViewScoped
 public class SpectacleControleur implements Serializable {
-
     private static final Logger log = Logger.getLogger(SpectacleControleur.class);
+    
     //pour recuprér les données du cache
     @ManagedProperty(value = "#{menuCtrl}")
     private MenuControleur appCtrl;
     
+    //pour recuprér 
+    @ManagedProperty(value = "#{cacheSessionPresentationCtrl}")
+    private CacheSessionPresentation cacheSessionPresentation;
     
-    private Spectacle specSelec = new Spectacle();
-    private List lignesSelec;
+
 
     
 
@@ -34,29 +36,15 @@ public class SpectacleControleur implements Serializable {
     }
 
     public void onSelectionerOfEditer(Spectacle ss) {
-        this.setSpecSelec(ss);
-    }
-
-    public List getLignesSelec() {
-        return lignesSelec;
-    }
-
-    public void setLignesSelec(List lignesSelec) {
-        this.lignesSelec = lignesSelec;
+        //Mettre dans le CacheSessionPresentation
+        this.getCacheSessionPresentation().setSpectacleSelected(ss);
+        log.info("Le spectacle "+ss.getNomSpectacle()+" a été sélectionner");
     }
 
     /**
      * Creates a new instance of SpectacleControleur
      */
     public SpectacleControleur() {
-    }
-
-    public Spectacle getSpecSelec() {
-        return specSelec;
-    }
-
-    public void setSpecSelec(Spectacle specSelec) {
-        this.specSelec = specSelec;
     }
     
     public MenuControleur getAppCtrl() {
@@ -65,6 +53,14 @@ public class SpectacleControleur implements Serializable {
 
     public void setAppCtrl(MenuControleur appCtrl) {
         this.appCtrl = appCtrl;
+    }
+
+    public CacheSessionPresentation getCacheSessionPresentation() {
+        return cacheSessionPresentation;
+    }
+
+    public void setCacheSessionPresentation(CacheSessionPresentation cacheSessionPresentation) {
+        this.cacheSessionPresentation = cacheSessionPresentation;
     }
     
 }

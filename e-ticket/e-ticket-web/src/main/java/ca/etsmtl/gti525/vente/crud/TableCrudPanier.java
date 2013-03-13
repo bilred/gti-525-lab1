@@ -3,7 +3,6 @@ package ca.etsmtl.gti525.vente.crud;
 import ca.etsmtl.gti525.vente.PanierControleur;
 import ca.etsmtl.gti525.commun.taglib.TableCrud;
 import ca.etsmtl.gti525.entity.presentation.Representation;
-import ca.etsmtl.utils.PojoMap;
 import java.io.Serializable;
 import java.util.List;
 import org.primefaces.event.SelectEvent;
@@ -24,13 +23,13 @@ public class TableCrudPanier extends TableCrud<Representation, PanierBeans> impl
     @Override
     public void doGetAllEnregistrement() {
         this.setColonneTableCrudS(null);
-        List<Representation> reps = (List<Representation>) PojoMap.transformeArrayToList( this.panierControleur.getRepresentationCtrl().getSelectedReps() );
-        this.setListEnregistrement( reps );
+        this.setListEnregistrement( this.panierControleur.getCacheSessionPresentation().getRepresentationSelected() );
 
-        //System.out.print("Taille des représantation : "+this.panierControleur.getRepresentations().size()+"-------"+this.panierControleur.getRepresentations().get(0).getNom());
+        System.out.println("Taille des représantation : "+this.getListEnregistrement().size()+" -------");
         for (Representation rep : this.getListEnregistrement()) {
-            this.getColonneTableCrud().setNomSpectacle(rep.getSpectacle().getNomSpectacle());
-            this.getColonneTableCrud().setDateRepresentation(rep.getDateDebut());
+            //this.getColonneTableCrud().setNomSpectacle( rep.getSpectacle().getNomSpectacle());
+            this.getColonneTableCrud().setPrix( rep.getPrix() );
+            //this.getColonneTableCrud().setDateRepresentation(rep.getDateDebut());
 
         }
     }
