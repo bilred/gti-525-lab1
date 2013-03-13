@@ -11,44 +11,20 @@ import javax.faces.bean.ManagedBean;
 import org.apache.log4j.Logger;
 
 /**
- *
+ * Représant le controleur de notre Application (il a 2 rôle Initialisé les Caches + Géstion des menu)
  * @author REDOUANE
  */
 @ManagedBean(name = "menuCtrl")
 @ApplicationScoped
 public class MenuControleur extends AbstractControleur implements Serializable {
-    private static final Logger log = Logger.getLogger(ApplicationControleur.class);
-    
-    private Representation[] selectedRep;
-
-    public Representation[] getSelectedRep() {
-        return selectedRep;
-    }
-
-    public void setSelectedRep(Representation[] selectedRep) {
-        this.selectedRep = selectedRep;
-    }
-
+    private static final Logger log = Logger.getLogger(MenuControleur.class);
 
     
     // cache
     private List<Spectacle> spectacles;
     private List<Representation> representations;
-    private Spectacle specSelec = new Spectacle();
-
-    
     private List<Artiste> artistes;
-    private List<Representation> representationsFiltrees;
-    private List lignesSelec;
-
-    public List getLignesSelec() {
-        return lignesSelec;
-    }
-
-    public void setLignesSelec(List lignesSelec) {
-        this.lignesSelec = lignesSelec;
-    }
-
+    
     
     @PostConstruct
     public void init() {
@@ -63,27 +39,7 @@ public class MenuControleur extends AbstractControleur implements Serializable {
         log.info("sonar source Representation 1: " + this.representations);
         log.info("sonar source Artiste 1: " + this.artistes);
     }    
-    
-    public List<Representation> getRepresentationsFiltrees() {
-        return representationsFiltrees;
-    }
-
-    public void setRepresentationsFiltrees(List<Representation> representationsFiltrees) {
-        this.representationsFiltrees = representationsFiltrees;
-    }
-    
-  
-    public String allerPageRep(List<Representation> rep){                       
-        
-                        
-        return "pageRepresentation?faces-redirect=true";
-    }
-    
-    
-    public void onSelectionerOfEditer(Spectacle ss){
-        this.setSpecSelec(ss);
-        
-    }
+   
     
     public String doHomme(){
         return "eticket.index";
@@ -97,16 +53,12 @@ public class MenuControleur extends AbstractControleur implements Serializable {
         return "eticket.pageShows";
     }
     
+    
+    
+    
     /**
      * Creates a new instance of MenuControleur
      */
-    public Spectacle getSpecSelec() {
-        return specSelec;
-    }
-
-    public void setSpecSelec(Spectacle specSelec) {
-        this.specSelec = specSelec;
-    }
     public MenuControleur() {  }
 
     public List<Spectacle> getSpectacles() {
