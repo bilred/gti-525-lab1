@@ -6,8 +6,6 @@
     <!-- couches applicatives -->
     <bean id="daoVente" class="ca.etsmtl.gti525.dao.vente.DaoJpaVente" />
     <bean id="daoPresentation" class="ca.etsmtl.gti525.dao.presentation.DaoJpaPresentation" />
-    <!-- bean id="dataPresentation" class="ca.etsmtl.gti525.dao.presentation.DaoJpaPresentation" -->    
-     <bean id="stubsDaoPresentation" class="ca.etsmtl.gti525.dao.presentation.StubDaoPresentation" /> 
  
   
     <!-- Couche AOP pour gestion des logs -->  
