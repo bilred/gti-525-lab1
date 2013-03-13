@@ -3,7 +3,7 @@ package ca.etsmtl.gti525.vente.crud;
 import ca.etsmtl.gti525.vente.PanierControleur;
 import ca.etsmtl.gti525.commun.taglib.TableCrud;
 import ca.etsmtl.gti525.entity.presentation.Representation;
-import dz.elit.commun.transfert.PojoMap;
+import ca.etsmtl.utils.PojoMap;
 import java.io.Serializable;
 import java.util.List;
 import org.primefaces.event.SelectEvent;
