@@ -10,7 +10,7 @@ public class Client {
     private String nomCivique;
     private String mail;
     private String phone;
-    private Adresse adresse;
+    private Adresse adresse = new Adresse();
     private CarteCredit carteCredit;
     private List<Billet> billets;   //c'est la seul interface avec le module Presentation de l'Application
 
