@@ -41,8 +41,8 @@
                             <h:outputLabel value="#{item.spectacle.artiste.lienPhoto}"  />  
                         </p:column>
 
-                        <p:column headerText="Quantity" filterBy="#{item}" sortBy="#{item}" >
-                            <h:outputLabel value="#{item}"  />  
+                        <p:column headerText="Quantity"  >
+                            <h:outputLabel value="1"  />  
                         </p:column>
 
                         <p:column headerText="Show" filterBy="#{item.spectacle.nomSpectacle}" sortBy="#{item.spectacle.nomSpectacle}" >
@@ -54,11 +54,11 @@
                         </p:column>
 
                         <p:column headerText="Date" filterBy="#{item.dateDebut}" sortBy="#{item.dateDebut}" >
-                            <h:outputLabel value="#{item.dateDebut}" />  
+                            <etsmtl:outputCalendar valeur="#{item.dateDebut}" />  
                         </p:column>
 
-                        <p:column headerText="Hour" filterBy="#{item.dateDebut.hours}" sortBy="#{item.dateDebut.hours}" >
-                            <h:outputLabel value="#{item.dateDebut.hours}" />  
+                        <p:column headerText="Hour" filterBy="#{item.dateDebut.hours}:#{item.dateDebut.minutes}" sortBy="#{item.dateDebut.hours}:#{item.dateDebut.minutes}" >
+                            <h:outputLabel value="#{item.dateDebut.hours}:#{item.dateDebut.minutes}" />  
                         </p:column> 
 
                         <p:column headerText="Détails" style="width: 40px;" >                                            
