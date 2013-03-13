@@ -3,7 +3,9 @@ package ca.etsmtl.gti525.vente.crud;
 import ca.etsmtl.gti525.vente.PanierControleur;
 import ca.etsmtl.gti525.commun.taglib.TableCrud;
 import ca.etsmtl.gti525.entity.presentation.Representation;
+import dz.elit.commun.transfert.PojoMap;
 import java.io.Serializable;
+import java.util.List;
 import org.primefaces.event.SelectEvent;
 
 /**
@@ -22,7 +24,9 @@ public class TableCrudPanier extends TableCrud<Representation, PanierBeans> impl
     @Override
     public void doGetAllEnregistrement() {
         this.setColonneTableCrudS(null);
-        this.setListEnregistrement(this.panierControleur.getRepresentations());
+       
+        List<Representation> reps = (List<Representation>) PojoMap.transformeArrayToList( this.panierControleur.getRepresentationCtrl().getSelectedRep() );
+        this.setListEnregistrement( reps );
 
         //System.out.print("Taille des représantation : "+this.panierControleur.getRepresentations().size()+"-------"+this.panierControleur.getRepresentations().get(0).getNom());
         for (Representation rep : this.getListEnregistrement()) {

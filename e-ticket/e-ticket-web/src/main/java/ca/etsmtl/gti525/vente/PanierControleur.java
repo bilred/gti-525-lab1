@@ -23,25 +23,11 @@ public class PanierControleur implements Serializable {
     //pour recuprér les represantation selectionner (et remplire le panier)
     @ManagedProperty(value = "#{representationCtrl}")
     private RepresentationControleur representationCtrl;    
-    
-    
-    
+       
     private TableCrud tableCrudPanier;
     
-    // cache
-    //private List<Spectacle> spectacles;
-    private List<Representation> representations;
-    //private List<Artiste> artistes;
     
-//    @PostConstruct
-//    public void init() {
-//        // instanciation couche [métier]
-//        //super.initPresentation();
-//        super.initStubsPresentation();
-//        
-//        this.representations = InitDao.stubsDaoPresentation.getAllRepresentation();
-//        log.info("sonar source Representation (panier) : " + this.representations);
-//    }    
+    
     
     
     private int count;
@@ -49,10 +35,6 @@ public class PanierControleur implements Serializable {
         log.info("Appel de la méthode increment(), valeur initial: "+count);
         count++;  
     }  
-
-    public List<Representation> getRepresentations() {
-        return representations;
-    }
     
     
     
