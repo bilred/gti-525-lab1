@@ -10,9 +10,9 @@
     <ui:define name="content">
         <h:form id="myform">  
 
-            <p:dataTable id="dataTable" var="rep" value="#{menuCtrl.specSelec.representations}" widgetVar="representationsTable"   
-                         emptyMessage="Pas de représentation trouvée avec les criteres précisés" filteredValue="#{menuCtrl.representationsFiltrees}" paginator="true" rows="10"
-                         style="background: none" rowKey="#{rep.id}" selection="#{menuCtrl.selectedRep}" >  
+            <p:dataTable id="dataTable" var="rep" value="#{representationCtrl.spectacleCtrl.specSelec.representations}" widgetVar="representationsTable"   
+                         emptyMessage="Pas de représentation trouvée avec les criteres précisés" filteredValue="#{representationCtrl.representationsFiltrees}" paginator="true" rows="10"
+                         style="background: none" rowKey="#{rep.id}" selection="#{representationCtrl.selectedRep}" >  
 
                 <f:facet name="header">  
                     <p:outputPanel>  
@@ -23,19 +23,19 @@
 
                 <p:column selectionMode="multiple" style="width:2%" />  
                 <p:column id="photoArtiste"  headerText="Artiste"  >  
-                    <ui:param name="imgPath" value="images:#{menuCtrl.specSelec.artiste.lienPhoto}.png" />
+                    <ui:param name="imgPath" value="images:#{representationCtrl.spectacleCtrl.specSelec.artiste.lienPhoto}.png" />
                     <p:graphicImage value="#{resource[imgPath]}" />  
                 </p:column>
 
                 <p:column id="nomArtiste" filterBy="#{rep}"   
                           headerText="Artiste"  
                           filterMatchMode="contains">  
-                    <h:outputText value="#{menuCtrl.specSelec.artiste.nom}" />  
+                    <h:outputText value="#{representationCtrl.spectacleCtrl.specSelec.artiste.nom}" />  
                 </p:column>
                 <p:column id="nomSpectacle" filterBy="#{rep}"   
                           headerText="Spectacle"  
                           filterMatchMode="contains">  
-                    <h:outputText value="#{menuCtrl.specSelec.nomSpectacle}" />  
+                    <h:outputText value="#{representationCtrl.spectacleCtrl.specSelec.nomSpectacle}" />  
                 </p:column>
 
                 <p:column id="addColumn" filterBy="#{rep.adresse}"  
@@ -83,7 +83,7 @@
 
 
             <p:dialog id="dialog" header="Car Detail" widgetVar="singleCarDialog" resizable="false" showEffect="fade" hideEffect="explode" >             
-                <p:dataList id="displayMulti" value="#{menuCtrl.selectedRep}" var="selected">  
+                <p:dataList id="displayMulti" value="#{representationCtrl.selectedRep}" var="selected">  
                     Nom : #{selected.nom}, <br/>Date: #{selected.dateDebut} <br/>  
                 </p:dataList>
 
