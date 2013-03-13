@@ -18,17 +18,18 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  *
  * @author REDOUANE
  */
-public class DaoJpaPresentationTest extends AbstractDaoJpaTest {
+public class DaoJpaVenteTest extends AbstractDaoJpaTest {
 
-    public DaoJpaPresentationTest() { }
+    public DaoJpaVenteTest() { }
     // couche [dao] testée
     private static IDaoPresentation dao;
 
+
 //    @BeforeClass
-//    public static void init() {
+//    public static void init() throws NamingException {
 //        // instanciation couche [dao]
 //        ApplicationContext ctx = new ClassPathXmlApplicationContext(new String[] {"spring-config-dao.xml"});
-//        dao = (IDaoPresentation) ctx.getBean("customerServiceProxy"); //stubsCustomerServiceProxy
+//        dao = (IDaoPresentation) ctx.getBean("customerServiceProxy");
 //    }
 //
 //    /**
@@ -41,7 +42,6 @@ public class DaoJpaPresentationTest extends AbstractDaoJpaTest {
 //        display("Liste des Artiste :", spectacle); 
 //        Assert.assertTrue("si table null alors True :", this.equals(spectacle) );
 //    }
-
     
     
     @AfterClass
