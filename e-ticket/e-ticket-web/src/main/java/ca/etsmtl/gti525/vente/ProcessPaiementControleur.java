@@ -3,9 +3,11 @@ package ca.etsmtl.gti525.vente;
 import ca.etsmtl.gti525.beans.vente.CarteCredit;
 import ca.etsmtl.gti525.beans.vente.Client;
 import ca.etsmtl.gti525.commun.CommunService;
+import ca.etsmtl.gti525.presentation.RepresentationControleur;
 import java.io.Serializable;
 import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 import javax.faces.event.ActionEvent;
 import org.primefaces.event.FlowEvent;
@@ -17,6 +19,10 @@ import org.primefaces.event.FlowEvent;
 @ManagedBean(name = "processPaiementCtrl")
 @ViewScoped
 public class ProcessPaiementControleur implements Serializable {    
+    
+    //pour recuprér les represantation selectionner (et remplire le panier)
+    @ManagedProperty(value = "#{panierCtrl}")
+    private PanierControleur panierCtrl;    
     
     private Client client = new Client();
     private CarteCredit carteCredit = new CarteCredit();
@@ -70,6 +76,14 @@ public class ProcessPaiementControleur implements Serializable {
 
     public void setCarteCredit(CarteCredit carteCredit) {
         this.carteCredit = carteCredit;
+    }
+
+    public PanierControleur getPanierCtrl() {
+        return panierCtrl;
+    }
+
+    public void setPanierCtrl(PanierControleur panierCtrl) {
+        this.panierCtrl = panierCtrl;
     }
     
 }

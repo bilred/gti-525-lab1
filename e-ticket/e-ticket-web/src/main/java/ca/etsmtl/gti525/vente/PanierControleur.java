@@ -1,16 +1,13 @@
 package ca.etsmtl.gti525.vente;
 
-import ca.etsmtl.gti525.commun.AbstractControleur;
-import ca.etsmtl.gti525.commun.InitDao;
-import ca.etsmtl.gti525.entity.presentation.Artiste;
-import ca.etsmtl.gti525.entity.presentation.Representation;
-import ca.etsmtl.gti525.entity.presentation.Spectacle;
-import ca.etsmtl.gti525.vente.crud.TableCrudPanier;
 import ca.etsmtl.gti525.commun.taglib.TableCrud;
+import ca.etsmtl.gti525.entity.presentation.Representation;
+import ca.etsmtl.gti525.presentation.RepresentationControleur;
+import ca.etsmtl.gti525.vente.crud.TableCrudPanier;
 import java.io.Serializable;
 import java.util.List;
-import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import org.apache.log4j.Logger;
 
@@ -20,9 +17,15 @@ import org.apache.log4j.Logger;
  */
 @ManagedBean(name = "panierCtrl")
 @SessionScoped
-public class PanierControleur extends AbstractControleur implements Serializable {    
+public class PanierControleur implements Serializable {    
     private static final Logger log = Logger.getLogger(PanierControleur.class);
 
+    //pour recuprér les represantation selectionner (et remplire le panier)
+    @ManagedProperty(value = "#{representationCtrl}")
+    private RepresentationControleur representationCtrl;    
+    
+    
+    
     private TableCrud tableCrudPanier;
     
     // cache
@@ -30,15 +33,15 @@ public class PanierControleur extends AbstractControleur implements Serializable
     private List<Representation> representations;
     //private List<Artiste> artistes;
     
-    @PostConstruct
-    public void init() {
-        // instanciation couche [métier]
-        //super.initPresentation();
-        super.initStubsPresentation();
-        
-        this.representations = InitDao.stubsDaoPresentation.getAllRepresentation();
-        log.info("sonar source Representation (panier) : " + this.representations);
-    }    
+//    @PostConstruct
+//    public void init() {
+//        // instanciation couche [métier]
+//        //super.initPresentation();
+//        super.initStubsPresentation();
+//        
+//        this.representations = InitDao.stubsDaoPresentation.getAllRepresentation();
+//        log.info("sonar source Representation (panier) : " + this.representations);
+//    }    
     
     
     private int count;
@@ -73,5 +76,13 @@ public class PanierControleur extends AbstractControleur implements Serializable
         }
         return tableCrudPanier;
     }
-    
+
+    public RepresentationControleur getRepresentationCtrl() {
+        return representationCtrl;
+    }
+
+    public void setRepresentationCtrl(RepresentationControleur representationCtrl) {
+        this.representationCtrl = representationCtrl;
+    }
+        
 }
