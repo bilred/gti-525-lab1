@@ -15,30 +15,27 @@
                          style="background: none" rowKey="#{rep.id}" selection="#{representationCtrl.selectedRep}" >  
 
                 <f:facet name="header">  
-                    <p:outputPanel>  
-                        <h:outputText value="Search all fields:" />  
-                        <p:inputText id="globalFilter" onkeyup="representationsTable.filter()" style="width:150px" />  
-                    </p:outputPanel>  
+                      
                 </f:facet>  
 
-                <p:column selectionMode="multiple" style="width:2%" />  
+                  
                 <p:column id="photoArtiste"  headerText="Artiste"  >  
                     <ui:param name="imgPath" value="images:#{representationCtrl.spectacleCtrl.specSelec.artiste.lienPhoto}.png" />
-                    <p:graphicImage value="#{resource[imgPath]}" />  
+                    <p:graphicImage value="#{resource[imgPath]}" width="50" height="25" />  
                 </p:column>
 
-                <p:column id="nomArtiste" filterBy="#{rep}"   
+                <p:column id="nomArtiste" filterBy="#{representationCtrl.spectacleCtrl.specSelec.artiste.nom}}"   
                           headerText="Artiste"  
                           filterMatchMode="contains">  
                     <h:outputText value="#{representationCtrl.spectacleCtrl.specSelec.artiste.nom}" />  
                 </p:column>
-                <p:column id="nomSpectacle" filterBy="#{rep}"   
+                <p:column id="nomSpectacle" filterBy="#{representationCtrl.spectacleCtrl.specSelec.nomSpectacle}"   
                           headerText="Spectacle"  
                           filterMatchMode="contains">  
                     <h:outputText value="#{representationCtrl.spectacleCtrl.specSelec.nomSpectacle}" />  
                 </p:column>
 
-                <p:column id="addColumn" filterBy="#{rep.adresse}"  
+                <p:column id="addColumn" filterBy="#{rep.salle.adresseSalle}"  
                           headerText="Ville" footerText="contains"  
                           filterMatchMode="contains">  
                     <h:outputText value="#{rep.salle.adresseSalle}" />  
@@ -68,7 +65,7 @@
                 </p:column> 
                 <p:calendar value="#{calendarBean.date2}" id="popupCal" /> 
 
-                <p:column id="priceColumn" filterBy="#{rep}"   
+                <p:column id="priceColumn" filterBy="#{rep.prix}"   
                           headerText="Prix" footerText="contains"  
                           filterMatchMode="contains"> 
 
@@ -76,13 +73,13 @@
                 </p:column>
 
                 <f:facet name="footer">  
-                    <p:commandButton id="multiViewButton" value="Valider le choix" icon="ui-icon-check" oncomplete="singleCarDialog.show()" update=":myform:dialog" />  
+                    <p:commandButton id="multiViewButton" value="Valider le choix" icon="ui-icon-check" oncomplete="billets.show()" update=":myform:dialog" />  
                 </f:facet>                
 
             </p:dataTable>  
 
 
-            <p:dialog id="dialog" header="Car Detail" widgetVar="singleCarDialog" resizable="false" showEffect="fade" hideEffect="explode" >             
+            <p:dialog id="dialog" header="Selection Billets" widgetVar="billets" resizable="false" showEffect="fade" hideEffect="explode" >             
                 <p:dataList id="displayMulti" value="#{representationCtrl.selectedRep}" var="selected">  
                     Nom : #{selected.nom}, <br/>Date: #{selected.dateDebut} <br/>  
                 </p:dataList>
