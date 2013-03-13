@@ -12,10 +12,10 @@
 
             <p:dataTable id="dataTable" var="rep" value="#{representationCtrl.spectacleCtrl.specSelec.representations}" widgetVar="representationsTable"   
                          emptyMessage="Pas de représentation trouvée avec les criteres précisés" filteredValue="#{representationCtrl.representationsFiltrees}" paginator="true" rows="10"
-                         style="background: none" rowKey="#{rep.id}" selection="#{representationCtrl.selectedRep}" >  
+                         style="background: none" rowKey="#{rep.salle.adresseSalle}" selection="#{representationCtrl.selectedReps}" >  
 
                 <f:facet name="header">  
-                      
+
                 </f:facet>  
 
                 <p:column selectionMode="multiple" style="width:2%" />  
@@ -53,15 +53,16 @@
                 <p:column id="dispColumn" headerText="Disponibilité">  
                     <p:inputText id="champDisBillets" value="100" size="5" readonly="true" />
                 </p:column>
-                <p:column id="qteBillets" headerText="Qte Billets">  
-                    <p:selectOneMenu >  
+                <p:column id="qteBillets" headerText="Qte Billets" >  
+                   <!-- <p:selectOneListbox value="#{rep.QTE}" >  -->
                         <f:selectItem itemLabel="1" itemValue="1" />  
                         <f:selectItem itemLabel="2" itemValue="2" />  
                         <f:selectItem itemLabel="3" itemValue="3" />
                         <f:selectItem itemLabel="4" itemValue="4" />  
                         <f:selectItem itemLabel="5" itemValue="5" />  
                         <f:selectItem itemLabel="6" itemValue="6" />
-                    </p:selectOneMenu>   
+
+                  <!--  </p:selectOneListbox >   -->
                 </p:column> 
                 <p:calendar value="#{calendarBean.date2}" id="popupCal" /> 
 
@@ -71,17 +72,15 @@
 
                     <p:inputText id="prixBillets" value="#{rep.prix}" readonly="true" size="5"/>  
                 </p:column>
-
                 <f:facet name="footer">  
-                    <p:commandButton id="multiViewButton" value="Valider le choix" icon="ui-icon-check" oncomplete="billets.show()" update=":myform:dialog" />  
-                </f:facet>                
-
-            </p:dataTable>  
+                    <p:commandButton id="multiViewButton" value="Valider le choix" icon="ui-icon-check" oncomplete="billets.show()" update=":myform:displayMulti"  />  
+                </f:facet>  
 
 
+            </p:dataTable>
             <p:dialog id="dialog" header="Selection Billets" widgetVar="billets" resizable="false" showEffect="fade" hideEffect="explode" >             
-                <p:dataList id="displayMulti" value="#{representationCtrl.selectedRep}" var="selected">  
-                    Nom : #{selected.nom}, <br/>Date: #{selected.dateDebut} <br/>  
+                <p:dataList id="displayMulti" value="#{representationCtrl.selectedReps}" var="selected">  
+                    Adresse : #{selected.salle.adresseSalle} Date:  #{selected.dateDebut} Prix Unitaire: #{selected.prix}
                 </p:dataList>
 
                 <br/><p:separator />
@@ -93,8 +92,7 @@
                         <p:commandButton value="Fermer" global="false" oncomplete="singleCarDialog.hide()" icon="ui-icon-close" />
                     </h:panelGrid>
                 </div>            
-            </p:dialog>            
-
+            </p:dialog>   
         </h:form>  
     </ui:define>
 

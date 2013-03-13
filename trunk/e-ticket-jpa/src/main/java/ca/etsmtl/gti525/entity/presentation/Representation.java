@@ -43,7 +43,15 @@ public class Representation implements Serializable {
     private Date dateFin;
     @Column(name = "IS_ANNULATION")
     private Boolean isAnnulation;
+    private int QTE;
 
+    public int getQTE() {
+        return QTE;
+    }
+
+    public void setQTE(int QTE) {
+        this.QTE = QTE;
+    }
     @OneToOne(mappedBy = "representation")
     private Salle salle;
 

@@ -19,7 +19,24 @@ public class RepresentationControleur implements Serializable {
     @ManagedProperty(value = "#{spectacleCtrl}")
     private SpectacleControleur spectacleCtrl;     
   
-    private Representation[] selectedRep;
+    private Representation[] selectedReps;
+    private Representation selectedRep;
+
+    public Representation[] getSelectedReps() {
+        return selectedReps;
+    }
+
+    public void setSelectedReps(Representation[] selectedReps) {
+        this.selectedReps = selectedReps;
+    }
+
+    public Representation getSelectedRep() {
+        return selectedRep;
+    }
+
+    public void setSelectedRep(Representation selectedRep) {
+        this.selectedRep = selectedRep;
+    }
     private List<Representation> representationsFiltrees;
 
     
@@ -32,14 +49,6 @@ public class RepresentationControleur implements Serializable {
 
     public void setRepresentationsFiltrees(List<Representation> representationsFiltrees) {
         this.representationsFiltrees = representationsFiltrees;
-    }
-
-    public Representation[] getSelectedRep() {
-        return selectedRep;
-    }
-
-    public void setSelectedRep(Representation[] selectedRep) {
-        this.selectedRep = selectedRep;
     }
     
     
