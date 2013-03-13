@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.SessionScoped;
 import org.apache.log4j.Logger;
 
 /**
@@ -15,36 +15,26 @@ import org.apache.log4j.Logger;
  * @author REDOUANE
  */
 @ManagedBean(name = "spectacleCtrl")
-@ViewScoped
+@SessionScoped
 public class SpectacleControleur implements Serializable {
+
     private static final Logger log = Logger.getLogger(SpectacleControleur.class);
-    
     //pour recuprér les données du cache
     @ManagedProperty(value = "#{menuCtrl}")
-    private MenuControleur appCtrl;  
-
+    private MenuControleur appCtrl;
+    
+    
     private Spectacle specSelec = new Spectacle();
-    private List<Representation> representationsFiltrees;
     private List lignesSelec;
-    private Representation[] selectedRep;
 
     
-    
-    public String allerPageRep(List<Representation> rep){                   
+
+    public String allerPageRep(List<Representation> rep) {
         return "pageRepresentation?faces-redirect=true";
     }
-    
-    
-    public void onSelectionerOfEditer(Spectacle ss){
-        this.setSpecSelec(ss);        
-    }    
-    
-    public Representation[] getSelectedRep() {
-        return selectedRep;
-    }
 
-    public void setSelectedRep(Representation[] selectedRep) {
-        this.selectedRep = selectedRep;
+    public void onSelectionerOfEditer(Spectacle ss) {
+        this.setSpecSelec(ss);
     }
 
     public List getLignesSelec() {
@@ -54,16 +44,13 @@ public class SpectacleControleur implements Serializable {
     public void setLignesSelec(List lignesSelec) {
         this.lignesSelec = lignesSelec;
     }
-    
-    
-    public List<Representation> getRepresentationsFiltrees() {
-        return representationsFiltrees;
+
+    /**
+     * Creates a new instance of SpectacleControleur
+     */
+    public SpectacleControleur() {
     }
 
-    public void setRepresentationsFiltrees(List<Representation> representationsFiltrees) {
-        this.representationsFiltrees = representationsFiltrees;
-    }
-    
     public Spectacle getSpecSelec() {
         return specSelec;
     }
@@ -72,11 +59,6 @@ public class SpectacleControleur implements Serializable {
         this.specSelec = specSelec;
     }
     
-    /**
-     * Creates a new instance of SpectacleControleur
-     */
-    public SpectacleControleur() { }
-
     public MenuControleur getAppCtrl() {
         return appCtrl;
     }
@@ -85,5 +67,4 @@ public class SpectacleControleur implements Serializable {
         this.appCtrl = appCtrl;
     }
     
-       
 }

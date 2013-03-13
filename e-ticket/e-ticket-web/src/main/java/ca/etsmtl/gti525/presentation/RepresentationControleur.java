@@ -1,7 +1,8 @@
 package ca.etsmtl.gti525.presentation;
 
-import ca.etsmtl.gti525.commun.MenuControleur;
+import ca.etsmtl.gti525.entity.presentation.Representation;
 import java.io.Serializable;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
@@ -13,20 +14,47 @@ import javax.faces.bean.ViewScoped;
 @ManagedBean(name = "representationCtrl")
 @ViewScoped
 public class RepresentationControleur implements Serializable {
+    
+    //pour recuprér le spectacle selectionner
+    @ManagedProperty(value = "#{SpectacleCtrl}")
+    private SpectacleControleur spectacleCtrl;     
+  
+    private Representation[] selectedRep;
+    private List<Representation> representationsFiltrees;
 
-    //pour recuprér les données du cache
-    @ManagedProperty(value = "#{menuCtrl}")
-    private MenuControleur appCtrl;    
+    
+    
+    
+    
+    public List<Representation> getRepresentationsFiltrees() {
+        return representationsFiltrees;
+    }
+
+    public void setRepresentationsFiltrees(List<Representation> representationsFiltrees) {
+        this.representationsFiltrees = representationsFiltrees;
+    }
+
+    public Representation[] getSelectedRep() {
+        return selectedRep;
+    }
+
+    public void setSelectedRep(Representation[] selectedRep) {
+        this.selectedRep = selectedRep;
+    }
     
     
     /**
      * Creates a new instance of RepresentationControleur
      */
-    public RepresentationControleur() {
+    public RepresentationControleur() { }
+    
+
+    public SpectacleControleur getSpectacleCtrl() {
+        return spectacleCtrl;
     }
 
-    public MenuControleur getAppCtrl() {
-        return appCtrl;
+    public void setSpectacleCtrl(SpectacleControleur spectacleCtrl) {
+        this.spectacleCtrl = spectacleCtrl;
     }
     
     
