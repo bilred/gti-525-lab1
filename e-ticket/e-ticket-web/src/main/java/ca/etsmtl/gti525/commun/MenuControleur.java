@@ -55,9 +55,9 @@ public class MenuControleur extends AbstractControleur implements Serializable {
         // instanciation couche [métier]
         super.initStubsPresentation();
 
-        this.spectacles = this.stubsDaoPresentation.getAllSpectacle();
-        this.representations = this.stubsDaoPresentation.getAllRepresentation();
-        this.artistes = this.stubsDaoPresentation.getAllArtistes(); 
+        this.spectacles = InitDao.stubsDaoPresentation.getAllSpectacle();
+        this.representations = InitDao.stubsDaoPresentation.getAllRepresentation();
+        this.artistes = InitDao.stubsDaoPresentation.getAllArtistes(); 
         
         log.info("sonar source Spectacle 1: " + this.spectacles);
         log.info("sonar source Representation 1: " + this.representations);
@@ -73,7 +73,7 @@ public class MenuControleur extends AbstractControleur implements Serializable {
     }
     
   
-    public String allerPageRep(List<Representation> rep){
+    public String allerPageRep(List<Representation> rep){                       
         
                         
         return "pageRepresentation?faces-redirect=true";

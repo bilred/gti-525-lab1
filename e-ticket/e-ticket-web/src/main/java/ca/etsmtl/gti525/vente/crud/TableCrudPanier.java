@@ -30,7 +30,6 @@ public class TableCrudPanier extends TableCrud<Representation, PanierBeans> impl
             this.getColonneTableCrud().setDateRepresentation(rep.getDateDebut());
 
         }
-
     }
 
     @Override

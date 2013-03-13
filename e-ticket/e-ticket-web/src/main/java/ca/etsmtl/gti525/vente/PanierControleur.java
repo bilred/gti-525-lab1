@@ -1,6 +1,7 @@
 package ca.etsmtl.gti525.vente;
 
 import ca.etsmtl.gti525.commun.AbstractControleur;
+import ca.etsmtl.gti525.commun.InitDao;
 import ca.etsmtl.gti525.entity.presentation.Artiste;
 import ca.etsmtl.gti525.entity.presentation.Representation;
 import ca.etsmtl.gti525.entity.presentation.Spectacle;
@@ -19,47 +20,32 @@ import org.apache.log4j.Logger;
  */
 @ManagedBean(name = "panierCtrl")
 @SessionScoped
-public class PanierControleur extends AbstractControleur implements Serializable {
-    
+public class PanierControleur extends AbstractControleur implements Serializable {    
     private static final Logger log = Logger.getLogger(PanierControleur.class);
-    private int count;
-    
+
     private TableCrud tableCrudPanier;
     
-
-    public void increment() {
-        log.info("Appel de la méthode increment(), valeur initial: "+count);
-        count++;  
-    }  
-    
- 
-    
-    
-    
-
     // cache
-    private List<Spectacle> spectacles;
+    //private List<Spectacle> spectacles;
     private List<Representation> representations;
-    private List<Artiste> artistes;
-
+    //private List<Artiste> artistes;
     
     @PostConstruct
     public void init() {
         // instanciation couche [métier]
-        super.initPresentation();
-
-//        this.spectacles = dao.getAllSpectacle();
-        this.representations = this.daoPresentation.getAllRepresentation();
-//        this.artistes = dao.getAllArtistes(); 
+        //super.initPresentation();
+        super.initStubsPresentation();
         
-//        log.info("sonar source Spectacle (panier) : " + this.spectacles);
+        this.representations = InitDao.stubsDaoPresentation.getAllRepresentation();
         log.info("sonar source Representation (panier) : " + this.representations);
-//        log.info("sonar source Artiste (panier) : " + this.artistes);
     }    
-
-    public List<Artiste> getArtistes() {
-        return artistes;
-    }
+    
+    
+    private int count;
+    public void increment() {
+        log.info("Appel de la méthode increment(), valeur initial: "+count);
+        count++;  
+    }  
 
     public List<Representation> getRepresentations() {
         return representations;
@@ -83,8 +69,8 @@ public class PanierControleur extends AbstractControleur implements Serializable
 
     public TableCrud getTableCrudPanier() {
         if(tableCrudPanier==null) {
-        this.tableCrudPanier = new TableCrudPanier(this);
-        this.tableCrudPanier.doGetAllEnregistrement();}
+        this.tableCrudPanier = new TableCrudPanier(this); //this.tableCrudPanier.doGetAllEnregistrement();
+        }
         return tableCrudPanier;
     }
     

@@ -2,11 +2,11 @@ package ca.etsmtl.gti525.beans.vente;
 
 public class Adresse {
 	
-	private String rue;
-	private String appartement;
-	private String ville;
-	private String region;
-	private String codePostal;
+	private String rue = new String();
+	private String appartement = new String();
+	private String ville = new String();
+	private String region = new String();
+	private String codePostal = new String();
 	
 	
 	
