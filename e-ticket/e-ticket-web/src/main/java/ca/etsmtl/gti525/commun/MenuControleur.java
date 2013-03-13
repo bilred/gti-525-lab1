@@ -18,8 +18,7 @@ import org.apache.log4j.Logger;
 @ApplicationScoped
 public class MenuControleur extends AbstractControleur implements Serializable {
     private static final Logger log = Logger.getLogger(MenuControleur.class);
-
-    
+  
     // cache
     private List<Spectacle> spectacles;
     private List<Representation> representations;
