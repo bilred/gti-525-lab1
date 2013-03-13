@@ -10,29 +10,27 @@
     <ui:define name="content">
         <h:form id="myform">  
 
-<p:dataTable id="dataTable" var="rep" value="#{representationCtrl.spectacleCtrl.specSelec.representations}" widgetVar="representationsTable"   
+            <p:dataTable id="dataTable" var="rep" value="#{representationCtrl.cacheSessionPresentation.spectacleSelected.representations}" widgetVar="representationsTable"   
                          emptyMessage="Pas de représentation trouvée avec les criteres précisés" filteredValue="#{representationCtrl.representationsFiltrees}" paginator="true" rows="10"
-                         style="background: none" rowKey="#{rep.salle.adresseSalle}" selection="#{representationCtrl.selectedReps}" >  
+                         style="background: none" rowKey="#{rep}" selection="#{representationCtrl.cacheSessionPresentation.representationSelected}" >  
 
-                <f:facet name="header">  
-                      
-                </f:facet>  
+                <f:facet name="header"> </f:facet>  
 
                 <p:column selectionMode="multiple" style="width:2%" />  
-               <p:column id="photoArtiste"  headerText="Artiste"  >  
-                    <ui:param name="imgPath" value="images:#{representationCtrl.spectacleCtrl.specSelec.artiste.lienPhoto}.png" />
+                <p:column id="photoArtiste"  headerText="Artiste"  >  
+                    <ui:param name="imgPath" value="images:#{representationCtrl.cacheSessionPresentation.spectacleSelected.artiste.lienPhoto }.png" />
                     <p:graphicImage value="#{resource[imgPath]}" width="50" height="25" />  
                 </p:column>
 
-                <p:column id="nomArtiste" filterBy="#{representationCtrl.spectacleCtrl.specSelec.artiste.nom}}"   
+                <p:column id="nomArtiste" filterBy="#{representationCtrl.cacheSessionPresentation.spectacleSelected.artiste.nom}}"   
                           headerText="Artiste"  
                           filterMatchMode="contains">  
-                    <h:outputText value="#{representationCtrl.spectacleCtrl.specSelec.artiste.nom}" />  
+                    <h:outputText value="#{representationCtrl.cacheSessionPresentation.spectacleSelected.artiste.nom}" />  
                 </p:column>
-                <p:column id="nomSpectacle" filterBy="#{representationCtrl.spectacleCtrl.specSelec.nomSpectacle}"   
+                <p:column id="nomSpectacle" filterBy="#{representationCtrl.cacheSessionPresentation.spectacleSelected.nomSpectacle}"   
                           headerText="Spectacle"  
                           filterMatchMode="contains">  
-                    <h:outputText value="#{representationCtrl.spectacleCtrl.specSelec.nomSpectacle}" />  
+                    <h:outputText value="#{representationCtrl.cacheSessionPresentation.spectacleSelected.nomSpectacle}" />  
                 </p:column>
 
                 <p:column id="addColumn" filterBy="#{rep.salle.adresseSalle}"  
@@ -54,14 +52,13 @@
                     <p:inputText id="champDisBillets" value="100" size="5" readonly="true" />
                 </p:column>
                 <p:column id="qteBillets" headerText="Qte Billets" >  
-                    <p:selectOneMenu >  <!-- value="{rep.QTE}"-->
+                    <p:selectOneMenu value="1" >
                         <f:selectItem itemLabel="1" itemValue="1" />  
                         <f:selectItem itemLabel="2" itemValue="2" />  
                         <f:selectItem itemLabel="3" itemValue="3" />
                         <f:selectItem itemLabel="4" itemValue="4" />  
                         <f:selectItem itemLabel="5" itemValue="5" />  
                         <f:selectItem itemLabel="6" itemValue="6" />
-                        
                     </p:selectOneMenu>   
                 </p:column> 
                 <p:calendar value="#{calendarBean.date2}" id="popupCal" /> 
@@ -72,14 +69,16 @@
 
                     <p:inputText id="prixBillets" value="#{rep.prix}" readonly="true" size="5"/>  
                 </p:column>
-<f:facet name="footer">  
-                    <p:commandButton id="multiViewButton" value="Valider le choix" icon="ui-icon-check" oncomplete="billets.show()" update=":myform:displayMulti"  />  
+                <f:facet name="footer">  
+                    <p:commandButton id="multiViewButton" value="Visualiser" icon="ui-icon-search" oncomplete="billets.show()" update=":myform:displayMulti" /> <p:spacer width="40px"/> 
+                    <p:commandButton action="#{menuCtrl.doCart()}" value="Valider le choix" icon="ui-icon-check" /> <p:spacer width="40px"/> 
+                    <p:commandButton type="reset" value="CANCEL" icon="ui-icon-cancel" />
                 </f:facet>  
-                               
-
             </p:dataTable>
-<p:dialog id="dialog" header="Selection Billets" widgetVar="billets" resizable="false" showEffect="fade" hideEffect="explode" >             
-                <p:dataList id="displayMulti" value="#{representationCtrl.selectedReps}" var="selected">  
+
+
+            <p:dialog id="dialog" header="Selection Billets" widgetVar="billets" resizable="false" showEffect="fade" hideEffect="explode" >             
+                <p:dataList id="displayMulti" value="#{representationCtrl.cacheSessionPresentation.representationSelected}" var="selected">  
                     Adresse : #{selected.salle.adresseSalle} Date:  #{selected.dateDebut} Prix Unitaire: #{selected.prix}
                 </p:dataList>
 
@@ -89,11 +88,12 @@
                         <p:commandButton value="Imprimer" type="button" icon="ui-icon-print" >  
                             <p:printer target="dialog" />  
                         </p:commandButton>&nbsp;
-                        <p:commandButton value="Fermer" global="false" oncomplete="singleCarDialog.hide()" icon="ui-icon-close" />
+                        <p:commandButton value="Fermer" global="false" oncomplete="billets.hide()" icon="ui-icon-close" />
                     </h:panelGrid>
                 </div>            
             </p:dialog>   
-        </h:form>  
+        </h:form>
+        
     </ui:define>
 
 

@@ -4,62 +4,89 @@
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:p="http://primefaces.org/ui"
-                xmlns:etsmtl="http://java.sun.com/jsf/composite/etsmtl">
+                xmlns:etsmtl="http://java.sun.com/jsf/composite/etsmtl"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:f="http://java.sun.com/jsf/core">
 
 
     <ui:define name="content">
-        <h:form id="formPanier" >         
+        <h:form id="formPanier" > 
 
-            <etsmtl:tableCrud id="tableCrudPanier" emptyMessage="Veuille sélectionner des représentations" titleTable="Les paniers sélectionnés" updateDetails="formPanier:representationDetail" 
-                              handleTableCrud="#{panierCtrl.tableCrudPanier}" rowKey="#{item.nomSpectacle}" >
-
-                
-                <p:column headerText="Icon Artiste" filterBy="#{item.nomSpectacle}" sortBy="#{item.nomSpectacle}" >
-                    <h:outputLabel value="#{item.nomSpectacle}"  />  
-                </p:column>
-                
-                <p:column headerText="Quantity" filterBy="#{item.nomSpectacle}" sortBy="#{item.nomSpectacle}" >
-                    <h:outputLabel value="#{item.nomSpectacle}"  />  
-                </p:column>
-                
-                <p:column headerText="Show" filterBy="#{item.nomSpectacle}" sortBy="#{item.nomSpectacle}" >
-                    <h:outputLabel value="#{item.nomSpectacle}"  />  
-                </p:column>
-                
-                <p:column headerText="Town" filterBy="#{item.nomSpectacle}" sortBy="#{item.nomSpectacle}" >
-                    <h:outputLabel value="#{item.nomSpectacle}"  />  
-                </p:column>
-
-                <p:column headerText="Date" filterBy="#{item.dateReprésantation}" sortBy="#{item.dateReprésantation}" >
-                    <h:outputLabel value="#{item.dateReprésantation}" />  
-                </p:column>
-                
-                <p:column headerText="Hour" filterBy="#{item.dateReprésantation}" sortBy="#{item.dateReprésantation}" >
-                    <h:outputLabel value="#{item.dateReprésantation}" />  
-                </p:column> 
-
-
-            </etsmtl:tableCrud>        
-
-            <etsmtl:dialogDetails id="representationDetail" >
-
-            </etsmtl:dialogDetails>
-
-        </h:form>
-        
-            <h:form>
-                <p:button outcome="pageCheckout" value="BUY" icon="ui-icon-suitcase" ></p:button> <p:spacer width="40px"/> <p:button type="reset" value="CANCEL" icon="ui-icon-cancel" ></p:button>
-            </h:form>    
-
-
-<!--            Contenu du panier : <p:commandButton value="Panier" actionListener="{panierCtrl.increment}" update="txt_count" icon="ui-icon-cart" /> 
             <h:panelGrid columns="2" cellpadding="5">  
                 <h:outputText value="votre panier: " />  
-                <h:outputText id="txt_count" value="{panierCtrl.count}" />        
-            </h:panelGrid>  -->
-              
+                <h:outputText id="txt_count" value="#{panierCtrl.count}" />        
+            </h:panelGrid>             
 
 
+
+            <p:panel header="Les paniers sélectionnés"  rendered="true" toggleable="true" >       
+                <div style="overflow: auto">
+                    <p:dataTable id="tableVar" var="item" value="#{panierCtrl.cacheSessionPresentation.representationSelected}" widgetVar="LaTable" paginator="true" rows="10"
+                                 emptyMessage="Veuille sélectionner des représentations" rowKey="#{item}"
+                                 editable="true" selectionMode="single"
+                                 paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                                 rowsPerPageTemplate="5,10,15,25,50,100" >                  
+
+                        <f:facet name="header" >          
+                            <table border="0" >
+                                <tr style="border-style: hidden;">
+                                    <td style="border-style: hidden;" align="left" width="20px" ><p:ajaxStatus style="width:16px;height:16px;" id="ajaxStatusPanel" > <f:facet name="start"><h:graphicImage value="/resources/etsmtl/img/ajaxLoader1.gif" alt="Patientez Pendant le chargement....." /> </f:facet> <f:facet name="complete"> <h:outputText value="" /> </f:facet> </p:ajaxStatus></td>
+                                    <td align="right"><h:outputText value=" Recherche Globale " /><p:inputText id="globalFilter" onkeyup="LaTable.filter()" size="23" /> <p:watermark for="globalFilter" value="Mots clés..." /></td>
+                                </tr>
+                            </table>
+                        </f:facet>
+
+                        <!--<composite:insertChildren id="colonneTableCrud" />-->
+                        <p:column headerText="Icon Artiste" filterBy="#{item.spectacle.artiste.lienPhoto}" sortBy="#{item.spectacle.artiste.lienPhoto}" >
+                            <h:outputLabel value="#{item.spectacle.artiste.lienPhoto}"  />  
+                        </p:column>
+
+                        <p:column headerText="Quantity" filterBy="#{item}" sortBy="#{item}" >
+                            <h:outputLabel value="#{item}"  />  
+                        </p:column>
+
+                        <p:column headerText="Show" filterBy="#{item.spectacle.nomSpectacle}" sortBy="#{item.spectacle.nomSpectacle}" >
+                            <h:outputLabel value="#{item.spectacle.nomSpectacle}"  />  
+                        </p:column>
+
+                        <p:column headerText="Town" filterBy="#{item.adresse}" sortBy="#{item.adresse}" >
+                            <h:outputLabel value="#{item.adresse}"  />  
+                        </p:column>
+
+                        <p:column headerText="Date" filterBy="#{item.dateDebut}" sortBy="#{item.dateDebut}" >
+                            <h:outputLabel value="#{item.dateDebut}" />  
+                        </p:column>
+
+                        <p:column headerText="Hour" filterBy="#{item.dateDebut.hours}" sortBy="#{item.dateDebut.hours}" >
+                            <h:outputLabel value="#{item.dateDebut.hours}" />  
+                        </p:column> 
+
+                        <p:column headerText="Détails" style="width: 40px;" >                                            
+                            <p:commandButton id="actionOnDetails" disabled="false" global="false" update=":formPanier:mydialog:documentPanel" immediate="true" oncomplete="documentDialog.show()" actionListener="#{panierCtrl.onDetailsEnregistrement(item)}" title="Afficher Détails" icon="ui-icon-zoomin" />
+                        </p:column>                        
+
+                        <f:facet name="footer"> 
+                            <p:button outcome="pageCheckout" value="BUY" icon="ui-icon-suitcase" ></p:button> <p:spacer width="40px"/>
+                            <p:commandButton value="Ajouter au Panier" actionListener="#{panierCtrl.increment}" update=":formPanier:txt_count" icon="ui-icon-cart" /> <p:spacer width="40px"/> 
+                            <p:button type="reset" value="CANCEL" icon="ui-icon-cancel" ></p:button>                   
+                        </f:facet>
+
+                    </p:dataTable>
+                </div>
+
+                <etsmtl:dialogDetails id="mydialog" >
+                    
+                </etsmtl:dialogDetails>
+
+
+                <p:blockUI block="tableVar" trigger="tableVar">  
+                    LOADING<br />  
+                    <p:graphicImage value="/resources/etsmtl/img/ajaxLoader5.gif"/>  
+                </p:blockUI>             
+            </p:panel>
+
+
+        </h:form>
 
     </ui:define>
 
