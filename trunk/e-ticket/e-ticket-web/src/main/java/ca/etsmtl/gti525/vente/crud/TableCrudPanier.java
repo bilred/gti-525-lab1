@@ -24,8 +24,7 @@ public class TableCrudPanier extends TableCrud<Representation, PanierBeans> impl
     @Override
     public void doGetAllEnregistrement() {
         this.setColonneTableCrudS(null);
-       
-        List<Representation> reps = (List<Representation>) PojoMap.transformeArrayToList( this.panierControleur.getRepresentationCtrl().getSelectedRep() );
+        List<Representation> reps = (List<Representation>) PojoMap.transformeArrayToList( this.panierControleur.getRepresentationCtrl().getSelectedReps() );
         this.setListEnregistrement( reps );
 
         //System.out.print("Taille des représantation : "+this.panierControleur.getRepresentations().size()+"-------"+this.panierControleur.getRepresentations().get(0).getNom());
