@@ -8,10 +8,10 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 /**
- * Utilisé : 
- * 1- pour passer le Spectacle selectionner à la page représantation 
- * 2- pour passer les représantation selectionner au Panier.
- * A la fait de chaque etape faire set(null)
+ * Utilisé : 1- pour passer le Spectacle selectionner à la page représantation
+ * 2- pour passer les représantation selectionner au Panier. A la fait de chaque
+ * etape faire set(null)
+ *
  * @author REDOUANE
  */
 @ManagedBean(name = "cacheSessionPresentationCtrl")
@@ -20,12 +20,15 @@ public class CacheSessionPresentation implements Serializable {
 
     private Spectacle spectacleSelected;
     private List<Representation> representationSelected;
+    
+    private Boolean disablePanier = Boolean.FALSE;
 
     /**
      * Creates a new instance of CacheSessionPresentation
      */
-    public CacheSessionPresentation() { }
-    
+    public CacheSessionPresentation() {
+    }
+
     public Spectacle getSpectacleSelected() {
         return spectacleSelected;
     }
@@ -41,6 +44,13 @@ public class CacheSessionPresentation implements Serializable {
     public void setRepresentationSelected(List<Representation> representationSelected) {
         this.representationSelected = representationSelected;
     }
-  
+
+    public Boolean getDisablePanier() {
+        return disablePanier;
+    }
+
+    public void setDisablePanier(Boolean disablePanier) {
+        this.disablePanier = disablePanier;
+    }
     
 }

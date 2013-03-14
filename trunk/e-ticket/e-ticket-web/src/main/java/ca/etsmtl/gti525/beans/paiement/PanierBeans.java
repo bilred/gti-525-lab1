@@ -1,6 +1,7 @@
-package ca.etsmtl.gti525.vente.crud;
+package ca.etsmtl.gti525.beans.paiement;
 
 import ca.etsmtl.gti525.commun.taglib.ColonneTableModel;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -8,7 +9,7 @@ import java.util.Date;
  * et Interface entre les deux module (en utilisant le beansPanier)
  * @author REDOUANE
  */
-public class PanierBeans implements ColonneTableModel  {
+public class PanierBeans implements ColonneTableModel, Serializable  {
 	
     private String iconArtiste;
     private Integer quantity; //nbBiller

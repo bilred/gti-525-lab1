@@ -1,18 +1,19 @@
 package ca.etsmtl.gti525.vente;
 
-import ca.etsmtl.gti525.beans.vente.CarteCredit;
-import ca.etsmtl.gti525.beans.vente.Client;
 import ca.etsmtl.gti525.commun.AbstractControleur;
 import ca.etsmtl.gti525.commun.CommunService;
+import ca.etsmtl.gti525.entity.presentation.Representation;
+import ca.etsmtl.gti525.entity.vente.CarteCredit;
+import ca.etsmtl.gti525.entity.vente.Client;
 import gti525.paiement.InformationsPaiementTO;
 import gti525.paiement.RequeteAuthorisationTO;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.event.ActionEvent;
 import org.primefaces.event.FlowEvent;
@@ -44,6 +45,8 @@ public class ProcessPaiementControleur extends AbstractControleur implements Ser
     public void destroy(){
       this.setCarteCredit(new CarteCredit());
       this.setClient( new Client());
+      this.panierCtrl.getCacheSessionPresentation().setRepresentationSelected( new ArrayList<Representation>());
+      this.panierCtrl.setPaniers( null );
       logger.info("@PreDestroy : Information Client et Paiement utiliser dans le processus son détruite.");
     }   
    
@@ -90,13 +93,22 @@ public class ProcessPaiementControleur extends AbstractControleur implements Ser
      */
     public ProcessPaiementControleur() { }
 
+    
+    public PanierControleur getPanierCtrl() {
+        return panierCtrl;
+    }
+
+    public void setPanierCtrl(PanierControleur panierCtrl) {
+        this.panierCtrl = panierCtrl;
+    }
+
     public Client getClient() {
         return client;
     }
 
     public void setClient(Client client) {
         this.client = client;
-    } 
+    }
 
     public CarteCredit getCarteCredit() {
         return carteCredit;
@@ -106,20 +118,12 @@ public class ProcessPaiementControleur extends AbstractControleur implements Ser
         this.carteCredit = carteCredit;
     }
 
-    public PanierControleur getPanierCtrl() {
-        return panierCtrl;
+    public boolean isSkip() {
+        return skip;
     }
 
-    public void setPanierCtrl(PanierControleur panierCtrl) {
-        this.panierCtrl = panierCtrl;
-    }
-    
-    public boolean isSkip() {  
-        return skip;  
-    }  
-  
-    public void setSkip(boolean skip) {  
-        this.skip = skip;  
-    }    
+    public void setSkip(boolean skip) {
+        this.skip = skip;
+    }   
     
 }
