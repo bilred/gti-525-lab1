@@ -18,18 +18,19 @@ public class Adresse implements Serializable {
     @Column(name = "ID")
     private Long id;
     @Column(name = "RUE")
-    private String rue;
+    private String rue = new String();
     @Column(name = "APPARTEMENT")
-    private String appartement;
+    private String appartement = new String();;
     @Column(name = "VILLE")
-    private String ville;
+    private String ville = new String();;
     @Column(name = "REGION")
-    private String region;
+    private String region = new String();;
     @Column(name = "CODE_POSTAL")
-    private String codePostal;
+    private String codePostal = new String();;
 
     
     public Long getId() {
+        if(id==null) id= new Long(0);
         return id;
     }
 
