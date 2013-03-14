@@ -93,17 +93,6 @@
             <artifactId>cglib</artifactId>
             <version>2.2</version>
         </dependency>        
-        <!--        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>ApiJavaEtsmtl</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-web-api</artifactId>
-            <version>6.0</version>
-            <type>jar</type>
-        </dependency>-->
         <dependency>
             <groupId>net.sf.opencsv</groupId>
             <artifactId>opencsv</artifactId>
@@ -115,5 +104,17 @@
             <version>1.0-SNAPSHOT</version>
             <type>jar</type>
         </dependency>
+        
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>ApiJavaEtsmtl</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-web-api</artifactId>
+            <version>6.0</version>
+            <type>jar</type>
+        </dependency>        
     </dependencies>
 </project>
