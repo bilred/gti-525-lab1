@@ -1,5 +1,9 @@
 package ca.etsmtl.gti525.commun;
 
+import gti525.paiement.IPaiementDAO;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 /**
  *  En peu faire du Polymorphisme (injecter du code en plus de l'existant)
  * @author REDOUANE
@@ -31,6 +35,11 @@ public abstract class AbstractControleur extends InitDao{
     @Override
     public void initStubsVante() {
         super.initStubsVante();
-    }   
+    }  
+    
+    @Override
+    public void initStubsPaiement() {
+        super.initStubsPaiement();
+    }    
     
 }

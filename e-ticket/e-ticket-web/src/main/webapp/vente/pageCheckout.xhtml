@@ -15,27 +15,60 @@
 
                 <p:tab id="tickets" title="Tickets">
                     <p:panel header="Checkout Your Tickets">
-                        <p:dataTable id="dataTable" var="pan" value="#{panierCtrl.tableCrudPanier.listEnregistrement}" sortMode="multiple" rows="25" paginator="true">  
-                            <f:facet name="header">  
-                                Affiche tableau avec les toto du panier  
-                            </f:facet>  
 
-                            <p:column sortBy="{pan.nomSpectacle}" headerText="Show">  
-                                <h:outputText value="{pan.nomSpectacle}" />  
-                            </p:column>  
+                        <p:panel header="Affiche tableau avec les toto du panier"  rendered="true" toggleable="true" >       
+                            <div style="overflow: auto">
+                                <p:dataTable id="dataPaiment" var="pan" value="#{processPaiementCtrl.panierCtrl.panier}" 
+                                             widgetVar="LaTable" paginator="true" rows="10"
+                                             emptyMessage="Veuille sélectionner des représentations" rowKey="#{pan}"
+                                             editable="true" selectionMode="single"
+                                             paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                                             rowsPerPageTemplate="5,10,15,25,50,100" >                  
 
-                            <p:column sortBy="{pan.dateRepresentation}" headerText="Date">  
-                                <h:outputText value="{pan.dateRepresentation}" />  
-                            </p:column>  
+                                    <f:facet name="header" >          
+                                        <table border="0" >
+                                            <tr style="border-style: hidden;">
+                                                <td style="border-style: hidden;" align="left" width="20px" ><p:ajaxStatus style="width:16px;height:16px;" id="ajaxStatusPanel" > <f:facet name="start"><h:graphicImage value="/resources/etsmtl/img/ajaxLoader1.gif" alt="Patientez Pendant le chargement....." /> </f:facet> <f:facet name="complete"> <h:outputText value="" /> </f:facet> </p:ajaxStatus></td>
+                                                <td align="right"><h:outputText value=" Recherche Globale " /><p:inputText id="globalFilter" onkeyup="LaTable.filter()" size="23" /> <p:watermark for="globalFilter" value="Mots clés..." /></td>
+                                            </tr>
+                                        </table>
+                                    </f:facet>
 
-                            <p:column sortBy="{pan.quantity}" headerText="Number">  
-                                <h:outputText value="{pan.quantity}" />  
-                            </p:column>  
+                                    <!--<composite:insertChildren id="colonneTableCrud" />-->
+                                    <p:column sortBy="#{pan.nomSpectacle}" headerText="Show" >  
+                                        <h:outputText value="#{pan.nomSpectacle}" />  
+                                    </p:column>  
 
-                            <p:column sortBy="{pan.prixtoto}" headerText="Total price">  
-                                <h:outputText value="{pan.prixtoto}" />  
-                            </p:column>  
-                        </p:dataTable>
+                                    <p:column sortBy="#{pan.dateRepresentation}" headerText="Date">  
+                                        <h:outputText value="#{pan.dateRepresentation}" />  
+                                    </p:column>  
+
+                                    <p:column sortBy="#{pan.quantity}" headerText="Number">  
+                                        <h:outputText value="#{pan.quantity}" />  
+                                    </p:column>  
+
+                                    <p:column sortBy="#{pan.prix}" headerText="Total price">  
+                                        <h:outputText value="#{pan.prix}" />  
+                                    </p:column>
+
+                                    <f:facet name="footer"></f:facet>            
+
+                                </p:dataTable>
+                            </div>
+
+                            <etsmtl:dialogDetails id="mydialog" >
+
+                            </etsmtl:dialogDetails>
+
+
+                            <p:blockUI block="dataPaiment" trigger="dataPaiment">  
+                                LOADING<br />  
+                                <p:graphicImage value="/resources/etsmtl/img/ajaxLoader5.gif"/>  
+                            </p:blockUI>             
+                        </p:panel>
+
+
+
                     </p:panel>  
                 </p:tab>  
 
@@ -75,10 +108,24 @@
                         <h:panelGrid id="confirmation" columns="6">
                         </h:panelGrid>  
 
-                        <p:commandButton value="validate payment" actionListener="#{processPaiementCtrl.save}" icon="ui-icon-check" />
+                        <p:commandButton value="Payment" oncomplete="documentDialog.show()" icon="ui-icon-check" />
                         <p:commandButton value="Print" type="button" icon="ui-icon-print">  
                             <p:printer target="confirm" />  
                         </p:commandButton>
+
+                        <p:dialog id="dialogPaimentOk" widgetVar="documentDialog" header="Détails de l’enregistrement" showEffect="clip" hideEffect="fold" modal="false">
+
+                            Deuxième confirmation de paiement
+                            
+                            <br/><p:separator />
+                            <div align="center" >
+                                <h:panelGrid columns="3" border="0">
+                                    <p:commandButton value="validate payment" global="false" oncomplete="documentDialog.hide()" actionListener="#{processPaiementCtrl.save}" icon="ui-icon-close" />
+                                    <p:commandButton value="Annuler" global="false" oncomplete="documentDialog.hide()" icon="ui-icon-close" />
+                                </h:panelGrid>
+                            </div>                            
+                        </p:dialog>
+
                     </p:panel>  
                 </p:tab>  
 

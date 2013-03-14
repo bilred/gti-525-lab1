@@ -2,12 +2,17 @@ package ca.etsmtl.gti525.vente;
 
 import ca.etsmtl.gti525.beans.vente.CarteCredit;
 import ca.etsmtl.gti525.beans.vente.Client;
+import ca.etsmtl.gti525.commun.AbstractControleur;
 import ca.etsmtl.gti525.commun.CommunService;
-import ca.etsmtl.gti525.presentation.RepresentationControleur;
+import gti525.paiement.InformationsPaiementTO;
+import gti525.paiement.RequeteAuthorisationTO;
 import java.io.Serializable;
 import java.util.logging.Logger;
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.event.ActionEvent;
 import org.primefaces.event.FlowEvent;
@@ -18,39 +23,62 @@ import org.primefaces.event.FlowEvent;
  */
 @ManagedBean(name = "processPaiementCtrl")
 @ViewScoped
-public class ProcessPaiementControleur implements Serializable {    
+public class ProcessPaiementControleur extends AbstractControleur implements Serializable {    
+    private static Logger logger = Logger.getLogger(ProcessPaiementControleur.class.getName());
     
     //pour recuprér les represantation selectionner (et remplire le panier)
     @ManagedProperty(value = "#{panierCtrl}")
     private PanierControleur panierCtrl;    
     
+    
     private Client client = new Client();
     private CarteCredit carteCredit = new CarteCredit();
  
+    
+   @PostConstruct
+    public void init() {
+        // instanciation couche [métier de payment]
+        super.initStubsPresentation(); //InitDao.stubsDaoJpaPaiement est inistalisé
+   }
+    @PreDestroy
+    public void destroy(){
+      this.setCarteCredit(new CarteCredit());
+      this.setClient( new Client());
+      logger.info("@PreDestroy : Information Client et Paiement utiliser dans le processus son détruite.");
+    }   
    
     public void save(ActionEvent actionEvent) {  
         //TODO Persist Billet + Client + VENTE  
-        CommunService.addInfo("Successful", "Je vous remercie Mr. :"+ client.getNom()+", pour votre payement"); 
+        CommunService.addInfo("Successful", "Merci Mr. :"+ client.getNom()+", pour votre payement");
+        this.destroy();
     }  
       
-    public boolean isSkip() {  
-        return skip;  
-    }  
   
-    public void setSkip(boolean skip) {  
-        this.skip = skip;  
-    }  
 
-    private static Logger logger = Logger.getLogger(ProcessPaiementControleur.class.getName());
-    private boolean skip; 
+
+    private boolean skip = false; 
     public String onFlowProcess(FlowEvent event) {  
         logger.info("Current wizard step:" + event.getOldStep());  
         logger.info("Next step:" + event.getNewStep());  
           
+         
+        if (event.getNewStep().equals("creditCard")) { //step client 
+           InformationsPaiementTO infoPaiement = new InformationsPaiementTO(); infoPaiement.setCard_number(202215848911L); //...
+           //ReponseSystemePaiementTO reponseSystemePaiementTO = InitDao.stubsDaoJpaPaiement.effectuerPreauthorisation(infoPaiement);
+           //reponseSystemePaiementTO
+           CommunService.addInfo("Succes", "Méthode -effectuerPreauthorisation-");
+        }
+        if(event.getNewStep().equals("confirm")) { //step creditCard
+           RequeteAuthorisationTO requeteAuth = new RequeteAuthorisationTO(); requeteAuth.setApi_key("myKeys"); //...
+           //ReponseSystemePaiementTO reponseSystemePaiementTO = InitDao.stubsDaoJpaPaiement.approuverTransaction(requeteAuth);
+           //reponseSystemePaiementTO
+            CommunService.addInfo("Succes", "Méthode -approuverTransaction-");
+        }
+        if("undefined".equals(event.getNewStep())) return "tickets";
+        
         if(skip) {  
-            skip = false;   //reset in case user goes back  
-            return "confirm";  
-        }  
+            skip = false; return "tickets";  //reset in case user goes back
+        }
         else {  
             return event.getNewStep();  
         }
@@ -85,5 +113,13 @@ public class ProcessPaiementControleur implements Serializable {
     public void setPanierCtrl(PanierControleur panierCtrl) {
         this.panierCtrl = panierCtrl;
     }
+    
+    public boolean isSkip() {  
+        return skip;  
+    }  
+  
+    public void setSkip(boolean skip) {  
+        this.skip = skip;  
+    }    
     
 }
