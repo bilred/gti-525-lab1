@@ -12,14 +12,14 @@
     <ui:define name="content">
         <h:form id="formPanier" > 
 
-            <h:panelGrid columns="2" cellpadding="5">  
-                <h:outputText value="votre panier: " />  
+            <h:panelGrid columns="2" cellpadding="5" style="text-decoration: #D20005">  
+                <h:outputText value="votre panier: " /> (selon le nombre de biller par représantation) 
                 <h:outputText id="txt_count" value="#{panierCtrl.count}" />        
             </h:panelGrid>             
 
 
 
-            <p:panel header="Les paniers sélectionnés"  rendered="true" toggleable="true" >       
+            <p:panel header="Les representation sélectionnés"  rendered="true" toggleable="true" >       
                 <div style="overflow: auto">
                     <p:dataTable id="tableVar" var="item" value="#{panierCtrl.cacheSessionPresentation.representationSelected}" widgetVar="LaTable" paginator="true" rows="10"
                                  emptyMessage="Veuille sélectionner des représentations" rowKey="#{item}"
