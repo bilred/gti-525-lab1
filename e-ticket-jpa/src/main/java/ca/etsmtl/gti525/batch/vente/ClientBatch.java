@@ -53,7 +53,7 @@ public class ClientBatch extends InitDao {
                       client.setPhone(nextLine[PHONE]);
                       
                       //System.out.println("----------"+();
-                      client.setAdresseClient(  stubsDaoVente.findAdresse(Long.valueOf(nextLine[ID_ADRESSE])) );  
+                      client.setAdresse(  stubsDaoVente.findAdresse(Long.valueOf(nextLine[ID_ADRESSE])) );  
                               
                       //Cree l'Adreese.
                       new AdresseBatch().initStubsVante(); //init stubsDaoVente

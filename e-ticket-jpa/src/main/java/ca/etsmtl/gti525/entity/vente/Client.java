@@ -23,20 +23,20 @@ public class Client extends EntityBaseLogs implements Serializable {
     @Column(name="ID")
     private Long id;
     @Column(name="NOM")
-    private String nom;  
+    private String nom = new String();  
     @Column(name="PRENOM")
-    private String prenom;
+    private String prenom = new String();
     @Column(name="NOM_CIVIQUE")
-    private String nomCivique;
+    private String nomCivique = new String();
     @Column(name="MAIL")
-    private String mail;
+    private String mail = new String();
     @Column(name="PHONE")
-    private String phone;
+    private String phone = new String();
     
     @OneToOne
-    private Adresse adresseClient;
+    private Adresse adresse = new Adresse();
     @OneToOne
-    private CarteCredit carteCredit;
+    private CarteCredit carteCredit = new CarteCredit();
     
 
     @OneToMany
@@ -99,15 +99,16 @@ public class Client extends EntityBaseLogs implements Serializable {
         this.nomCivique = nomCivique;
     }
 
-    public Adresse getAdresseClient() {
-        return adresseClient;
+    public Adresse getAdresse() {
+        return adresse;
     }
 
-    public void setAdresseClient(Adresse adresseClient) {
-        this.adresseClient = adresseClient;
+    public void setAdresse(Adresse adresse) {
+        this.adresse = adresse;
     }
 
     public Long getId() {
+        if(id==null) id= new Long(0);
         return id;
     }
 
