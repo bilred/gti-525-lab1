@@ -3,7 +3,8 @@ package ca.etsmtl.gti525.vente;
 import ca.etsmtl.gti525.commun.taglib.TableCrud;
 import ca.etsmtl.gti525.entity.presentation.Representation;
 import ca.etsmtl.gti525.presentation.CacheSessionPresentation;
-import ca.etsmtl.gti525.vente.crud.PanierBeans;
+import ca.etsmtl.gti525.beans.paiement.PanierBeans;
+import ca.etsmtl.gti525.commun.CommunService;
 import ca.etsmtl.gti525.vente.crud.TableCrudPanier;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -34,10 +35,11 @@ public class PanierControleur implements Serializable {
         
     }
     
-    private int count;
+    private int count; 
     public void increment() {
+    try{ //si temps doit faire une exception personalisé pour ce cas.
         PanierBeans panier = null;
-        List<Representation> repSelect = getCacheSessionPresentation().getRepresentationSelected();
+        List<Representation> repSelect = this.getCacheSessionPresentation().getRepresentationSelected();
         
         for(Representation rep: repSelect) {  
          panier = new PanierBeans();   
@@ -46,11 +48,17 @@ public class PanierControleur implements Serializable {
          panier.setQuantity( repSelect.size() );
          panier.setVille( rep.getAdresse() );
          
-         this.getPanier().add(panier);
+         this.getPaniers().add(panier);
         }
         
-        log.info("Appel de la méthode increment(), valeur initial: "+count);
-        count++; //selon le nombre de biller  
+
+         count = count + repSelect.size(); //selon le nombre de biller (Attantion ! une N place pour une même représantation et compté 1)
+         this.cacheSessionPresentation.setDisablePanier(Boolean.TRUE);
+         log.info("Panier increment(), valeur initial: "+count);
+        }catch(Exception ex){
+          log.warn("Vous devais avoir sélectionnais des représentations pour faire des ajout dans le panier.");
+          CommunService.addWarn("ATTENTION !", "Vous devais avoir sélectionnais des représentations");
+        }
     }  
     
     
@@ -91,16 +99,15 @@ public class PanierControleur implements Serializable {
         this.cacheSessionPresentation = cacheSessionPresentation;
     }
 
-    public List<PanierBeans> getPanier() {
+    public List<PanierBeans> getPaniers() {
         if(paniers==null) paniers = new ArrayList<PanierBeans>();
         return paniers;
     }
 
-    public void setPanier(List<PanierBeans> panier) {
+    public void setPaniers(List<PanierBeans> paniers) {
         if(paniers==null) paniers = new ArrayList<PanierBeans>();
-        this.paniers = panier;
+        this.paniers = paniers;
     }
-    
-    
+        
         
 }

@@ -1,6 +1,7 @@
 package ca.etsmtl.gti525.presentation;
 
 import ca.etsmtl.gti525.entity.presentation.Representation;
+import ca.etsmtl.gti525.entity.presentation.Spectacle;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PreDestroy;
@@ -23,10 +24,14 @@ public class RepresentationControleur implements Serializable {
     private CacheSessionPresentation cacheSessionPresentation;
     
     
+    public void doVelidete() {
+        this.cacheSessionPresentation.setDisablePanier(Boolean.FALSE);
+    }
+    
     @PreDestroy
     public void destroy(){
-//        this.getCacheSessionPresentation().setSpectacleSelected(null); //au garbege collectore de faire la suite
-//        log.info("cacheSessionPresentation.Spectacle, a été remis a Zéro, info nb represantation selected: "+this.getCacheSessionPresentation().getRepresentationSelected().size()); // Après avoir récupéré les représentations sélectionner
+      this.getCacheSessionPresentation().setSpectacleSelected( new Spectacle()); //au garbege collectore de faire la suite
+      log.info("Nettoyage du cacheSessionPresentation"); // Après avoir récupéré les représentations sélectionner
     }
     
     private Representation selectedRep;
