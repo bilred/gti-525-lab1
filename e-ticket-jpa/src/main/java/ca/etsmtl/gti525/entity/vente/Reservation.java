@@ -1,5 +1,6 @@
 package ca.etsmtl.gti525.entity.vente;
 
+import ca.etsmtl.gti525.entity.audit.EntityBaseLogs;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
@@ -13,7 +14,7 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "VENTE_RESERVATION")
-public class Reservation implements Serializable {
+public class Reservation extends EntityBaseLogs implements Serializable {
     private static final long serialVersionUID = 1L;
     
     @Id
