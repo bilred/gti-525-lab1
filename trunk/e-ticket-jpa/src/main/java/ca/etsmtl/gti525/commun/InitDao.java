@@ -2,6 +2,7 @@ package ca.etsmtl.gti525.commun;
 
 import ca.etsmtl.gti525.dao.presentation.IDaoPresentation;
 import ca.etsmtl.gti525.dao.vente.IDaoVente;
+import gti525.paiement.IPaiementDAO;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -17,6 +18,7 @@ public abstract class InitDao {
     
     protected static IDaoPresentation stubsDaoPresentation;
     protected static IDaoVente stubsDaoVente;
+    protected static IPaiementDAO stubsDaoJpaPaiement;
 
         
     public void initPresentation() {
@@ -39,10 +41,9 @@ public abstract class InitDao {
         stubsDaoVente = (IDaoVente) ctx.getBean("stubsDaoVente");
     }
     
-//    public void initAOP(){
-//    	ApplicationContext appContext = new ClassPathXmlApplicationContext(new String[] {"Spring-Customer.xml"});
-//    	InitDao cust = (InitDao)appContext.getBean("customerServiceProxy");
-//              
-//    }
+    public void initStubsPaiement() {
+        ApplicationContext ctx = new ClassPathXmlApplicationContext(new String[] {"spring-config-data.xml"});
+        stubsDaoJpaPaiement = (IPaiementDAO) ctx.getBean("stubsDaoJpaPaiement");
+    }
     
 }

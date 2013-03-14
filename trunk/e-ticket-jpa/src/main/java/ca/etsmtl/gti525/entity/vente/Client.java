@@ -1,5 +1,6 @@
 package ca.etsmtl.gti525.entity.vente;
 
+import ca.etsmtl.gti525.entity.audit.EntityBaseLogs;
 import ca.etsmtl.gti525.entity.presentation.Billet;
 import java.io.Serializable;
 import java.util.List;
@@ -14,7 +15,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "VENTE_CLIENT")
-public class Client implements Serializable {
+public class Client extends EntityBaseLogs implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
