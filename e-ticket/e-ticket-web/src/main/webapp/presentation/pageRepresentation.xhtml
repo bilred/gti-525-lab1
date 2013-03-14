@@ -71,7 +71,7 @@
                 </p:column>
                 <f:facet name="footer">  
                     <p:commandButton id="multiViewButton" value="Visualiser" icon="ui-icon-search" oncomplete="billets.show()" update=":myform:displayMulti" /> <p:spacer width="40px"/> 
-                    <p:commandButton action="#{menuCtrl.doCart()}" value="Valider le choix" icon="ui-icon-check" /> <p:spacer width="40px"/> 
+                    <p:commandButton action="#{menuCtrl.doCart()}" actionListener="#{representationCtrl.doVelidete}" value="Valider le choix" icon="ui-icon-check" /> <p:spacer width="40px"/> 
                     <p:commandButton type="reset" value="CANCEL" icon="ui-icon-cancel" />
                 </f:facet>  
             </p:dataTable>

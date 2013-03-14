@@ -10,26 +10,20 @@
 
 
     <ui:define name="content">
-        <h:form id="formPanier" > 
+        <h:form id="formPanier" > <br/>
 
-            <h:panelGrid columns="2" cellpadding="5" style="text-decoration: #D20005">  
-                <h:outputText value="votre panier: " /> (selon le nombre de biller par représantation) 
-                <h:outputText id="txt_count" value="#{panierCtrl.count}" />        
-            </h:panelGrid>             
-
-
-
-            <p:panel header="Les representation sélectionnés"  rendered="true" toggleable="true" >       
+            <p:panel id="panelPanierCompte" header="Votre panier: #{panierCtrl.count}, ATTENTION ! (Selon le nombre de billet par représentation)"  rendered="true" toggleable="true" >       
                 <div style="overflow: auto">
-                    <p:dataTable id="tableVar" var="item" value="#{panierCtrl.cacheSessionPresentation.representationSelected}" widgetVar="LaTable" paginator="true" rows="10"
+                    <p:dataTable id="tableVar" var="item" value="#{panierCtrl.cacheSessionPresentation.representationSelected}" widgetVar="LaTable" paginator="true" rows="5"
                                  emptyMessage="Veuille sélectionner des représentations" rowKey="#{item}"
                                  editable="true" selectionMode="single"
                                  paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-                                 rowsPerPageTemplate="5,10,15,25,50,100" >                  
+                                 rowsPerPageTemplate="5,10,15,25" >                  
 
                         <f:facet name="header" >          
                             <table border="0" >
                                 <tr style="border-style: hidden;">
+                                    <td align="left" width="125px" style="white-space: nowrap;">Les representation sélectionnés</td>
                                     <td style="border-style: hidden;" align="left" width="20px" ><p:ajaxStatus style="width:16px;height:16px;" id="ajaxStatusPanel" > <f:facet name="start"><h:graphicImage value="/resources/etsmtl/img/ajaxLoader1.gif" alt="Patientez Pendant le chargement....." /> </f:facet> <f:facet name="complete"> <h:outputText value="" /> </f:facet> </p:ajaxStatus></td>
                                     <td align="right"><h:outputText value=" Recherche Globale " /><p:inputText id="globalFilter" onkeyup="LaTable.filter()" size="23" /> <p:watermark for="globalFilter" value="Mots clés..." /></td>
                                 </tr>
@@ -67,7 +61,7 @@
 
                         <f:facet name="footer"> 
                             <p:button outcome="pageCheckout" value="BUY" icon="ui-icon-suitcase" ></p:button> <p:spacer width="40px"/>
-                            <p:commandButton value="Ajouter au Panier" actionListener="#{panierCtrl.increment}" update=":formPanier:txt_count" icon="ui-icon-cart" /> <p:spacer width="40px"/> 
+                            <p:commandButton value="Ajouter au Panier ( #{panierCtrl.count} )" actionListener="#{panierCtrl.increment}" disabled="#{cacheSessionPresentationCtrl.disablePanier}" update="@this :formPanier:panelPanierCompte" icon="ui-icon-cart" /> <p:spacer width="40px"/> 
                             <p:button type="reset" value="CANCEL" icon="ui-icon-cancel" ></p:button>                   
                         </f:facet>
 
@@ -75,7 +69,7 @@
                 </div>
 
                 <etsmtl:dialogDetails id="mydialog" >
-                    
+
                 </etsmtl:dialogDetails>
 
 
