@@ -20,77 +20,74 @@ import org.apache.log4j.Logger;
  */
 @ManagedBean(name = "panierCtrl")
 @SessionScoped
-public class PanierControleur implements Serializable {    
-    private static final Logger log = Logger.getLogger(PanierControleur.class);
+public class PanierControleur implements Serializable {
 
+    private static final Logger log = Logger.getLogger(PanierControleur.class);
     //pour recuprér les represantation selectionner (et remplire le paniers)
     @ManagedProperty(value = "#{cacheSessionPresentationCtrl}")
-    private CacheSessionPresentation cacheSessionPresentation;    
-       
+    private CacheSessionPresentation cacheSessionPresentation;
     private TableCrud tableCrudPanier;
     private List<PanierBeans> paniers; //passer au proccese de paiment
-    
-    //private Representation representationDetail;
-    public void onDetailsEnregistrement(Representation item){
-        
-    }
-    
-    private int count; 
-    public void increment() {
-    try{ //si temps doit faire une exception personalisé pour ce cas.
-        PanierBeans panier = null;
-        List<Representation> repSelect = this.getCacheSessionPresentation().getRepresentationSelected();
-        
-        for(Representation rep: repSelect) {  
-         panier = new PanierBeans();   
-         panier.setNomSpectacle( rep.getNom() );
-         panier.setPrix( rep.getPrix() );
-         panier.setQuantity( repSelect.size() );
-         panier.setVille( rep.getAdresse() );
-         
-         this.getPaniers().add(panier);
-        }
-        
 
-         count = count + repSelect.size(); //selon le nombre de biller (Attantion ! une N place pour une même représantation et compté 1)
-         this.cacheSessionPresentation.setDisablePanier(Boolean.TRUE);
-         log.info("Panier increment(), valeur initial: "+count);
-        }catch(Exception ex){
-          log.warn("Vous devais avoir sélectionnais des représentations pour faire des ajout dans le panier.");
-          CommunService.addWarn("ATTENTION !", "Vous devais avoir sélectionnais des représentations");
+    //private Representation representationDetail;
+    public void onDetailsEnregistrement(Representation item) {
+    }
+    private int count;
+
+    public void increment() {
+        try { //si temps doit faire une exception personalisé pour ce cas.
+            PanierBeans panier = null;
+            List<Representation> repSelect = this.getCacheSessionPresentation().getRepresentationSelected();
+
+            for (Representation rep : repSelect) {
+                panier = new PanierBeans();
+                panier.setNomSpectacle(rep.getNom());
+                panier.setPrix(rep.getPrix());
+                panier.setQuantity(repSelect.size());
+                panier.setVille(rep.getAdresse());
+
+                this.getPaniers().add(panier);
+            }
+
+                count = count + repSelect.size(); //selon le nombre de biller (Attantion ! une N place pour une même représantation et compté 1)
+                this.cacheSessionPresentation.setDisablePanier(Boolean.TRUE);
+                log.info("Panier increment(), valeur initial: " + count);
+            
+        } catch (Exception ex) {
+            log.warn("Vous devais avoir sélectionnais des représentations pour faire des ajout dans le panier.");
+            CommunService.addWarn("ATTENTION !", "Vous devais avoir sélectionnais des représentations");
         }
-    }  
-    
-    
-    
+    }
+
     /**
      * Creates a new instance of PanierControleur
      */
     public PanierControleur() {
     }
-  
-    public int getCount() {  
-        return count;  
-    }  
-  
-    public void setCount(int count) {  
-        this.count = count;  
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
     }
 
     public TableCrud getTableCrudPanier() {
-        if(tableCrudPanier==null) {
-        this.tableCrudPanier = new TableCrudPanier(this); this.tableCrudPanier.doGetAllEnregistrement();
+        if (tableCrudPanier == null) {
+            this.tableCrudPanier = new TableCrudPanier(this);
+            this.tableCrudPanier.doGetAllEnregistrement();
         }
         return tableCrudPanier;
     }
 
     public void setTableCrudPanier(TableCrud tableCrudPanier) {
-        if(tableCrudPanier==null) this.tableCrudPanier = new TableCrudPanier(this);
+        if (tableCrudPanier == null) {
+            this.tableCrudPanier = new TableCrudPanier(this);
+        }
         this.tableCrudPanier = tableCrudPanier;
     }
 
-    
-    
     public CacheSessionPresentation getCacheSessionPresentation() {
         return cacheSessionPresentation;
     }
@@ -100,14 +97,16 @@ public class PanierControleur implements Serializable {
     }
 
     public List<PanierBeans> getPaniers() {
-        if(paniers==null) paniers = new ArrayList<PanierBeans>();
+        if (paniers == null) {
+            paniers = new ArrayList<PanierBeans>();
+        }
         return paniers;
     }
 
     public void setPaniers(List<PanierBeans> paniers) {
-        if(paniers==null) paniers = new ArrayList<PanierBeans>();
+        if (paniers == null) {
+            paniers = new ArrayList<PanierBeans>();
+        }
         this.paniers = paniers;
     }
-        
-        
 }
