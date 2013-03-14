@@ -6,7 +6,8 @@
     
     <!-- couches initialisation DATA -->
     <bean id="stubsDaoVente" class="ca.etsmtl.gti525.dao.vente.StubDaoVente" />
-    <bean id="stubsDaoPresentation" class="ca.etsmtl.gti525.dao.presentation.StubDaoPresentation" />     
+    <bean id="stubsDaoPresentation" class="ca.etsmtl.gti525.dao.presentation.StubDaoPresentation" />
+    <bean id="stubsDaoJpaPaiement" class="ca.etsmtl.gti525.dao.paiement.DaoJpaPaiement" />     
 
 
    <!-- Couche AOP pour gestion des logs -->  
