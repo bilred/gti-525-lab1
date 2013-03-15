@@ -105,8 +105,10 @@
                 <p:tab id="confirm" title="Confirmation">  
                     <p:panel header="Confirmation">  
 
-                        <h:panelGrid id="confirmation" columns="6">
-                        </h:panelGrid>  
+                        <h:panelGrid id="confirmation" columns="1">
+                            <etsmtl:outputLabel _id="infoNom" label="Last Name" valeur="#{processPaiementCtrl.client.nom}" />
+                            <etsmtl:outputLabel _id="ifoIConfVente" label="Bill ID" valeur="00#{(Math.random() * 50 + 1960)}" />    
+                        </h:panelGrid> <br/> 
 
                         <p:commandButton id="btnPayement" value="Paiement" disabled="#{cacheSessionPresentationCtrl.disablePaiement}" oncomplete="documentDialog.show()" icon="ui-icon-check" />
                         <p:commandButton value="Print" type="button" icon="ui-icon-print">  
