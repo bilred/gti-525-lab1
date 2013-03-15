@@ -1,11 +1,9 @@
 package ca.etsmtl.gti525.vente;
 
-import ca.etsmtl.gti525.commun.taglib.TableCrud;
 import ca.etsmtl.gti525.entity.presentation.Representation;
 import ca.etsmtl.gti525.presentation.CacheSessionPresentation;
 import ca.etsmtl.gti525.beans.paiement.PanierBeans;
 import ca.etsmtl.gti525.commun.CommunService;
-import ca.etsmtl.gti525.vente.crud.TableCrudPanier;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,14 +24,11 @@ public class PanierControleur implements Serializable {
     //pour recuprér les represantation selectionner (et remplire le paniers)
     @ManagedProperty(value = "#{cacheSessionPresentationCtrl}")
     private CacheSessionPresentation cacheSessionPresentation;
-    private TableCrud tableCrudPanier;
+    
     private List<PanierBeans> paniers; //passer au proccese de paiment
-
-    //private Representation representationDetail;
-    public void onDetailsEnregistrement(Representation item) {
-    }
+    
+    
     private int count;
-
     public void increment() {
         try { //si temps doit faire une exception personalisé pour ce cas.
             PanierBeans panier = null;
@@ -59,6 +54,9 @@ public class PanierControleur implements Serializable {
         }
     }
 
+    //private Representation representationDetail;
+    public void onDetailsEnregistrement(Representation item) {   }    
+    
     /**
      * Creates a new instance of PanierControleur
      */
@@ -71,21 +69,6 @@ public class PanierControleur implements Serializable {
 
     public void setCount(int count) {
         this.count = count;
-    }
-
-    public TableCrud getTableCrudPanier() {
-        if (tableCrudPanier == null) {
-            this.tableCrudPanier = new TableCrudPanier(this);
-            this.tableCrudPanier.doGetAllEnregistrement();
-        }
-        return tableCrudPanier;
-    }
-
-    public void setTableCrudPanier(TableCrud tableCrudPanier) {
-        if (tableCrudPanier == null) {
-            this.tableCrudPanier = new TableCrudPanier(this);
-        }
-        this.tableCrudPanier = tableCrudPanier;
     }
 
     public CacheSessionPresentation getCacheSessionPresentation() {

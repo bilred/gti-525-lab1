@@ -2,13 +2,11 @@ package ca.etsmtl.gti525.vente;
 
 import ca.etsmtl.gti525.commun.AbstractControleur;
 import ca.etsmtl.gti525.commun.CommunService;
-import ca.etsmtl.gti525.entity.presentation.Representation;
 import ca.etsmtl.gti525.entity.vente.CarteCredit;
 import ca.etsmtl.gti525.entity.vente.Client;
 import gti525.paiement.InformationsPaiementTO;
 import gti525.paiement.RequeteAuthorisationTO;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -30,8 +28,7 @@ public class ProcessPaiementControleur extends AbstractControleur implements Ser
     //pour recuprér les represantation selectionner (et remplire le panier)
     @ManagedProperty(value = "#{panierCtrl}")
     private PanierControleur panierCtrl;    
-    
-    
+      
     private Client client = new Client();
     private CarteCredit carteCredit = new CarteCredit();
  
@@ -59,8 +56,6 @@ public class ProcessPaiementControleur extends AbstractControleur implements Ser
     }  
       
   
-
-
     private boolean skip = false; 
     public String onFlowProcess(FlowEvent event) {  
         logger.info("Current wizard step:" + event.getOldStep());  
