@@ -23,43 +23,21 @@ public class RepresentationControleur implements Serializable {
     @ManagedProperty(value = "#{cacheSessionPresentationCtrl}")
     private CacheSessionPresentation cacheSessionPresentation;
     
+    @PreDestroy
+    public void destroy(){
+      this.getCacheSessionPresentation().setSpectacleSelected( new Spectacle()); //au garbege collectore de faire la suite
+      log.info("Nettoyage du cacheSessionPresentation"); // Après avoir récupéré les représentations sélectionner
+    }    
     
     public void doVelidete() {
         this.cacheSessionPresentation.setDisablePanier(Boolean.FALSE);
     }
     
-    @PreDestroy
-    public void destroy(){
-      this.getCacheSessionPresentation().setSpectacleSelected( new Spectacle()); //au garbege collectore de faire la suite
-      log.info("Nettoyage du cacheSessionPresentation"); // Après avoir récupéré les représentations sélectionner
-    }
-    
-    private Representation selectedRep;
-
-
-
-    public Representation getSelectedRep() {
-        return selectedRep;
-    }
-
-    public void setSelectedRep(Representation selectedRep) {
-        this.selectedRep = selectedRep;
-    }
-
     
     private List<Representation> representationsFiltrees;
 
     
     
-    
-    
-    public List<Representation> getRepresentationsFiltrees() {
-        return representationsFiltrees;
-    }
-
-    public void setRepresentationsFiltrees(List<Representation> representationsFiltrees) {
-        this.representationsFiltrees = representationsFiltrees;
-    }
     
     
     /**
@@ -74,5 +52,13 @@ public class RepresentationControleur implements Serializable {
     public void setCacheSessionPresentation(CacheSessionPresentation cacheSessionPresentation) {
         this.cacheSessionPresentation = cacheSessionPresentation;
     }
+    
+    public List<Representation> getRepresentationsFiltrees() {
+        return representationsFiltrees;
+    }
+
+    public void setRepresentationsFiltrees(List<Representation> representationsFiltrees) {
+        this.representationsFiltrees = representationsFiltrees;
+    }    
     
 }

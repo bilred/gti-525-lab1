@@ -1,10 +1,8 @@
 package ca.etsmtl.gti525.presentation;
 
 import ca.etsmtl.gti525.commun.MenuControleur;
-import ca.etsmtl.gti525.entity.presentation.Representation;
 import ca.etsmtl.gti525.entity.presentation.Spectacle;
 import java.io.Serializable;
-import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
@@ -28,19 +26,12 @@ public class SpectacleControleur implements Serializable {
     private CacheSessionPresentation cacheSessionPresentation;
     
 
-
-    
-
-    public String allerPageRep(List<Representation> rep) {
-        return "pageRepresentation?faces-redirect=true";
-    }
-
     public void onSelectionerOfEditer(Spectacle ss) {
-        //Mettre dans le CacheSessionPresentation
-        this.getCacheSessionPresentation().setSpectacleSelected(ss);
+        this.getCacheSessionPresentation().setSpectacleSelected(ss); //Mettre dans le CacheSessionPresentation
         log.info("Le spectacle "+ss.getNomSpectacle()+" a été sélectionner");
     }
 
+    
     /**
      * Creates a new instance of SpectacleControleur
      */
