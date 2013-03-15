@@ -33,7 +33,8 @@ public class PanierControleur implements Serializable {
         try { //si temps doit faire une exception personalisé pour ce cas.
             PanierBeans panier = null;
             List<Representation> repSelect = this.getCacheSessionPresentation().getRepresentationSelected();
-
+            if (repSelect.size()==0) throw new Exception();
+                  
             for (Representation rep : repSelect) {
                 panier = new PanierBeans();
                 panier.setNomSpectacle(rep.getNom());
