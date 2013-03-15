@@ -10,8 +10,8 @@
 
     <ui:define name="content">
         <br/><br/>
-        <h:form>
-            <p:wizard widgetVar="wiz" flowListener="#{processPaiementCtrl.onFlowProcess}" >
+        <h:form id="processusPaiment" >
+            <p:wizard id="flow" widgetVar="wiz" flowListener="#{processPaiementCtrl.onFlowProcess}" >
 
                 <p:tab id="tickets" title="Tickets">
                     <p:panel header="Checkout Your Tickets">
@@ -108,7 +108,7 @@
                         <h:panelGrid id="confirmation" columns="6">
                         </h:panelGrid>  
 
-                        <p:commandButton value="Payment" oncomplete="documentDialog.show()" icon="ui-icon-check" />
+                        <p:commandButton id="btnPayement" value="Paiement" disabled="#{cacheSessionPresentationCtrl.disablePaiement}" oncomplete="documentDialog.show()" icon="ui-icon-check" />
                         <p:commandButton value="Print" type="button" icon="ui-icon-print">  
                             <p:printer target="confirm" />  
                         </p:commandButton>
@@ -120,7 +120,7 @@
                             <br/><p:separator />
                             <div align="center" >
                                 <h:panelGrid columns="3" border="0">
-                                    <p:commandButton value="validate payment" global="false" oncomplete="documentDialog.hide()" actionListener="#{processPaiementCtrl.save}" icon="ui-icon-close" />
+                                    <p:commandButton value="Validation Paiement" global="false" oncomplete="documentDialog.hide()" actionListener="#{processPaiementCtrl.save}" update=":processusPaiment:btnPayement" icon="ui-icon-close" />
                                     <p:commandButton value="Annuler" global="false" oncomplete="documentDialog.hide()" icon="ui-icon-close" />
                                 </h:panelGrid>
                             </div>                            
