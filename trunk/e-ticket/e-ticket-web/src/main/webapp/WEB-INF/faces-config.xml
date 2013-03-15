@@ -21,4 +21,8 @@
         </resource-bundle>
     </application>
     
+    <factory>
+        <exception-handler-factory>ca.etsmtl.gti525.exception.ExceptionHandlerFactory</exception-handler-factory>
+    </factory>    
+    
 </faces-config>
