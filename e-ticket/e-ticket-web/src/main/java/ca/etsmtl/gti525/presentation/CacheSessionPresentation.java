@@ -22,6 +22,8 @@ public class CacheSessionPresentation implements Serializable {
     private List<Representation> representationSelected;
     
     private Boolean disablePanier = Boolean.FALSE;
+    private Boolean disablePaiement = Boolean.FALSE;
+    
 
     /**
      * Creates a new instance of CacheSessionPresentation
@@ -51,6 +53,14 @@ public class CacheSessionPresentation implements Serializable {
 
     public void setDisablePanier(Boolean disablePanier) {
         this.disablePanier = disablePanier;
+    }
+    
+    public Boolean getDisablePaiement() {
+        return disablePaiement;
+    }
+
+    public void setDisablePaiement(Boolean disablePaiement) {
+        this.disablePaiement = disablePaiement;
     }
     
 }

@@ -46,7 +46,8 @@ public class PanierControleur implements Serializable {
             }
 
                 count = count + repSelect.size(); //selon le nombre de biller (Attantion ! une N place pour une même représantation et compté 1)
-                this.cacheSessionPresentation.setDisablePanier(Boolean.TRUE);
+                this.cacheSessionPresentation.setDisablePanier(Boolean.TRUE); //Désactiver le panier (le réactivé si d'autre selection)
+                this.cacheSessionPresentation.setDisablePaiement(Boolean.FALSE); //Activer le le paiement
                 log.info("Panier increment(), valeur initial: " + count);
             
         } catch (Exception ex) {

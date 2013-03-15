@@ -7,7 +7,7 @@ import ca.etsmtl.gti525.entity.vente.Client;
 import gti525.paiement.InformationsPaiementTO;
 import gti525.paiement.RequeteAuthorisationTO;
 import java.io.Serializable;
-import java.util.logging.Logger;
+import org.apache.log4j.Logger;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.faces.bean.ManagedBean;
@@ -50,7 +50,8 @@ public class ProcessPaiementControleur extends AbstractControleur implements Ser
     }   
    
     public void save(ActionEvent actionEvent) {  
-        //TODO Persist Billet + Client + VENTE  
+        //TODO Persist Billet + Client + VENTE
+        this.panierCtrl.getCacheSessionPresentation().setDisablePaiement( Boolean.TRUE );
         CommunService.addInfo("Successful", "Merci Mr. :"+ client.getNom()+", pour votre payement");
         this.destroy();
     }  
@@ -121,6 +122,6 @@ public class ProcessPaiementControleur extends AbstractControleur implements Ser
 
     public void setSkip(boolean skip) {
         this.skip = skip;
-    }   
+    }
     
 }
