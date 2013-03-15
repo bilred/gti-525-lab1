@@ -2,7 +2,6 @@ package ca.etsmtl.gti525.batch.vente;
 
 import au.com.bytecode.opencsv.CSVReader;
 import ca.etsmtl.gti525.commun.InitDao;
-import ca.etsmtl.gti525.entity.vente.Adresse;
 import ca.etsmtl.gti525.entity.vente.Client;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -10,10 +9,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author benabid.aichouche
- */
+
 public class ClientBatch extends InitDao {
  static String currentDir =System.getProperty("user.dir");   
  private static final String CLIENT_FILE = currentDir + "\\src\\main\\java\\ca\\etsmtl\\gti525\\batch\\csv\\vente\\DataClient.csv";
