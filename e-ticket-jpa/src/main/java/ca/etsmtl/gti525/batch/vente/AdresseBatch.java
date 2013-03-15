@@ -9,10 +9,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author benabid.aichouche
- */
+
 public class AdresseBatch extends InitDao {
  static String currentDir =System.getProperty("user.dir");   
  private static final String ADRESSE_FILE = currentDir + "\\src\\main\\java\\ca\\etsmtl\\gti525\\batch\\csv\\vente\\DataAdresse.csv";
