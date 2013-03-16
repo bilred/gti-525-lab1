@@ -125,26 +125,225 @@ public class StubPresentation {
         art1.setNom("CHRISTOPHER OWENS ");
         art1.setLienPhoto("img_cw_art");
         art1.setDescription("Christopher Owens is an American singer, songwriter, and musician. He is best known as the frontman and songwriter for the now-disbanded indie rock band Girls");
+        spec1.setNomSpectacle("Tournée Canada 2013");
+        spec1.setDescription("This summer Canada is on fire with one of the best singers. Christopher Owens will ensure different concerts be in several palces : Montreal, Toronto, Quebec City and others");
+        spec1.setId(Long.MIN_VALUE);
+        spec1.setArtiste(art1);
+        List<Representation> sousListe1 = new ArrayList<Representation>();
+        for (int i =0; i<3; i++){
+            sousListe1.add(representations.get(i));
+                }
+        spec1.setRepresentations(sousListe1);
+                
+                        
+        spec2.setNomSpectacle("Tournée USA 2013");
+        spec2.setDescription("Even USA is his native contrey, Christpher would be glad to sing for the american people. You are waiting for this event ? your waiting will no more lasting. Here he come!");
+        spec2.setId(Long.MIN_VALUE);
+        spec2.setArtiste(art1);
+        List<Representation> sousListe2 = new ArrayList<Representation>();
+        for (int i =3; i<6; i++){
+            sousListe2.add(representations.get(i));
+                }
+        spec2.setRepresentations(sousListe2);
         
+        spec3.setNomSpectacle("Tournée Europe 2013");
+        spec3.setDescription("Christopher ensure concerts in europe every year since mroe than 5 years. This year will not be an exception. Are you living in Europe ? are you searching for some Fun ? Here he come! dont miss up the event");
+        spec3.setId(Long.MIN_VALUE);
+        spec3.setArtiste(art1);
+        List<Representation> sousListe3 = new ArrayList<Representation>();
+        for (int i =6; i<9; i++){
+            sousListe3.add(representations.get(i));
+                }
+        spec3.setRepresentations(sousListe3);
+        
+        
+        //--------------------------------------------------------
         art2.setNom("OMAR RODRIGUEZ LOPEZ GROUP ");
         art2.setLienPhoto("img_orlg_art");
-        art2.setDescription("he Omar Rodriguez Lopez Group is an American experimental rock band, and the main side project of Omar Rodríguez-López");
+        art2.setDescription("The Omar Rodriguez Lopez Group is an American experimental rock band, and the main side project of Omar Rodríguez-López");
+        
+        spec4.setNomSpectacle("Tournée Canada 2013");
+        spec4.setDescription("The Omar Rodriguez Lopez Group had planned more than 5 shows to expose allover the contrey. It is a good opportunity to live your dream.");
+        spec4.setId(Long.MIN_VALUE);
+        spec4.setArtiste(art2);
+        List<Representation> sousListe4 = new ArrayList<Representation>();
+        for (int i =9; i<12; i++){
+            sousListe4.add(representations.get(i));
+                }
+        spec4.setRepresentations(sousListe4);
+        
+        spec5.setNomSpectacle("Tournée USA 2013");
+        spec5.setDescription("The USA will be up-side down this year with the arrival of one of the best rock group : The Omar Rodriguez Lopez Group. Dont miss it up.");
+        spec5.setId(Long.MIN_VALUE);
+        spec5.setArtiste(art2);
+        List<Representation> sousListe5 = new ArrayList<Representation>();
+        for (int i =12; i<15; i++){
+            sousListe5.add(representations.get(i));
+                }
+        spec5.setRepresentations(sousListe5);
+        
+        spec6.setNomSpectacle("Tournée Europe 2013");
+        spec6.setDescription("You live in Europe ? We have a good news! Great opportunity for you this summer ! The Omar Rodriguez Lopez Group is coming to rock your days. Dont miss it up!");
+        spec6.setId(Long.MIN_VALUE);
+        spec6.setArtiste(art2);
+        List<Representation> sousListe6 = new ArrayList<Representation>();
+        for (int i =15; i<18; i++){
+            sousListe6.add(representations.get(i));
+                }
+        spec6.setRepresentations(sousListe6);
+        //---------------------------------------------------
+        
         
         art3.setNom("JOSH RITTER & THE ROYAL CITY BAND");
         art3.setLienPhoto("img_jr_art");
         art3.setDescription("Royal City were formed in 1999 at Jim Guthrie's house in downtown Guelph Ontario. The band was fronted by Aaron Riches, well known in the local all ages punk scene for having booked and opening up for Fugazi, his releases on DROG Records, and for being the subject of a Robert Munsch book as a child.");
         
+        spec7.setNomSpectacle("Tournée Canada 2013");
+        spec7.setDescription("Originaly form Canada, the Royal City group are glad to announce their several Concerts for this summer. Lot of surprises are waiting for you! ");
+        spec7.setId(Long.MIN_VALUE);
+        spec7.setArtiste(art3);
+        List<Representation> sousListe7 = new ArrayList<Representation>();
+        for (int i =18; i<21; i++){
+            sousListe7.add(representations.get(i));
+                }
+        spec7.setRepresentations(sousListe7);
+        
+        spec8.setNomSpectacle("Tournée USA 2013");
+        spec8.setDescription("The group will be in the united states for more than 2 weeks : in NewYork, LasVegas, Miami and more..");
+        spec8.setId(Long.MIN_VALUE);
+        spec8.setArtiste(art3);
+        List<Representation> sousListe8 = new ArrayList<Representation>();
+        for (int i =21; i<24; i++){
+            sousListe8.add(representations.get(i));
+                }
+        spec8.setRepresentations(sousListe8);
+        
+        spec9.setNomSpectacle("Tournée Europe 2013");
+        spec9.setDescription("One of the best rock group will come till you this summer to get out yoour stress. Are you ready ? yes you are ! ");
+        spec9.setId(Long.MIN_VALUE);
+        spec9.setArtiste(art3);
+        List<Representation> sousListe9 = new ArrayList<Representation>();
+        for (int i =24; i<27; i++){
+            sousListe9.add(representations.get(i));
+                }
+        spec9.setRepresentations(sousListe9);
+        
+        //--------------------------
+        
+        
         art4.setNom("WAKEY!WAKEY!");
         art4.setLienPhoto("img_ww_art");
         art4.setDescription("Wakey!Wakey! is an adult alternative pop group fronted by Michael Grubbs and based in Brooklyn, New York. Michael Grubbs is also known for his role as Grubbs on One Tree Hill, where the band's music has been featured.");
+        
+         
+        
+        spec10.setNomSpectacle("Tournée Canada 2013");
+        spec10.setDescription("The group will sing for Canada. WAKEY!WAKEY! for All. dont miss it up!");
+        spec10.setId(Long.MIN_VALUE);
+        spec10.setArtiste(art4);
+        List<Representation> sousListe10 = new ArrayList<Representation>();
+        for (int i =27; i<30; i++){
+            sousListe10.add(representations.get(i));
+                }
+        spec10.setRepresentations(sousListe10);
+        
+        spec11.setNomSpectacle("Tournée USA 2013");
+        spec11.setDescription("The united states rocks. Obama would dance for their coming. It isnt a surprise, it is the WAKEY!WAKEY! group");
+        spec11.setId(Long.MIN_VALUE);
+        spec11.setArtiste(art4);
+        List<Representation> sousListe11 = new ArrayList<Representation>();
+        for (int i =30; i<33; i++){
+            sousListe11.add(representations.get(i));
+                }
+        spec11.setRepresentations(sousListe11);
+        
+        spec12.setNomSpectacle("Tournée Europe 2013");
+        spec12.setDescription("You live in Europe ? We have a good news! Great opportunity for you this summer ! The WAKEY!WAKEY! are coming. Dont miss it up!");
+        spec12.setId(Long.MIN_VALUE);
+        spec12.setArtiste(art4);
+        List<Representation> sousListe12 = new ArrayList<Representation>();
+        for (int i =33; i<36; i++){
+            sousListe12.add(representations.get(i));
+                }
+        spec12.setRepresentations(sousListe12);
+        
+        
+        //----------------------------------------
+        
         
         art5.setNom("REVIVAL");
         art5.setLienPhoto("img_r_art");
         art5.setDescription("Chuck Ragan has just announced the line up and dates for the 2013 North American Revival Tour. Joining the Hot Water Music front man this time around will be Dave Hause of The Loved Ones, Tim McIlrath of Rise Against, Jenny O., Rocky Votolato and Jenny Owen Youngs with more artists to be announced. The tour kicks off March 15th in Corpus Christi, Texas. ");
         
+        
+         spec13.setNomSpectacle("Tournée Canada 2013");
+        spec13.setDescription("You wanna revive you dreams ?we have the solution : The revivals are coming till you this summer! Dont miss it up!");
+        spec13.setId(Long.MIN_VALUE);
+        spec13.setArtiste(art5);
+        List<Representation> sousListe13 = new ArrayList<Representation>();
+        for (int i =36; i<39; i++){
+            sousListe13.add(representations.get(i));
+                }
+        spec13.setRepresentations(sousListe13);
+        
+        spec14.setNomSpectacle("Tournée USA 2013");
+        spec14.setDescription("The REVIVAL wil be in the USA. Keep it secret and if you don't the places will disappears in one hour. It is not a surprise. it is The rivival");
+        spec14.setId(Long.MIN_VALUE);
+        spec14.setArtiste(art5);
+        List<Representation> sousListe14 = new ArrayList<Representation>();
+        for (int i =39; i<42; i++){
+            sousListe14.add(representations.get(i));
+                }
+        spec14.setRepresentations(sousListe14);
+        
+        spec15.setNomSpectacle("Tournée Europe 2013");
+        spec15.setDescription("the Rivival are in Europe this summer. Great event for a great continent");
+        spec15.setId(Long.MIN_VALUE);
+        spec15.setArtiste(art5);
+        List<Representation> sousListe15 = new ArrayList<Representation>();
+        for (int i =42; i<45; i++){
+            sousListe15.add(representations.get(i));
+                }
+        spec15.setRepresentations(sousListe15);
+        
+        //-----------------------
+        
+        
         art6.setNom("THE MACCABEES");
         art6.setLienPhoto("img_tm_art");
         art6.setDescription("The Maccabees are an indie rock band from Brighton, England. They have released three albums so far, Colour It In in 2007, with a follow-up, Wall of Arms, released on 4 May 2009");
+        
+        spec16.setNomSpectacle("Tournée Canada 2013");
+        spec16.setDescription("The Maccabeea are coming to show you rock in the indian way. you will be surprised! dont miss this event! ");
+        spec16.setId(Long.MIN_VALUE);
+        spec16.setArtiste(art6);
+        List<Representation> sousListe16 = new ArrayList<Representation>();
+        for (int i =45; i<48; i++){
+            sousListe16.add(representations.get(i));
+                }
+        spec16.setRepresentations(sousListe16);
+        
+        spec17.setNomSpectacle("Tournée USA 2013");
+        spec17.setDescription("It would be a great event with the coming of the The Maccabees group. be there to see a new way to how to rock your life.");
+        spec17.setId(Long.MIN_VALUE);
+        spec17.setArtiste(art6);
+        List<Representation> sousListe17 = new ArrayList<Representation>();
+        for (int i =48; i<51; i++){
+            sousListe17.add(representations.get(i));
+                }
+        spec17.setRepresentations(sousListe17);
+        
+        spec18.setNomSpectacle("Tournée Europe 2013");
+        spec18.setDescription("Europe knows The Maccabees and the Maccabees Europe. The rule would have an exception this summer! dont miss the event!");
+        spec18.setId(Long.MIN_VALUE);
+        spec18.setArtiste(art6);
+        List<Representation> sousListe18 = new ArrayList<Representation>();
+        for (int i =51; i<54; i++){
+            sousListe18.add(representations.get(i));
+                }
+        spec18.setRepresentations(sousListe18);
+        
+        //--------------------------------------------------
         
         
         sal1.setNom("Centre Bell");
@@ -182,6 +381,11 @@ public class StubPresentation {
         sal9.setNom("Opera");
         sal1.setNbPlace(30000);
         sal9.setAdresseSalle("Mouscou");
+        
+              
+       
+        
+        
         
         
         rep1.setId(Long.MIN_VALUE);
@@ -564,186 +768,7 @@ public class StubPresentation {
         representations.add(rep54);
      
         
-        spec1.setNomSpectacle("Tournée Canada 2013");
-        spec1.setDescription("Canada is on fire this year with the best singers : Sigur Ros, Muse, Rihanna, Beyonce,  Cristopher Owens, The Maccabees and others");
-        spec1.setId(Long.MIN_VALUE);
-        spec1.setArtiste(art1);
-        List<Representation> sousListe1 = new ArrayList<Representation>();
-        for (int i =0; i<3; i++){
-            sousListe1.add(representations.get(i));
-                }
-        spec1.setRepresentations(sousListe1);
-                
-                        
-        spec2.setNomSpectacle("Tournée USA 2013");
-        spec2.setDescription("This year, more than 200 shows exposed allover the contrey. It is a good opportunity to live your dream.");
-        spec2.setId(Long.MIN_VALUE);
-        spec2.setArtiste(art1);
-        List<Representation> sousListe2 = new ArrayList<Representation>();
-        for (int i =3; i<6; i++){
-            sousListe2.add(representations.get(i));
-                }
-        spec2.setRepresentations(sousListe2);
         
-        spec3.setNomSpectacle("Tournée Europe 2013");
-        spec3.setDescription("You live in Europe ? We have a good news! Great opportunity for you this summer ! Best shows are coming till you to get out your stress. Dont miss it up!");
-        spec3.setId(Long.MIN_VALUE);
-        spec3.setArtiste(art1);
-        List<Representation> sousListe3 = new ArrayList<Representation>();
-        for (int i =6; i<9; i++){
-            sousListe3.add(representations.get(i));
-                }
-        spec3.setRepresentations(sousListe3);
-        
-        spec4.setNomSpectacle("Tournée Canada 2013");
-        spec4.setDescription("Canada is on fire this year with the best singers : Sigur Ros, Muse, Rihanna, Beyonce,  Cristopher Owens, The Maccabees and others");
-        spec4.setId(Long.MIN_VALUE);
-        spec4.setArtiste(art2);
-        List<Representation> sousListe4 = new ArrayList<Representation>();
-        for (int i =9; i<12; i++){
-            sousListe4.add(representations.get(i));
-                }
-        spec4.setRepresentations(sousListe4);
-        
-        spec5.setNomSpectacle("Tournée USA 2013");
-        spec5.setDescription("This year, more than 200 shows exposed allover the contrey. It is a good opportunity to live your dream.");
-        spec5.setId(Long.MIN_VALUE);
-        spec5.setArtiste(art2);
-        List<Representation> sousListe5 = new ArrayList<Representation>();
-        for (int i =12; i<15; i++){
-            sousListe5.add(representations.get(i));
-                }
-        spec5.setRepresentations(sousListe5);
-        
-        spec6.setNomSpectacle("Tournée Europe 2013");
-        spec6.setDescription("You live in Europe ? We have a good news! Great opportunity for you this summer ! Best shows are coming till you to get out your stress. Dont miss it up!");
-        spec6.setId(Long.MIN_VALUE);
-        spec6.setArtiste(art2);
-        List<Representation> sousListe6 = new ArrayList<Representation>();
-        for (int i =15; i<18; i++){
-            sousListe6.add(representations.get(i));
-                }
-        spec6.setRepresentations(sousListe6);
-        
-        spec7.setNomSpectacle("Tournée Canada 2013");
-        spec7.setDescription("Canada is on fire this year with the best singers : Sigur Ros, Muse, Rihanna, Beyonce,  Cristopher Owens, The Maccabees and others");
-        spec7.setId(Long.MIN_VALUE);
-        spec7.setArtiste(art3);
-        List<Representation> sousListe7 = new ArrayList<Representation>();
-        for (int i =18; i<21; i++){
-            sousListe7.add(representations.get(i));
-                }
-        spec7.setRepresentations(sousListe7);
-        
-        spec8.setNomSpectacle("Tournée USA 2013");
-        spec8.setDescription("This year, more than 200 shows exposed allover the contrey. It is a good opportunity to live your dream.");
-        spec8.setId(Long.MIN_VALUE);
-        spec8.setArtiste(art3);
-        List<Representation> sousListe8 = new ArrayList<Representation>();
-        for (int i =21; i<24; i++){
-            sousListe8.add(representations.get(i));
-                }
-        spec8.setRepresentations(sousListe8);
-        
-        spec9.setNomSpectacle("Tournée Europe 2013");
-        spec9.setDescription("You live in Europe ? We have a good news! Great opportunity for you this summer ! Best shows are coming till you to get out your stress. Dont miss it up!");
-        spec9.setId(Long.MIN_VALUE);
-        spec9.setArtiste(art3);
-        List<Representation> sousListe9 = new ArrayList<Representation>();
-        for (int i =24; i<27; i++){
-            sousListe9.add(representations.get(i));
-                }
-        spec9.setRepresentations(sousListe9);
-        
-        spec10.setNomSpectacle("Tournée Canada 2013");
-        spec10.setDescription("Canada is on fire this year with the best singers : Sigur Ros, Muse, Rihanna, Beyonce,  Cristopher Owens, The Maccabees and others");
-        spec10.setId(Long.MIN_VALUE);
-        spec10.setArtiste(art4);
-        List<Representation> sousListe10 = new ArrayList<Representation>();
-        for (int i =27; i<30; i++){
-            sousListe10.add(representations.get(i));
-                }
-        spec10.setRepresentations(sousListe10);
-        
-        spec11.setNomSpectacle("Tournée USA 2013");
-        spec11.setDescription("This year, more than 200 shows exposed allover the contrey. It is a good opportunity to live your dream.");
-        spec11.setId(Long.MIN_VALUE);
-        spec11.setArtiste(art4);
-        List<Representation> sousListe11 = new ArrayList<Representation>();
-        for (int i =30; i<33; i++){
-            sousListe11.add(representations.get(i));
-                }
-        spec11.setRepresentations(sousListe11);
-        
-        spec12.setNomSpectacle("Tournée Europe 2013");
-        spec12.setDescription("You live in Europe ? We have a good news! Great opportunity for you this summer ! Best shows are coming till you to get out your stress. Dont miss it up!");
-        spec12.setId(Long.MIN_VALUE);
-        spec12.setArtiste(art4);
-        List<Representation> sousListe12 = new ArrayList<Representation>();
-        for (int i =33; i<36; i++){
-            sousListe12.add(representations.get(i));
-                }
-        spec12.setRepresentations(sousListe12);
-        
-        spec13.setNomSpectacle("Tournée Canada 2013");
-        spec13.setDescription("Canada is on fire this year with the best singers : Sigur Ros, Muse, Rihanna, Beyonce,  Cristopher Owens, The Maccabees and others");
-        spec13.setId(Long.MIN_VALUE);
-        spec13.setArtiste(art5);
-        List<Representation> sousListe13 = new ArrayList<Representation>();
-        for (int i =36; i<39; i++){
-            sousListe13.add(representations.get(i));
-                }
-        spec13.setRepresentations(sousListe13);
-        
-        spec14.setNomSpectacle("Tournée USA 2013");
-        spec14.setDescription("This year, more than 200 shows exposed allover the contrey. It is a good opportunity to live your dream.");
-        spec14.setId(Long.MIN_VALUE);
-        spec14.setArtiste(art5);
-        List<Representation> sousListe14 = new ArrayList<Representation>();
-        for (int i =39; i<42; i++){
-            sousListe14.add(representations.get(i));
-                }
-        spec14.setRepresentations(sousListe14);
-        
-        spec15.setNomSpectacle("Tournée Europe 2013");
-        spec15.setDescription("You live in Europe ? We have a good news! Great opportunity for you this summer ! Best shows are coming till you to get out your stress. Dont miss it up!");
-        spec15.setId(Long.MIN_VALUE);
-        spec15.setArtiste(art5);
-        List<Representation> sousListe15 = new ArrayList<Representation>();
-        for (int i =42; i<45; i++){
-            sousListe15.add(representations.get(i));
-                }
-        spec15.setRepresentations(sousListe15);
-        
-        spec16.setNomSpectacle("Tournée Canada 2013");
-        spec16.setDescription("Canada is on fire this year with the best singers : Sigur Ros, Muse, Rihanna, Beyonce,  Cristopher Owens, The Maccabees and others");
-        spec16.setId(Long.MIN_VALUE);
-        spec16.setArtiste(art6);
-        List<Representation> sousListe16 = new ArrayList<Representation>();
-        for (int i =45; i<48; i++){
-            sousListe16.add(representations.get(i));
-                }
-        spec16.setRepresentations(sousListe16);
-        
-        spec17.setNomSpectacle("Tournée USA 2013");
-        spec17.setDescription("This year, more than 200 shows exposed allover the contrey. It is a good opportunity to live your dream.");
-        spec17.setId(Long.MIN_VALUE);
-        spec17.setArtiste(art6);
-        List<Representation> sousListe17 = new ArrayList<Representation>();
-        for (int i =48; i<51; i++){
-            sousListe17.add(representations.get(i));
-                }
-        spec17.setRepresentations(sousListe17);
-        
-        spec18.setNomSpectacle("Tournée Europe 2013");
-        spec18.setDescription("You live in Europe ? We have a good news! Great opportunity for you this summer ! Best shows are coming till you to get out your stress. Dont miss it up!");
-        spec18.setId(Long.MIN_VALUE);
-        spec18.setArtiste(art6);
-        List<Representation> sousListe18 = new ArrayList<Representation>();
-        for (int i =51; i<54; i++){
-            sousListe18.add(representations.get(i));
-                }
-        spec18.setRepresentations(sousListe18);
         
         
         spectacles.add(spec1);
