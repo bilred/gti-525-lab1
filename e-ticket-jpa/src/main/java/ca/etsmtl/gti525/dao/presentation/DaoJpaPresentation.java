@@ -2,7 +2,9 @@ package ca.etsmtl.gti525.dao.presentation;
 
 import ca.etsmtl.gti525.entity.presentation.Artiste;
 import ca.etsmtl.gti525.entity.presentation.Representation;
+import ca.etsmtl.gti525.entity.presentation.Salle;
 import ca.etsmtl.gti525.entity.presentation.Spectacle;
+import ca.etsmtl.gti525.entity.vente.Reservation;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -49,7 +51,26 @@ public class DaoJpaPresentation implements IDaoPresentation, Serializable {
         return null;
     }
   }
-  
+
+     @Override
+    public Representation findRepresentation(int id) {
+         System.out.println("222");
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+     
+         @Override
+    public Salle findSalle(int id) {
+             System.out.println("222");
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public Reservation findReservation(int id) {
+        System.out.println("222");
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+
 
   // liste des créneaux horaires d'un médecin donné
   // medecin : le médecin
@@ -135,4 +156,8 @@ public class DaoJpaPresentation implements IDaoPresentation, Serializable {
 //      throw new RdvMedecinsException(th, 6);
 //    }
 //  }
+
+
+
+
 }

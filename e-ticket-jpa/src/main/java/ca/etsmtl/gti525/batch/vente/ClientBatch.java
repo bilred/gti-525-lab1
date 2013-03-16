@@ -47,7 +47,9 @@ public class ClientBatch extends InitDao {
                       client.setNomCivique(nextLine[NOM_CIVIQUE]);
                       client.setMail(nextLine[MAIL]);
                       client.setPhone(nextLine[PHONE]);
-                      
+                      //Cree l'Adreese.
+                      new AdresseBatch().initStubsVante(); //init stubsDaoVente
+                      stubsDaoVente.createClient(client); 
                       //System.out.println("----------"+();
                       client.setAdresse(  stubsDaoVente.findAdresse(Long.valueOf(nextLine[ID_ADRESSE])) );  
                               

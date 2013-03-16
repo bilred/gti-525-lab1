@@ -1,5 +1,6 @@
-package ca.etsmtl.gti525.batch.vente;
+package ca.etsmtl.gti525.batch.presentation;
 
+import ca.etsmtl.gti525.batch.vente.*;
 import au.com.bytecode.opencsv.CSVReader;
 import ca.etsmtl.gti525.commun.InitDao;
 import ca.etsmtl.gti525.entity.vente.Adresse;
@@ -10,7 +11,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-public class AdresseBatch extends InitDao {
+public class ArtisteBatch extends InitDao {
  static String currentDir =System.getProperty("user.dir");   
  private static final String ADRESSE_FILE = currentDir + "\\src\\main\\java\\ca\\etsmtl\\gti525\\batch\\csv\\vente\\DataAdresse.csv";
  
@@ -45,7 +46,7 @@ public class AdresseBatch extends InitDao {
                       adresse.setVille(nextLine[VILLE]);
                       adresse.setRegion(nextLine[REGION]);
                       adresse.setCodePostal(nextLine[CODE_POSTAL]);
-                      
+
                       //Cree l'Adreese.
                       new AdresseBatch().initStubsVante(); //init stubsDaoVente
                       stubsDaoVente.createAdresse(adresse);                    

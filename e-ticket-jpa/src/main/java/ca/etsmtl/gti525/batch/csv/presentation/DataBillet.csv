@@ -1,0 +1,4 @@
+ID;IS_VENDU;IS_LIVRAISON;ID_REPRESENTATION;ID_SALLE;ID_RESERVATION
+1;true;false;0;0;0
+2;true;false;1;1;0
+3;true;false;1;0;1
