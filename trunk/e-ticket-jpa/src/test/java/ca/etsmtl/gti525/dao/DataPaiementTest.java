@@ -1,6 +1,5 @@
 package ca.etsmtl.gti525.dao;
 
-import ca.etsmtl.gti525.dao.vente.IDaoVente;
 import gti525.paiement.IPaiementDAO;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -25,8 +24,8 @@ public class DataPaiementTest extends AbstractDaoJpaTest {
     @BeforeClass
     public static void init() {
         // instanciation couche [dao]
-        ApplicationContext ctx = new ClassPathXmlApplicationContext(new String[] {"spring-config-data.xml"});
-        stubsDaoJpaPaiement = (IPaiementDAO) ctx.getBean("stubsDaoJpaPaiement");        
+//        ApplicationContext ctx = new ClassPathXmlApplicationContext(new String[] {"spring-config-data.xml"});
+//        stubsDaoJpaPaiement = (IPaiementDAO) ctx.getBean("stubsDaoJpaPaiement");        
     }
 
     /**
