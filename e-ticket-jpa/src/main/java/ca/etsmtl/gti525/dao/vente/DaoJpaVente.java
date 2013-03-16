@@ -1,5 +1,9 @@
 package ca.etsmtl.gti525.dao.vente;
 
+import ca.etsmtl.gti525.entity.vente.Adresse;
+import ca.etsmtl.gti525.entity.vente.CarteCredit;
+import ca.etsmtl.gti525.entity.vente.Client;
+import ca.etsmtl.gti525.entity.vente.Reservation;
 import java.io.Serializable;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -7,11 +11,37 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 @Transactional
-public class DaoJpaVente {//implements IDaoVente, Serializable {
+public class DaoJpaVente implements IDaoVente, Serializable {
 
   private static final long serialVersionUID = 1L;
   @PersistenceContext
   private EntityManager em;
+  
+  
+    @Override
+    public void createClient(Client client) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public Adresse findAdresse(Long id) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public void createAdresse(Adresse adresse) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public void createCarteCredit(CarteCredit carteCredit) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public void createReservation(Reservation reservation) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }  
 
 //  // liste des clients
 //  @Override
@@ -129,4 +159,5 @@ public class DaoJpaVente {//implements IDaoVente, Serializable {
 //      throw new RdvMedecinsException(th, 6);
 //    }
 //  }
+
 }

@@ -1,6 +1,7 @@
 package ca.etsmtl.gti525.dao.presentation;
 
 import ca.etsmtl.gti525.entity.presentation.Artiste;
+import ca.etsmtl.gti525.entity.presentation.Billet;
 import ca.etsmtl.gti525.entity.presentation.Representation;
 import ca.etsmtl.gti525.entity.presentation.Salle;
 import ca.etsmtl.gti525.entity.presentation.Spectacle;
@@ -52,112 +53,44 @@ public class DaoJpaPresentation implements IDaoPresentation, Serializable {
     }
   }
 
-     @Override
-    public Representation findRepresentation(int id) {
-         System.out.println("222");
-        throw new UnsupportedOperationException("Not supported yet.");
+    @Override
+    public void createBillet(Billet billet) {
+        //throw new UnsupportedOperationException("Not supported yet."); 
     }
-     
-         @Override
-    public Salle findSalle(int id) {
-             System.out.println("222");
+
+    @Override
+    public Representation findRepresentation(Long id) {
+        return null;
+    }
+
+    @Override
+    public Salle findSalle(Long id) {
+        return null;
+    }
+
+    @Override
+    public Reservation findReservation(Long id) {
+        return null;
+    }
+
+    @Override
+    public void createRepresentation(Representation representation) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
-    public Reservation findReservation(int id) {
-        System.out.println("222");
+    public void createSalle(Salle salle) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    @Override
+    public void createSpectacle(Spectacle spectacle) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 
-
-  // liste des créneaux horaires d'un médecin donné
-  // medecin : le médecin
-//  public List<Creneau> getAllCreneaux(Medecin medecin) {
-//    try {
-//      return em.createQuery("select rc from Creneau rc join rc.medecin m where m.id=:idMedecin").setParameter("idMedecin", medecin.getId()).getResultList();
-//    } catch (Throwable th) {
-//      throw new RdvMedecinsException(th, 3);
-//    }
-//  }
-
-//  // liste des Rv d'un médecin donné, un jour donné
-//  // medecin : le médecin
-//  // jour : le jour
-//  public List<Rv> getRvMedecinJour(Medecin medecin, Date jour) {
-//    try {
-//      return em.createQuery("select rv from Rv rv join rv.creneau c join c.medecin m where m.id=:idMedecin and rv.jour=:jour").setParameter("idMedecin", medecin.getId()).setParameter("jour", jour).getResultList();
-//    } catch (Throwable th) {
-//      throw new RdvMedecinsException(th, 3);
-//    }
-//  }
-//
-//  // ajout d'un Rv
-//  // jour : jour du Rv
-//  // creneau : créneau horaire du Rv
-//  // client : client pour lequel est pris le Rv
-//  public Rv ajouterRv(Date jour, Creneau creneau, Client client) {
-//    try {
-//      Rv rv = new Rv(null, jour);
-//      rv.setClient(client);
-//      rv.setCreneau(creneau);
-//      System.out.println(String.format("avant persist : %s",rv));
-//      em.persist(rv);
-//      System.out.println(String.format("après persist : %s",rv));
-//      return rv;
-//    } catch (Throwable th) {
-//      throw new RdvMedecinsException(th, 4);
-//    }
-//  }
-//
-//  // suppression d'un Rv
-//  // rv : le Rv supprimé
-//  public void supprimerRv(Rv rv) {
-//    try {
-//      em.remove(em.merge(rv));
-//    } catch (Throwable th) {
-//      throw new RdvMedecinsException(th, 5);
-//    }
-//  }
-//
-//  // récupérer un client donné
-//  public Client getClientById(Long id) {
-//    try {
-//      return (Client) em.find(Client.class, id);
-//    } catch (Throwable th) {
-//      throw new RdvMedecinsException(th, 6);
-//    }
-//  }
-//
-//  // récupérer un médecin donné
-//  public Medecin getMedecinById(Long id) {
-//    try {
-//      return (Medecin) em.find(Medecin.class, id);
-//    } catch (Throwable th) {
-//      throw new RdvMedecinsException(th, 6);
-//    }
-//  }
-//
-//  // récupérer un Rv donné
-//  public Rv getRvById(Long id) {
-//    try {
-//      return (Rv) em.find(Rv.class, id);
-//    } catch (Throwable th) {
-//      throw new RdvMedecinsException(th, 6);
-//    }
-//  }
-//
-//  // récupérer un créneau donné
-//  public Creneau getCreneauById(Long id) {
-//    try {
-//      return (Creneau) em.find(Creneau.class, id);
-//    } catch (Throwable th) {
-//      throw new RdvMedecinsException(th, 6);
-//    }
-//  }
-
-
-
+    @Override
+    public void createArtist(Artiste artist) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 
 }

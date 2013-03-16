@@ -1,9 +1,10 @@
 package ca.etsmtl.gti525.batch.presentation;
 
 import au.com.bytecode.opencsv.CSVReader;
+import ca.etsmtl.gti525.batch.vente.*;
 import ca.etsmtl.gti525.commun.InitDao;
-import ca.etsmtl.gti525.entity.presentation.Artiste;
-import ca.etsmtl.gti525.entity.vente.Adresse;
+import ca.etsmtl.gti525.entity.presentation.Representation;
+import ca.etsmtl.gti525.entity.presentation.Salle;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -11,17 +12,15 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-public class ArtisteBatch extends InitDao {
+public class SalleBatch extends InitDao {
  static String currentDir =System.getProperty("user.dir");   
  private static final String ADRESSE_FILE = currentDir + "\\src\\main\\java\\ca\\etsmtl\\gti525\\batch\\csv\\vente\\DataAdresse.csv";
  
 
   private static final int ID = 0;
-  private static final int RUE = 1;
-  private static final int APPARTEMENT = 2;  
-  private static final int VILLE = 3;
-  private static final int REGION = 4;
-  private static final int CODE_POSTAL = 5;
+  private static final int NAME = 1;
+  private static final int NB_PLACE = 2;  
+  private static final int ADRESSE_SALLE = 3;
   
   /**
      * @param args the command line arguments
@@ -33,35 +32,35 @@ public class ArtisteBatch extends InitDao {
             CSVReader reader = null;        
             reader = new CSVReader(new FileReader(path), ';');
             String[] nextLine;
-            new ArtisteBatch().initStubsPresentation(); //init stubsDaoVente
+            new SalleBatch().initStubsPresentation(); //init
   
             int first = 0;
             while ((nextLine = reader.readNext()) != null ) {
                 if (first > 0) {
                      
-                      Artiste artist = new Artiste();
+                      Salle salle = new Salle();
                       
-                      //artist.setId( Long.valueOf(nextLine[ID]) ); //pour les listes ne mes pas ID (même pour la BD deja)
+                      //salle.setId( Long.valueOf(nextLine[ID]) ); //pour les listes ne mes pas ID (même pour la BD deja)
 
 
                       //Cree l'Adreese.
-                      stubsDaoPresentation.createArtist(artist);                    
+                      stubsDaoPresentation.createSalle(salle);                    
                 }
                 first++;
             }
 
           } catch (FileNotFoundException ex) {
-              Logger.getLogger(ArtisteBatch.class.getName()).log(Level.SEVERE, null, ex);
+              Logger.getLogger(AdresseBatch.class.getName()).log(Level.SEVERE, null, ex);
          }
             catch (IOException ex) {
-                Logger.getLogger(ArtisteBatch.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(AdresseBatch.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
     
   
     public static void main(String[] args) {        
-          ArtisteBatch.batch(ADRESSE_FILE);
+          AdresseBatch.batch(ADRESSE_FILE);
     }  
     
 }

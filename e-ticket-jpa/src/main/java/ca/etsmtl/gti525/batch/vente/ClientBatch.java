@@ -34,6 +34,7 @@ public class ClientBatch extends InitDao {
             CSVReader reader = null;        
             reader = new CSVReader(new FileReader(path), ';');
             String[] nextLine;
+            new AdresseBatch().initStubsVante(); //init stubsDaoVente
   
             int first = 0;
             while ((nextLine = reader.readNext()) != null ) {
@@ -47,24 +48,21 @@ public class ClientBatch extends InitDao {
                       client.setNomCivique(nextLine[NOM_CIVIQUE]);
                       client.setMail(nextLine[MAIL]);
                       client.setPhone(nextLine[PHONE]);
-                      //Cree l'Adreese.
-                      new AdresseBatch().initStubsVante(); //init stubsDaoVente
-                      stubsDaoVente.createClient(client); 
-                      //System.out.println("----------"+();
+                      
+                      //Cree l'Adreese. 
                       client.setAdresse(  stubsDaoVente.findAdresse(Long.valueOf(nextLine[ID_ADRESSE])) );  
                               
                       //Cree l'Adreese.
-                      new AdresseBatch().initStubsVante(); //init stubsDaoVente
                       stubsDaoVente.createClient(client);                    
                 }
                 first++;
             }
 
           } catch (FileNotFoundException ex) {
-              Logger.getLogger(AdresseBatch.class.getName()).log(Level.SEVERE, null, ex);
+              Logger.getLogger(ClientBatch.class.getName()).log(Level.SEVERE, null, ex);
          }
             catch (IOException ex) {
-                Logger.getLogger(AdresseBatch.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ClientBatch.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }

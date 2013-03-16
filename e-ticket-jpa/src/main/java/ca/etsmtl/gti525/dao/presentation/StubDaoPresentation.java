@@ -1,24 +1,25 @@
 package ca.etsmtl.gti525.dao.presentation;
 
+import ca.etsmtl.gti525.commun.StubDataBase;
 import ca.etsmtl.gti525.entity.presentation.Artiste;
+import ca.etsmtl.gti525.entity.presentation.Billet;
 import ca.etsmtl.gti525.entity.presentation.Representation;
 import ca.etsmtl.gti525.entity.presentation.Salle;
 import ca.etsmtl.gti525.entity.presentation.Spectacle;
 import ca.etsmtl.gti525.entity.vente.Reservation;
-import java.util.ArrayList;
+import java.io.Serializable;
 import java.util.List;
 
 /**
  *
  * @author REDOUANE
  */
-public class StubDaoPresentation implements IDaoPresentation{
+public class StubDaoPresentation implements IDaoPresentation, Serializable {
+
+    private StubDataBase stubDataBase = StubDataBase.getInstance();
+    private StubPresentation sp = new StubPresentation(); //a la dure
     
-        public List<Representation> representation = new ArrayList<Representation>();
-        public List<Salle> salle = new ArrayList<Salle>();
-        public List<Reservation> reservation = new ArrayList<Reservation>();
-        
-private StubPresentation sp = new StubPresentation();
+
     @Override
     public List<Artiste> getAllArtistes() {
         return sp.getArtistes();
@@ -35,24 +36,46 @@ private StubPresentation sp = new StubPresentation();
     }
 
     @Override
-    public Representation findRepresentation(int id) {
-        System.out.println("id= " +id);
-         int index = id - 1;
-         System.out.println(representation.get(index));
-        return representation.get(index);
+    public void createBillet(Billet billet) {
+        stubDataBase.billets.add(billet);
     }
-
-    @Override
-    public Salle findSalle(int id) {
-         int index = id - 1;
-        return salle.get(index);
-    }
-
-    @Override
-    public Reservation findReservation(int id) {
-        int index = id - 1;
-        return reservation.get(index);
-    }
-
     
+    @Override
+    public Representation findRepresentation(Long id) {
+        int index = id.intValue() - 1;
+        return stubDataBase.representations.get(index);
+    }
+
+    @Override
+    public Salle findSalle(Long id) {
+        int index = id.intValue() - 1;
+        return stubDataBase.salles.get(index);
+    }
+
+    @Override
+    public Reservation findReservation(Long id) {
+        int index = id.intValue() - 1;
+        return stubDataBase.reservations.get(index);
+    }
+
+    @Override
+    public void createRepresentation(Representation representation) {
+        stubDataBase.representations.add(representation);
+    }
+
+    @Override
+    public void createSalle(Salle salle) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public void createSpectacle(Spectacle spectacle) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public void createArtist(Artiste artist) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
 }
