@@ -13,7 +13,7 @@ import java.util.List;
  *
  * @author shonguiz
  */
-public class StubPresentation {
+public class StubPresentation { 
     private List<Spectacle> spectacles= new ArrayList<Spectacle>();
     private List<Representation> representations = new ArrayList<Representation>();
     private List<Artiste> artistes = new ArrayList<Artiste>();
