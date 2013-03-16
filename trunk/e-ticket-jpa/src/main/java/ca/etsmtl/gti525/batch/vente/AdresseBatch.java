@@ -32,6 +32,7 @@ public class AdresseBatch extends InitDao {
             CSVReader reader = null;        
             reader = new CSVReader(new FileReader(path), ';');
             String[] nextLine;
+            new AdresseBatch().initStubsVante(); //init stubsDaoVente
   
             int first = 0;
             while ((nextLine = reader.readNext()) != null ) {
@@ -47,7 +48,6 @@ public class AdresseBatch extends InitDao {
                       adresse.setCodePostal(nextLine[CODE_POSTAL]);
                       
                       //Cree l'Adreese.
-                      new AdresseBatch().initStubsVante(); //init stubsDaoVente
                       stubsDaoVente.createAdresse(adresse);                    
                 }
                 first++;

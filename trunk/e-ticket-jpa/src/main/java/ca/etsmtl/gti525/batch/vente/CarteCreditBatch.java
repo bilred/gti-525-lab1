@@ -1,9 +1,8 @@
-package ca.etsmtl.gti525.batch.presentation;
+package ca.etsmtl.gti525.batch.vente;
 
 import au.com.bytecode.opencsv.CSVReader;
 import ca.etsmtl.gti525.commun.InitDao;
-import ca.etsmtl.gti525.entity.presentation.Artiste;
-import ca.etsmtl.gti525.entity.vente.Adresse;
+import ca.etsmtl.gti525.entity.vente.CarteCredit;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -11,7 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-public class ArtisteBatch extends InitDao {
+public class CarteCreditBatch extends InitDao {
  static String currentDir =System.getProperty("user.dir");   
  private static final String ADRESSE_FILE = currentDir + "\\src\\main\\java\\ca\\etsmtl\\gti525\\batch\\csv\\vente\\DataAdresse.csv";
  
@@ -33,35 +32,34 @@ public class ArtisteBatch extends InitDao {
             CSVReader reader = null;        
             reader = new CSVReader(new FileReader(path), ';');
             String[] nextLine;
-            new ArtisteBatch().initStubsPresentation(); //init stubsDaoVente
+            new CarteCreditBatch().initStubsVante(); //init stubsDaoVente
   
             int first = 0;
             while ((nextLine = reader.readNext()) != null ) {
                 if (first > 0) {
                      
-                      Artiste artist = new Artiste();
+                      CarteCredit carteCredit = new CarteCredit();
                       
-                      //artist.setId( Long.valueOf(nextLine[ID]) ); //pour les listes ne mes pas ID (même pour la BD deja)
-
-
+                      carteCredit.setId( Long.valueOf(nextLine[ID]) ); //pour les listes ne mes pas ID (même pour la BD deja)
+                      
                       //Cree l'Adreese.
-                      stubsDaoPresentation.createArtist(artist);                    
+                      stubsDaoVente.createCarteCredit(carteCredit);                    
                 }
                 first++;
             }
 
           } catch (FileNotFoundException ex) {
-              Logger.getLogger(ArtisteBatch.class.getName()).log(Level.SEVERE, null, ex);
+              Logger.getLogger(AdresseBatch.class.getName()).log(Level.SEVERE, null, ex);
          }
             catch (IOException ex) {
-                Logger.getLogger(ArtisteBatch.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(AdresseBatch.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
     
   
     public static void main(String[] args) {        
-          ArtisteBatch.batch(ADRESSE_FILE);
+          CarteCreditBatch.batch(ADRESSE_FILE);
     }  
     
 }

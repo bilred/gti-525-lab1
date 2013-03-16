@@ -6,7 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -20,10 +19,10 @@ public class Salle implements Serializable {
     private Long code;
     @Column(name = "NAME")
     private String nom;
-    @Column(name = "NB_Place")
+    @Column(name = "NB_PLACE")
     private Integer nbPlace;
-    @Column(name = "ADRESSE_SALLE")
-    private String adresseSalle; //pas besoin d'etre d�composer.
+    @Column(name = "ADRESSE")
+    private String adresse; //pas besoin d'etre d�composer.
        
 
     
@@ -51,11 +50,12 @@ public class Salle implements Serializable {
         this.nbPlace = nbPlace;
     }
 
-    public String getAdresseSalle() {
-        return adresseSalle;
+    public String getAdresse() {
+        return adresse;
     }
 
-    public void setAdresseSalle(String adresseSalle) {
-        this.adresseSalle = adresseSalle;
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
     }
+
 }

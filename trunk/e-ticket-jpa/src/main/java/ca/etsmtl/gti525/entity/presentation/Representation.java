@@ -27,14 +27,6 @@ public class Representation implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     private Long id;
-    @Column(name = "NB_BILLETS_DISPO")
-    private Integer nbBilletsDispo;
-    @Column(name = "PRIX")
-    private Float prix;
-    @Column(name = "NOM")
-    private String nom;
-    @Column(name = "ADRESSE")
-    private String adresse;
     @Column(name = "DATE_DEBUT")
     @Temporal(TemporalType.DATE)
     private Date dateDebut;
@@ -43,8 +35,12 @@ public class Representation implements Serializable {
     private Date dateFin;
     @Column(name = "IS_ANNULATION")
     private Boolean isAnnulation;
-    @Column(name = "QTE_ SELECTED")
+    @Column(name = "NB_BILLETS_DISPO")
+    private Integer nbBilletsDispo;
+    @Column(name = "QTE_SELECTED")
     private Integer QTE;
+    @Column(name = "PRIX")
+    private Float prix;
     
     @OneToOne
     private Salle salle;
@@ -101,22 +97,6 @@ public class Representation implements Serializable {
     }
     public void setPrix(Float prix) {
         this.prix = prix;
-    }
-
-    public String getNom() {
-        return nom;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public String getAdresse() {
-        return adresse;
-    }
-
-    public void setAdresse(String adresse) {
-        this.adresse = adresse;
     }
 
     public Date getDateDebut() {
