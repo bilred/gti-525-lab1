@@ -1,9 +1,9 @@
 package ca.etsmtl.gti525.vente;
 
-import ca.etsmtl.gti525.entity.presentation.Representation;
-import ca.etsmtl.gti525.presentation.CacheSessionPresentation;
 import ca.etsmtl.gti525.beans.paiement.PanierBeans;
 import ca.etsmtl.gti525.commun.CommunService;
+import ca.etsmtl.gti525.entity.presentation.Representation;
+import ca.etsmtl.gti525.presentation.CacheSessionPresentation;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,11 +37,12 @@ public class PanierControleur implements Serializable {
                   
             for (Representation rep : repSelect) {
                 panier = new PanierBeans();
-                panier.setNomSpectacle(rep.getNom());
+                panier.setNomSpectacle(rep.getSpectacle().getNomSpectacle());
                 panier.setPrix(rep.getPrix());
                 panier.setQuantity(repSelect.size());
-                panier.setVille(rep.getAdresse());
-
+                panier.setVille(rep.getSalle().getAdresse());
+                //+ nombre de biller dispo
+                
                 this.getPaniers().add(panier);
             }
 
