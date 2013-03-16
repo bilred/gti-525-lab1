@@ -1,7 +1,7 @@
 package ca.etsmtl.gti525.commun;
 
 /**
- *  En peu faire du Polymorphisme (injecter du code en plus de l'existant)
+ *  On peut faire du Polymorphisme (injecter du code en plus de l'existant)
  * @author REDOUANE
  */
 public abstract class AbstractControleur extends InitDao{
