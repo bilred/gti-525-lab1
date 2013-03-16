@@ -25,8 +25,6 @@ public class Salle implements Serializable {
     @Column(name = "ADRESSE_SALLE")
     private String adresseSalle; //pas besoin d'etre d�composer.
        
-    @OneToOne
-    private Representation representation;
 
     
     public Long getCode() {
@@ -51,14 +49,6 @@ public class Salle implements Serializable {
 
     public void setNbPlace(Integer nbPlace) {
         this.nbPlace = nbPlace;
-    }
-
-    public Representation getRepresentation() {
-        return representation;
-    }
-
-    public void setRepresentation(Representation representation) {
-        this.representation = representation;
     }
 
     public String getAdresseSalle() {

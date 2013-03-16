@@ -43,23 +43,35 @@ public class Representation implements Serializable {
     private Date dateFin;
     @Column(name = "IS_ANNULATION")
     private Boolean isAnnulation;
-    private int QTE;
-
-    public int getQTE() {
-        return QTE;
-    }
-
-    public void setQTE(int QTE) {
-        this.QTE = QTE;
-    }
-    @OneToOne(mappedBy = "representation")
+    @Column(name = "QTE_ SELECTED")
+    private Integer QTE;
+    
+    @OneToOne
     private Salle salle;
 
-    
     @ManyToOne
     private Spectacle spectacle;
 
+    @OneToOne(mappedBy = "representation")
+    private Billet billet;
+    
 
+    public Integer getQTE() {
+        return QTE;
+    }
+
+    public void setQTE(Integer QTE) {
+        this.QTE = QTE;
+    }
+
+    public Billet getBillet() {
+        return billet;
+    }
+
+    public void setBillet(Billet billet) {
+        this.billet = billet;
+    }
+    
     public Long getId() {
         return id;
     }

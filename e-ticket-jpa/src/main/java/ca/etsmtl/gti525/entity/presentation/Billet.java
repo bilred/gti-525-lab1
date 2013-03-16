@@ -34,7 +34,7 @@ public class Billet implements Serializable {
     private Boolean isLivraison; //avec ou sans livraison.
     
     @OneToOne
-    private Salle salle; //pour avoir des information comme Num�ro de Siege.
+    private Salle salle; //pour avoir des information comme Num�ro de Siege.   
     @OneToOne
     private Representation representation; //en les recup�re d'ici : private Date dateDebut; private Date dateFin;
     @OneToOne
@@ -55,7 +55,6 @@ public class Billet implements Serializable {
     }
 
     public void setRepresentation(Representation representation) {
-        System.out.println("222");
         this.representation = representation;
     }
 
