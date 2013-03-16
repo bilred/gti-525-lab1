@@ -57,7 +57,10 @@
 
                         <p:column headerText="Détails" style="width: 40px;" >                                            
                             <p:commandButton id="actionOnDetails" disabled="false" global="false" update=":formPanier:mydialog:documentPanel" immediate="true" oncomplete="documentDialog.show()" actionListener="#{panierCtrl.onDetailsEnregistrement(item)}" title="Afficher Détails" icon="ui-icon-zoomin" />
-                        </p:column>                        
+                        </p:column>
+                        <p:column headerText="Supprimer" style="width: 40px;" >                                            
+                            <p:commandButton id="actionOnBillets" disabled="false" global="false" update=":formPanier:tableVar" immediate="true"  actionListener="#{panierCtrl.supprimerRep(item)}" title="Afficher Détails" icon="ui-icon-zoomin" />
+                        </p:column> 
 
                         <f:facet name="footer"> 
                             <p:button outcome="pageCheckout" value="BUY" icon="ui-icon-suitcase" ></p:button> <p:spacer width="40px"/>
