@@ -55,6 +55,7 @@ public class Billet implements Serializable {
     }
 
     public void setRepresentation(Representation representation) {
+        System.out.println("222");
         this.representation = representation;
     }
 

@@ -32,7 +32,7 @@ public abstract class InitDao {
     }
 
     public void initStubsPresentation() {
-        ApplicationContext ctx = new ClassPathXmlApplicationContext("spring-config-data.xml");
+        ApplicationContext ctx = new ClassPathXmlApplicationContext(new String[] {"spring-config-data.xml"});
         stubsDaoPresentation = (IDaoPresentation) ctx.getBean("stubsDaoPresentation");
     }
 
