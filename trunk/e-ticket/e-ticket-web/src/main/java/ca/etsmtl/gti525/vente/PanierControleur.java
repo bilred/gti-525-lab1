@@ -38,7 +38,7 @@ public class PanierControleur extends AbstractControleur implements Serializable
                   
             for (Representation rep : repSelect) {
                 panier = new PanierBeans();
-                panier.setNomSpectacle(rep.getSpectacle().getNomSpectacle());
+                //panier.setNomSpectacle(rep.getSpectacle().getNomSpectacle());
                 panier.setPrix(rep.getPrix());
                 panier.setQuantity(repSelect.size());
                 panier.setVille(rep.getSalle().getAdresse());
