@@ -165,40 +165,40 @@ public class StubPresentation {
         
         
         sal1.setNom("Centre Bell");
-        sal1.setAdresseSalle("Montréal");
+        sal1.setAdresse("Montréal");
         sal1.setNbPlace(30000);
         
         sal2.setNom("Ontario Hall");
-        sal2.setAdresseSalle("Ontario");
+        sal2.setAdresse("Ontario");
         sal2.setNbPlace(30000);
         
         sal3.setNom("Vancouver Mega-Center");
-        sal3.setAdresseSalle("Vancouver");
+        sal3.setAdresse("Vancouver");
         sal3.setNbPlace(30000);
         
         sal4.setNom("The World");
-        sal4.setAdresseSalle("New York");
+        sal4.setAdresse("New York");
         sal1.setNbPlace(60000);
         
         sal5.setNom("Capitol");
-        sal5.setAdresseSalle("Washington");
+        sal5.setAdresse("Washington");
         sal1.setNbPlace(30000);
         
         sal6.setNom("The Heaven");
-        sal6.setAdresseSalle("San Fransisco");
+        sal6.setAdresse("San Fransisco");
         sal1.setNbPlace(40000);
         
         sal7.setNom("Zenith");
-        sal7.setAdresseSalle("Paris");
+        sal7.setAdresse("Paris");
         sal1.setNbPlace(60000);
         
         sal8.setNom("Berghain");
-        sal8.setAdresseSalle("Berlin");
+        sal8.setAdresse("Berlin");
         sal1.setNbPlace(5000);
         
         sal9.setNom("Opera");
         sal1.setNbPlace(30000);
-        sal9.setAdresseSalle("Mouscou");
+        sal9.setAdresse("Mouscou");
         
 // ************** Represenattion *************
         long id =1;
