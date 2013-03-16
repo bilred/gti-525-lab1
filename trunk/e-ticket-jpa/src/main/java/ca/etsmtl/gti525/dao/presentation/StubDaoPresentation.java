@@ -57,7 +57,6 @@ public class StubDaoPresentation implements IDaoPresentation, Serializable {
         int index = id.intValue() - 1;
         return stubDataBase.reservations.get(index);
     }
-
     @Override
     public void createRepresentation(Representation representation) {
         stubDataBase.representations.add(representation);
@@ -77,5 +76,9 @@ public class StubDaoPresentation implements IDaoPresentation, Serializable {
     public void createArtist(Artiste artist) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
+     public Representation findRepresentationByID(long id){
+        int index = (int)id -1;
+        return this.sp.getRepresentations().get(index);
+     }
 
 }

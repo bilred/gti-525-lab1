@@ -92,5 +92,9 @@ public class DaoJpaPresentation implements IDaoPresentation, Serializable {
     public void createArtist(Artiste artist) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
+     @Override
+    public Representation findRepresentationByID(long id) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 
 }
