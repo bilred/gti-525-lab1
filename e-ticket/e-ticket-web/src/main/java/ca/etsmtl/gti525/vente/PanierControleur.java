@@ -1,6 +1,7 @@
 package ca.etsmtl.gti525.vente;
 
 import ca.etsmtl.gti525.beans.paiement.PanierBeans;
+import ca.etsmtl.gti525.commun.AbstractControleur;
 import ca.etsmtl.gti525.commun.CommunService;
 import ca.etsmtl.gti525.entity.presentation.Representation;
 import ca.etsmtl.gti525.presentation.CacheSessionPresentation;
@@ -18,7 +19,7 @@ import org.apache.log4j.Logger;
  */
 @ManagedBean(name = "panierCtrl")
 @SessionScoped
-public class PanierControleur implements Serializable {
+public class PanierControleur extends AbstractControleur implements Serializable {
 
     private static final Logger log = Logger.getLogger(PanierControleur.class);
     //pour recuprér les represantation selectionner (et remplire le paniers)
@@ -58,7 +59,13 @@ public class PanierControleur implements Serializable {
     }
 
     //private Representation representationDetail;
-    public void onDetailsEnregistrement(Representation item) {   }    
+    public void onDetailsEnregistrement(Representation item) {   }  
+    //méthode supprimant une rep/billets
+    public void supprimerRep (Representation item){
+       //Representation rechRep = InitDao.stubsDaoPresentation.findRepresentationByID(item.getId());
+        int index = item.getId().intValue()-1;
+       this.cacheSessionPresentation.getRepresentationSelected().remove(index);
+    }
     
     /**
      * Creates a new instance of PanierControleur
