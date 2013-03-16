@@ -25,7 +25,7 @@ public class RepresentationControleur implements Serializable {
     
     @PreDestroy
     public void destroy(){
-      this.getCacheSessionPresentation().setSpectacleSelected( new Spectacle()); //au garbege collectore de faire la suite
+      //this.getCacheSessionPresentation().setSpectacleSelected( new Spectacle()); //au garbege collectore de faire la suite
       log.info("Nettoyage du cacheSessionPresentation"); // Après avoir récupéré les représentations sélectionner
     }    
     

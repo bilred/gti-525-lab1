@@ -31,20 +31,20 @@
                         </f:facet>
 
                         <!--<composite:insertChildren id="colonneTableCrud" />-->
-                        <p:column headerText="Icon Artiste" filterBy="#{item.spectacle.artiste.lienPhoto}" sortBy="#{item.spectacle.artiste.lienPhoto}" >
-                            <h:outputLabel value="#{item.spectacle.artiste.lienPhoto}"  />  
+                        <p:column headerText="Artiste" filterBy="#{panierCtrl.cacheSessionPresentation.spectacleSelected.artiste.nom}" sortBy="#{panierCtrl.cacheSessionPresentation.spectacleSelected.artiste.lienPhoto}" >
+                            <h:outputLabel value="#{panierCtrl.cacheSessionPresentation.spectacleSelected.artiste.nom}"  />
                         </p:column>
 
                         <p:column headerText="Quantity"  >
-                            <h:outputLabel value="1"  />  
+                            <h:outputLabel value="#{item.QTE}"  /> 
                         </p:column>
 
-                        <p:column headerText="Show" filterBy="#{item.spectacle.nomSpectacle}" sortBy="#{item.spectacle.nomSpectacle}" >
-                            <h:outputLabel value="#{item.spectacle.nomSpectacle}"  />  
+                        <p:column headerText="Show" filterBy="#{panierCtrl.cacheSessionPresentation.spectacleSelected.nomSpectacle}" sortBy="#{panierCtrl.cacheSessionPresentation.spectacle.nomSpectacle}" >
+                            <h:outputLabel value="#{panierCtrl.cacheSessionPresentation.spectacleSelected.nomSpectacle}"  />  
                         </p:column>
 
-                        <p:column headerText="Town" filterBy="#{item.adresse}" sortBy="#{item.adresse}" >
-                            <h:outputLabel value="#{item.adresse}"  />  
+                        <p:column headerText="Town" filterBy="#{item.salle.adresseSalle}" sortBy="#{item.adresse}" >
+                            <h:outputLabel value="#{item.salle.adresseSalle}"  />  
                         </p:column>
 
                         <p:column headerText="Date" filterBy="#{item.dateDebut}" sortBy="#{item.dateDebut}" >
