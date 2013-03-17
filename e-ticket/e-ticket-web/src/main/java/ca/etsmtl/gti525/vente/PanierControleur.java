@@ -41,7 +41,9 @@ public class PanierControleur extends AbstractControleur implements Serializable
             if (repSelect.size()==0) throw new Exception();
                   
             for (int i=0 ; i < repSelect.size() ; i++) {
+                repSelect.get(i).setNbBilletsDispo(repSelect.get(i).getNbBilletsDispo()-repSelect.get(i).getQTE());
                 panier = new PanierBeans();
+                panier.setId(repSelect.get(i).getId().intValue());
                 panier.setNomSpectacle(specSelec.getNomSpectacle());
                 panier.setPrix(repSelect.get(i).getPrix());
                 panier.setQuantity(repSelect.get(i).getQTE());
@@ -78,6 +80,19 @@ public class PanierControleur extends AbstractControleur implements Serializable
      * Creates a new instance of PanierControleur
      */
     public PanierControleur() {
+    }
+    public void supprimerBillet (PanierBeans pan){
+        
+        List<Representation> repSelect = this.getCacheSessionPresentation().getRepresentationSelected();
+        for(int i = 0; i<repSelect.size();i++){
+            
+          if (repSelect.get(i).getId()== pan.getId()) {
+              repSelect.get(i).setNbBilletsDispo(repSelect.get(i).getNbBilletsDispo()+ pan.getQuantity());
+          }
+              
+        }
+        this.paniers.remove(pan);
+        
     }
 
     public int getCount() {
