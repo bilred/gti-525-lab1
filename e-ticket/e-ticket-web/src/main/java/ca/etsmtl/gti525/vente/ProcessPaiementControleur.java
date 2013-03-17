@@ -29,6 +29,8 @@ public class ProcessPaiementControleur extends AbstractControleur implements Ser
     @ManagedProperty(value = "#{panierCtrl}")
     private PanierControleur panierCtrl;    
       
+    private Boolean disableInfoPaiment = Boolean.FALSE;
+    
     private Client client = new Client();
     private CarteCredit carteCredit = new CarteCredit();
  
@@ -41,7 +43,7 @@ public class ProcessPaiementControleur extends AbstractControleur implements Ser
     @PreDestroy
     public void destroy(){
       this.setCarteCredit(new CarteCredit());
-      this.setClient( new Client());
+      //this.setClient( new Client());
       this.panierCtrl.getCacheSessionPresentation().setRepresentationSelected( null );
       this.panierCtrl.setPaniers( null );
       this.getPanierCtrl().getCacheSessionPresentation().setDisablePanier(Boolean.FALSE);
@@ -56,6 +58,8 @@ public class ProcessPaiementControleur extends AbstractControleur implements Ser
         RequeteAuthorisationTO requeteAuth = new RequeteAuthorisationTO(); requeteAuth.setApi_key("myKeys"); //...
         //ReponseSystemePaiementTO reponseSystemePaiementTO = InitDao.stubsDaoJpaPaiement.approuverTransaction(requeteAuth);
         //reponseSystemePaiementTO
+        
+        this.disableInfoPaiment = Boolean.TRUE;
         CommunService.addInfo("Succes", "Méthode «approuverTransaction();»");        
         CommunService.addInfo("Successful", "Merci Mr. :"+ client.getNom()+", pour votre payement");
         this.destroy();
@@ -128,5 +132,10 @@ public class ProcessPaiementControleur extends AbstractControleur implements Ser
     public void setSkip(boolean skip) {
         this.skip = skip;
     }
+
+    public Boolean getDisableInfoPaiment() {
+        return disableInfoPaiment;
+    }
+        
     
 }
