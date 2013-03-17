@@ -30,7 +30,7 @@ public class StubDataBase {
 
     private StubDataBase() {
      //lancement des données
-       // InitApplicationBatchs.main(null);
+//     InitApplicationBatchs.main(null);
     }
     
     public static StubDataBase getInstance() {
