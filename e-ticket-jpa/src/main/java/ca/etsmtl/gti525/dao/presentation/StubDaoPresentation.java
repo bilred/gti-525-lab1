@@ -77,8 +77,10 @@ public class StubDaoPresentation implements IDaoPresentation, Serializable {
         throw new UnsupportedOperationException("Not supported yet.");
     }
      public Representation findRepresentationByID(long id){
-        int index = (int)id -1;
-        return this.sp.getRepresentations().get(index);
+        /*int index = (int)id ;
+        return this.sp.getRepresentations().get(index);*/
+          
+         return (new Representation()) ;
      }
 
 }
