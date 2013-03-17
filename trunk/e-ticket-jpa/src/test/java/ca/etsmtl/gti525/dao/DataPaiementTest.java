@@ -24,8 +24,8 @@ public class DataPaiementTest extends AbstractDaoJpaTest {
     @BeforeClass
     public static void init() {
         // instanciation couche [dao]
-//        ApplicationContext ctx = new ClassPathXmlApplicationContext(new String[] {"spring-config-data.xml"});
-//        stubsDaoJpaPaiement = (IPaiementDAO) ctx.getBean("stubsDaoJpaPaiement");        
+        ApplicationContext ctx = new ClassPathXmlApplicationContext(new String[] {"spring-config-data.xml"});
+        stubsDaoJpaPaiement = (IPaiementDAO) ctx.getBean("stubsDaoJpaPaiement");        
     }
 
     /**
