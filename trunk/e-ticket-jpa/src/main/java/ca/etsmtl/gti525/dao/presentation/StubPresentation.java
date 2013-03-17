@@ -205,6 +205,7 @@ public class StubPresentation {
         rep1.setId(id);
         rep1.setId(Long.MIN_VALUE);
         rep1.setPrix(60F);
+        rep1.setNbBilletsDispo(100);
         rep1.setDateDebut(new Date());
         rep1.setSalle(sal1);
 
@@ -212,370 +213,423 @@ public class StubPresentation {
         id++;
         
         rep2.setId(id);
-        rep2.setPrix(60F);
+        rep2.setPrix(60F);        
+        rep2.setNbBilletsDispo(100);
         rep2.setDateDebut(new Date());
         rep2.setSalle(sal2);
         representations.add(rep2);
         id++;
         
         rep3.setId(id);
-        rep3.setPrix(60F);
+        rep3.setPrix(60F);      
+        rep3.setNbBilletsDispo(100);
         rep3.setDateDebut(new Date());
         rep3.setSalle(sal3);
         representations.add(rep3);
         id++;
         
         rep4.setId(id);
-        rep4.setPrix(60F);
+        rep4.setPrix(60F);     
+        rep4.setNbBilletsDispo(100);
         rep4.setDateDebut(new Date());
         rep4.setSalle(sal4);
         representations.add(rep4);
         id++;
         
         rep5.setId(id);
-        rep5.setPrix(60F);
+        rep5.setPrix(60F);      
+        rep5.setNbBilletsDispo(100);
         rep5.setDateDebut(new Date());
         rep5.setSalle(sal5);
         representations.add(rep5);
         id++;
         
         rep6.setId(id);
-        rep6.setPrix(60F);
+        rep6.setPrix(60F);      
+        rep6.setNbBilletsDispo(100);
         rep6.setDateDebut(new Date());
         rep6.setSalle(sal6);
         representations.add(rep6);
         id++;
         
         rep7.setId(id);
-        rep7.setPrix(60F);
+        rep7.setPrix(60F);      
+        rep7.setNbBilletsDispo(100);
         rep7.setDateDebut(new Date());
         rep7.setSalle(sal7);
         representations.add(rep7);
         id++;
         
         rep8.setId(id);
-        rep8.setPrix(60F);
+        rep8.setPrix(60F);     
+        rep8.setNbBilletsDispo(100);
         rep8.setDateDebut(new Date());
         rep8.setSalle(sal8);
         representations.add(rep8);
         id++;
         
         rep9.setId(id);
-        rep9.setPrix(60F);
+        rep9.setPrix(60F);      
+        rep9.setNbBilletsDispo(100);
         rep9.setDateDebut(new Date());
         rep9.setSalle(sal9);
         representations.add(rep9);
         id++;
         
         rep10.setId(id);
-        rep10.setPrix(60F);
+        rep10.setPrix(60F);    
+        rep10.setNbBilletsDispo(100);
         rep10.setDateDebut(new Date());
         rep10.setSalle(sal1);
         representations.add(rep10);
         id++;
         
         rep11.setId(id);
-        rep11.setPrix(60F);
+        rep11.setPrix(60F);     
+        rep11.setNbBilletsDispo(100);
         rep11.setDateDebut(new Date());
         rep11.setSalle(sal2);
         representations.add(rep11);
         id++;
         
         rep12.setId(id);
-        rep12.setPrix(60F);
+        rep12.setPrix(60F);     
+        rep12.setNbBilletsDispo(100);
         rep12.setDateDebut(new Date());
         rep12.setSalle(sal3);
         representations.add(rep12);
         id++;
         
         rep13.setId(id);
-        rep13.setPrix(60F);
+        rep13.setPrix(60F);     
+        rep13.setNbBilletsDispo(100);
         rep13.setDateDebut(new Date());
         rep13.setSalle(sal4);
         representations.add(rep13);
         id++;
         
         rep14.setId(id);
-        rep14.setPrix(60F);
+        rep14.setPrix(60F);      
+        rep14.setNbBilletsDispo(100);
         rep14.setDateDebut(new Date());
         rep14.setSalle(sal5);
         representations.add(rep14);
         id++;
         
         rep15.setId(id);
-        rep15.setPrix(60F);
+        rep15.setPrix(60F);       
+        rep15.setNbBilletsDispo(100);
         rep15.setDateDebut(new Date());
         rep15.setSalle(sal6);
         representations.add(rep15);
         id++;
         
         rep16.setId(id);
-        rep16.setPrix(60F);
+        rep16.setPrix(60F);      
+        rep16.setNbBilletsDispo(100);
         rep16.setDateDebut(new Date());
         rep16.setSalle(sal7);
         representations.add(rep16);
         id++;
         
         rep17.setId(id);
-        rep17.setPrix(60F);
+        rep17.setPrix(60F);     
+        rep17.setNbBilletsDispo(100);
         rep17.setDateDebut(new Date());
         rep17.setSalle(sal8);
         representations.add(rep17);
         id++;
         
         rep18.setId(id);
-        rep18.setPrix(60F);
+        rep18.setPrix(60F);     
+        rep18.setNbBilletsDispo(100);
         rep18.setDateDebut(new Date());
         rep18.setSalle(sal9);
         representations.add(rep18);
         id++;
         
         rep19.setId(id);
-        rep19.setPrix(60F);
+        rep19.setPrix(60F);       
+        rep19.setNbBilletsDispo(100);
         rep19.setDateDebut(new Date());
         rep19.setSalle(sal1);
         representations.add(rep19);
         id++;
         
         rep20.setId(id);
-        rep20.setPrix(60F);
+        rep20.setPrix(60F);      
+        rep20.setNbBilletsDispo(100);
         rep20.setDateDebut(new Date());
         rep20.setSalle(sal2);
         representations.add(rep20);
         id++;
         
         rep21.setId(id);
-        rep21.setPrix(60F);
+        rep21.setPrix(60F);      
+        rep21.setNbBilletsDispo(100);
         rep21.setDateDebut(new Date());
         rep21.setSalle(sal3);
         representations.add(rep21);
         id++;
         
         rep22.setId(id);
-        rep22.setPrix(60F);
+        rep22.setPrix(60F);       
+        rep22.setNbBilletsDispo(100);
         rep22.setDateDebut(new Date());
         rep22.setSalle(sal4);
         representations.add(rep22);
         id++;
         
         rep23.setId(id);
-        rep23.setPrix(60F);
+        rep23.setPrix(60F);      
+        rep23.setNbBilletsDispo(100);
         rep23.setDateDebut(new Date());
         rep23.setSalle(sal5);
         representations.add(rep23);
         id++;
         
         rep24.setId(id);
-        rep24.setPrix(60F);
+        rep24.setPrix(60F);     
+        rep24.setNbBilletsDispo(100);
         rep24.setDateDebut(new Date());
         rep25.setSalle(sal6);
         representations.add(rep24);
         id++;
         
         rep25.setId(id);
-        rep25.setPrix(60F);
+        rep25.setPrix(60F);     
+        rep25.setNbBilletsDispo(100);
         rep25.setDateDebut(new Date());
         rep25.setSalle(sal7);
         representations.add(rep25);
         id++;
         
         rep26.setId(id);
-        rep26.setPrix(60F);
+        rep26.setPrix(60F);     
+        rep26.setNbBilletsDispo(100);
         rep26.setDateDebut(new Date());
         rep26.setSalle(sal8);
         representations.add(rep26);
         id++;
         
         rep27.setId(id);
-        rep27.setPrix(60F);
+        rep27.setPrix(60F);     
+        rep27.setNbBilletsDispo(100);
         rep27.setDateDebut(new Date());
         rep27.setSalle(sal9);
         representations.add(rep27);
         id++;
         
         rep28.setId(id);
-        rep28.setPrix(60F);
+        rep28.setPrix(60F);       
+        rep28.setNbBilletsDispo(100);
         rep28.setDateDebut(new Date());
         rep1.setSalle(sal1);
         representations.add(rep28);
         id++;
         
         rep29.setId(id);
-        rep29.setPrix(60F);
+        rep29.setPrix(60F);      
+        rep29.setNbBilletsDispo(100);
         rep29.setDateDebut(new Date());
         rep29.setSalle(sal2);
         representations.add(rep29);
         id++;
         
         rep30.setId(id);
-        rep30.setPrix(60F);
+        rep30.setPrix(60F);      
+        rep30.setNbBilletsDispo(100);
         rep30.setDateDebut(new Date());
         rep30.setSalle(sal3);
         representations.add(rep30);
         id++;
         
         rep31.setId(id);
-        rep31.setPrix(60F);
+        rep31.setPrix(60F);     
+        rep31.setNbBilletsDispo(100);
         rep31.setDateDebut(new Date());
         rep31.setSalle(sal4);
         representations.add(rep31);
         id++;
         
         rep32.setId(id);
-        rep32.setPrix(60F);
+        rep32.setPrix(60F);       
+        rep32.setNbBilletsDispo(100);
         rep32.setDateDebut(new Date());
         rep32.setSalle(sal5);
         representations.add(rep32);
         id++;
         
         rep33.setId(id);
-        rep33.setPrix(60F);
+        rep33.setPrix(60F);      
+        rep33.setNbBilletsDispo(100);
         rep33.setDateDebut(new Date());
         rep33.setSalle(sal6);
         representations.add(rep33);
         id++;
         
         rep34.setId(id);
-        rep34.setPrix(60F);
+        rep34.setPrix(60F);      
+        rep34.setNbBilletsDispo(100);
         rep34.setDateDebut(new Date());
         rep35.setSalle(sal7);
         representations.add(rep34);
         id++;
         
         rep35.setId(id);
-        rep35.setPrix(60F);
+        rep35.setPrix(60F);      
+        rep35.setNbBilletsDispo(100);
         rep35.setDateDebut(new Date());
         rep35.setSalle(sal8);
         representations.add(rep35);
         id++;
         
         rep36.setId(id);
-        rep36.setPrix(60F);
+        rep36.setPrix(60F);     
+        rep36.setNbBilletsDispo(100);
         rep36.setDateDebut(new Date());
         rep36.setSalle(sal9);
         representations.add(rep36);
         id++;
         
         rep37.setId(id);
-        rep37.setPrix(60F);
+        rep37.setPrix(60F);      
+        rep37.setNbBilletsDispo(100);
         rep37.setDateDebut(new Date());
         rep37.setSalle(sal1);
         representations.add(rep37);
         id++;
         
         rep38.setId(id);
-        rep38.setPrix(60F);
+        rep38.setPrix(60F);      
+        rep38.setNbBilletsDispo(100);
         rep38.setDateDebut(new Date());
         rep38.setSalle(sal2);
         representations.add(rep38);
         id++;
         
         rep39.setId(id);
-        rep39.setPrix(60F);
+        rep39.setPrix(60F);      
+        rep39.setNbBilletsDispo(100);
         rep39.setDateDebut(new Date());
         rep39.setSalle(sal3);
         representations.add(rep39);
         id++;
         
         rep40.setId(id);
-        rep40.setPrix(60F);
+        rep40.setPrix(60F);      
+        rep40.setNbBilletsDispo(100);
         rep40.setDateDebut(new Date());
         rep40.setSalle(sal4);
         representations.add(rep40);
         id++;
         
         rep41.setId(id);
-        rep41.setPrix(60F);
+        rep41.setPrix(60F);     
+        rep41.setNbBilletsDispo(100);
         rep41.setDateDebut(new Date());
         rep41.setSalle(sal5);
         representations.add(rep41);
         id++;
         
         rep42.setId(id);
-        rep42.setPrix(60F);
+        rep42.setPrix(60F);      
+        rep42.setNbBilletsDispo(100);
         rep42.setDateDebut(new Date());
         rep42.setSalle(sal6);
         representations.add(rep42);
         id++;
         
         rep43.setId(id);
-        rep43.setPrix(60F);
+        rep43.setPrix(60F);      
+        rep43.setNbBilletsDispo(100);
         rep43.setDateDebut(new Date());
         rep43.setSalle(sal7);
         representations.add(rep43);
         id++;
         
         rep44.setId(id);
-        rep44.setPrix(60F);
+        rep44.setPrix(60F);    
+        rep44.setNbBilletsDispo(100);
         rep44.setDateDebut(new Date());
         rep44.setSalle(sal8);
         representations.add(rep44);
         id++;
         
         rep45.setId(id);
-        rep45.setPrix(60F);
+        rep45.setPrix(60F);    
+        rep45.setNbBilletsDispo(100);
         rep45.setDateDebut(new Date());
         rep45.setSalle(sal9);
         representations.add(rep45);
         id++;
         
         rep46.setId(id);
-        rep46.setPrix(60F);
+        rep46.setPrix(60F);     
+        rep46.setNbBilletsDispo(100);
         rep46.setDateDebut(new Date());
         rep46.setSalle(sal1);
         representations.add(rep46);
         
         rep47.setId(id);
-        rep47.setPrix(60F);
+        rep47.setPrix(60F);      
+        rep47.setNbBilletsDispo(100);
         rep47.setDateDebut(new Date());
         rep47.setSalle(sal2);
         representations.add(rep47);
         id++;
         
         rep48.setId(id);
-        rep48.setPrix(60F);
+        rep48.setPrix(60F);      
+        rep48.setNbBilletsDispo(100);
         rep48.setDateDebut(new Date());
         rep48.setSalle(sal3);
         representations.add(rep48);
         id++;
         
         rep49.setId(id);
-        rep49.setPrix(60F);
+        rep49.setPrix(60F);     
+        rep49.setNbBilletsDispo(100);
         rep49.setDateDebut(new Date());
         rep49.setSalle(sal4);
         representations.add(rep49);
         id++;
         
         rep50.setId(id);
-        rep50.setPrix(60F);
+        rep50.setPrix(60F);    
+        rep50.setNbBilletsDispo(100);
         rep50.setDateDebut(new Date());
         rep50.setSalle(sal5);
         representations.add(rep50);
         id++;
         
         rep51.setId(id);
-        rep51.setPrix(60F);
+        rep51.setPrix(60F);    
+        rep51.setNbBilletsDispo(100);
         rep51.setDateDebut(new Date());
         rep51.setSalle(sal6);
         representations.add(rep51);
         id++;
         
         rep52.setId(id);
-        rep52.setPrix(60F);
+        rep52.setPrix(60F);     
+        rep52.setNbBilletsDispo(100);
         rep52.setDateDebut(new Date());
         rep52.setSalle(sal7);
         representations.add(rep52);
         id++;
         
         rep53.setId(id);
-        rep53.setPrix(60F);
+        rep53.setPrix(60F);     
+        rep53.setNbBilletsDispo(100);
         rep53.setDateDebut(new Date());
         rep53.setSalle(sal8);
         representations.add(rep53);
         id++;
         
         rep54.setId(id);
-        rep54.setPrix(60F);
+        rep54.setPrix(60F);      
+        rep54.setNbBilletsDispo(100);
         rep54.setDateDebut(new Date());
         rep54.setSalle(sal9);
         representations.add(rep54);
