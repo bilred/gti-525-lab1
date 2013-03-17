@@ -11,16 +11,16 @@
     <ui:define name="content">
         <br/><br/>
         <h:form id="processusPaiment" >
-            <p:wizard id="flow" widgetVar="wiz" flowListener="#{processPaiementCtrl.onFlowProcess}" >
+            <p:wizard id="flow" widgetVar="wiz" flowListener="#{processPaiementCtrl.onFlowProcess}" backLabel="#{bundle.v_pageCart_back_button}" nextLabel="#{bundle.v_pageCart_next_button}" >
 
-                <p:tab id="tickets" title="Tickets">
-                    <p:panel header="Checkout Your Tickets">
+                <p:tab id="tickets" title="#{bundle.v_pageCheckout_ticket}" >
+                    <p:panel header="#{bundle.v_pageCheckout_panel_header}">
 
-                        <p:panel header="Affiche tableau avec les toto du panier"  rendered="true" toggleable="true" >       
+                        <p:panel header="#{bundle.v_pageCheckout_tablepanel_header}"  rendered="true" toggleable="true" >       
                             <div style="overflow: auto">
                                 <p:dataTable id="dataPaiment" var="pan" value="#{processPaiementCtrl.panierCtrl.paniers}" 
                                              widgetVar="LaTable" paginator="true" rows="10"
-                                             emptyMessage="Veuille sélectionner des représentations" rowKey="#{pan}"
+                                             emptyMessage="#{bundle.v_pageCheckout_tablepanel_emptyMessage}" rowKey="#{pan}"
                                              editable="true" selectionMode="single"
                                              paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
                                              rowsPerPageTemplate="5,10,15,25,50,100" >                  
@@ -28,26 +28,26 @@
                                     <f:facet name="header" >          
                                         <table border="0" >
                                             <tr style="border-style: hidden;">
-                                                <td style="border-style: hidden;" align="left" width="20px" ><p:ajaxStatus style="width:16px;height:16px;" id="ajaxStatusPanel" > <f:facet name="start"><h:graphicImage value="/resources/etsmtl/img/ajaxLoader1.gif" alt="Patientez Pendant le chargement....." /> </f:facet> <f:facet name="complete"> <h:outputText value="" /> </f:facet> </p:ajaxStatus></td>
-                                                <td align="right"><h:outputText value=" Recherche Globale " /><p:inputText id="globalFilter" onkeyup="LaTable.filter()" size="23" /> <p:watermark for="globalFilter" value="Mots clés..." /></td>
+                                                <td style="border-style: hidden;" align="left" width="20px" ><p:ajaxStatus style="width:16px;height:16px;" id="ajaxStatusPanel" > <f:facet name="start"><h:graphicImage value="/resources/etsmtl/img/ajaxLoader1.gif" alt="#{bundle.v_pageCheckout_waiting_Message}" /> </f:facet> <f:facet name="#{bundle.v_pageCheckout_complete_loading_Message}"> <h:outputText value="" /> </f:facet> </p:ajaxStatus></td>
+                                                <td align="right"><h:outputText value="#{bundle.v_pageCheckout_searchfield_label}" /><p:inputText id="globalFilter" onkeyup="LaTable.filter()" size="23" /> <p:watermark for="globalFilter" value="#{bundle.v_pageCheckout_searchfield_defaultText}" /></td>
                                             </tr>
                                         </table>
                                     </f:facet>
 
                                     <!--<composite:insertChildren id="colonneTableCrud" />-->
-                                    <p:column sortBy="#{pan.nomSpectacle}" headerText="Show" >  
+                                    <p:column sortBy="#{pan.nomSpectacle}" headerText="#{bundle.v_pageCheckout_sortBy_shows}" >  
                                         <h:outputText value="#{pan.nomSpectacle}" />  
                                     </p:column>  
 
-                                    <p:column sortBy="#{pan.dateRepresentation}" headerText="Date">  
+                                    <p:column sortBy="#{pan.dateRepresentation}" headerText="#{bundle.v_pageCheckout_sortBy_date}">  
                                         <h:outputText value="#{pan.dateRepresentation}" />  
                                     </p:column>  
 
-                                    <p:column sortBy="#{pan.quantity}" headerText="Number">  
+                                    <p:column sortBy="#{pan.quantity}" headerText="#{bundle.v_pageCheckout_sortBy_number}">  
                                         <h:outputText value="#{pan.quantity}" />  
                                     </p:column>  
 
-                                    <p:column sortBy="#{pan.prix}" headerText="Total price">  
+                                    <p:column sortBy="#{pan.prix}" headerText="#{bundle.v_pageCheckout_sortBy_price}">  
                                         <h:outputText value="#{pan.prix}" />  
                                     </p:column>
 
@@ -72,64 +72,64 @@
                     </p:panel>  
                 </p:tab>  
 
-                <p:tab id="client" title="Client">  
-                    <p:panel header="Client Details">  
+                <p:tab id="client" title="#{bundle.v_pageCheckout_Client_tab_title}">  
+                    <p:panel header="#{bundle.v_pageCheckout_Client_tab_header}">  
 
                         <h:panelGrid columns="3" >
-                            <etsmtl:inputTextLabel _id="nom" label="First Name" valeur="#{processPaiementCtrl.client.nom}" required="true" marginInputLabel="16" />
-                            <etsmtl:inputTextLabel _id="prenom" label="Last Name" valeur="#{processPaiementCtrl.client.prenom}" required="true" />
-                            <etsmtl:inputTextLabel _id="mail" label="E-mail" valeur="#{processPaiementCtrl.client.mail}" required="true" marginInputLabel="26" />
+                            <etsmtl:inputTextLabel _id="prenom" label="#{bundle.v_pageCheckout_Client_firstname}" valeur="#{processPaiementCtrl.client.nom}" required="true" marginInputLabel="#{bundle.v_pageCheckout_Client_marginInputLabel_firstname}" />
+                            <etsmtl:inputTextLabel _id="nom" label="#{bundle.v_pageCheckout_Client_lastname}" valeur="#{processPaiementCtrl.client.prenom}" required="true" marginInputLabel="#{bundle.v_pageCheckout_Client_marginInputLabel_lastname}" />
+                            <etsmtl:inputTextLabel _id="mail" label="#{bundle.v_pageCheckout_Client_email}" valeur="#{processPaiementCtrl.client.mail}" required="true" marginInputLabel="#{bundle.v_pageCheckout_Client_marginInputLabel_email}" />
 
-                            <etsmtl:inputTextLabel _id="rue" label="Street Address" valeur="#{processPaiementCtrl.client.adresse.rue}" required="false" />
-                            <etsmtl:inputTextLabel _id="ville" label="City" valeur="#{processPaiementCtrl.client.adresse.region}" required="false" marginInputLabel="48" />
-                            <etsmtl:inputTextLabel _id="codepost" label="Postal Code" valeur="#{processPaiementCtrl.client.adresse.codePostal}" required="false" />
+                            <etsmtl:inputTextLabel _id="rue" label="#{bundle.v_pageCheckout_Client_Street}" valeur="#{processPaiementCtrl.client.adresse.rue}" required="false" marginInputLabel="#{bundle.v_pageCheckout_Client_marginInputLabel_Street}" />
+                            <etsmtl:inputTextLabel _id="ville" label="#{bundle.v_pageCheckout_Client_City}" valeur="#{processPaiementCtrl.client.adresse.region}" required="false" marginInputLabel="#{bundle.v_pageCheckout_Client_marginInputLabel_City}" />
+                            <etsmtl:inputTextLabel _id="codepost" label="#{bundle.v_pageCheckout_Client_postalcode}" valeur="#{processPaiementCtrl.client.adresse.codePostal}" required="false" marginInputLabel="#{bundle.v_pageCheckout_Client_marginInputLabel_postalcode}" />
 
-                            <etsmtl:inputMaskLabel _id="phone" label="Phone" mask="999-999-9999" valeur="#{processPaiementCtrl.client.phone}" required="false"  marginInputLabel="50"  />
-                            <etsmtl:inputTextLabel _id="pays" label="Country" valeur="#{processPaiementCtrl.client.adresse.ville}" required="false" marginInputLabel="27" />
+                            <etsmtl:inputMaskLabel _id="phone" label="#{bundle.v_pageCheckout_Client_Phone}" mask="999-999-9999" valeur="#{processPaiementCtrl.client.phone}" required="false"  marginInputLabel="#{bundle.v_pageCheckout_Client_marginInputLabel_Phone}"  />
+                            <etsmtl:inputTextLabel _id="pays" label="#{bundle.v_pageCheckout_Client_Country}" valeur="#{processPaiementCtrl.client.adresse.ville}" required="false" marginInputLabel="#{bundle.v_pageCheckout_Client_marginInputLabel_Country}" />
                         </h:panelGrid>
 
                     </p:panel>  
                 </p:tab>  
 
-                <p:tab id="creditCard" title="Credit Card">  
-                    <p:panel header="Credit Card Information">
+                <p:tab id="creditCard" title="#{bundle.v_pageCheckout_creditCard_title}">  
+                    <p:panel header="#{bundle.v_pageCheckout_creditCard_header}">
 
                         <h:panelGrid columns="2" columnClasses="label, value">
-                            <etsmtl:inputTextLabel _id="catecredi" label="Credit Card Number" valeur="#{processPaiementCtrl.carteCredit.numCarteCredit}" required="true" requiredMessage="Champ obligatoire" marginInputLabel="8" />
-                            <etsmtl:calendarLabel _id="dateexpiration" label="Expiration Date" valeur="#{processPaiementCtrl.carteCredit.dateTransaction}" required="true" requiredMessage="Champ obligatoire" />
-                            <etsmtl:inputTextLabel _id="codesecrt" label="Security Code (CVV)" valeur="#{processPaiementCtrl.carteCredit.numSecurite}" required="true" requiredMessage="Champ obligatoire" />                            
+                            <etsmtl:inputTextLabel _id="catecredi" label="#{bundle.v_pageCheckout_creditCard_number}" valeur="#{processPaiementCtrl.carteCredit.numCarteCredit}" required="true" requiredMessage="Champ obligatoire" marginInputLabel="#{bundle.v_pageCheckout_creditCard_marginInputLabel_number}" />
+                            <etsmtl:calendarLabel _id="dateexpiration" label="#{bundle.v_pageCheckout_creditCard_dateexpiration}" valeur="#{processPaiementCtrl.carteCredit.dateTransaction}" required="true" requiredMessage="Champ obligatoire" marginInputLabel="#{bundle.v_pageCheckout_creditCard_marginInputLabel_dateexpiration}" />
+                            <etsmtl:inputTextLabel _id="codesecrt" label="#{bundle.v_pageCheckout_creditCard_codesecrt}" valeur="#{processPaiementCtrl.carteCredit.numSecurite}" required="true" requiredMessage="Champ obligatoire" marginInputLabel="#{bundle.v_pageCheckout_creditCard_marginInputLabel_codesecrt}" />                          
                         </h:panelGrid>  
                     </p:panel>  
                 </p:tab>  
 
-                <p:tab id="confirm" title="Confirmation">  
-                    <p:panel header="Confirmation">  
+                <p:tab id="confirm" title="#{bundle.v_pageCheckout_confirm_title}">  
+                    <p:panel header="#{bundle.v_pageCheckout_confirm_header}">  
 
                         <h:panelGrid id="confirmation" columns="1">
-                            <etsmtl:outputLabel _id="infoNom" label="Last Name" valeur="#{processPaiementCtrl.client.nom}" />
-                            <etsmtl:outputLabel _id="ifoIConfVente" label="Bill ID" valeur="00#{(Math.random() * 50 + 1960)}" />    
+                            <etsmtl:outputLabel _id="infoNom" label="#{bundle.v_pageCheckout_confirm_infoNom}" valeur="#{processPaiementCtrl.client.nom}" />
+                            <etsmtl:outputLabel _id="ifoIConfVente" label="#{bundle.v_pageCheckout_confirm_infoNom}" valeur="00#{(Math.random() * 50 + 1960)}" />    
                         </h:panelGrid> <br/> 
 
-                        <p:commandButton id="btnPayement" value="Paiement" disabled="#{cacheSessionPresentationCtrl.disablePaiement}" oncomplete="documentDialog.show()" icon="ui-icon-check" />
-                        <p:commandButton value="Print" type="button" icon="ui-icon-print">  
+                        <p:commandButton id="btnPayement" value="#{bundle.v_pageCheckout_confirm_btnPayement}" disabled="#{cacheSessionPresentationCtrl.disablePaiement}" oncomplete="documentDialog.show()" icon="ui-icon-check" />
+                        <p:commandButton value="#{bundle.v_pageCheckout_confirm_btnprint}" type="button" icon="ui-icon-print">  
                             <p:printer target="confirm" />  
                         </p:commandButton>
 
-                        <p:dialog id="dialogPaimentOk" widgetVar="documentDialog" header="Détails de l’enregistrement" showEffect="clip" hideEffect="fold" modal="false">
+                        <p:dialog id="dialogPaimentOk" widgetVar="documentDialog" header="#{bundle.v_pageCheckout_confirm_dialogPaimentOk_header}" showEffect="clip" hideEffect="fold" modal="false">
 
-                            Deuxième confirmation de paiement
-                            
+                            #{bundle.v_pageCheckout_confirm_2eme_confirm_msg}
+
                             <br/><p:separator />
                             <div align="center" >
                                 <h:panelGrid columns="3" border="0">
-                                    <p:commandButton value="Validation Paiement" global="false" oncomplete="documentDialog.hide()" actionListener="#{processPaiementCtrl.save}" update=":processusPaiment:btnPayement" icon="ui-icon-close" />
-                                    <p:commandButton value="Annuler" global="false" oncomplete="documentDialog.hide()" icon="ui-icon-close" />
+                                    <p:commandButton value="#{bundle.v_pageCheckout_confirm_btn_validate_payement_value}" global="false" oncomplete="documentDialog.hide()" actionListener="#{processPaiementCtrl.save}" update=":processusPaiment:btnPayement" icon="ui-icon-close" />
+                                    <p:commandButton value="#{bundle.v_pageCheckout_confirm_btn_cancel_payement_value}" global="false" oncomplete="documentDialog.hide()" icon="ui-icon-close" />
                                 </h:panelGrid>
                             </div>                            
                         </p:dialog>
 
                     </p:panel>  
-                </p:tab>  
+                </p:tab> 
 
             </p:wizard>  
 
