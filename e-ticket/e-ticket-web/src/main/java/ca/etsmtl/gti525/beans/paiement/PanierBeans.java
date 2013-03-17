@@ -10,7 +10,9 @@ import java.util.Date;
  * @author REDOUANE
  */
 public class PanierBeans implements ColonneTableModel, Serializable  {
-	
+    private int id;
+
+   
     private String iconArtiste;
     private Integer quantity; //nbBiller
     private String nomSpectacle;
@@ -84,6 +86,13 @@ public class PanierBeans implements ColonneTableModel, Serializable  {
     public String getNomSpectacle() {
         if(nomSpectacle==null) nomSpectacle = new String();
         return nomSpectacle;
+    }
+     public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
     
 
