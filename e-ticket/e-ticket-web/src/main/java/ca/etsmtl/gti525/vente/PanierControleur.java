@@ -3,10 +3,13 @@ package ca.etsmtl.gti525.vente;
 import ca.etsmtl.gti525.beans.paiement.PanierBeans;
 import ca.etsmtl.gti525.commun.AbstractControleur;
 import ca.etsmtl.gti525.commun.CommunService;
+import ca.etsmtl.gti525.commun.InitDao;
 import ca.etsmtl.gti525.entity.presentation.Representation;
+import ca.etsmtl.gti525.entity.presentation.Spectacle;
 import ca.etsmtl.gti525.presentation.CacheSessionPresentation;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -33,27 +36,28 @@ public class PanierControleur extends AbstractControleur implements Serializable
     public void increment() {
         try { //si temps doit faire une exception personalisé pour ce cas.
             PanierBeans panier = null;
+            Spectacle specSelec= this.getCacheSessionPresentation().getSpectacleSelected();
             List<Representation> repSelect = this.getCacheSessionPresentation().getRepresentationSelected();
             if (repSelect.size()==0) throw new Exception();
                   
-            for (Representation rep : repSelect) {
+            for (int i=0 ; i < repSelect.size() ; i++) {
                 panier = new PanierBeans();
-                //panier.setNomSpectacle(rep.getSpectacle().getNomSpectacle());
-                panier.setPrix(rep.getPrix());
-                panier.setQuantity(repSelect.size());
-                panier.setVille(rep.getSalle().getAdresse());
+                panier.setNomSpectacle(specSelec.getNomSpectacle());
+                panier.setPrix(repSelect.get(i).getPrix());
+                panier.setQuantity(repSelect.get(i).getQTE());
+                panier.setVille(repSelect.get(i).getSalle().getAdresse());
                 //+ nombre de biller dispo
                 
                 this.getPaniers().add(panier);
             }
-
-                count = count + repSelect.size(); //selon le nombre de biller (Attantion ! une N place pour une même représantation et compté 1)
+                
+                count = qteBilletsPanier (); //selon le nombre de biller (Attantion ! une N place pour une même représantation et compté 1)
                 this.cacheSessionPresentation.setDisablePanier(Boolean.TRUE); //Désactiver le panier (le réactivé si d'autre selection)
                 this.cacheSessionPresentation.setDisablePaiement(Boolean.FALSE); //Activer le le paiement
                 log.info("Panier increment(), valeur initial: " + count);
             
         } catch (Exception ex) {
-            log.warn("Vous devais avoir sélectionnais des représentations pour faire des ajout dans le panier.");
+            log.warn("Vous devez avoir séléctionné des représentations pour faire des ajouté dans le panier.");
             CommunService.addWarn("ATTENTION !", "Vous devais avoir sélectionnais des représentations");
         }
     }
@@ -63,8 +67,11 @@ public class PanierControleur extends AbstractControleur implements Serializable
     //méthode supprimant une rep/billets
     public void supprimerRep (Representation item){
        //Representation rechRep = InitDao.stubsDaoPresentation.findRepresentationByID(item.getId());
-        int index = item.getId().intValue()-1;
-       this.cacheSessionPresentation.getRepresentationSelected().remove(index);
+       
+      //int index = item.getId().intValue()-1;
+     // System.out.print(index);
+    //this.cacheSessionPresentation.getRepresentationSelected().remove(index);
+        this.cacheSessionPresentation.getRepresentationSelected().remove(item);
     }
     
     /**
@@ -101,5 +108,14 @@ public class PanierControleur extends AbstractControleur implements Serializable
             paniers = new ArrayList<PanierBeans>();
         }
         this.paniers = paniers;
+    }
+    public int qteBilletsPanier (){
+        int somme=0;
+        for (int i =0; i<this.paniers.size();i++) {
+            
+            somme = somme + this.paniers.get(i).getQuantity();
+            
+        }
+        return somme;
     }
 }
