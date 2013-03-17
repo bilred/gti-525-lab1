@@ -7,13 +7,13 @@ import ca.etsmtl.gti525.entity.vente.Client;
 import gti525.paiement.InformationsPaiementTO;
 import gti525.paiement.RequeteAuthorisationTO;
 import java.io.Serializable;
-import org.apache.log4j.Logger;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 import javax.faces.event.ActionEvent;
+import org.apache.log4j.Logger;
 import org.primefaces.event.FlowEvent;
 
 /**
@@ -52,6 +52,11 @@ public class ProcessPaiementControleur extends AbstractControleur implements Ser
     public void save(ActionEvent actionEvent) {  
         //TODO Persist Billet + Client + VENTE
         this.panierCtrl.getCacheSessionPresentation().setDisablePaiement( Boolean.TRUE );
+        
+        RequeteAuthorisationTO requeteAuth = new RequeteAuthorisationTO(); requeteAuth.setApi_key("myKeys"); //...
+        //ReponseSystemePaiementTO reponseSystemePaiementTO = InitDao.stubsDaoJpaPaiement.approuverTransaction(requeteAuth);
+        //reponseSystemePaiementTO
+        CommunService.addInfo("Succes", "Méthode «approuverTransaction();»");        
         CommunService.addInfo("Successful", "Merci Mr. :"+ client.getNom()+", pour votre payement");
         this.destroy();
     }  
@@ -62,19 +67,19 @@ public class ProcessPaiementControleur extends AbstractControleur implements Ser
         logger.info("Current wizard step:" + event.getOldStep());  
         logger.info("Next step:" + event.getNewStep());  
           
-         
-        if (event.getNewStep().equals("creditCard")) { //step client 
+        if(event.getNewStep().equals("client")) { //step creditCard
+            CommunService.addInfo("Succes", "Next step: " + event.getNewStep() );
+        }
+        if(event.getNewStep().equals("creditCard")) { //step creditCard
+            CommunService.addInfo("Succes", "Next step: " + event.getNewStep() );
+        }
+        if (event.getNewStep().equals("confirm")) { //step client 
            InformationsPaiementTO infoPaiement = new InformationsPaiementTO(); infoPaiement.setCard_number(202215848911L); //...
            //ReponseSystemePaiementTO reponseSystemePaiementTO = InitDao.stubsDaoJpaPaiement.effectuerPreauthorisation(infoPaiement);
            //reponseSystemePaiementTO
-           CommunService.addInfo("Succes", "Méthode -effectuerPreauthorisation-");
+           CommunService.addInfo("Succes", "Méthode «effectuerPreauthorisation();»");
         }
-        if(event.getNewStep().equals("confirm")) { //step creditCard
-           RequeteAuthorisationTO requeteAuth = new RequeteAuthorisationTO(); requeteAuth.setApi_key("myKeys"); //...
-           //ReponseSystemePaiementTO reponseSystemePaiementTO = InitDao.stubsDaoJpaPaiement.approuverTransaction(requeteAuth);
-           //reponseSystemePaiementTO
-            CommunService.addInfo("Succes", "Méthode -approuverTransaction-");
-        }
+
         if("undefined".equals(event.getNewStep())) return "tickets";
         
         if(skip) {  
