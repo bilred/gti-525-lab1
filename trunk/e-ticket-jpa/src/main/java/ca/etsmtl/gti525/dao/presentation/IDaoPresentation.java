@@ -24,6 +24,8 @@ public interface IDaoPresentation {
   public void createSalle(Salle salle);
   public void createSpectacle(Spectacle spectacle);
   public void createArtist(Artiste artist);
+  
+  
   public Representation findRepresentationByID(long id);
-    
+  
 }
