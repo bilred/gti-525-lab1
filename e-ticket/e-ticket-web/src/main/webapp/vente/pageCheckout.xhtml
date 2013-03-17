@@ -50,8 +50,8 @@
                                     <p:column sortBy="#{pan.prix}" headerText="#{bundle.v_pageCheckout_sortBy_price}">  
                                         <h:outputText value="#{pan.prix}" />  
                                     </p:column>
-                                    <p:column headerText="Supprimer" style="width: 40px;" >                                            
-                                        <p:commandButton id="actionOnBillets" disabled="false" global="false" update=":processusPaiment:dataPaiment" immediate="true"  actionListener="#{processPaiementCtrl.panierCtrl.supprimerBillet(pan)}" title="Supprimer Billet(s)" icon="ui-icon-circle-close" />
+                                    <p:column headerText="#{bundle.v_pageCart_panelPanierCompte_delete}" style="width: 40px;" >                                            
+                                        <p:commandButton id="actionOnBillets" disabled="false" global="false" update=":processusPaiment:dataPaiment" immediate="true"  actionListener="#{processPaiementCtrl.panierCtrl.supprimerBillet(pan)}" title="#{bundle.v_pageCart_panelPanierCompte_delete_tickets}" icon="ui-icon-trash" />
                                     </p:column> 
 
                                     <f:facet name="footer"></f:facet>            
@@ -108,9 +108,9 @@
                 <p:tab id="confirm" title="#{bundle.v_pageCheckout_confirm_title}">  
                     <p:panel header="#{bundle.v_pageCheckout_confirm_header}">  
 
-                        <h:panelGrid id="confirmation" columns="1">
-                            <etsmtl:outputLabel _id="infoNom" label="#{bundle.v_pageCheckout_confirm_infoNom}" valeur="#{processPaiementCtrl.client.nom}" />
-                            <etsmtl:outputLabel _id="ifoIConfVente" label="#{bundle.v_pageCheckout_confirm_infoNom}" valeur="00#{(Math.random() * 50 + 1960)}" />    
+                        <h:panelGrid id="confirmation" columns="1" rendered="#{processPaiementCtrl.disableInfoPaiment}" >
+                            <etsmtl:outputLabel _id="infoNom" label="Nom : " valeur="#{processPaiementCtrl.client.nom}" />
+                            <etsmtl:outputLabel _id="ifoIConfVente" label="Num Paiement : " valeur="00#{(Math.random() * 50 + 1960)}" />    
                         </h:panelGrid> <br/> 
 
                         <p:commandButton id="btnPayement" value="#{bundle.v_pageCheckout_confirm_btnPayement}" disabled="#{cacheSessionPresentationCtrl.disablePaiement}" oncomplete="documentDialog.show()" icon="ui-icon-check" />
@@ -125,7 +125,7 @@
                             <br/><p:separator />
                             <div align="center" >
                                 <h:panelGrid columns="3" border="0">
-                                    <p:commandButton value="#{bundle.v_pageCheckout_confirm_btn_validate_payement_value}" global="false" oncomplete="documentDialog.hide()" actionListener="#{processPaiementCtrl.save}" update=":processusPaiment:btnPayement" icon="ui-icon-close" />
+                                    <p:commandButton value="#{bundle.v_pageCheckout_confirm_btn_validate_payement_value}" global="false" oncomplete="documentDialog.hide()" actionListener="#{processPaiementCtrl.save}" update="@form" icon="ui-icon-close" />
                                     <p:commandButton value="#{bundle.v_pageCheckout_confirm_btn_cancel_payement_value}" global="false" oncomplete="documentDialog.hide()" icon="ui-icon-close" />
                                 </h:panelGrid>
                             </div>                            
