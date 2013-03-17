@@ -37,7 +37,10 @@
             20
         </session-timeout>
     </session-config>
-    
+   
+    <listener>
+        <listener-class>ca.etsmtl.gti525.commun.SessionListen</listener-class>
+    </listener>     
     
     <error-page>
         <error-code>500</error-code>
