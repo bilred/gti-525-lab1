@@ -18,7 +18,7 @@
                                  emptyMessage="#{bundle.v_pageCart_panelPanierCompte_header_emptyMessage}" rowKey="#{item}"
                                  editable="true" selectionMode="single"
                                  paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-                                 rowsPerPageTemplate="5,10,15,25" >                
+                                 rowsPerPageTemplate="5,10,15,25" >                  
 
                         <f:facet name="header" >          
                             <table border="0" >
@@ -58,10 +58,7 @@
                         <p:column headerText="#{bundle.v_pageCart_panelPanierCompte_details}" style="width: 40px;" >                                            
                             <p:commandButton id="actionOnDetails" disabled="false" global="false" update=":formPanier:mydialog:documentPanel" immediate="true" oncomplete="documentDialog.show()" actionListener="#{panierCtrl.onDetailsEnregistrement(item)}" title="#{bundle.v_pageCart_panelPanierCompte_show_details_msg}" icon="ui-icon-zoomin" />
                         </p:column>
-                        <p:column headerText="#{bundle.v_pageCart_panelPanierCompte_delete}" style="width: 40px;" >                                            
-                            <p:commandButton id="actionOnBillets" disabled="false" global="false" update=":formPanier:tableVar" immediate="true"  actionListener="#{panierCtrl.supprimerRep(item)}" title="#{bundle.v_pageCart_panelPanierCompte_delete_tickets}" icon="ui-icon-circle-close" />
-                        </p:column> 
-
+                       
                         <f:facet name="footer"> 
                             <p:button outcome="pageCheckout" value="#{bundle.v_pageCart_panelPanierCompte_buybutton}" icon="ui-icon-suitcase" ></p:button> <p:spacer width="40px"/>
                             <p:commandButton value="#{bundle.v_pageCart_panelPanierCompte_add_to_cart} ( #{panierCtrl.count} )" actionListener="#{panierCtrl.increment}" disabled="#{cacheSessionPresentationCtrl.disablePanier}" update="@this :formPanier:panelPanierCompte" icon="ui-icon-cart" /> <p:spacer width="40px"/> 
