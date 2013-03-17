@@ -50,6 +50,9 @@
                                     <p:column sortBy="#{pan.prix}" headerText="#{bundle.v_pageCheckout_sortBy_price}">  
                                         <h:outputText value="#{pan.prix}" />  
                                     </p:column>
+                                    <p:column headerText="Supprimer" style="width: 40px;" >                                            
+                                        <p:commandButton id="actionOnBillets" disabled="false" global="false" update=":processusPaiment:dataPaiment" immediate="true"  actionListener="#{processPaiementCtrl.panierCtrl.supprimerBillet(pan)}" title="Supprimer Billet(s)" icon="ui-icon-circle-close" />
+                                    </p:column> 
 
                                     <f:facet name="footer"></f:facet>            
 
