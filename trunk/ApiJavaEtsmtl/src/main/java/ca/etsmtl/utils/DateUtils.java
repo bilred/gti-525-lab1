@@ -39,8 +39,6 @@ public class DateUtils {
     }
 
     static public Date formateStringToDate(String dateString, String pattern) {
-
-
         try {
             SimpleDateFormat df = new SimpleDateFormat(pattern, Locale.FRENCH);
             Date date = df.parse(dateString);
@@ -49,10 +47,6 @@ public class DateUtils {
             ex.printStackTrace();
             return null;
         }
-
-
-
-
     }
 
     static public int getDay(Date date) {
