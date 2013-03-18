@@ -96,9 +96,9 @@ public class PanierControleur extends AbstractControleur implements Serializable
             this.cacheSessionPresentation.setDisablePanier(Boolean.TRUE); //Désactiver le panier (le réactivé si d'autre selection)
             this.cacheSessionPresentation.setDisablePaiement(Boolean.FALSE); //Activer le le paiement
             
-//            FacesContext context = FacesContext.getCurrentInstance();
-//            session = (HttpSession) context.getExternalContext().getSession(false);
-//            this.initTimeur(); //600 *(1000 de la méthode) = 20minut
+            FacesContext context = FacesContext.getCurrentInstance();
+            session = (HttpSession) context.getExternalContext().getSession(false);
+            this.initTimeur(); //600 *(1000 de la méthode) = 2minut
             log.info("Panier increment(), valeur initial: " + count);
         } catch (Exception ex) {
             log.warn("Vous devez avoir séléctionné des représentations pour faire des ajouté dans le panier.");
@@ -209,6 +209,7 @@ public class PanierControleur extends AbstractControleur implements Serializable
 //       FacesContext context = FacesContext.getCurrentInstance();
 //       HttpSession session = (HttpSession) context.getExternalContext().getSession(false);        
          session.invalidate(); //this.destroy(); 
+         CommunService.addWarn("Attention !", "Session invalidate !.");
          log.info("Nettoyage du PanierControleur (aprés passage du timeur)");
     }    
 
