@@ -21,9 +21,11 @@
                                 <p:dataTable id="dataPaiment" var="pan" value="#{processPaiementCtrl.panierCtrl.paniers}" 
                                              widgetVar="LaTable" paginator="true" rows="10"
                                              emptyMessage="#{bundle.v_pageCheckout_tablepanel_emptyMessage}" rowKey="#{pan}"
-                                             editable="true" selectionMode="single"
+                                             editable="true" editMode="cell" selectionMode="single"
                                              paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-                                             rowsPerPageTemplate="5,10,15,25,50,100" >                  
+                                             rowsPerPageTemplate="5,10,15,25,50,100" > 
+                                    
+                                    <p:ajax event="cellEdit" /> 
 
                                     <f:facet name="header" >          
                                         <table border="0" >
@@ -43,8 +45,11 @@
                                         <h:outputText value="#{pan.dateRepresentation}" />  
                                     </p:column>  
 
-                                    <p:column sortBy="#{pan.quantity}" headerText="#{bundle.v_pageCheckout_sortBy_number}">  
-                                        <h:outputText value="#{pan.quantity}" />  
+                                    <p:column sortBy="#{pan.quantity}" headerText="#{bundle.v_pageCheckout_sortBy_number}">
+                                        <p:cellEditor>  
+                                            <f:facet name="output"><h:outputText value="#{pan.quantity}" /></f:facet>  
+                                            <f:facet name="input"><p:inputText value="#{pan.quantity}" style="width:96%" label="Quantity"/></f:facet>  
+                                        </p:cellEditor>                        
                                     </p:column>  
 
                                     <p:column sortBy="#{pan.prix}" headerText="#{bundle.v_pageCheckout_sortBy_price}">  
