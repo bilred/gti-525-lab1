@@ -46,7 +46,7 @@ public class Representation implements Serializable {
     private Integer QTE;
     @Column(name = "PRIX")
     private Float prix;
-    private Map <Integer, Integer> optionsQte = new HashMap<Integer, Integer>();
+//    private Map <Integer, Integer> optionsQte = new HashMap<Integer, Integer>();
     private List<Integer> optionsQte2 = new ArrayList<Integer>();
 
     public List<Integer> getOptionsQte2() {
@@ -57,13 +57,6 @@ public class Representation implements Serializable {
         this.optionsQte2 = optionsQte2;
     }
  
-    public Map<Integer, Integer> getOptionsQte() {
-        return optionsQte;
-    }
-
-    public void setOptionsQte(Map<Integer, Integer> optionsQte) {
-        this.optionsQte = optionsQte;
-    }
     
     
 
@@ -79,12 +72,12 @@ public class Representation implements Serializable {
     private Billet billet;
     
     public Representation(){
-        optionsQte.put(1, 1);
-        optionsQte.put(2, 2);
-        optionsQte.put(3, 3);
-        optionsQte.put(4, 4);
-        optionsQte.put(5, 5);
-        optionsQte.put(6, 6);
+//        optionsQte.put(1, 1);
+//        optionsQte.put(2, 2);
+//        optionsQte.put(3, 3);
+//        optionsQte.put(4, 4);
+//        optionsQte.put(5, 5);
+//        optionsQte.put(6, 6);
         optionsQte2.add(1);
         optionsQte2.add(2);
         optionsQte2.add(3);
