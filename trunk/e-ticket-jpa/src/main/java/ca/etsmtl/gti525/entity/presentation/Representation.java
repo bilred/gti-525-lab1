@@ -1,7 +1,11 @@
 package ca.etsmtl.gti525.entity.presentation;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,7 +26,8 @@ import javax.persistence.TemporalType;
 @Table(name = "SHOW_REPRESENTATION")
 public class Representation implements Serializable {
     private static final long serialVersionUID = 1L;
-
+    
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
@@ -41,6 +46,28 @@ public class Representation implements Serializable {
     private Integer QTE;
     @Column(name = "PRIX")
     private Float prix;
+    private Map <Integer, Integer> optionsQte = new HashMap<Integer, Integer>();
+    private List<Integer> optionsQte2 = new ArrayList<Integer>();
+
+    public List<Integer> getOptionsQte2() {
+        return optionsQte2;
+    }
+
+    public void setOptionsQte2(List<Integer> optionsQte2) {
+        this.optionsQte2 = optionsQte2;
+    }
+ 
+    public Map<Integer, Integer> getOptionsQte() {
+        return optionsQte;
+    }
+
+    public void setOptionsQte(Map<Integer, Integer> optionsQte) {
+        this.optionsQte = optionsQte;
+    }
+    
+    
+
+   
     
     @OneToOne
     private Salle salle;
@@ -51,7 +78,20 @@ public class Representation implements Serializable {
     @OneToOne(mappedBy = "representation")
     private Billet billet;
     
-
+    public Representation(){
+        optionsQte.put(1, 1);
+        optionsQte.put(2, 2);
+        optionsQte.put(3, 3);
+        optionsQte.put(4, 4);
+        optionsQte.put(5, 5);
+        optionsQte.put(6, 6);
+        optionsQte2.add(1);
+        optionsQte2.add(2);
+        optionsQte2.add(3);
+        optionsQte2.add(4);
+        optionsQte2.add(5);
+        optionsQte2.add(6);
+    }
     public Integer getQTE() {
         return QTE;
     }
