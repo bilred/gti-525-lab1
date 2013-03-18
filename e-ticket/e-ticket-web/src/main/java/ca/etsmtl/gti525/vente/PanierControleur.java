@@ -3,13 +3,11 @@ package ca.etsmtl.gti525.vente;
 import ca.etsmtl.gti525.beans.paiement.PanierBeans;
 import ca.etsmtl.gti525.commun.AbstractControleur;
 import ca.etsmtl.gti525.commun.CommunService;
-import ca.etsmtl.gti525.commun.InitDao;
 import ca.etsmtl.gti525.entity.presentation.Representation;
 import ca.etsmtl.gti525.entity.presentation.Spectacle;
 import ca.etsmtl.gti525.presentation.CacheSessionPresentation;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -23,24 +21,23 @@ import org.apache.log4j.Logger;
 @ManagedBean(name = "panierCtrl")
 @SessionScoped
 public class PanierControleur extends AbstractControleur implements Serializable {
-
     private static final Logger log = Logger.getLogger(PanierControleur.class);
+    
     //pour recuprér les represantation selectionner (et remplire le paniers)
     @ManagedProperty(value = "#{cacheSessionPresentationCtrl}")
     private CacheSessionPresentation cacheSessionPresentation;
     
     private List<PanierBeans> paniers; //passer au proccese de paiment
-    
-    
     private int count;
+
     public void increment() {
         try { //si temps doit faire une exception personalisé pour ce cas.
             PanierBeans panier = null;
-            Spectacle specSelec= this.getCacheSessionPresentation().getSpectacleSelected();
+            Spectacle specSelec = this.getCacheSessionPresentation().getSpectacleSelected();
             List<Representation> repSelect = this.getCacheSessionPresentation().getRepresentationSelected();
-            if (repSelect.size()==0) throw new Exception();
-                  
-            for (int i=0 ; i < repSelect.size() ; i++) {
+            if (repSelect.size() == 0) throw new Exception();
+            
+            for (int i = 0; i < repSelect.size(); i++) {
                 repSelect.get(i).setNbBilletsDispo(repSelect.get(i).getNbBilletsDispo()-repSelect.get(i).getQTE());
                 panier = new PanierBeans();
                 panier.setId(repSelect.get(i).getId().intValue());
@@ -49,15 +46,16 @@ public class PanierControleur extends AbstractControleur implements Serializable
                 panier.setQuantity(repSelect.get(i).getQTE());
                 panier.setVille(repSelect.get(i).getSalle().getAdresse());
                 //+ nombre de biller dispo
-                
+
                 this.getPaniers().add(panier);
             }
-                
-                count = qteBilletsPanier (); //selon le nombre de biller (Attantion ! une N place pour une même représantation et compté 1)
-                this.cacheSessionPresentation.setDisablePanier(Boolean.TRUE); //Désactiver le panier (le réactivé si d'autre selection)
-                this.cacheSessionPresentation.setDisablePaiement(Boolean.FALSE); //Activer le le paiement
-                log.info("Panier increment(), valeur initial: " + count);
+
+            count = qteBilletsPanier(); //selon le nombre de biller (Attantion ! une N place pour une même représantation et compté 1)
+            this.cacheSessionPresentation.setDisablePanier(Boolean.TRUE); //Désactiver le panier (le réactivé si d'autre selection)
+            this.cacheSessionPresentation.setDisablePaiement(Boolean.FALSE); //Activer le le paiement
             
+            //this.initTimeur(); //1200 *(1000 de la méthode) = 20minut
+            log.info("Panier increment(), valeur initial: " + count);
         } catch (Exception ex) {
             log.warn("Vous devez avoir séléctionné des représentations pour faire des ajouté dans le panier.");
             CommunService.addWarn("ATTENTION !", "Vous devais avoir sélectionnais des représentations");
@@ -65,22 +63,17 @@ public class PanierControleur extends AbstractControleur implements Serializable
     }
 
     //private Representation representationDetail;
-    public void onDetailsEnregistrement(Representation item) {   }  
-    //méthode supprimant une rep/billets
-    public void supprimerRep (Representation item){
-       //Representation rechRep = InitDao.stubsDaoPresentation.findRepresentationByID(item.getId());
-       
-      //int index = item.getId().intValue()-1;
-     // System.out.print(index);
-    //this.cacheSessionPresentation.getRepresentationSelected().remove(index);
+    public void onDetailsEnregistrement(Representation item) { }
+    
+    /**
+     * méthode supprimant une rep/billets
+     * @param item 
+     */
+    public void supprimerRep(Representation item) {
+        //Representation rechRep = InitDao.stubsDaoPresentation.findRepresentationByID(item.getId());
         this.cacheSessionPresentation.getRepresentationSelected().remove(item);
     }
     
-    /**
-     * Creates a new instance of PanierControleur
-     */
-    public PanierControleur() {
-    }
     public void supprimerBillet (PanierBeans pan){
         
         List<Representation> repSelect = this.getCacheSessionPresentation().getRepresentationSelected();
@@ -88,12 +81,18 @@ public class PanierControleur extends AbstractControleur implements Serializable
             
           if (repSelect.get(i).getId()== pan.getId()) {
               repSelect.get(i).setNbBilletsDispo(repSelect.get(i).getNbBilletsDispo()+ pan.getQuantity());
-          }
-              
+              this.getCacheSessionPresentation().getRepresentationSelected().remove( repSelect.get(i) ); 
+              this.count = this.count - pan.getQuantity();
+          }          
         }
-        this.paniers.remove(pan);
-        
-    }
+        this.paniers.remove(pan);   
+    }   
+    
+
+    /**
+     * Creates a new instance of PanierControleur
+     */
+    public PanierControleur() { }
 
     public int getCount() {
         return count;
@@ -111,6 +110,7 @@ public class PanierControleur extends AbstractControleur implements Serializable
         this.cacheSessionPresentation = cacheSessionPresentation;
     }
 
+//    @Async
     public List<PanierBeans> getPaniers() {
         if (paniers == null) {
             paniers = new ArrayList<PanierBeans>();
@@ -118,19 +118,38 @@ public class PanierControleur extends AbstractControleur implements Serializable
         return paniers;
     }
 
+//    @Async
     public void setPaniers(List<PanierBeans> paniers) {
         if (paniers == null) {
             paniers = new ArrayList<PanierBeans>();
         }
         this.paniers = paniers;
     }
-    public int qteBilletsPanier (){
-        int somme=0;
-        for (int i =0; i<this.paniers.size();i++) {
-            
+
+    public int qteBilletsPanier() {
+        int somme = 0;
+        for (int i = 0; i < this.paniers.size(); i++) {
             somme = somme + this.paniers.get(i).getQuantity();
-            
         }
         return somme;
     }
+    
+    
+//    public void destroy(){
+//      this.setPaniers( new ArrayList<PanierBeans>() );
+////      this.setCount(0);       
+//      //this.getCacheSessionPresentation().destroy();
+//      log.info("Nettoyage du PanierControleur"); // Après avoir récupéré les représentations sélectionner
+//    }
+//    
+//     
+//    public void printMe() {
+//        System.out.println("Run Me ~");
+//        //Session invalidet
+////       FacesContext context = FacesContext.getCurrentInstance();
+////       HttpSession session = (HttpSession) context.getExternalContext().getSession(false);        
+////       session.invalidate();         
+//        this.destroy();     
+//    }    
+
 }
