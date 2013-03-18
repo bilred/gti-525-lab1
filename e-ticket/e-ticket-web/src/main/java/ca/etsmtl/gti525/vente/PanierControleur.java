@@ -12,7 +12,10 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
+import org.springframework.scheduling.annotation.Async;
 
 /**
  *
@@ -30,7 +33,9 @@ public class PanierControleur extends AbstractControleur implements Serializable
     private List<PanierBeans> paniers; //passer au proccese de paiment
     private int count;
 
-    public void increment() {
+    private static HttpSession session;  //session a invalidé (aprés inistalisation avec la session courant)
+    
+    public synchronized void increment() {
         try { //si temps doit faire une exception personalisé pour ce cas.
             PanierBeans panier = null;
             Spectacle specSelec = this.getCacheSessionPresentation().getSpectacleSelected();
@@ -54,7 +59,9 @@ public class PanierControleur extends AbstractControleur implements Serializable
             this.cacheSessionPresentation.setDisablePanier(Boolean.TRUE); //Désactiver le panier (le réactivé si d'autre selection)
             this.cacheSessionPresentation.setDisablePaiement(Boolean.FALSE); //Activer le le paiement
             
-            //this.initTimeur(); //1200 *(1000 de la méthode) = 20minut
+//            FacesContext context = FacesContext.getCurrentInstance();
+//            session = (HttpSession) context.getExternalContext().getSession(false);
+//            this.initTimeur(); //600 *(1000 de la méthode) = 20minut
             log.info("Panier increment(), valeur initial: " + count);
         } catch (Exception ex) {
             log.warn("Vous devez avoir séléctionné des représentations pour faire des ajouté dans le panier.");
@@ -93,11 +100,12 @@ public class PanierControleur extends AbstractControleur implements Serializable
      * Creates a new instance of PanierControleur
      */
     public PanierControleur() { }
-
+    
+//    @Async
     public int getCount() {
         return count;
     }
-
+//    @Async
     public void setCount(int count) {
         this.count = count;
     }
@@ -110,7 +118,7 @@ public class PanierControleur extends AbstractControleur implements Serializable
         this.cacheSessionPresentation = cacheSessionPresentation;
     }
 
-//    @Async
+    @Async
     public List<PanierBeans> getPaniers() {
         if (paniers == null) {
             paniers = new ArrayList<PanierBeans>();
@@ -118,7 +126,7 @@ public class PanierControleur extends AbstractControleur implements Serializable
         return paniers;
     }
 
-//    @Async
+    //@Async
     public void setPaniers(List<PanierBeans> paniers) {
         if (paniers == null) {
             paniers = new ArrayList<PanierBeans>();
@@ -133,23 +141,36 @@ public class PanierControleur extends AbstractControleur implements Serializable
         }
         return somme;
     }
+
+    @Async
+    public HttpSession getSession() {
+        return session;
+    }
+
+    @Async
+    public void setSession(HttpSession session) {
+        this.session = session;
+    }
+   
     
     
-//    public void destroy(){
+    @Async
+    public void destroy(){
 //      this.setPaniers( new ArrayList<PanierBeans>() );
-////      this.setCount(0);       
-//      //this.getCacheSessionPresentation().destroy();
-//      log.info("Nettoyage du PanierControleur"); // Après avoir récupéré les représentations sélectionner
-//    }
-//    
-//     
-//    public void printMe() {
-//        System.out.println("Run Me ~");
-//        //Session invalidet
-////       FacesContext context = FacesContext.getCurrentInstance();
-////       HttpSession session = (HttpSession) context.getExternalContext().getSession(false);        
-////       session.invalidate();         
-//        this.destroy();     
-//    }    
+//      this.setCount(0);       
+      //this.getCacheSessionPresentation().destroy();
+       //this.session.invalidate();        
+      log.info("Nettoyage du PanierControleur"); // Après avoir récupéré les représentations sélectionner
+    }
+    
+     
+    public synchronized void asyncWorker() {
+        System.out.println("Run asyncWorker ~");
+        //Session invalidet
+//       FacesContext context = FacesContext.getCurrentInstance();
+//       HttpSession session = (HttpSession) context.getExternalContext().getSession(false);        
+         session.invalidate(); //this.destroy(); 
+         log.info("Nettoyage du PanierControleur (aprés passage du timeur)");
+    }    
 
 }
