@@ -113,8 +113,11 @@
                 <p:tab id="confirm" title="#{bundle.v_pageCheckout_confirm_title}">  
                     <p:panel header="#{bundle.v_pageCheckout_confirm_header}">  
 
-                        <h:panelGrid id="confirmation" columns="1" rendered="#{processPaiementCtrl.disableInfoPaiment}" >
+                        <h:panelGrid id="confirmation" columns="2" rendered="#{processPaiementCtrl.disableInfoPaiment}" >
                             <etsmtl:outputLabel _id="infoNom" label="Nom : " valeur="#{processPaiementCtrl.client.nom}" />
+                            <etsmtl:outputLabel _id="infoPrenom" label="Prenom : " valeur="#{processPaiementCtrl.client.prenom}" />
+                            <etsmtl:outputLabel _id="infoMail" label="Mail : " valeur="#{processPaiementCtrl.client.mail}" />
+                            <etsmtl:outputLabel _id="infoPhon" label="Telephone : " valeur="#{processPaiementCtrl.client.phone}" />
                             <etsmtl:outputLabel _id="ifoIConfVente" label="Num Paiement : " valeur="00#{(Math.random() * 50 + 1960)}" />    
                         </h:panelGrid> <br/> 
 
