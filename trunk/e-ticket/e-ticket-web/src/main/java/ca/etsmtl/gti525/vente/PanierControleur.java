@@ -3,6 +3,7 @@ package ca.etsmtl.gti525.vente;
 import ca.etsmtl.gti525.beans.paiement.PanierBeans;
 import ca.etsmtl.gti525.commun.AbstractControleur;
 import ca.etsmtl.gti525.commun.CommunService;
+import ca.etsmtl.gti525.commun.MenuControleur;
 import ca.etsmtl.gti525.entity.presentation.Representation;
 import ca.etsmtl.gti525.entity.presentation.Spectacle;
 import ca.etsmtl.gti525.presentation.CacheSessionPresentation;
@@ -30,6 +31,16 @@ public class PanierControleur extends AbstractControleur implements Serializable
     @ManagedProperty(value = "#{cacheSessionPresentationCtrl}")
     private CacheSessionPresentation cacheSessionPresentation;
     
+    @ManagedProperty(value="#{menuCtrl}")
+    private MenuControleur menuCtrl;
+
+    public MenuControleur getMenuCtrl() {
+        return menuCtrl;
+    }
+
+    public void setMenuCtrl(MenuControleur menuCtrl) {
+        this.menuCtrl = menuCtrl;
+    }
     private List<PanierBeans> paniers; //passer au proccese de paiment
     private int count;
 
@@ -40,10 +51,36 @@ public class PanierControleur extends AbstractControleur implements Serializable
             PanierBeans panier = null;
             Spectacle specSelec = this.getCacheSessionPresentation().getSpectacleSelected();
             List<Representation> repSelect = this.getCacheSessionPresentation().getRepresentationSelected();
-            if (repSelect.size() == 0) throw new Exception();
             
-            for (int i = 0; i < repSelect.size(); i++) {
+            if (repSelect.size()==0) throw new Exception();
+                  
+            for (int i=0 ; i < repSelect.size() ; i++) {
                 repSelect.get(i).setNbBilletsDispo(repSelect.get(i).getNbBilletsDispo()-repSelect.get(i).getQTE());
+                this.menuCtrl.changerQte(repSelect.get(i));
+                /*switch(repSelect.get(i).getNbBilletsDispo()){
+                    case 5:
+                            repSelect.get(i).getOptionsQte2().remove(6);
+                    case 4:
+                            repSelect.get(i).getOptionsQte2().remove(6);
+                            repSelect.get(i).getOptionsQte2().remove(5);
+                    case 3:
+                            repSelect.get(i).getOptionsQte2().remove(6);
+                            repSelect.get(i).getOptionsQte2().remove(5);
+                            repSelect.get(i).getOptionsQte2().remove(4);
+                    case 2:
+                            repSelect.get(i).getOptionsQte2().remove(6);
+                            repSelect.get(i).getOptionsQte2().remove(5);
+                            repSelect.get(i).getOptionsQte2().remove(4);
+                            repSelect.get(i).getOptionsQte2().remove(3);
+                    case 1:
+                            repSelect.get(i).getOptionsQte2().remove(6);
+                            repSelect.get(i).getOptionsQte2().remove(5);
+                            repSelect.get(i).getOptionsQte2().remove(4);
+                            repSelect.get(i).getOptionsQte2().remove(3);
+                            repSelect.get(i).getOptionsQte2().remove(2);
+                    case 0:
+                            repSelect.remove(i);
+                }*/
                 panier = new PanierBeans();
                 panier.setId(repSelect.get(i).getId().intValue());
                 panier.setNomSpectacle(specSelec.getNomSpectacle());
@@ -88,9 +125,11 @@ public class PanierControleur extends AbstractControleur implements Serializable
             
           if (repSelect.get(i).getId()== pan.getId()) {
               repSelect.get(i).setNbBilletsDispo(repSelect.get(i).getNbBilletsDispo()+ pan.getQuantity());
+              this.menuCtrl.changerQte(repSelect.get(i));
               this.getCacheSessionPresentation().getRepresentationSelected().remove( repSelect.get(i) ); 
               this.count = this.count - pan.getQuantity();
-          }          
+          }
+              
         }
         this.paniers.remove(pan);   
     }   
