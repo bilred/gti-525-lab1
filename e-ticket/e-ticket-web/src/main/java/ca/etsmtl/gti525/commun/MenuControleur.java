@@ -82,6 +82,13 @@ public class MenuControleur extends AbstractControleur implements Serializable {
 
     public void setArtistes(List<Artiste> artistes) {
         this.artistes = artistes;
-    }    
+    }
+    public void changerQte(Representation repCached ){
+     for (int i=0;i<this.representations.size();i++){
+         if (this.representations.get(i).getId()==repCached.getId()){
+             this.representations.get(i).setQTE(repCached.getQTE());
+         }
+     }   
+    }
     
 }
