@@ -1,5 +1,6 @@
 package ca.etsmtl.gti525.vente;
 
+import ca.etsmtl.gti525.beans.paiement.PanierBeans;
 import ca.etsmtl.gti525.commun.AbstractControleur;
 import ca.etsmtl.gti525.commun.CommunService;
 import ca.etsmtl.gti525.entity.vente.CarteCredit;
@@ -51,6 +52,10 @@ public class ProcessPaiementControleur extends AbstractControleur implements Ser
       logger.info("@PreDestroy : Information Client et Paiement utiliser dans le processus son détruite.");
     }   
    
+    public void onSelectionerOfEditer(PanierBeans row){
+           System.out.println("A modifier : "+row.getNomSpectacle()); 
+    }
+    
     public void save(ActionEvent actionEvent) {  
         //TODO Persist Billet + Client + VENTE
         this.panierCtrl.getCacheSessionPresentation().setDisablePaiement( Boolean.TRUE );

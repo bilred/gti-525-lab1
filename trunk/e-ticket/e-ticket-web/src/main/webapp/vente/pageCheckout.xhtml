@@ -25,7 +25,7 @@
                                              paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
                                              rowsPerPageTemplate="5,10,15,25,50,100" > 
                                     
-                                    <p:ajax event="cellEdit" /> 
+                                    <p:ajax event="cellEdit" listener="#{processPaiementCtrl.onSelectionerOfEditer(pan)}" /> <!--listener="{tableBean.onCellEdit}" update=":form:messages" -->
 
                                     <f:facet name="header" >          
                                         <table border="0" >
