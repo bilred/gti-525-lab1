@@ -46,4 +46,9 @@ public abstract class InitDao {
         stubsDaoJpaPaiement = (IPaiementDAO) ctx.getBean("stubsDaoJpaPaiement");
     }
     
+    
+    public void initTimeur() {
+         ApplicationContext context = new ClassPathXmlApplicationContext("spring-scheduler.xml");
+    }
+    
 }

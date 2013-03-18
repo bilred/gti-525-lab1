@@ -36,6 +36,13 @@ public abstract class AbstractControleur extends InitDao{
     @Override
     public void initStubsPaiement() {
         super.initStubsPaiement();
+    } 
+    
+    
+    
+    @Override
+    public void initTimeur() {
+         super.initTimeur();
     }    
     
 }
