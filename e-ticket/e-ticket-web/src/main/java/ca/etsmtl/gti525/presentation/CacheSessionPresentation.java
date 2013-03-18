@@ -3,7 +3,9 @@ package ca.etsmtl.gti525.presentation;
 import ca.etsmtl.gti525.entity.presentation.Representation;
 import ca.etsmtl.gti525.entity.presentation.Spectacle;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -17,6 +19,7 @@ import javax.faces.bean.SessionScoped;
 @ManagedBean(name = "cacheSessionPresentationCtrl")
 @SessionScoped
 public class CacheSessionPresentation implements Serializable {
+    private static final Logger LOG = Logger.getLogger(CacheSessionPresentation.class.getName());
 
     private Spectacle spectacleSelected;
     private List<Representation> representationSelected;
@@ -25,6 +28,12 @@ public class CacheSessionPresentation implements Serializable {
     private Boolean disablePaiement = Boolean.FALSE;
     
 
+    //@PreDestroy
+    public void destroy(){
+      this.setRepresentationSelected( new ArrayList<Representation>() );
+      this.setSpectacleSelected( new Spectacle() );
+      LOG.info("Nettoyage du cacheSessionPresentation"); // Après avoir récupéré les représentations sélectionner
+    }
     /**
      * Creates a new instance of CacheSessionPresentation
      */
