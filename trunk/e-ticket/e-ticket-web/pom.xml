@@ -39,8 +39,8 @@
         </dependency>
         <dependency>  
             <groupId>org.primefaces.themes</groupId>  
-            <artifactId>aristo</artifactId>  
-            <version>1.0.1</version>  
+            <artifactId>dark-hive</artifactId>  
+            <version>1.0.9</version>  
         </dependency>        
         
         <dependency>
