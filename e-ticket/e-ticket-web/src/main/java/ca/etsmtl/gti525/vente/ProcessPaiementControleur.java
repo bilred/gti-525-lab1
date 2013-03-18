@@ -53,7 +53,8 @@ public class ProcessPaiementControleur extends AbstractControleur implements Ser
     }   
    
     public void onSelectionerOfEditer(PanierBeans row){
-           System.out.println("A modifier : "+row.getNomSpectacle()); 
+       logger.info("onSelectionerOfEditer A modifier la quantite de : "+row.getNomSpectacle());
+       CommunService.addInfo("Succes", "Modification de la quantite du «"+row.getNomSpectacle()+"» avec la valeur de «"+row.getQuantity()+"»");
     }
     
     public void save(ActionEvent actionEvent) {  

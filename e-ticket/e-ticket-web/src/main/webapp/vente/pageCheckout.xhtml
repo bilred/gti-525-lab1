@@ -90,9 +90,9 @@
 
                             <etsmtl:inputTextLabel _id="rue" label="#{bundle.v_pageCheckout_Client_Street}" valeur="#{processPaiementCtrl.client.adresse.rue}" required="false" marginInputLabel="#{bundle.v_pageCheckout_Client_marginInputLabel_Street}" />
                             <etsmtl:inputTextLabel _id="ville" label="#{bundle.v_pageCheckout_Client_City}" valeur="#{processPaiementCtrl.client.adresse.region}" required="false" marginInputLabel="#{bundle.v_pageCheckout_Client_marginInputLabel_City}" />
-                            <etsmtl:inputTextLabel _id="codepost" label="#{bundle.v_pageCheckout_Client_postalcode}" valeur="#{processPaiementCtrl.client.adresse.codePostal}" required="false" marginInputLabel="#{bundle.v_pageCheckout_Client_marginInputLabel_postalcode}" />
+                            <etsmtl:inputMaskLabel _id="codepost" mask="a9a-9*9" label="#{bundle.v_pageCheckout_Client_postalcode}" valeur="#{processPaiementCtrl.client.adresse.codePostal}" required="false" marginInputLabel="#{bundle.v_pageCheckout_Client_marginInputLabel_postalcode}" />
 
-                            <etsmtl:inputMaskLabel _id="phone" label="#{bundle.v_pageCheckout_Client_Phone}" mask="999-999-9999" valeur="#{processPaiementCtrl.client.phone}" required="false"  marginInputLabel="#{bundle.v_pageCheckout_Client_marginInputLabel_Phone}"  />
+                            <etsmtl:inputMaskLabel _id="phone" label="#{bundle.v_pageCheckout_Client_Phone}" mask="(999)-999-9999" valeur="#{processPaiementCtrl.client.phone}" required="false"  marginInputLabel="#{bundle.v_pageCheckout_Client_marginInputLabel_Phone}"  />
                             <etsmtl:inputTextLabel _id="pays" label="#{bundle.v_pageCheckout_Client_Country}" valeur="#{processPaiementCtrl.client.adresse.ville}" required="false" marginInputLabel="#{bundle.v_pageCheckout_Client_marginInputLabel_Country}" />
                         </h:panelGrid>
 
@@ -103,9 +103,9 @@
                     <p:panel header="#{bundle.v_pageCheckout_creditCard_header}">
 
                         <h:panelGrid columns="2" columnClasses="label, value">
-                            <etsmtl:inputTextLabel _id="catecredi" label="#{bundle.v_pageCheckout_creditCard_number}" valeur="#{processPaiementCtrl.carteCredit.numCarteCredit}" required="true" requiredMessage="Champ obligatoire" marginInputLabel="#{bundle.v_pageCheckout_creditCard_marginInputLabel_number}" />
+                            <etsmtl:inputMaskLabel _id="catecredi" mask="99999-99999" label="#{bundle.v_pageCheckout_creditCard_number}" valeur="#{processPaiementCtrl.carteCredit.numCarteCredit}" required="true" requiredMessage="Champ obligatoire" marginInputLabel="#{bundle.v_pageCheckout_creditCard_marginInputLabel_number}" />
                             <etsmtl:calendarLabel _id="dateexpiration" label="#{bundle.v_pageCheckout_creditCard_dateexpiration}" valeur="#{processPaiementCtrl.carteCredit.dateTransaction}" required="true" requiredMessage="Champ obligatoire" marginInputLabel="#{bundle.v_pageCheckout_creditCard_marginInputLabel_dateexpiration}" />
-                            <etsmtl:inputTextLabel _id="codesecrt" label="#{bundle.v_pageCheckout_creditCard_codesecrt}" valeur="#{processPaiementCtrl.carteCredit.numSecurite}" required="true" requiredMessage="Champ obligatoire" marginInputLabel="#{bundle.v_pageCheckout_creditCard_marginInputLabel_codesecrt}" />                          
+                            <etsmtl:inputMaskLabel _id="codesecrt" mask="9999" label="#{bundle.v_pageCheckout_creditCard_codesecrt}" valeur="#{processPaiementCtrl.carteCredit.numSecurite}" required="true" requiredMessage="Champ obligatoire" marginInputLabel="#{bundle.v_pageCheckout_creditCard_marginInputLabel_codesecrt}" />                          
                         </h:panelGrid>  
                     </p:panel>  
                 </p:tab>  
