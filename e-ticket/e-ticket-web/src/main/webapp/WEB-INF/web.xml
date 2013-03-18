@@ -7,7 +7,7 @@
     
    <context-param>
         <param-name>primefaces.THEME</param-name>
-        <param-value>aristo</param-value>
+        <param-value>dark-hive</param-value>
     </context-param>    
     <context-param>
         <param-name>javax.faces.CONFIG_FILES</param-name>
