@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:composite="http://java.sun.com/jsf/composite"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html" 
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+    <!-- DOCUMENTATION 
+       Table CRUD (Create, read, update and delete)
+       Actuelement: Elit:TableCrud == elit:TableRud (avec une Dif utiliser dans ListeCrete) + elit:fieldsetListCrete + dialaogDetais
+    -->     
+
+    <!-- INTERFACE -->
+    <composite:interface>
+        <composite:attribute name="emptyMessage" required="true" default="Actualiser la table ou Modifier votre filtre" shortDescription="le message quand la liste est vide" ></composite:attribute>
+        <composite:attribute name="titleTable" required="true" shortDescription="titre de la table sur le header du DataTable" ></composite:attribute>
+        <composite:attribute name="visible" required="false" default="true" shortDescription="pour afficher ou non le composant selon une condition" ></composite:attribute>        
+        <composite:attribute name="handleTableCrud" required="true" shortDescription="Le manipulateur du composant (ce qui permet de déclenché des actions interne) => la méthodes (doGetAllEnregistrement, doInsert(), onSelectionerOfEditer, onDetailsEnregistrement, actionDelete, ....)" ></composite:attribute>
+        <composite:attribute name="updateDetails" required="true" shortDescription="Doit obligatoirement pointer sur l'id du elit:dialogDetails, sous la forme « idForm:idDialogDetails » ou si vous utilisé la propriété prependId='false' alors « idDialogDetails » suffit" ></composite:attribute>        
+
+        <composite:attribute name="rowKey" required="true" shortDescription="[Ajouter suite a la migration a primeFaces.3.1]" ></composite:attribute>
+        <composite:attribute name="updateOnRowSelect" required="false" shortDescription="[Ajouter suite a la migration a primeFaces.3.1]" ></composite:attribute>
+        <composite:attribute name="onComplete" required="false" shortDescription="[Ajouter suite a la migration a primeFaces.3.1]" ></composite:attribute>        
+
+        <composite:attribute name="BTN_modif_invisible" required="false" default="false" shortDescription="pour désactiver le bouton Modif" ></composite:attribute>
+        <composite:attribute name="BTN_delete_invisible" required="false" default="false" shortDescription="pour désactiver le bouton Delete" ></composite:attribute>
+        <composite:attribute name="BTN_details_invisible" required="false" default="false" shortDescription="pour désactiver le bouton Detail" ></composite:attribute>
+
+        <composite:attribute name="selection" required="false" shortDescription="Evenement selectionné une ligne si valeur == {cc.attrs.handleTableCrud.selectedOnAction}, OU Evenement selectedRadioButton valeur == {cc.attrs.handleTableCrud.selectedRadioButton}, OU Evenement selectedsCheckbox valeur == {cc.attrs.handleTableCrud.selectedsCheckbox}" ></composite:attribute>
+    </composite:interface>
+
+    <!-- IMPLEMENTATION -->
+    <composite:implementation>
+        <style>
+            .ClassePanel{
+                
+            }           
+        </style>
+
+        <p:panel header="${cc.attrs.titleTable}"  rendered="#{cc.attrs.visible}" toggleable="true" >       
+            <div style="overflow: auto">
+
+                <p:dataTable id="tableVar" var="item" value="#{cc.attrs.handleTableCrud.colonneTableCrudS}" widgetVar="LaTable" paginator="true" rows="10"
+                             emptyMessage="#{cc.attrs.emptyMessage}" rowKey="#{cc.attrs.rowKey}"
+                             editable="true" selectionMode="single" selection="#{cc.attrs.handleTableCrud.selectedOnAction}"
+                             paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                             rowsPerPageTemplate="5,10,15,25,50,100" >
+
+                    <p:ajax event="rowSelect" listener="#{cc.attrs.handleTableCrud.onSelectionerEnregistrement}"
+                            update="@this #{cc.attrs.updateOnRowSelect}" oncomplete="#{cc.attrs.onComplete}" />                   
+
+                    <f:facet name="header" >          
+                        <table border="0" >
+                            <tr style="border-style: hidden;">
+                                <td align="left" width="125px" style="white-space: nowrap;" >
+                                    <p:commandButton immediate="true" value="Actualiser la table" action="#{cc.attrs.handleTableCrud.doGetAllEnregistrement}" update="tableVar" icon="ui-icon-refresh"  />
+                                </td>
+                                <td style="border-style: hidden;" align="left" width="20px" ><p:ajaxStatus style="width:16px;height:16px;" id="ajaxStatusPanel" > <f:facet name="start"><h:graphicImage value="/resources/etsmtl/img/ajaxLoader1.gif" alt="Patientez Pendant le chargement....." /> </f:facet> <f:facet name="complete"> <h:outputText value="" /> </f:facet> </p:ajaxStatus></td>
+                                <td align="right"><h:outputText value=" Recherche Globale " /><p:inputText id="globalFilter" onkeyup="LaTable.filter()" size="23" /> <p:watermark for="globalFilter" value="Mots clés..." /></td>
+                            </tr>
+                        </table>
+                    </f:facet>
+
+
+                    <composite:insertChildren id="colonneTableCrud" />
+
+
+                    <p:column headerText="Operation" style="width: 115px;" >
+                        <c:choose>
+                            <c:when test="false"> <p:rowEditor></p:rowEditor> &nbsp; </c:when>
+                            <c:otherwise></c:otherwise>
+                        </c:choose>
+
+                        <p:commandButton id="modifs" immediate="true" disabled="#{cc.attrs.BTN_modif_invisible}" title="Modifier" icon="ui-icon-pencil" actionListener="#{cc.attrs.handleTableCrud.onSelectionerOfEditer(item)}" action="pageModif?faces-redirect=true" />                                        
+                        <p:commandButton id="DelletButton" disabled="#{cc.attrs.BTN_delete_invisible}" oncomplete="confirmation.show()" global="false" icon="ui-icon-trash" title="Supprimer" >  
+                            <f:setPropertyActionListener value="#{item}" target="#{cc.attrs.handleTableCrud.actionDelete}"  />  
+                        </p:commandButton>                                             
+                        <p:commandButton id="actionOnDetails" disabled="#{cc.attrs.BTN_details_invisible}" global="false" update="#{cc.attrs.updateDetails}:documentPanel" immediate="true" oncomplete="documentDialog.show()" actionListener="#{cc.attrs.handleTableCrud.onDetailsEnregistrement(item)}" title="Afficher Détails" icon="ui-icon-zoomin" />
+                    </p:column>                
+
+                    <!-- <f:facet name="footer"> </f:facet> -->
+
+                </p:dataTable>
+            </div>
+            <p:blockUI block="tableVar" trigger="tableVar">  
+                LOADING<br />  
+                <p:graphicImage value="/resources/etsmtl/img/ajaxLoader5.gif"/>  
+            </p:blockUI>             
+        </p:panel>      
+
+        <!--<elit:dialogDetails/>-->        
+        <!-- modal="true" showEffect="explode" hideEffect="explode" -->
+        <p:confirmDialog  message="Etes vous sûr de vouloir supprimer cet élément ?" width="400" header="Confirmation de suppression" severity="alert" widgetVar="confirmation" >
+            &nbsp;
+            <p:commandButton value="Oui" immediate="true" actionListener="#{cc.attrs.handleTableCrud.onRemouveEnregistrement()}" oncomplete="confirmation.hide()" update="tableVar" />&nbsp;  
+            <p:commandButton value="Non" immediate="true" onclick="confirmation.hide()" type="button" />  
+
+        </p:confirmDialog>         
+
+    </composite:implementation>
+
+</html>

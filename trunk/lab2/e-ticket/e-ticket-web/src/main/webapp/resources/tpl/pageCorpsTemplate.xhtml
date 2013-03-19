@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html" >
+        <h:head>
+            <f:facet name="first">
+                <meta http-equiv="X-UA-Compatible" content="EmulateIE8" />
+                <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+                <title>E-Ticket</title>
+            </f:facet>
+
+            <link href="#{resource['css:style.css']}" rel="stylesheet" type="text/css" />
+            <link rel="icon" type="image/x-icon" href="#{resource['icons:favicon.ico']}" /> <!-- Pour les navigateurs qui respectent les standards -->
+            <style type="text/css">
+                .ui-layout-north {
+                    z-index:20 !important;
+                    overflow:visible !important;;
+                }
+                .ui-layout-north .ui-layout-unit-content {
+                    overflow:visible !important;
+                }
+                .ui-widget-content {
+                    /*background: none repeat scroll 0 0 transparent !important;*/
+                    border: 1px solid #A8A8A8;
+                    color: #4F4F4F;
+                }
+            </style>            
+        </h:head>
+
+        <h:body id="body">
+            <p:layout fullPage="true" >
+
+                <p:layoutUnit position="north" size="155" resizable="false" closable="true" collapsible="true" effect="drop">
+                    <div id="header">
+                        <div>
+                            <img class="logo" src="#{resource['tpl_images:logo.png']}" width="477" height="220" />
+                            <ul class="navigation">
+                                <li>
+                                    <h:link class="active" outcome="#{menuCtrl.doHomme()}" value="#{bundle.app_menu1}" />
+                                </li>
+                                <li>
+                                    <h:link outcome="#{menuCtrl.doShow()}" value="#{bundle.app_menu2}" />
+                                </li>
+                                <li>
+                                    <h:link outcome="#{menuCtrl.doCart()}" value="#{bundle.app_menu3}" />
+                                </li>
+                                <li><p:spacer width="100px" /></li>
+                                <li style="margin-top: 32px">
+                                    <h:form>
+                                        <h:selectOneMenu value="#{languageCtrl.localeCode}" onchange="submit()"
+                                                         valueChangeListener="#{languageCtrl.countryLocaleCodeChanged}">
+                                            <f:selectItems value="#{languageCtrl.countriesInMap}" /> 
+                                        </h:selectOneMenu>
+                                    </h:form>
+                                </li>                                
+                            </ul>
+                        </div>
+                    </div>                 
+                </p:layoutUnit>
+
+
+                <p:layoutUnit position="center" >
+                    <p:growl sticky="true" showDetail="true" globalOnly="true" autoUpdate="true" />
+<!--                    <p:messages showDetail="true"  globalOnly="true" autoUpdate="true">
+                        <p:effect type="pulsate" event="load" delay="1000">  
+                            <f:param name="mode" value="'show'" />
+                        </p:effect>
+                    </p:messages>-->
+                    <div>
+                        <ui:insert name="content">
+                            
+                            
+                        </ui:insert>
+                    </div>
+                </p:layoutUnit>
+
+
+                <!--                <p:layoutUnit position="south" size="63" resizable="false" closable="true" collapsible="true" effect="drop" style="height: 0px;" >
+                                    <p align="center">&copy; Copyright 2012. All rights reserved.</p>
+                                </p:layoutUnit>-->
+
+            </p:layout>    
+        </h:body>
+
+    </f:view>
+</html>
