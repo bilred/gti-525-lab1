@@ -208,9 +208,9 @@ public class PanierControleur extends AbstractControleur implements Serializable
         //Session invalidet
 //       FacesContext context = FacesContext.getCurrentInstance();
 //       HttpSession session = (HttpSession) context.getExternalContext().getSession(false);
-         CommunService.addWarn("Attention !", "Session invalidate !.");
+        //CommunService.addWarn("Attention !", "Session invalidate !.");
+         log.info("session.invalidate(), Session ID: "+session.getId()+" (aprés passage du timeur)");
          session.invalidate(); //this.destroy(); 
-         log.info("Nettoyage du PanierControleur (aprés passage du timeur)");
     }    
 
 }
