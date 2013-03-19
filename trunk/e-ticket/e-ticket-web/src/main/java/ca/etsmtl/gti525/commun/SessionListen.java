@@ -38,7 +38,7 @@ public class SessionListen implements HttpSessionListener {
             --sessionCount;
         }
         String message = new StringBuffer("Session destroyed"
-                + "\nValue of destroyed session ID is").append("" + id).append(
+                + "\nValue of destroyed session ID is: ").append("" + id).append(
                 "\n").append("There are now ").append("" + sessionCount).append(" live sessions in the application.").toString();
      
           //session.invalidate(); request.logout();
