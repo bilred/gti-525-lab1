@@ -1,4 +1,4 @@
-package dz.elit.commun;
+package ca.etsmtl.gti525.commun;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
