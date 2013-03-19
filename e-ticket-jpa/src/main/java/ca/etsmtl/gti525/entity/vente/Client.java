@@ -1,8 +1,8 @@
 package ca.etsmtl.gti525.entity.vente;
 
+import ca.etsmtl.gti525.commun.Email;
 import ca.etsmtl.gti525.entity.audit.EntityBaseLogs;
 import ca.etsmtl.gti525.entity.presentation.Billet;
-import dz.elit.commun.Email;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Column;
