@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:composite="http://java.sun.com/jsf/composite"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+    <!-- INTERFACE -->
+    <composite:interface>
+        <composite:attribute name="label" required="true" ></composite:attribute>
+        <composite:attribute name="valeur" required="true" default="" ></composite:attribute>
+        <composite:attribute name="readonly" required="false" default="false" shortDescription="En lecture seul pour le champ text" ></composite:attribute>
+        <composite:attribute name="_id" required="true" ></composite:attribute>
+        <composite:attribute name="sizeInput" required="false" default="14" ></composite:attribute>        
+        <composite:attribute name="marginInputLabel" required="false" shortDescription="La marge entre le label et le champ text" ></composite:attribute>
+        <composite:attribute name="required" required="false" default="false" shortDescription="Choix obligatoire/non obligatoire" ></composite:attribute>        
+        <composite:attribute name="requiredMessage" required="false" shortDescription="Mesage du loadBundle, la balise h:message sera ajouter automatiquement" ></composite:attribute>
+    </composite:interface>
+
+    <!-- IMPLEMENTATION -->
+    <composite:implementation>
+        &nbsp;
+        <h:outputLabel for="#{cc.attrs._id}" value="#{cc.attrs.label}" title="#{cc.attrs.label}" styleClass="calendarLabelCss" /> <c:if test="#{cc.attrs.required}" > <h:outputLabel value="*" style="color: red "/> </c:if>&nbsp;
+        <p:calendar id="#{cc.attrs._id}" value="#{cc.attrs.valeur}" title="#{cc.attrs.label}" pattern="dd/MM/yyyy" required="#{cc.attrs.required}" requiredMessage="#{cc.attrs.requiredMessage}" style="margin-left:#{cc.attrs.marginInputLabel}px;" size="#{cc.attrs.sizeInput}"
+                    readonly="#{cc.attrs.readonly}" readonlyInput="true" navigator="true" showButtonPanel="true" effect="slide" showOn="button" > <!-- language="fr" -->
+            <f:convertDateTime type="date" pattern="dd/MM/yyyy" locale="fr" for="#{cc.attrs._id}"/>
+        </p:calendar>
+        <c:if test="#{not empty cc.attrs.requiredMessage}" >
+            <p:spacer width="11px"/>
+            <h:message showSummary="true" showDetail="false" style="color: red; padding-right: 11px" for="#{cc.attrs._id}"/>
+        </c:if>
+    </composite:implementation>
+</html>

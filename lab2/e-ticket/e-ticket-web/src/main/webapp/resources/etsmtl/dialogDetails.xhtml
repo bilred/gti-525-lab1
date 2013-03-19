@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:cc="http://java.sun.com/jsf/composite"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html">      
+
+    <!-- DOCUMENTATION 
+       Utilisé dans la Table CRUD pour afficher le détails, après click sur le bouton de détails.
+    -->    
+    
+    <!-- INTERFACE -->
+    <cc:interface>
+    </cc:interface>
+
+    <!-- IMPLEMENTATION -->
+    <cc:implementation>        
+
+        <p:dialog id="#{cc.id}" header="Détails de l’enregistrement" showEffect="clip" hideEffect="fold" widgetVar="documentDialog" modal="false">
+
+            <p:outputPanel id="documentPanel">  
+
+                <cc:insertChildren id="contenu_dialog" />
+
+                <br/><p:separator />
+                <div align="center" >
+                    <h:panelGrid columns="3" border="0">
+                        <p:commandButton value="Imprimer" type="button" icon="ui-icon-print" >  
+                            <p:printer target="documentPanel" />  
+                        </p:commandButton>&nbsp;
+                        <p:commandButton value="Fermer" global="false" oncomplete="documentDialog.hide()" icon="ui-icon-close" />
+                    </h:panelGrid>
+                </div>    
+            </p:outputPanel>
+
+        </p:dialog>         
+
+    </cc:implementation>
+</html>
+
+
+<!--  <br/><p:separator />
+      <p:commandButton value="Fermer" oncomplete="documentDialog.hide()" style="width: 70px; margin-left: 42%" />-->

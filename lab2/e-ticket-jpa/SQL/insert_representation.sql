@@ -1,0 +1,19 @@
+INSERT INTO show_representation(adresse, nb_billets_dispo, prix, spectacle_id)VALUES ('Montréal', 100, 25, 116);
+INSERT INTO show_representation(adresse, nb_billets_dispo, prix, spectacle_id)VALUES ('Québec', 100, 25, 116);
+INSERT INTO show_representation(adresse, nb_billets_dispo, prix, spectacle_id)VALUES ('Ontario', 100, 25, 116);
+INSERT INTO show_representation(adresse, nb_billets_dispo, prix, spectacle_id)VALUES ('Seattle', 100, 25, 117);
+INSERT INTO show_representation(adresse, nb_billets_dispo, prix, spectacle_id)VALUES ('Chicago', 100, 25, 117);
+INSERT INTO show_representation(adresse, nb_billets_dispo, prix, spectacle_id)VALUES ('Boston', 100, 25, 117);
+INSERT INTO show_representation(adresse, nb_billets_dispo, prix, spectacle_id)VALUES ('Paris', 100, 25, 118);
+INSERT INTO show_representation(adresse, nb_billets_dispo, prix, spectacle_id)VALUES ('Berlin', 100, 25, 118);
+INSERT INTO show_representation(adresse, nb_billets_dispo, prix, spectacle_id)VALUES ('Rome', 100, 25, 118);
+
+INSERT INTO show_representation(adresse, nb_billets_dispo, prix, spectacle_id)VALUES ('Montréal', 100, 25, 116);
+INSERT INTO show_representation(adresse, nb_billets_dispo, prix, spectacle_id)VALUES ('Québec', 90, 20, 116);
+INSERT INTO show_representation(adresse, nb_billets_dispo, prix, spectacle_id)VALUES ('Ontario', 80, 20, 116);
+INSERT INTO show_representation(adresse, nb_billets_dispo, prix, spectacle_id)VALUES ('Seattle', 70, 15, 117);
+INSERT INTO show_representation(adresse, nb_billets_dispo, prix, spectacle_id)VALUES ('Chicago', 60, 35, 117);
+INSERT INTO show_representation(adresse, nb_billets_dispo, prix, spectacle_id)VALUES ('Boston', 100, 25, 117);
+INSERT INTO show_representation(adresse, nb_billets_dispo, prix, spectacle_id)VALUES ('Paris', 100, 25, 118);
+INSERT INTO show_representation(adresse, nb_billets_dispo, prix, spectacle_id)VALUES ('Berlin', 100, 25, 118);
+INSERT INTO show_representation(adresse, nb_billets_dispo, prix, spectacle_id)VALUES ('Rome', 100, 25, 118);

@@ -1,0 +1,152 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="/resources/tpl/pageCorpsTemplate.xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:etsmtl="http://java.sun.com/jsf/composite/etsmtl"
+                xmlns:f="http://java.sun.com/jsf/core">
+
+
+    <ui:define name="content">
+        <br/><br/>
+        <h:form id="processusPaiment" >
+            <p:wizard id="flow" widgetVar="wiz" flowListener="#{processPaiementCtrl.onFlowProcess}" backLabel="#{bundle.v_pageCart_back_button}" nextLabel="#{bundle.v_pageCart_next_button}" >
+
+                <p:tab id="tickets" title="#{bundle.v_pageCheckout_ticket}" >
+                    <p:panel header="#{bundle.v_pageCheckout_panel_header}">
+
+                        <p:panel header="#{bundle.v_pageCheckout_tablepanel_header}"  rendered="true" toggleable="true" >       
+                            <div style="overflow: auto">
+                                <p:dataTable id="dataPaiment" var="pan" value="#{processPaiementCtrl.panierCtrl.paniers}" 
+                                             widgetVar="LaTable" paginator="true" rows="10"
+                                             emptyMessage="#{bundle.v_pageCheckout_tablepanel_emptyMessage}" rowKey="#{pan}"
+                                             editable="true" editMode="cell" selectionMode="single"
+                                             paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                                             rowsPerPageTemplate="5,10,15,25,50,100" > 
+                                    
+                                    <p:ajax event="cellEdit" listener="#{processPaiementCtrl.onSelectionerOfEditer(pan)}" /> <!--listener="{tableBean.onCellEdit}" update=":form:messages" -->
+
+                                    <f:facet name="header" >          
+                                        <table border="0" >
+                                            <tr style="border-style: hidden;">
+                                                <td style="border-style: hidden;" align="left" width="20px" ><p:ajaxStatus style="width:16px;height:16px;" id="ajaxStatusPanel" > <f:facet name="start"><h:graphicImage value="/resources/etsmtl/img/ajaxLoader1.gif" alt="#{bundle.v_pageCheckout_waiting_Message}" /> </f:facet> <f:facet name="#{bundle.v_pageCheckout_complete_loading_Message}"> <h:outputText value="" /> </f:facet> </p:ajaxStatus></td>
+                                                <td align="right"><h:outputText value="#{bundle.v_pageCheckout_searchfield_label}" /><p:inputText id="globalFilter" onkeyup="LaTable.filter()" size="23" /> <p:watermark for="globalFilter" value="#{bundle.v_pageCheckout_searchfield_defaultText}" /></td>
+                                            </tr>
+                                        </table>
+                                    </f:facet>
+
+                                    <!--<composite:insertChildren id="colonneTableCrud" />-->
+                                    <p:column sortBy="#{pan.nomSpectacle}" headerText="#{bundle.v_pageCheckout_sortBy_shows}" >  
+                                        <h:outputText value="#{pan.nomSpectacle}" />  
+                                    </p:column>  
+
+                                    <p:column sortBy="#{pan.dateRepresentation}" headerText="#{bundle.v_pageCheckout_sortBy_date}">  
+                                        <h:outputText value="#{pan.dateRepresentation}" />  
+                                    </p:column>  
+
+                                    <p:column sortBy="#{pan.quantity}" headerText="#{bundle.v_pageCheckout_sortBy_number}">
+                                        <p:cellEditor>  
+                                            <f:facet name="output"><h:outputText value="#{pan.quantity}" /></f:facet>  
+                                            <f:facet name="input"><p:inputText value="#{pan.quantity}" style="width:96%" label="Quantity"/></f:facet>  
+                                        </p:cellEditor>                        
+                                    </p:column>  
+
+                                    <p:column sortBy="#{pan.prix}" headerText="#{bundle.v_pageCheckout_sortBy_price}">  
+                                        <h:outputText value="#{pan.prix}" />  
+                                    </p:column>
+                                    <p:column headerText="#{bundle.v_pageCart_panelPanierCompte_delete}" style="width: 40px;" >                                            
+                                        <p:commandButton id="actionOnBillets" disabled="false" global="false" update=":processusPaiment:dataPaiment" immediate="true"  actionListener="#{processPaiementCtrl.panierCtrl.supprimerBillet(pan)}" title="#{bundle.v_pageCart_panelPanierCompte_delete_tickets}" icon="ui-icon-trash" />
+                                    </p:column> 
+
+                                    <f:facet name="footer"></f:facet>            
+
+                                </p:dataTable>
+                            </div>
+
+                            <etsmtl:dialogDetails id="mydialog" >
+
+                            </etsmtl:dialogDetails>
+
+
+                            <p:blockUI block="dataPaiment" trigger="dataPaiment">  
+                                LOADING<br />  
+                                <p:graphicImage value="/resources/etsmtl/img/ajaxLoader5.gif"/>  
+                            </p:blockUI>             
+                        </p:panel>
+
+
+
+                    </p:panel>  
+                </p:tab>  
+
+                <p:tab id="client" title="#{bundle.v_pageCheckout_Client_tab_title}">  
+                    <p:panel header="#{bundle.v_pageCheckout_Client_tab_header}">  
+
+                        <h:panelGrid columns="3" >
+                            <etsmtl:inputTextLabel _id="prenom" label="#{bundle.v_pageCheckout_Client_firstname}" valeur="#{processPaiementCtrl.client.nom}" required="true" marginInputLabel="#{bundle.v_pageCheckout_Client_marginInputLabel_firstname}" />
+                            <etsmtl:inputTextLabel _id="nom" label="#{bundle.v_pageCheckout_Client_lastname}" valeur="#{processPaiementCtrl.client.prenom}" required="true" marginInputLabel="#{bundle.v_pageCheckout_Client_marginInputLabel_lastname}" />
+                            <etsmtl:inputTextLabel _id="mail" label="#{bundle.v_pageCheckout_Client_email}" valeur="#{processPaiementCtrl.client.mail}" required="true" marginInputLabel="#{bundle.v_pageCheckout_Client_marginInputLabel_email}" />
+
+                            <etsmtl:inputTextLabel _id="rue" label="#{bundle.v_pageCheckout_Client_Street}" valeur="#{processPaiementCtrl.client.adresse.rue}" required="false" marginInputLabel="#{bundle.v_pageCheckout_Client_marginInputLabel_Street}" />
+                            <etsmtl:inputTextLabel _id="ville" label="#{bundle.v_pageCheckout_Client_City}" valeur="#{processPaiementCtrl.client.adresse.region}" required="false" marginInputLabel="#{bundle.v_pageCheckout_Client_marginInputLabel_City}" />
+                            <etsmtl:inputMaskLabel _id="codepost" mask="a9a-9*9" label="#{bundle.v_pageCheckout_Client_postalcode}" valeur="#{processPaiementCtrl.client.adresse.codePostal}" required="false" marginInputLabel="#{bundle.v_pageCheckout_Client_marginInputLabel_postalcode}" />
+
+                            <etsmtl:inputMaskLabel _id="phone" label="#{bundle.v_pageCheckout_Client_Phone}" mask="(999)-999-9999" valeur="#{processPaiementCtrl.client.phone}" required="false"  marginInputLabel="#{bundle.v_pageCheckout_Client_marginInputLabel_Phone}"  />
+                            <etsmtl:inputTextLabel _id="pays" label="#{bundle.v_pageCheckout_Client_Country}" valeur="#{processPaiementCtrl.client.adresse.ville}" required="false" marginInputLabel="#{bundle.v_pageCheckout_Client_marginInputLabel_Country}" />
+                        </h:panelGrid>
+
+                    </p:panel>  
+                </p:tab>  
+
+                <p:tab id="creditCard" title="#{bundle.v_pageCheckout_creditCard_title}">  
+                    <p:panel header="#{bundle.v_pageCheckout_creditCard_header}">
+
+                        <h:panelGrid columns="2" columnClasses="label, value">
+                            <etsmtl:inputMaskLabel _id="catecredi" mask="99999-99999" label="#{bundle.v_pageCheckout_creditCard_number}" valeur="#{processPaiementCtrl.carteCredit.numCarteCredit}" required="true" requiredMessage="Champ obligatoire" marginInputLabel="#{bundle.v_pageCheckout_creditCard_marginInputLabel_number}" />
+                            <etsmtl:calendarLabel _id="dateexpiration" label="#{bundle.v_pageCheckout_creditCard_dateexpiration}" valeur="#{processPaiementCtrl.carteCredit.dateTransaction}" required="true" requiredMessage="Champ obligatoire" marginInputLabel="#{bundle.v_pageCheckout_creditCard_marginInputLabel_dateexpiration}" />
+                            <etsmtl:inputMaskLabel _id="codesecrt" mask="9999" label="#{bundle.v_pageCheckout_creditCard_codesecrt}" valeur="#{processPaiementCtrl.carteCredit.numSecurite}" required="true" requiredMessage="Champ obligatoire" marginInputLabel="#{bundle.v_pageCheckout_creditCard_marginInputLabel_codesecrt}" />                          
+                        </h:panelGrid>  
+                    </p:panel>  
+                </p:tab>  
+
+                <p:tab id="confirm" title="#{bundle.v_pageCheckout_confirm_title}">  
+                    <p:panel header="#{bundle.v_pageCheckout_confirm_header}">  
+
+                        <h:panelGrid id="confirmation" columns="2" rendered="#{processPaiementCtrl.disableInfoPaiment}" >
+                            <etsmtl:outputLabel _id="infoNom" label="Nom : " valeur="#{processPaiementCtrl.client.nom}" />
+                            <etsmtl:outputLabel _id="infoPrenom" label="Prenom : " valeur="#{processPaiementCtrl.client.prenom}" />
+                            <etsmtl:outputLabel _id="infoMail" label="Mail : " valeur="#{processPaiementCtrl.client.mail}" />
+                            <etsmtl:outputLabel _id="infoPhon" label="Telephone : " valeur="#{processPaiementCtrl.client.phone}" />
+                            <etsmtl:outputLabel _id="ifoIConfVente" label="Num Paiement : " valeur="00#{(Math.random() * 50 + 1960)}" />    
+                        </h:panelGrid> <br/> 
+
+                        <p:commandButton id="btnPayement" value="#{bundle.v_pageCheckout_confirm_btnPayement}" disabled="#{cacheSessionPresentationCtrl.disablePaiement}" oncomplete="documentDialog.show()" icon="ui-icon-check" />
+                        <p:commandButton value="#{bundle.v_pageCheckout_confirm_btnprint}" type="button" icon="ui-icon-print">  
+                            <p:printer target="confirm" />  
+                        </p:commandButton>
+
+                        <p:dialog id="dialogPaimentOk" widgetVar="documentDialog" header="#{bundle.v_pageCheckout_confirm_dialogPaimentOk_header}" showEffect="clip" hideEffect="fold" modal="false">
+
+                            #{bundle.v_pageCheckout_confirm_2eme_confirm_msg}
+
+                            <br/><p:separator />
+                            <div align="center" >
+                                <h:panelGrid columns="3" border="0">
+                                    <p:commandButton value="#{bundle.v_pageCheckout_confirm_btn_validate_payement_value}" global="false" oncomplete="documentDialog.hide()" actionListener="#{processPaiementCtrl.save}" update="@form" icon="ui-icon-close" />
+                                    <p:commandButton value="#{bundle.v_pageCheckout_confirm_btn_cancel_payement_value}" global="false" oncomplete="documentDialog.hide()" icon="ui-icon-close" />
+                                </h:panelGrid>
+                            </div>                            
+                        </p:dialog>
+
+                    </p:panel>  
+                </p:tab> 
+
+            </p:wizard>  
+
+        </h:form>          
+
+    </ui:define>
+
+
+</ui:composition>

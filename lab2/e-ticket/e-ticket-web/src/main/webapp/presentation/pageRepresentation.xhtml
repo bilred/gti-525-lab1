@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="/resources/tpl/pageCorpsTemplate.xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core" 
+                xmlns:etsmtl="http://java.sun.com/jsf/composite/etsmtl">
+
+
+    <ui:define name="content">
+        <br/>        
+        <h:form id="myform">  
+
+            <p:dataTable id="dataTable" var="rep" value="#{representationCtrl.cacheSessionPresentation.spectacleSelected.representations}" widgetVar="representationsTable"   
+                         emptyMessage="#{bundle.p_emptyMessage_dataTable}" filteredValue="#{representationCtrl.representationsFiltrees}" paginator="true" rows="10"
+                         style="background: none" rowKey="#{rep}" selection="#{representationCtrl.cacheSessionPresentation.representationSelected}" >  
+
+                <f:facet name="header"> </f:facet>  
+
+                <p:column selectionMode="multiple" style="width:2%" />  
+                <p:column id="photoArtiste"  headerText="#{bundle.p_Artiste_headerText}"  >  
+                    <ui:param name="imgPath" value="images:#{representationCtrl.cacheSessionPresentation.spectacleSelected.artiste.lienPhoto }.png" />
+                    <p:graphicImage value="#{resource[imgPath]}" width="50" height="25" />  
+                </p:column>
+
+                <p:column id="nomArtiste" filterBy="#{representationCtrl.cacheSessionPresentation.spectacleSelected.artiste.nom}}"   
+                          headerText="#{bundle.p_Artiste_headerText}"  
+                          filterMatchMode="contains">  
+                    <h:outputText value="#{representationCtrl.cacheSessionPresentation.spectacleSelected.artiste.nom}" />  
+                </p:column>
+                <p:column id="nomSpectacle" filterBy="#{representationCtrl.cacheSessionPresentation.spectacleSelected.nomSpectacle}"   
+                          headerText="#{bundle.p_Spectacle_headerText}"  
+                          filterMatchMode="contains">  
+                    <h:outputText value="#{representationCtrl.cacheSessionPresentation.spectacleSelected.nomSpectacle}" />  
+                </p:column>
+
+                <p:column id="addColumn" filterBy="#{rep.salle.adresse}"  
+                          headerText="#{bundle.p_Ville_headerText}" footerText="#{bundle.p_footerText_contains}"  
+                          filterMatchMode="contains">  
+                    <h:outputText value="#{rep.salle.adresse}" />  
+                </p:column>
+
+                <p:column id="dateDebutColumn"  headerText="#{bundle.p_dateDebutColumn_headerText}" footerText="#{bundle.p_dateDebutColumn_footerText}">
+
+                    <h:outputText value="#{rep.dateDebut}" 
+                                  id="popupDate"> 
+                        <f:convertDateTime pattern="d/M/yyyy" /> 
+                    </h:outputText>
+
+
+                </p:column> 
+                <p:column id="dispColumn" headerText="#{bundle.p_Disponibility_headerText}">
+                    <etsmtl:outputLabel _id="labelDisp" valeur="#{rep.nbBilletsDispo}" />
+                </p:column>
+                
+                <p:column id="qteBillets" headerText="#{bundle.p_Qte_billets_headerText}" > 
+                    <h:selectOneMenu value="#{rep.QTE}" 
+                                     valueChangeListener="#{languageCtrl.countryLocaleCodeChanged}">
+                        <f:selectItems value="#{rep.optionsQte2}" /> 
+                        
+                    </h:selectOneMenu>
+
+                </p:column> 
+                <p:calendar value="#{calendarBean.date2}" id="popupCal" /> 
+
+                <p:column id="priceColumn" filterBy="#{rep.prix}"   
+                          headerText="#{bundle.p_price_headerText}" footerText="#{bundle.p_footerText_contains}"  
+                          filterMatchMode="contains"> 
+                    <etsmtl:outputLabel _id="labelDisp" valeur="#{rep.prix}" />
+                </p:column>
+                
+                <f:facet name="footer">  
+                    <p:commandButton id="multiViewButton" value="#{bundle.p_multiViewButton_value}" icon="ui-icon-search" oncomplete="billets.show()" update=":myform:displayMulti" /> <p:spacer width="40px"/> 
+                    <p:commandButton action="#{menuCtrl.doCart()}" actionListener="#{representationCtrl.doVelidete}" value="#{bundle.p_ButtonConfirmation}" icon="ui-icon-check" /> <p:spacer width="40px"/> 
+                    <p:commandButton type="reset" value="#{bundle.p_resetButton_value}" icon="ui-icon-cancel" />
+                </f:facet>  
+            </p:dataTable>
+
+
+            <p:dialog id="dialog" header="#{bundle.p_selectBills_header}" widgetVar="billets" resizable="false" showEffect="fade" hideEffect="explode" >             
+                <p:dataList id="displayMulti" value="#{representationCtrl.cacheSessionPresentation.representationSelected}" var="selected">  
+                    Adresse : #{selected.salle.adresse} Date:  #{selected.dateDebut} Prix Unitaire: #{selected.prix} QTE: #{rep.QTE}
+                </p:dataList>
+
+                <br/><p:separator />
+                <div align="center" >
+                    <h:panelGrid columns="3" border="0">
+                        <p:commandButton value="#{bundle.p_printButton_value}" type="button" icon="ui-icon-print" >  
+                            <p:printer target="dialog" />  
+                        </p:commandButton>&nbsp;
+                        <p:commandButton value="#{bundle.p_CloseButton_value}" global="false" oncomplete="billets.hide()" icon="ui-icon-close" />
+                    </h:panelGrid>
+                </div>            
+            </p:dialog>   
+        </h:form>
+
+    </ui:define>
+
+
+</ui:composition>
