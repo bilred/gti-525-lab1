@@ -1,0 +1,11 @@
+GTI525-Service de paiement
+e-mail Outellou Mohamed moutellou@gmail.com
+
+Bonjour,
+
+Voici votre clé : 38f33d8449386908efd4
+Le numéro de carte de test :  8675309000000000
+
+Pour le reste des paramètres, vous choisissez ce que vous voulez.
+J'ai inclus l'implementation du service et la librairie de JSON qui est utilisée pour le parsing.
+J'explique le tout la séance prochaine
