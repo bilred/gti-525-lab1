@@ -21,7 +21,7 @@ import sun.net.www.protocol.http.HttpURLConnection;
  */
 public class PaiementDAO implements IPaiementDAO {
 
-    private String baseUrl = "http://gti525.heroku.com/transactions";
+    private String baseUrl = "http://gti525.herokuapp.com/transactions";
     JSONParser parser = new JSONParser();
 
     @Override
