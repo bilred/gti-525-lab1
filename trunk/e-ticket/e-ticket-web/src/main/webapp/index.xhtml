@@ -8,56 +8,35 @@
 
 
     <ui:define name="content">
+        <style type="text/css"></style>
 
         <div style="margin-left: 40%;margin-right: 20%;margin-top:3%; font-size: 20px" >
-
             #{bundle.p_pageIndex_title}
-        </div>
-        <h:body>     
+        </div><br/>     
 
 
+        <p:tabView orientation="top" >  
+            <p:tab title="Christopher Owens">  
+                <h:panelGrid columns="2" cellpadding="10">  
+                    <p:graphicImage value="#{resource['images:img_cw_art.png']}" />  
+                    <h:outputText value="#{bundle.p_pageIndex_descriptionCW}" />  
+                </h:panelGrid>  
+            </p:tab>  
+            <p:tab title="Omar Rodriguez Lopez">  
+                <h:panelGrid columns="2" cellpadding="10">  
+                    <p:graphicImage value="#{resource['images:img_orlg_art.png']}" />  
+                    <h:outputText value="#{bundle.p_pageIndex_descriptionJF}" />  
+                </h:panelGrid>  
+            </p:tab>  
+            <p:tab title=" Royal City group">  
+                <h:panelGrid columns="2" cellpadding="10">  
+                    <p:graphicImage value="#{resource['images:img_tm_spec.png']}" />    
+                    <h:outputText value="#{bundle.p_pageIndex_descriptionMM}" />  
+                </h:panelGrid>  
+            </p:tab>  
+        </p:tabView> 
 
-            <p:layout id="layout" style="margin-left: 10%;margin-right: 10%;margin-top:2%;" >
-
-
-
-                <p:layoutUnit position="center">  
-                    <p:tabView orientation="top" >  
-                        <p:tab title="Christopher Owens">  
-                            <h:panelGrid columns="2" cellpadding="10">  
-                                <p:graphicImage value="#{resource['images:img_cw_art.png']}" />  
-                                <h:outputText  
-                                    value="#{bundle.p_pageIndex_descriptionCW}" />  
-                            </h:panelGrid>  
-                        </p:tab>  
-                        <p:tab title="Omar Rodriguez Lopez">  
-                            <h:panelGrid columns="2" cellpadding="10">  
-                                <p:graphicImage value="#{resource['images:img_orlg_art.png']}" />  
-                                <h:outputText value="#{bundle.p_pageIndex_descriptionJF}"></h:outputText>  
-                            </h:panelGrid>  
-                        </p:tab>  
-                        <p:tab title=" Royal City group">  
-                            <h:panelGrid columns="2" cellpadding="10">  
-                                <p:graphicImage value="#{resource['images:img_tm_spec.png']}" />    
-                                <h:outputText value="#{bundle.p_pageIndex_descriptionMM}">
-
-                                </h:outputText>  
-                            </h:panelGrid>  
-                        </p:tab>  
-                    </p:tabView> 
-
-                    <p:commandButton   style="margin-left: 40%;margin-right: 50%;margin-top:2%; width: 200px"  value="#{bundle.p_pageIndex_button_showpage}" action="#{menuCtrl.doShow()}" icon="ui-icon ui-icon-arrow-1-e" />
-                </p:layoutUnit>  
-
-            </p:layout>  
-
-
-
-
-
-
-
-        </h:body>           
+        <p:commandButton style="margin-left: 40%;margin-right: 50%;margin-top:2%; width: 200px"  value="#{bundle.p_pageIndex_button_showpage}" action="#{menuCtrl.doShow()}" icon="ui-icon ui-icon-arrow-1-e" />
 
     </ui:define>
 
