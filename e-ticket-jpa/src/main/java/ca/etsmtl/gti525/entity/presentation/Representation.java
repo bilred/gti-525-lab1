@@ -3,9 +3,7 @@ package ca.etsmtl.gti525.entity.presentation;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,7 +24,7 @@ import javax.persistence.TemporalType;
 @Table(name = "SHOW_REPRESENTATION")
 public class Representation implements Serializable {
     private static final long serialVersionUID = 1L;
-    
+
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -55,11 +53,11 @@ public class Representation implements Serializable {
 
     public void setOptionsQte2(List<Integer> optionsQte2) {
         this.optionsQte2 = optionsQte2;
-    }
- 
-    
+    }    
     
 
+   
+    
    
     
     @OneToOne
