@@ -42,8 +42,8 @@ public class RepresentationBatch extends InitDao {
                       
                       representation.setId( Long.valueOf(nextLine[ID]) ); //pour les listes ne mes pas ID (même pour la BD deja)
                       representation.setDateDebut( DateUtils.formateStringToDate(nextLine[DATE_DEBUT], "dd/mm/yyyy") );
-                      representation.setDateFin( DateUtils.formateStringToDate(nextLine[DATE_FIN], "dd/mm/yyyy") );
-                      representation.setIsAnnulation(Boolean.FALSE);
+//                      representation.setDateFin( DateUtils.formateStringToDate(nextLine[DATE_FIN], "dd/mm/yyyy") );
+//                      representation.setIsAnnulation(Boolean.FALSE);
                       representation.setNbBilletsDispo( Integer.valueOf(nextLine[NB_BILLETS_DISPO]) );
                       representation.setPrix( Float.valueOf(nextLine[PRIX]) );
 
