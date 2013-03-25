@@ -1,6 +1,6 @@
-INSERT INTO show_artiste(nom, description) VALUES ('CHRISTOPHER OWENS', 'description1');
-INSERT INTO show_artiste(nom, description) VALUES ('JOSH RITTER & THE ROYAL CITY BAND', 'description1');
-INSERT INTO show_artiste(nom, description) VALUES ('OMAR RODRIGUEZ LOPEZ GROUP', 'description1');
-INSERT INTO show_artiste(nom, description) VALUES ('REVIVAL', 'description1');
-INSERT INTO show_artiste(nom, description) VALUES ('THE MACCABEES', 'description1');
-INSERT INTO show_artiste(nom, description) VALUES ('WAKEY!WAKEY!', 'description1');
+INSERT INTO show_artiste(nom, description) VALUES ('CHRISTOPHER OWENS', 'Christopher Owens is an American singer, songwriter, and musician. He is best known as the frontman and songwriter for the now-disbanded indie rock band Girls');
+INSERT INTO show_artiste(nom, description) VALUES ('JOSH RITTER & THE ROYAL CITY BAND', 'Royal City were formed in 1999 at Jim Guthrie''s house in downtown Guelph Ontario. The band was fronted by Aaron Riches, well known in the local all ages punk scene for having booked and opening up for Fugazi, his releases on DROG Records, and for being the subject of a Robert Munsch book as a child.');
+INSERT INTO show_artiste(nom, description) VALUES ('OMAR RODRIGUEZ LOPEZ GROUP', 'The Omar Rodriguez Lopez Group is an American experimental rock band, and the main side project of Omar Rodríguez-López');
+INSERT INTO show_artiste(nom, description) VALUES ('REVIVAL', 'Chuck Ragan has just announced the line up and dates for the 2013 North American Revival Tour. Joining the Hot Water Music front man this time around will be Dave Hause of The Loved Ones, Tim McIlrath of Rise Against, Jenny O., Rocky Votolato and Jenny Owen Youngs with more artists to be announced. The tour kicks off March 15th in Corpus Christi, Texas.');
+INSERT INTO show_artiste(nom, description) VALUES ('THE MACCABEES', 'The Maccabees are an indie rock band from Brighton, England. They have released three albums so far, Colour It In in 2007, with a follow-up, Wall of Arms, released on 4 May 2009.');
+INSERT INTO show_artiste(nom, description) VALUES ('WAKEY!WAKEY!', 'Wakey!Wakey! is an adult alternative pop group fronted by Michael Grubbs and based in Brooklyn, New York. Michael Grubbs is also known for his role as Grubbs on One Tree Hill, where the band''s music has been featured.');
