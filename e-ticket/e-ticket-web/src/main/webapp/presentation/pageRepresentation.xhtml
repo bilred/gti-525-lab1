@@ -57,7 +57,7 @@
                 <p:column id="qteBillets" headerText="#{bundle.p_Qte_billets_headerText}" > 
                     <h:selectOneMenu value="#{rep.QTE}" 
                                      valueChangeListener="#{languageCtrl.countryLocaleCodeChanged}">
-                        <f:selectItems value="#{rep.optionsQte2}" /> 
+                        <f:selectItems value="#{representationCtrl.cacheSessionPresentation.optionsQte2}" /> 
                         
                     </h:selectOneMenu>
 
