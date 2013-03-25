@@ -1,6 +1,7 @@
 package ca.etsmtl.gti525.entity.presentation;
 
 import java.io.Serializable;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -33,11 +34,16 @@ public class Representation implements Serializable {
     @Column(name = "DATE_DEBUT")
     @Temporal(TemporalType.DATE)
     private Date dateDebut;
-    @Column(name = "DATE_FIN")
+    @Column(name = "HEURE_DEBUT")
+    @Temporal(TemporalType.TIME)
+    private Time heureDebut;
+
+    
+    /*@Column(name = "DATE_FIN")
     @Temporal(TemporalType.DATE)
-    private Date dateFin;
-    @Column(name = "IS_ANNULATION")
-    private Boolean isAnnulation;
+    private Date dateFin;*/
+    /*@Column(name = "IS_ANNULATION")
+    private Boolean isAnnulation;*/
     @Column(name = "NB_BILLETS_DISPO")
     private Integer nbBilletsDispo;
     @Column(name = "QTE_SELECTED")
@@ -45,7 +51,7 @@ public class Representation implements Serializable {
     @Column(name = "PRIX")
     private Float prix;
 //    private Map <Integer, Integer> optionsQte = new HashMap<Integer, Integer>();
-    private List<Integer> optionsQte2 = new ArrayList<Integer>();
+  /*  private List<Integer> optionsQte2 = new ArrayList<Integer>();
 
     public List<Integer> getOptionsQte2() {
         return optionsQte2;
@@ -53,7 +59,16 @@ public class Representation implements Serializable {
 
     public void setOptionsQte2(List<Integer> optionsQte2) {
         this.optionsQte2 = optionsQte2;
-    }    
+    }*/
+    public Time getHeureDebut() {
+        return heureDebut;
+    }
+
+    public void setHeureDebut(Time heureDebut) {
+        this.heureDebut = heureDebut;
+    }
+ 
+    
     
 
    
@@ -70,18 +85,13 @@ public class Representation implements Serializable {
     private Billet billet;
     
     public Representation(){
-//        optionsQte.put(1, 1);
-//        optionsQte.put(2, 2);
-//        optionsQte.put(3, 3);
-//        optionsQte.put(4, 4);
-//        optionsQte.put(5, 5);
-//        optionsQte.put(6, 6);
-        optionsQte2.add(1);
+
+       /* optionsQte2.add(1);
         optionsQte2.add(2);
         optionsQte2.add(3);
         optionsQte2.add(4);
         optionsQte2.add(5);
-        optionsQte2.add(6);
+        optionsQte2.add(6);*/
     }
     public Integer getQTE() {
         return QTE;
@@ -138,21 +148,21 @@ public class Representation implements Serializable {
         this.dateDebut = dateDebut;
     }
 
-    public Date getDateFin() {
+    /*public Date getDateFin() {
         return dateFin;
     }
 
     public void setDateFin(Date dateFin) {
         this.dateFin = dateFin;
-    }
+    }*/
 
-    public Boolean getIsAnnulation() {
+    /*public Boolean getIsAnnulation() {
         return isAnnulation;
     }
 
     public void setIsAnnulation(Boolean isAnnulation) {
         this.isAnnulation = isAnnulation;
-    }
+    }*/
 
     public Salle getSalle() {
         return salle;

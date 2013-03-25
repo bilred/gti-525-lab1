@@ -23,9 +23,18 @@ public class CacheSessionPresentation implements Serializable {
 
     private Spectacle spectacleSelected;
     private List<Representation> representationSelected;
+    private List<Integer> optionsQte2 = new ArrayList<Integer>();
     
     private Boolean disablePanier = Boolean.FALSE;
     private Boolean disablePaiement = Boolean.FALSE;
+
+    public List<Integer> getOptionsQte2() {
+        return optionsQte2;
+    }
+
+    public void setOptionsQte2(List<Integer> optionsQte2) {
+        this.optionsQte2 = optionsQte2;
+    }
     
 
     //@PreDestroy
@@ -38,6 +47,12 @@ public class CacheSessionPresentation implements Serializable {
      * Creates a new instance of CacheSessionPresentation
      */
     public CacheSessionPresentation() {
+        optionsQte2.add(1);
+        optionsQte2.add(2);
+        optionsQte2.add(3);
+        optionsQte2.add(4);
+        optionsQte2.add(5);
+        optionsQte2.add(6);
     }
 
     public Spectacle getSpectacleSelected() {
