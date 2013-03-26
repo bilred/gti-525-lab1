@@ -58,48 +58,7 @@ public class PanierControleur extends AbstractControleur implements Serializable
                 if(repSelect.get(i).getNbBilletsDispo()>=repSelect.get(i).getQTE()){
                     repSelect.get(i).setNbBilletsDispo(repSelect.get(i).getNbBilletsDispo()-repSelect.get(i).getQTE());
                 this.menuCtrl.changerQte(repSelect.get(i));
-                /*switch(repSelect.get(i).getNbBilletsDispo()){
-                    case 5:
-                            repSelect.get(i).getOptionsQte2().remove(6);
-                        break;
-                    case 4:
-                            repSelect.get(i).getOptionsQte2().remove(6);
-                            repSelect.get(i).getOptionsQte2().remove(5);
-                        break;
-                    case 3:
-                            repSelect.get(i).getOptionsQte2().remove(6);
-                            repSelect.get(i).getOptionsQte2().remove(5);
-                            repSelect.get(i).getOptionsQte2().remove(4);
-                        break;
-                    case 2:
-                            repSelect.get(i).getOptionsQte2().remove(6);
-                            repSelect.get(i).getOptionsQte2().remove(5);
-                            repSelect.get(i).getOptionsQte2().remove(4);
-                            repSelect.get(i).getOptionsQte2().remove(3);
-                        break;
-                    case 1:
-                            repSelect.get(i).getOptionsQte2().remove(6);
-                            repSelect.get(i).getOptionsQte2().remove(5);
-                            repSelect.get(i).getOptionsQte2().remove(4);
-                            repSelect.get(i).getOptionsQte2().remove(3);
-                            repSelect.get(i).getOptionsQte2().remove(2);
-                        break;
-                    case 0:
-                            repSelect.get(i).getOptionsQte2().remove(6);
-                            repSelect.get(i).getOptionsQte2().remove(5);
-                            repSelect.get(i).getOptionsQte2().remove(4);
-                            repSelect.get(i).getOptionsQte2().remove(3);
-                            repSelect.get(i).getOptionsQte2().remove(2);
-                            repSelect.get(i).getOptionsQte2().remove(1);
-                        break;
-                    default:
-                            repSelect.get(i).getOptionsQte2().remove(6);
-                            repSelect.get(i).getOptionsQte2().remove(5);
-                            repSelect.get(i).getOptionsQte2().remove(4);
-                            repSelect.get(i).getOptionsQte2().remove(3);
-                            repSelect.get(i).getOptionsQte2().remove(2);
-                            repSelect.get(i).getOptionsQte2().remove(1);
-                }*/
+
                 panier = new PanierBeans();
                 panier.setId(repSelect.get(i).getId().intValue());
                 panier.setNomSpectacle(specSelec.getNomSpectacle());
@@ -229,6 +188,7 @@ public class PanierControleur extends AbstractControleur implements Serializable
      
     public synchronized void asyncWorker() {
         System.out.println("Run asyncWorker ~");
+        //synchronized (this.session) {}
         //Session invalidet
 //       FacesContext context = FacesContext.getCurrentInstance();
 //       HttpSession session = (HttpSession) context.getExternalContext().getSession(false);
