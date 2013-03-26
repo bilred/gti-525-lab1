@@ -3,7 +3,7 @@ CREATE TABLE show_artiste
   id serial NOT NULL,
   nom character varying(255) NOT NULL,
   description text,
-  photo character varying(255),
+  photo character varying(255) DEFAULT '',
   CONSTRAINT show_artiste_pkey PRIMARY KEY (nom)
 )
 WITH (
