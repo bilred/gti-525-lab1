@@ -7,7 +7,7 @@
         <properties>
             <property name="hibernate.hbm2ddl.auto" value="create-drop" />
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
-            <property name="hibernate.hbm2ddl.import_files" value="sql/insert_artist.sql,sql/insert_spec.sql,sql/insert_representation.sql" />
+            <property name="hibernate.hbm2ddl.import_files" value="sql/insert_artist.sql,sql/insert_spec.sql,sql/insert_salle.sql,sql/insert_representation.sql" />
             <property name="hibernate.format_sql" value="false" />
             <property name="hibernate.show_sql" value="true" />
         </properties>
