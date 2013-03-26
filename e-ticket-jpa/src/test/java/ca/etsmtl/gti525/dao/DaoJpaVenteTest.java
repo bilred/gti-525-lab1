@@ -25,23 +25,23 @@ public class DaoJpaVenteTest extends AbstractDaoJpaTest {
     private static IDaoPresentation dao;
 
 
-//    @BeforeClass
-//    public static void init() throws NamingException {
-//        // instanciation couche [dao]
-//        ApplicationContext ctx = new ClassPathXmlApplicationContext(new String[] {"spring-config-dao.xml"});
-//        dao = (IDaoPresentation) ctx.getBean("customerServiceProxy");
-//    }
-//
-//    /**
-//     * Test of getAllArtistes method, of class DaoJpa.
-//     */
-//    @Test
-//    public void testGetAllArtistes() {
-//        // affichage clients
-//        List<Spectacle> spectacle = dao.getAllSpectacle();
-//        display("Liste des Artiste :", spectacle); 
-//        Assert.assertTrue("si table null alors True :", this.equals(spectacle) );
-//    }
+    @BeforeClass
+    public static void init() throws NamingException {
+        // instanciation couche [dao]
+        ApplicationContext ctx = new ClassPathXmlApplicationContext(new String[] {"spring-config-dao.xml"});
+        dao = (IDaoPresentation) ctx.getBean("customerServiceProxy");
+    }
+
+    /**
+     * Test of getAllArtistes method, of class DaoJpa.
+     */
+    @Test
+    public void testGetAllArtistes() {
+        // affichage clients
+        List<Spectacle> spectacle = dao.getAllSpectacle();
+        display("Liste des Spectacle :", spectacle); 
+        Assert.assertTrue("si table null alors True :", this.equals(spectacle) );
+    }
     
     
     @AfterClass
