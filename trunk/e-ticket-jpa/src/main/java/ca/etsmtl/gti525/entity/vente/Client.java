@@ -1,6 +1,5 @@
 package ca.etsmtl.gti525.entity.vente;
 
-import ca.etsmtl.gti525.commun.Email;
 import ca.etsmtl.gti525.entity.audit.EntityBaseLogs;
 import ca.etsmtl.gti525.entity.presentation.Billet;
 import java.io.Serializable;
@@ -13,8 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+//import javax.validation.constraints.NotNull;
+//import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "VENTE_CLIENT")
@@ -26,20 +25,20 @@ public class Client extends EntityBaseLogs implements Serializable {
     @Column(name="ID")
     private Long id;
     
-    @Size(min=3, max=32, message="La taille du Nom doit etre entre 3 et 32.")
-    @NotNull(message="Champ Nom ne doit pas etre Vide")
+//    @Size(min=3, max=32, message="La taille du Nom doit etre entre 3 et 32.")
+//    @NotNull(message="Champ Nom ne doit pas etre Vide")
     @Column(name="NOM")
     private String nom = new String();
     
-    @Size(min=3, max=32, message="La taille du Prenom doit etre entre 3 et 32.")
-    @NotNull(message="Champ Prenom ne doit pas etre Vide")
+//    @Size(min=3, max=32, message="La taille du Prenom doit etre entre 3 et 32.")
+//    @NotNull(message="Champ Prenom ne doit pas etre Vide")
     @Column(name="PRENOM")
     private String prenom = new String();
     @Column(name="NOM_CIVIQUE")
     private String nomCivique = new String();
     
-    @Size(min=3, max=32, message="La taille du Mail doit etre entre 3 et 32.")
-    @Email(message="Votre mail est invalide")
+//    @Size(min=3, max=32, message="La taille du Mail doit etre entre 3 et 32.")
+//    @Email(message="Votre mail est invalide")
     @Column(name="MAIL")
     private String mail = new String();
     @Column(name="PHONE")

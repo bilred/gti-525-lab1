@@ -11,9 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
-import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="VENTE_CARTE_CREDIT")
@@ -29,19 +26,19 @@ public class CarteCredit extends EntityBaseLogs  implements Serializable {
     @Column(name="TYPE_CARTE_CREDIT")
     private String typeCarteCredit;
     
-    @Size(max=10, message="La taille du NUM_CARTE_CREDIT doit etre entre au max de 10.")
-    @NotNull(message="Champ NUM_CARTE_CREDIT ne doit pas etre Vide")
+//    @Size(max=10, message="La taille du NUM_CARTE_CREDIT doit etre entre au max de 10.")
+//    @NotNull(message="Champ NUM_CARTE_CREDIT ne doit pas etre Vide")
     @Column(name="NUM_CARTE_CREDIT")
     private String numCarteCredit;
     
-    @Past(message="Votre date supérieur a la date Actuelle")
-    @NotNull(message="Champ DATE_EXPIRATION ne doit pas etre Vide")
+//    @Past(message="Votre date supérieur a la date Actuelle")
+//    @NotNull(message="Champ DATE_EXPIRATION ne doit pas etre Vide")
     @Column(name="DATE_EXPIRATION")
     @Temporal(TemporalType.DATE)
     private Date dateExpiration;
     
-    @Size(max=4, message="La taille du NUM_SECURITE doit etre entre au max de 4.")
-    @NotNull(message="Champ NUM_SECURITE ne doit pas etre Vide")    
+//    @Size(max=4, message="La taille du NUM_SECURITE doit etre entre au max de 4.")
+//    @NotNull(message="Champ NUM_SECURITE ne doit pas etre Vide")    
     @Column(name="NUM_SECURITE")
     private String numSecurite; //G�n�ralement les 5 d�rnier chifre de la carte.
     

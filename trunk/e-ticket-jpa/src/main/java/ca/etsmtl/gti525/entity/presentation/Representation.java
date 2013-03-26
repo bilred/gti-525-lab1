@@ -2,11 +2,7 @@ package ca.etsmtl.gti525.entity.presentation;
 
 import ca.etsmtl.gti525.commun.CommunService;
 import java.io.Serializable;
-import java.sql.Time;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-import javax.faces.event.ValueChangeEvent;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -36,9 +32,9 @@ public class Representation implements Serializable {
     @Column(name = "DATE_DEBUT")
     @Temporal(TemporalType.DATE)
     private Date dateDebut;
-    @Column(name = "HEURE_DEBUT")
-    @Temporal(TemporalType.TIME)
-    private Time heureDebut;
+//    @Column(name = "HEURE_DEBUT")
+//    @Temporal(TemporalType.TIME)
+//    private Calendar heureDebut;
 
     
     /*@Column(name = "DATE_FIN")
@@ -62,13 +58,15 @@ public class Representation implements Serializable {
     public void setOptionsQte2(List<Integer> optionsQte2) {
         this.optionsQte2 = optionsQte2;
     }*/
-    public Time getHeureDebut() {
-        return heureDebut;
-    }
+//
+//    public Calendar getHeureDebut() {
+//        return heureDebut;
+//    }
+//
+//    public void setHeureDebut(Calendar heureDebut) {
+//        this.heureDebut = heureDebut;
+//    }
 
-    public void setHeureDebut(Time heureDebut) {
-        this.heureDebut = heureDebut;
-    }
  
     
     
