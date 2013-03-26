@@ -37,10 +37,10 @@ public class Spectacle implements Serializable {
     
     @Column(name="DESCRIPTION")
     private String description;
-    @Column(name="LIEN_VIDEO")
+    /*@Column(name="LIEN_VIDEO")
     private String lienVideo;  //type Blop
     @Column(name="LIEN_IMAGE")
-    private String lienImage;
+    private String lienImage;*/
     
     @OneToOne
     private Artiste artiste;   
@@ -81,7 +81,7 @@ public class Spectacle implements Serializable {
         this.representations = representations;
     }
 
-    public String getLienVideo() {
+    /*public String getLienVideo() {
         return lienVideo;
     }
 
@@ -95,7 +95,7 @@ public class Spectacle implements Serializable {
 
     public void setLienImage(String lienImage) {
         this.lienImage = lienImage;
-    }
+    }*/
 
     public Artiste getArtiste() {
         return artiste;
