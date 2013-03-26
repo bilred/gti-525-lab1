@@ -38,9 +38,9 @@ public class Spectacle implements Serializable {
     @Column(name="DESCRIPTION")
     private String description;
     /*@Column(name="LIEN_VIDEO")
-    private String lienVideo;  //type Blop
+    private String lienVideo;  //type Blop*/
     @Column(name="LIEN_IMAGE")
-    private String lienImage;*/
+    private String lienImage;
     
     @OneToOne
     private Artiste artiste;   
@@ -88,14 +88,14 @@ public class Spectacle implements Serializable {
     public void setLienVideo(String lienVideo) {
         this.lienVideo = lienVideo;
     }
-
+  */
     public String getLienImage() {
         return lienImage;
     }
 
     public void setLienImage(String lienImage) {
         this.lienImage = lienImage;
-    }*/
+    }
 
     public Artiste getArtiste() {
         return artiste;
