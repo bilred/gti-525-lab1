@@ -1,10 +1,8 @@
 package ca.etsmtl.gti525.dao;
 
 import ca.etsmtl.gti525.dao.presentation.IDaoPresentation;
-import ca.etsmtl.gti525.entity.presentation.Spectacle;
-import java.util.Date;
+import ca.etsmtl.gti525.entity.presentation.Artiste;
 import java.util.List;
-import javax.naming.NamingException;
 import junit.framework.Assert;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -24,23 +22,26 @@ public class DaoJpaPresentationTest extends AbstractDaoJpaTest {
     // couche [dao] testée
     private static IDaoPresentation dao;
 
-//    @BeforeClass
-//    public static void init() {
-//        // instanciation couche [dao]
-//        ApplicationContext ctx = new ClassPathXmlApplicationContext(new String[] {"spring-config-dao.xml"});
-//        dao = (IDaoPresentation) ctx.getBean("customerServiceProxy"); //stubsCustomerServiceProxy
-//    }
-//
-//    /**
-//     * Test of getAllArtistes method, of class DaoJpa.
-//     */
-//    @Test
-//    public void testGetAllArtistes() {
-//        // affichage clients
-//        List<Spectacle> spectacle = dao.getAllSpectacle();
+    @BeforeClass
+    public static void init() {
+        // instanciation couche [dao]
+        ApplicationContext ctx = new ClassPathXmlApplicationContext(new String[] {"spring-config-dao.xml"});
+        dao = (IDaoPresentation) ctx.getBean("customerServiceProxy"); //stubsCustomerServiceProxy
+    }
+
+    /**
+     * Test of getAllArtistes method, of class DaoJpa.
+     */
+    @Test
+    public void testGetAllArtistes() {
+        // affichage clients
+//        List<Artiste> spectacle = dao.getAllArtistes();
 //        display("Liste des Artiste :", spectacle); 
 //        Assert.assertTrue("si table null alors True :", this.equals(spectacle) );
-//    }
+        List<Artiste> artiste = dao.getAllArtistes();
+        display("Liste des Artiste :", artiste); 
+        Assert.assertTrue("si table null alors True :", this.equals(artiste) );        
+    }
 
     
     
