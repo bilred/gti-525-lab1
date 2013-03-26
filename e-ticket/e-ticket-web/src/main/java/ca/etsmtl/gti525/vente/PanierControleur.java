@@ -55,41 +55,65 @@ public class PanierControleur extends AbstractControleur implements Serializable
             if (repSelect.size()==0) throw new Exception();
                   
             for (int i=0 ; i < repSelect.size() ; i++) {
-                repSelect.get(i).setNbBilletsDispo(repSelect.get(i).getNbBilletsDispo()-repSelect.get(i).getQTE());
+                if(repSelect.get(i).getNbBilletsDispo()>=repSelect.get(i).getQTE()){
+                    repSelect.get(i).setNbBilletsDispo(repSelect.get(i).getNbBilletsDispo()-repSelect.get(i).getQTE());
                 this.menuCtrl.changerQte(repSelect.get(i));
                 /*switch(repSelect.get(i).getNbBilletsDispo()){
                     case 5:
                             repSelect.get(i).getOptionsQte2().remove(6);
+                        break;
                     case 4:
                             repSelect.get(i).getOptionsQte2().remove(6);
                             repSelect.get(i).getOptionsQte2().remove(5);
+                        break;
                     case 3:
                             repSelect.get(i).getOptionsQte2().remove(6);
                             repSelect.get(i).getOptionsQte2().remove(5);
                             repSelect.get(i).getOptionsQte2().remove(4);
+                        break;
                     case 2:
                             repSelect.get(i).getOptionsQte2().remove(6);
                             repSelect.get(i).getOptionsQte2().remove(5);
                             repSelect.get(i).getOptionsQte2().remove(4);
                             repSelect.get(i).getOptionsQte2().remove(3);
+                        break;
                     case 1:
                             repSelect.get(i).getOptionsQte2().remove(6);
                             repSelect.get(i).getOptionsQte2().remove(5);
                             repSelect.get(i).getOptionsQte2().remove(4);
                             repSelect.get(i).getOptionsQte2().remove(3);
                             repSelect.get(i).getOptionsQte2().remove(2);
+                        break;
                     case 0:
-                            repSelect.remove(i);
+                            repSelect.get(i).getOptionsQte2().remove(6);
+                            repSelect.get(i).getOptionsQte2().remove(5);
+                            repSelect.get(i).getOptionsQte2().remove(4);
+                            repSelect.get(i).getOptionsQte2().remove(3);
+                            repSelect.get(i).getOptionsQte2().remove(2);
+                            repSelect.get(i).getOptionsQte2().remove(1);
+                        break;
+                    default:
+                            repSelect.get(i).getOptionsQte2().remove(6);
+                            repSelect.get(i).getOptionsQte2().remove(5);
+                            repSelect.get(i).getOptionsQte2().remove(4);
+                            repSelect.get(i).getOptionsQte2().remove(3);
+                            repSelect.get(i).getOptionsQte2().remove(2);
+                            repSelect.get(i).getOptionsQte2().remove(1);
                 }*/
                 panier = new PanierBeans();
                 panier.setId(repSelect.get(i).getId().intValue());
                 panier.setNomSpectacle(specSelec.getNomSpectacle());
-                panier.setPrix(repSelect.get(i).getPrix());
+                panier.setPrix(repSelect.get(i).getPrix()*repSelect.get(i).getQTE());
                 panier.setQuantity(repSelect.get(i).getQTE());
                 panier.setVille(repSelect.get(i).getSalle().getAdresse());
                 //+ nombre de biller dispo
 
                 this.getPaniers().add(panier);
+                    
+                }else{
+                    CommunService.addWarn("ATTENTION !", "Le nombre de billets disponible est insuffisant");
+                }
+                
             }
 
             count = qteBilletsPanier(); //selon le nombre de biller (Attantion ! une N place pour une même représantation et compté 1)
