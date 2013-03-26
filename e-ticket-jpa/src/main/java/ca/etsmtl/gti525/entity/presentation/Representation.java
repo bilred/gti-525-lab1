@@ -85,13 +85,7 @@ public class Representation implements Serializable {
     private Billet billet;
     
     public Representation(){
-
-       /* optionsQte2.add(1);
-        optionsQte2.add(2);
-        optionsQte2.add(3);
-        optionsQte2.add(4);
-        optionsQte2.add(5);
-        optionsQte2.add(6);*/
+        
     }
     public Integer getQTE() {
         return QTE;
@@ -131,6 +125,18 @@ public class Representation implements Serializable {
 
     public void setNbBilletsDispo(Integer nbBilletsDispo) {
         this.nbBilletsDispo = nbBilletsDispo;
+        
+        //int min_ticket_allowed = nbBilletsDispo;
+       // if (nbBilletsDispo >= 6)
+        //{
+        //min_ticket_allowed = 6;
+       // }
+       // optionsQte2.clear();
+       //         for (int i=0; i< min_ticket_allowed +1; i++) {
+        //    optionsQte2.add(i);
+       // }
+
+                
     }
 
     public Float getPrix() {
