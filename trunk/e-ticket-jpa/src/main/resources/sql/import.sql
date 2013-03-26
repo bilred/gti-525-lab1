@@ -1,0 +1,1 @@
+INSERT INTO show_artiste(nom, description) VALUES ('CHRISTOPHER OWENS', 'Christopher Owens is an American singer, songwriter, and musician. He is best known as the frontman and songwriter for the now-disbanded indie rock band Girls');
