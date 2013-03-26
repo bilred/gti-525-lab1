@@ -1,7 +1,8 @@
 CREATE TABLE show_artiste
 (
+  id serial NOT NULL,
   nom character varying(255) NOT NULL,
-  description character varying(255),
+  description text,
   photo character varying(255),
   CONSTRAINT show_artiste_pkey PRIMARY KEY (nom)
 )
@@ -14,7 +15,7 @@ ALTER TABLE show_artiste
   CREATE TABLE show_spectacle
 (
   id serial NOT NULL,
-  description character varying(255),
+  description text,
   lien_image character varying(255),
   lien_video character varying(255),
   artiste_nom character varying(255),
