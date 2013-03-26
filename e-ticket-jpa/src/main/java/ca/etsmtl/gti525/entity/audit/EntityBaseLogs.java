@@ -2,7 +2,6 @@ package ca.etsmtl.gti525.entity.audit;
 
 import ca.etsmtl.utils.DateUtils;
 import java.sql.Timestamp;
-import javax.faces.context.FacesContext;
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.PrePersist;
@@ -85,29 +84,29 @@ public abstract class EntityBaseLogs {
     void onCreate() {
         this.setDateCreaTech(DateUtils.getCurrentTimeStamp());
 
-        FacesContext fc = FacesContext.getCurrentInstance();
-        String id = null;
-        if (fc != null) {
-            id = fc.getExternalContext().getRemoteUser();
+//        FacesContext fc = FacesContext.getCurrentInstance();
+//        String id = null;
+//        if (fc != null) {
+//            id = fc.getExternalContext().getRemoteUser();
 
-        } else {
-            id = "batch.batch";
-        }
-        this.creator = id;
+//        } else {
+//            id = "batch.batch";
+//        }
+//        this.creator = id;
     }
 
     @PreUpdate
     void onPersist() {
         this.setDateMajTech(DateUtils.getCurrentTimeStamp());
-        FacesContext fc = FacesContext.getCurrentInstance();
-        String id = null;
-        if (fc != null) {
-            id = fc.getExternalContext().getRemoteUser();
-
-        } else {
-            id = "batch.batch";
-
-        }
-        this.lastUpdater = id;
+//        FacesContext fc = FacesContext.getCurrentInstance();
+//        String id = null;
+//        if (fc != null) {
+//            id = fc.getExternalContext().getRemoteUser();
+//
+//        } else {
+//            id = "batch.batch";
+//
+//        }
+//        this.lastUpdater = id;
     }
 }
