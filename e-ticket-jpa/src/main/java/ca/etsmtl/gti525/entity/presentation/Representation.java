@@ -1,10 +1,12 @@
 package ca.etsmtl.gti525.entity.presentation;
 
+import ca.etsmtl.gti525.commun.CommunService;
 import java.io.Serializable;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.faces.event.ValueChangeEvent;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -177,5 +179,11 @@ public class Representation implements Serializable {
     public void setSalle(Salle salle) {
         this.salle = salle;
     }
-    
+    public void verfierDispo(){
+        
+        if(this.nbBilletsDispo<this.QTE){
+            
+        }
+            CommunService.addWarn("ATTENTION !", "Le nombre de billets disponible est insuffisant");
+    }
 }
