@@ -110,17 +110,12 @@
             <artifactId>ApiJavaEtsmtl</artifactId>
             <version>${project.version}</version>
         </dependency>
-        <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-web-api</artifactId>
-            <version>6.0</version>
-            <type>jar</type>
-        </dependency>
+        
         
         <dependency>
             <groupId>com.googlecode.json-simple</groupId>
             <artifactId>json-simple</artifactId>
             <version>1.1</version>
-        </dependency>                        
-    </dependencies>
+        </dependency>
+            
 </project>
