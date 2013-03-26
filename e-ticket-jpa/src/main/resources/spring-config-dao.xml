@@ -32,20 +32,11 @@
         <property name="advice" ref="loggerInterceptorBeanAdvice" />
     </bean> 
        
-   
-      
+       
     <!-- EntityManagerFactory -->
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-        <property name="dataSource" ref="dataSource" />
-        <property name="jpaVendorAdapter">
-            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
-                <property name="databasePlatform" value="org.hibernate.dialect.PostgreSQLDialect" />
-                <!--
-                <property name="showSql" value="true" />
-                <property name="generateDdl" value="true" />
-                -->
-            </bean>
-        </property>
+        <property name="persistenceUnitName" value="e-ticket-jpa-hibernate-postgresPU"/>
+        <property name="dataSource" ref="dataSource"/>
     </bean>
 
     <!-- la source de donnéees DBCP -->
@@ -53,11 +44,11 @@
         <property name="driverClassName" value="org.postgresql.Driver"/> 
         <property name="url" value="jdbc:postgresql://localhost:5432/e-ticket"/>
         <property name="username" value="postgres"/>
-        <property name="password" value="admin"/>                    
+        <property name="password" value="redbul86"/>                    
     </bean>
 
     <!-- Data source pour MySql -->
-    <!--    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+<!--    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />
         <property name="url" value="jdbc:mysql://localhost:3306/dbrdvmedecins2" />
         <property name="username" value="root" />
