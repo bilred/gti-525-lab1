@@ -55,7 +55,11 @@ public class DaoJpaPresentation implements IDaoPresentation, Serializable {
 
     @Override
     public void createBillet(Billet billet) {
-        //throw new UnsupportedOperationException("Not supported yet."); 
+        try {
+            em.persist(billet);
+        } catch (Exception ex) {
+            Logger.getLogger(DaoJpaPresentation.class.toString()).log(Level.SEVERE, ex.toString());
+        }         
     }
 
     @Override
