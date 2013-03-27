@@ -24,8 +24,8 @@ public class DataVenteTest extends AbstractDaoJpaTest {
     @BeforeClass
     public static void init() {
         // instanciation couche [dao]
-        ApplicationContext ctx = new ClassPathXmlApplicationContext(new String[] {"spring-config-data.xml"});
-        stubsDaoVente = (IDaoVente) ctx.getBean("stubsDaoVente");
+//        ApplicationContext ctx = new ClassPathXmlApplicationContext(new String[] {"spring-config-data.xml"});
+//        stubsDaoVente = (IDaoVente) ctx.getBean("stubsDaoVente");
     }
 
     /**
