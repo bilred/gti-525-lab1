@@ -13,7 +13,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public abstract class InitDao {
 
     //@Ingection couche model et métier
-    protected IDaoPresentation daoPresentation;
+    protected static IDaoPresentation daoPresentation;
     protected IDaoVente daoVente;
     
     protected static IDaoPresentation stubsDaoPresentation;
