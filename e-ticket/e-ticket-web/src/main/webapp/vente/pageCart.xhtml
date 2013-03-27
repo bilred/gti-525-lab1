@@ -51,9 +51,9 @@
                             <etsmtl:outputCalendar valeur="#{item.dateDebut}" />  
                         </p:column>
 
-                        <p:column headerText="#{bundle.v_pageCart_panelPanierCompte_starthour}" filterBy="#{item.dateDebut.hours}:#{item.dateDebut.minutes}" sortBy="#{item.dateDebut.hours}:#{item.dateDebut.minutes}" >
-                            <h:outputLabel value="#{item.dateDebut.hours}:#{item.dateDebut.minutes}" />  
-                        </p:column> 
+<!--                        <p:column headerText="#{bundle.v_pageCart_panelPanierCompte_starthour}" filterBy="{item.dateDebut.hours}:{item.dateDebut.minutes}" sortBy="{item.dateDebut.hours}:{item.dateDebut.minutes}" >
+                            <h:outputLabel value="{item.dateDebut.hours}:{item.dateDebut.minutes}" />  
+                        </p:column> -->
 
                         <p:column headerText="#{bundle.v_pageCart_panelPanierCompte_details}" style="width: 40px;" >                                            
                             <p:commandButton id="actionOnDetails" disabled="false" global="false" update=":formPanier:mydialog:documentPanel" immediate="true" oncomplete="documentDialog.show()" actionListener="#{panierCtrl.onDetailsEnregistrement(item)}" title="#{bundle.v_pageCart_panelPanierCompte_show_details_msg}" icon="ui-icon-zoomin" />
