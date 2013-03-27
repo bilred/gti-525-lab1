@@ -206,7 +206,7 @@ public class StubPresentation {
         rep1.setId(id);
         rep1.setId(Long.MIN_VALUE);
         rep1.setPrix(60F);
-        rep1.setNbBilletsDispo(100);
+        rep1.setNbBilletsDispo(10);
         rep1.setDateDebut(new Date());
         rep1.setSalle(sal1);
 
@@ -215,7 +215,7 @@ public class StubPresentation {
 
         rep2.setId(id);
         rep2.setPrix(60F);        
-        rep2.setNbBilletsDispo(100);
+        rep2.setNbBilletsDispo(10);
         rep2.setDateDebut(new Date());
         rep2.setSalle(sal2);
         representations.add(rep2);
