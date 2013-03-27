@@ -36,45 +36,14 @@ public class Representation implements Serializable {
 //    @Temporal(TemporalType.TIME)
 //    private Calendar heureDebut;
 
-    
-    /*@Column(name = "DATE_FIN")
-    @Temporal(TemporalType.DATE)
-    private Date dateFin;*/
-    /*@Column(name = "IS_ANNULATION")
-    private Boolean isAnnulation;*/
     @Column(name = "NB_BILLETS_DISPO")
     private Integer nbBilletsDispo;
     @Column(name = "QTE_SELECTED")
     private Integer QTE;
     @Column(name = "PRIX")
     private Float prix;
-//    private Map <Integer, Integer> optionsQte = new HashMap<Integer, Integer>();
-  /*  private List<Integer> optionsQte2 = new ArrayList<Integer>();
-
-    public List<Integer> getOptionsQte2() {
-        return optionsQte2;
-    }
-
-    public void setOptionsQte2(List<Integer> optionsQte2) {
-        this.optionsQte2 = optionsQte2;
-    }*/
-//
-//    public Calendar getHeureDebut() {
-//        return heureDebut;
-//    }
-//
-//    public void setHeureDebut(Calendar heureDebut) {
-//        this.heureDebut = heureDebut;
-//    }
-
- 
-    
-    
-
-   
     
    
-    
     @OneToOne
     private Salle salle;
 
@@ -84,9 +53,7 @@ public class Representation implements Serializable {
     @OneToOne(mappedBy = "representation")
     private Billet billet;
     
-    public Representation(){
-        
-    }
+
     public Integer getQTE() {
         return QTE;
     }
@@ -124,19 +91,11 @@ public class Representation implements Serializable {
     }
 
     public void setNbBilletsDispo(Integer nbBilletsDispo) {
-        this.nbBilletsDispo = nbBilletsDispo;
-        
+        this.nbBilletsDispo = nbBilletsDispo;    
         //int min_ticket_allowed = nbBilletsDispo;
-       // if (nbBilletsDispo >= 6)
-        //{
-        //min_ticket_allowed = 6;
-       // }
+       // if (nbBilletsDispo >= 6) min_ticket_allowed = 6;
        // optionsQte2.clear();
-       //         for (int i=0; i< min_ticket_allowed +1; i++) {
-        //    optionsQte2.add(i);
-       // }
-
-                
+       // for (int i=0; i< min_ticket_allowed +1; i++) optionsQte2.add(i);
     }
 
     public Float getPrix() {
@@ -153,23 +112,6 @@ public class Representation implements Serializable {
     public void setDateDebut(Date dateDebut) {
         this.dateDebut = dateDebut;
     }
-
-    /*public Date getDateFin() {
-        return dateFin;
-    }
-
-    public void setDateFin(Date dateFin) {
-        this.dateFin = dateFin;
-    }*/
-
-    /*public Boolean getIsAnnulation() {
-        return isAnnulation;
-    }
-
-    public void setIsAnnulation(Boolean isAnnulation) {
-        this.isAnnulation = isAnnulation;
-    }*/
-
     public Salle getSalle() {
         return salle;
     }
@@ -177,11 +119,10 @@ public class Representation implements Serializable {
     public void setSalle(Salle salle) {
         this.salle = salle;
     }
-    public void verfierDispo(){
-        
-        if(this.nbBilletsDispo<this.QTE){
-            
-        }
-            CommunService.addWarn("ATTENTION !", "Le nombre de billets disponible est insuffisant");
+    
+    
+    public void verfierDispo(){    
+      if(this.nbBilletsDispo<this.QTE){  }
+       CommunService.addWarn("ATTENTION !", "Le nombre de billets disponible est insuffisant");
     }
 }

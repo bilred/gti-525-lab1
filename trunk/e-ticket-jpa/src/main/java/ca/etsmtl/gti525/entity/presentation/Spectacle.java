@@ -2,10 +2,12 @@ package ca.etsmtl.gti525.entity.presentation;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -43,8 +45,9 @@ public class Spectacle implements Serializable {
     private String lienImage;
     
     @OneToOne
-    private Artiste artiste;   
-    @OneToMany(mappedBy = "spectacle")
+    private Artiste artiste;
+    
+    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy = "spectacle")
     private List<Representation> representations;
 
     
