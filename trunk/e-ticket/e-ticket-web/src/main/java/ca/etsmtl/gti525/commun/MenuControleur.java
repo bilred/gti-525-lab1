@@ -28,15 +28,15 @@ public class MenuControleur extends AbstractControleur implements Serializable {
     @PostConstruct
     public void init() {
         // instanciation couche [métier]
-        super.initStubsPresentation();
+        super.initPresentation(); //super.initStubsPresentation();
 
-        this.spectacles = InitDao.stubsDaoPresentation.getAllSpectacle();
-        this.representations = InitDao.stubsDaoPresentation.getAllRepresentation();
-        this.artistes = InitDao.stubsDaoPresentation.getAllArtistes(); 
+        this.spectacles = this.daoPresentation.getAllSpectacle();
+        this.representations = this.daoPresentation.getAllRepresentation();
+        this.artistes = this.daoPresentation.getAllArtistes(); 
         
-        log.info("sonar source Spectacle 1: " + this.spectacles);
-        log.info("sonar source Representation 1: " + this.representations);
-        log.info("sonar source Artiste 1: " + this.artistes);
+//        log.info("sonar source Spectacle 1: " + this.spectacles);
+//        log.info("sonar source Representation 1: " + this.representations);
+//        log.info("sonar source Artiste 1: " + this.artistes);
     }    
    
     
