@@ -12,8 +12,7 @@ http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 	
 	<bean id="timerTask" class="org.springframework.scheduling.timer.ScheduledTimerTask">
 		<property name="timerTask" ref="schedulerTask" />
-		<property name="delay" value="60000" />  
-<!--		<property name="period" value="60000" /> 600 000 pour 20m,  120 000 = 2m, 1000 1s -->
+		<property name="delay" value="600000" /> <!--600 000 pour 10m-->
 	</bean>
 
 	<bean class="org.springframework.scheduling.timer.TimerFactoryBean">
