@@ -101,6 +101,9 @@ public class PaiementDAO implements IPaiementDAO {
                 reponse.setTransactionId(Integer.valueOf(jsonObject.get("transaction_id").toString()));
                 reponse.setStatus(jsonObject.get("status").toString());
             }
+            else{
+                reponse.setStatus(jsonObject.get("messages").toString());
+            }
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
