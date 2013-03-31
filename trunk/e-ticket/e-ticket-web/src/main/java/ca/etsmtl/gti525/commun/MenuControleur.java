@@ -29,6 +29,7 @@ public class MenuControleur extends AbstractControleur implements Serializable {
     public void init() {
         // instanciation couche [métier]
         super.initPresentation(); //super.initStubsPresentation();
+        super.initPresentation();
 
         this.spectacles = this.daoPresentation.getAllSpectacle();
         this.representations = this.daoPresentation.getAllRepresentation();
