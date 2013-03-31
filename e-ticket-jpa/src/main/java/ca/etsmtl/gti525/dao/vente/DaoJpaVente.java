@@ -13,8 +13,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
 public class DaoJpaVente implements IDaoVente, Serializable {
-
     private static final long serialVersionUID = 1L;
+    
     @PersistenceContext
     private EntityManager em;
     
