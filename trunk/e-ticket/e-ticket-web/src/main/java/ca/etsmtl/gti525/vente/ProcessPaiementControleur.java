@@ -34,6 +34,13 @@ public class ProcessPaiementControleur extends AbstractControleur implements Ser
     private static final String API_KEY = "38f33d8449386908efd4";
     private static final long CARD_NUMBER = 8675309000000000l;
     private static final int STORE_ID = 55; 
+    
+    private InformationsPaiementTO informationsPaiementTO =  new InformationsPaiementTO();
+    private PaiementDAO pay = new PaiementDAO();
+    private ReponseSystemePaiementTO preReponse = new ReponseSystemePaiementTO();
+    private ReponseSystemePaiementTO finalReponse = new ReponseSystemePaiementTO();
+    private RequeteAuthorisationTO finalInfos = new RequeteAuthorisationTO();
+    
     @ManagedProperty(value = "#{panierCtrl}")
     private PanierControleur panierCtrl;    
       
@@ -67,15 +74,24 @@ public class ProcessPaiementControleur extends AbstractControleur implements Ser
     public void save(ActionEvent actionEvent) {  
         //TODO Persist Billet + Client + VENTE
         this.panierCtrl.getCacheSessionPresentation().setDisablePaiement( Boolean.TRUE );
-        
-        RequeteAuthorisationTO requeteAuth = new RequeteAuthorisationTO(); requeteAuth.setApi_key("myKeys"); //...
+        this.finalInfos.setTransaction_id(this.preReponse.getTransactionId());
+        this.finalInfos.setApi_key("38f33d8449386908efd4");
+        this.finalInfos.setStore_id(50);
+        finalReponse=this.pay.approuverTransaction(finalInfos);
+        String statut = this.finalReponse.getStatus();
+        if(statut.equals("Completed")){
+            this.disableInfoPaiment = Boolean.TRUE;
+            CommunService.addInfo("Succes", "Méthode «approuverTransaction();»");        
+            CommunService.addInfo("Successful", "Merci Mr. :"+ client.getNom()+", pour votre payement");
+            this.destroy();
+        }else{
+            CommunService.addInfo(this.finalReponse.getMessage(), "Méthode «approuverTransaction();»");
+        }
+        //RequeteAuthorisationTO requeteAuth = new RequeteAuthorisationTO(); requeteAuth.setApi_key("myKeys"); //...
         //ReponseSystemePaiementTO reponseSystemePaiementTO = InitDao.stubsDaoJpaPaiement.approuverTransaction(requeteAuth);
         //reponseSystemePaiementTO
         
-        this.disableInfoPaiment = Boolean.TRUE;
-        CommunService.addInfo("Succes", "Méthode «approuverTransaction();»");        
-        CommunService.addInfo("Successful", "Merci Mr. :"+ client.getNom()+", pour votre payement");
-        this.destroy();
+        
     }  
       
   
@@ -83,24 +99,21 @@ public class ProcessPaiementControleur extends AbstractControleur implements Ser
     public String onFlowProcess(FlowEvent event) {  
         logger.info("Current wizard step:" + event.getOldStep());  
         logger.info("Next step:" + event.getNewStep());  
-        InformationsPaiementTO informationsPaiementTO =  new InformationsPaiementTO();
-        PaiementDAO pay = new PaiementDAO();
-        ReponseSystemePaiementTO preReponse = new ReponseSystemePaiementTO();
-        informationsPaiementTO.setApi_key("38f33d8449386908efd4");
-        informationsPaiementTO.setOrder_id(50);
-        informationsPaiementTO.setStore_id(50);
-        informationsPaiementTO.setMonth(10);
-        informationsPaiementTO.setYear(2016);
         
-        informationsPaiementTO.setSecurity_code(333);
+        
+        //informationsPaiementTO.setMonth(10);
+        //informationsPaiementTO.setYear(2016);
+        
+        
         if(event.getNewStep().equals("client")) { //step creditCard
 
             CommunService.addInfo("Succes", "Next step: " + event.getNewStep() );
         }
         if(event.getNewStep().equals("creditCard")) { //step creditCard
-            informationsPaiementTO.setFirst_name( "tata");
-            informationsPaiementTO.setLast_name("zaza");
+            informationsPaiementTO.setFirst_name( this.client.getNom());
+            informationsPaiementTO.setLast_name(this.client.getPrenom());
             informationsPaiementTO.setAmount(BigDecimal.TEN);
+            CommunService.addInfo("Successful", "Merci Mr. :"+ client.getNom()+", pour votre payement");
             
             
            
@@ -108,20 +121,29 @@ public class ProcessPaiementControleur extends AbstractControleur implements Ser
             CommunService.addInfo("Succes", "Next step: " + event.getNewStep() );
         }
         if (event.getNewStep().equals("confirm")) { //step client 
-           informationsPaiementTO.setCard_number(8675309000000000l);
-           
-           //informationsPaiementTO.setMonth(DateUtils.getMonth(this.carteCredit.getDateExpiration()));
-           //informationsPaiementTO.setYear(DateUtils.getYear(this.carteCredit.getDateExpiration()));
+           informationsPaiementTO.setApi_key("38f33d8449386908efd4");
+           informationsPaiementTO.setOrder_id(50);
+           informationsPaiementTO.setStore_id(50);
+           informationsPaiementTO.setCard_number(8675309000000000l); 
+           informationsPaiementTO.setSecurity_code(555);
+           informationsPaiementTO.setMonth(DateUtils.getMonth(this.carteCredit.getDateExpiration()));
+           informationsPaiementTO.setYear(DateUtils.getYear(this.carteCredit.getDateExpiration()));
            
            preReponse=pay.effectuerPreauthorisation(informationsPaiementTO);
            String statut = preReponse.getStatus();
-           
-           System.out.print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"+preReponse.getStatus()+"ZZZZZZZZZZZZZZZZZZZZ");
+           //CommunService.addInfo("Successful", ""+DateUtils.getMonth(this.carteCredit.getDateExpiration()));
+           //System.out.print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"+preReponse.getStatus()+"ZZZZZZZZZZZZZZZZZZZZ");
            //...
            //ReponseSystemePaiementTO reponseSystemePaiementTO = InitDao.stubsDaoJpaPaiement.effectuerPreauthorisation(infoPaiement);
            //reponseSystemePaiementTO
            //if (statut.equals("Accepted")){
                CommunService.addInfo(statut, "Méthode «effectuerPreauthorisation();»");
+               if (!statut.equals("Accepted"))
+                   return "tickets";
+               
+                   
+                   
+               
            //}
            
         }
