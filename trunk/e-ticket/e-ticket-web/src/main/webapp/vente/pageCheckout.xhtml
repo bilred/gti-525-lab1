@@ -24,7 +24,7 @@
                                              editable="true" editMode="cell" selectionMode="single"
                                              paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
                                              rowsPerPageTemplate="5,10,15,25,50,100" > 
-                                    
+
                                     <p:ajax event="cellEdit" listener="#{processPaiementCtrl.onSelectionerOfEditer(pan)}" /> <!--listener="{tableBean.onCellEdit}" update=":form:messages" -->
 
                                     <f:facet name="header" >          
@@ -58,7 +58,22 @@
                                     <p:column headerText="#{bundle.v_pageCart_panelPanierCompte_delete}" style="width: 40px;" >                                            
                                         <p:commandButton id="actionOnBillets" disabled="false" global="false" update=":processusPaiment:dataPaiment" immediate="true"  actionListener="#{processPaiementCtrl.panierCtrl.supprimerBillet(pan)}" title="#{bundle.v_pageCart_panelPanierCompte_delete_tickets}" icon="ui-icon-trash" />
                                     </p:column> 
+                                    <!--<p:summaryRow>  
+                                        <p:column colspan="3" style="text-align:right">  
+                                            Total:  
+                                        </p:column>  
 
+                                        <p:column colspan="2">  
+                                            55$  
+                                        </p:column>
+                                    </p:summaryRow>-->
+                                    <p:columnGroup type="footer">  
+                                        <p:row>  
+                                            <p:column footerText="Total " colspan="3" style="text-align:right"/>  
+                                            <p:column colspan ="2" footerText="#{panierCtrl.total}" />  
+                                            
+                                        </p:row>  
+                                    </p:columnGroup>
                                     <f:facet name="footer"></f:facet>            
 
                                 </p:dataTable>
@@ -103,9 +118,9 @@
                     <p:panel header="#{bundle.v_pageCheckout_creditCard_header}">
 
                         <h:panelGrid columns="2" columnClasses="label, value">
-                            <etsmtl:inputMaskLabel _id="catecredi" mask="99999-99999" label="#{bundle.v_pageCheckout_creditCard_number}" valeur="#{processPaiementCtrl.carteCredit.numCarteCredit}" required="true" requiredMessage="Champ obligatoire" marginInputLabel="#{bundle.v_pageCheckout_creditCard_marginInputLabel_number}" />
-                            <etsmtl:calendarLabel _id="dateexpiration" label="#{bundle.v_pageCheckout_creditCard_dateexpiration}" valeur="#{processPaiementCtrl.carteCredit.dateExpiration}" required="true" requiredMessage="Champ obligatoire" marginInputLabel="#{bundle.v_pageCheckout_creditCard_marginInputLabel_dateexpiration}" />
-                            <etsmtl:inputMaskLabel _id="codesecrt" mask="999" label="#{bundle.v_pageCheckout_creditCard_codesecrt}" valeur="#{processPaiementCtrl.carteCredit.numSecurite}" required="true" requiredMessage="Champ obligatoire" marginInputLabel="#{bundle.v_pageCheckout_creditCard_marginInputLabel_codesecrt}" />                          
+                            <etsmtl:inputMaskLabel _id="catecredi" mask="99999-99999" label="#{bundle.v_pageCheckout_creditCard_number}" valeur="#{processPaiementCtrl.client.carteCredit.numCarteCredit}" required="true" requiredMessage="Champ obligatoire" marginInputLabel="#{bundle.v_pageCheckout_creditCard_marginInputLabel_number}" />
+                            <etsmtl:calendarLabel _id="dateexpiration" label="#{bundle.v_pageCheckout_creditCard_dateexpiration}" valeur="#{processPaiementCtrl.client.carteCredit.dateExpiration}" required="true" requiredMessage="Champ obligatoire" marginInputLabel="#{bundle.v_pageCheckout_creditCard_marginInputLabel_dateexpiration}" />
+                            <etsmtl:inputMaskLabel _id="codesecrt" mask="999" label="#{bundle.v_pageCheckout_creditCard_codesecrt}" valeur="#{processPaiementCtrl.client.carteCredit.numSecurite}" required="true" requiredMessage="Champ obligatoire" marginInputLabel="#{bundle.v_pageCheckout_creditCard_marginInputLabel_codesecrt}" />                          
                         </h:panelGrid>  
                     </p:panel>  
                 </p:tab>  
