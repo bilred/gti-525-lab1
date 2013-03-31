@@ -7,6 +7,7 @@ import gti525.paiement.RequeteAuthorisationTO;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.Serializable;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -14,13 +15,12 @@ import java.net.URLConnection;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-//import sun.net.www.protocol.http.HttpURLConnection;
 
 /**
  * 
  * @author GTI525
  */
-public class PaiementDAO implements IPaiementDAO {
+public class PaiementDAO implements IPaiementDAO, Serializable {
 
     private String baseUrl = "http://gti525.herokuapp.com/transactions";
     JSONParser parser = new JSONParser();

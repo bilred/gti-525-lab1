@@ -18,22 +18,15 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
 public class DaoJpaPresentation implements IDaoPresentation, Serializable {
-
     private static final long serialVersionUID = 1L;
     
+    //l'ingection du "e-ticket-jpa-hibernate-PU"
     @PersistenceContext
     private EntityManager em;
 
     // liste des clients
     @Override
     public List<Artiste> getAllArtistes() {
-        /*try {
-            return em.createQuery("select rc from Artiste rc").getResultList();
-        } catch (Throwable th) {
-            //throw new RdvMedecinsException(th, 1);
-            return null;
-        }*/
-       
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
             cq.select(cq.from(Artiste.class));
@@ -44,18 +37,9 @@ public class DaoJpaPresentation implements IDaoPresentation, Serializable {
             return null;
         }
     }
-        
-    
-    
 
     @Override
     public List<Spectacle> getAllSpectacle() {
-        /*try {
-            return em.createQuery("select rm from Spectacle rm").getResultList();
-        } catch (Throwable th) {
-            //throw new RdvMedecinsException(th, 2);
-            return null;
-        }*/
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
             cq.select(cq.from(Spectacle.class));
@@ -69,12 +53,6 @@ public class DaoJpaPresentation implements IDaoPresentation, Serializable {
 
     @Override
     public List<Representation> getAllRepresentation() {
-        /*try {
-            return em.createQuery("select rm from Representation rm").getResultList();
-        } catch (Throwable th) {
-            //throw new RdvMedecinsException(th, 2);
-            return null;
-        }*/
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
             cq.select(cq.from(Representation.class));
@@ -92,7 +70,7 @@ public class DaoJpaPresentation implements IDaoPresentation, Serializable {
             em.persist(billet);
         } catch (Exception ex) {
             Logger.getLogger(DaoJpaPresentation.class.toString()).log(Level.SEVERE, ex.toString());
-        }         
+        }
     }
 
     @Override

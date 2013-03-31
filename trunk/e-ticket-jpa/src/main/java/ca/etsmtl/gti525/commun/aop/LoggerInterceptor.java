@@ -2,7 +2,6 @@ package ca.etsmtl.gti525.commun.aop;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
 
