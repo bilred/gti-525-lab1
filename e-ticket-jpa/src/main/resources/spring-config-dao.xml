@@ -35,17 +35,26 @@
        
     <!-- EntityManagerFactory -->
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-        <property name="persistenceUnitName" value="e-ticket-jpa-hibernate-postgresPU"/>
+        <property name="persistenceUnitName" value="e-ticket-jpa-hibernate-PU"/>
         <property name="dataSource" ref="dataSource"/>
     </bean>
 
+
+    <!-- Data source pour JavaDB Derby -->
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">  
+        <property name="driverClassName" value="org.apache.derby.jdbc.EmbeddedDriver"/> 
+        <property name="url" value="jdbc:derby://localhost:1527/sample;create=true"/>
+        <property name="username" value="app"/>
+        <property name="password" value="app"/>                    
+    </bean>
+
     <!-- la source de donnéees DBCP -->
-    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">     
+<!--    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">     
         <property name="driverClassName" value="org.postgresql.Driver"/> 
         <property name="url" value="jdbc:postgresql://localhost:5432/e-ticket"/>
         <property name="username" value="postgres"/>
-        <property name="password" value="admin"/>                    
-    </bean>
+        <property name="password" value="*******"/>                    
+    </bean>-->
 
     <!-- Data source pour MySql -->
 <!--    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
