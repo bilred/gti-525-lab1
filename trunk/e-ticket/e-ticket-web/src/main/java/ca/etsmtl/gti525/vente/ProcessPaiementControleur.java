@@ -112,8 +112,8 @@ public class ProcessPaiementControleur extends AbstractControleur implements Ser
         if(event.getNewStep().equals("creditCard")) { //step creditCard
             informationsPaiementTO.setFirst_name( this.client.getNom());
             informationsPaiementTO.setLast_name(this.client.getPrenom());
-            informationsPaiementTO.setAmount(BigDecimal.TEN);
-            CommunService.addInfo("Successful", "Merci Mr. :"+ client.getNom()+", pour votre payement");
+            informationsPaiementTO.setAmount(new BigDecimal(this.panierCtrl.getTotal()));
+            CommunService.addInfo("Successful", "Merci Mr. :"+ client.getNom());
             
             
            
@@ -125,9 +125,9 @@ public class ProcessPaiementControleur extends AbstractControleur implements Ser
            informationsPaiementTO.setOrder_id(50);
            informationsPaiementTO.setStore_id(50);
            informationsPaiementTO.setCard_number(8675309000000000l); 
-           informationsPaiementTO.setSecurity_code(555);
-           informationsPaiementTO.setMonth(DateUtils.getMonth(this.carteCredit.getDateExpiration()));
-           informationsPaiementTO.setYear(DateUtils.getYear(this.carteCredit.getDateExpiration()));
+           informationsPaiementTO.setSecurity_code(this.client.getCarteCredit().getNumSecurite());
+           informationsPaiementTO.setMonth(DateUtils.getMonth(this.client.getCarteCredit().getDateExpiration()));
+           informationsPaiementTO.setYear(DateUtils.getYear(this.client.getCarteCredit().getDateExpiration()));
            
            preReponse=pay.effectuerPreauthorisation(informationsPaiementTO);
            String statut = preReponse.getStatus();

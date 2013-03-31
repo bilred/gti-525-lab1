@@ -33,7 +33,15 @@ public class PanierControleur extends AbstractControleur implements Serializable
     
     @ManagedProperty(value="#{menuCtrl}")
     private MenuControleur menuCtrl;
+    private Float total = 0F;
 
+    public Float getTotal() {
+        return total;
+    }
+
+    public void setTotal(Float total) {
+        this.total = total;
+    }
     public MenuControleur getMenuCtrl() {
         return menuCtrl;
     }
@@ -66,7 +74,7 @@ public class PanierControleur extends AbstractControleur implements Serializable
                 panier.setQuantity(repSelect.get(i).getQTE());
                 panier.setVille(repSelect.get(i).getSalle().getAdresse());
                 //+ nombre de biller dispo
-
+                this.total=total+panier.getPrix();
                 this.getPaniers().add(panier);
                     
                 }else{
@@ -111,6 +119,7 @@ public class PanierControleur extends AbstractControleur implements Serializable
               this.menuCtrl.changerQte(repSelect.get(i));
               this.getCacheSessionPresentation().getRepresentationSelected().remove( repSelect.get(i) ); 
               this.count = this.count - pan.getQuantity();
+              this.total=total-pan.getPrix();
           }
               
         }
