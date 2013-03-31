@@ -40,7 +40,7 @@ public class CarteCredit extends EntityBaseLogs  implements Serializable {
 //    @Size(max=4, message="La taille du NUM_SECURITE doit etre entre au max de 4.")
 //    @NotNull(message="Champ NUM_SECURITE ne doit pas etre Vide")    
     @Column(name="NUM_SECURITE")
-    private String numSecurite; //G�n�ralement les 5 d�rnier chifre de la carte.
+    private int numSecurite; //G�n�ralement les 5 d�rnier chifre de la carte.
     
     @Column(name="DATE_TRANSACTION")
     @Temporal(TemporalType.DATE)
@@ -89,11 +89,11 @@ public class CarteCredit extends EntityBaseLogs  implements Serializable {
         this.dateTransaction = dateTransaction;
     }
 
-    public String getNumSecurite() {
+    public int getNumSecurite() {
         return numSecurite;
     }
 
-    public void setNumSecurite(String numSecurite) {
+    public void setNumSecurite(int numSecurite) {
         this.numSecurite = numSecurite;
     }
 
