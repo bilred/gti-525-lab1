@@ -17,12 +17,12 @@ public class DaoJpaVente implements IDaoVente, Serializable {
     private static final long serialVersionUID = 1L;
     @PersistenceContext
     private EntityManager em;
-    private Object Client;
+    
 
     @Override
     public void createClient(Client client) {
         try {
-            em.persist(Client);
+            em.persist(client);
         } catch (Exception ex) {
             Logger.getLogger(DaoJpaVente.class.toString()).log(Level.SEVERE, ex.toString());
         }
