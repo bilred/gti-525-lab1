@@ -104,8 +104,8 @@
 
                         <h:panelGrid columns="2" columnClasses="label, value">
                             <etsmtl:inputMaskLabel _id="catecredi" mask="99999-99999" label="#{bundle.v_pageCheckout_creditCard_number}" valeur="#{processPaiementCtrl.carteCredit.numCarteCredit}" required="true" requiredMessage="Champ obligatoire" marginInputLabel="#{bundle.v_pageCheckout_creditCard_marginInputLabel_number}" />
-                            <etsmtl:calendarLabel _id="dateexpiration" label="#{bundle.v_pageCheckout_creditCard_dateexpiration}" valeur="#{processPaiementCtrl.carteCredit.dateTransaction}" required="true" requiredMessage="Champ obligatoire" marginInputLabel="#{bundle.v_pageCheckout_creditCard_marginInputLabel_dateexpiration}" />
-                            <etsmtl:inputMaskLabel _id="codesecrt" mask="9999" label="#{bundle.v_pageCheckout_creditCard_codesecrt}" valeur="#{processPaiementCtrl.carteCredit.numSecurite}" required="true" requiredMessage="Champ obligatoire" marginInputLabel="#{bundle.v_pageCheckout_creditCard_marginInputLabel_codesecrt}" />                          
+                            <etsmtl:calendarLabel _id="dateexpiration" label="#{bundle.v_pageCheckout_creditCard_dateexpiration}" valeur="#{processPaiementCtrl.carteCredit.dateExpiration}" required="true" requiredMessage="Champ obligatoire" marginInputLabel="#{bundle.v_pageCheckout_creditCard_marginInputLabel_dateexpiration}" />
+                            <etsmtl:inputMaskLabel _id="codesecrt" mask="999" label="#{bundle.v_pageCheckout_creditCard_codesecrt}" valeur="#{processPaiementCtrl.carteCredit.numSecurite}" required="true" requiredMessage="Champ obligatoire" marginInputLabel="#{bundle.v_pageCheckout_creditCard_marginInputLabel_codesecrt}" />                          
                         </h:panelGrid>  
                     </p:panel>  
                 </p:tab>  
