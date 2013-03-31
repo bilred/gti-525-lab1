@@ -28,10 +28,10 @@ public class Billet implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     private Long idBillet;
-    @Column(name = "IS_VENDU")
-    private Boolean isVendu;  //enVente; ou vendu.
-    @Column(name = "IS_LIVRAISON")
-    private Boolean isLivraison; //avec ou sans livraison.
+//    @Column(name = "IS_VENDU")
+//    private Boolean isVendu;  //enVente; ou vendu.
+//    @Column(name = "IS_LIVRAISON")
+//    private Boolean isLivraison; //avec ou sans livraison.
     
     @OneToOne
     private Salle salle; //pour avoir des information comme Num�ro de Siege.   
@@ -66,21 +66,21 @@ public class Billet implements Serializable {
         this.reservation = reservation;
     }
 
-    public Boolean getIsVendu() {
-        return isVendu;
-    }
-
-    public void setIsVendu(Boolean isVendu) {
-        this.isVendu = isVendu;
-    }
-
-    public Boolean getIsLivraison() {
-        return isLivraison;
-    }
-
-    public void setIsLivraison(Boolean isLivraison) {
-        this.isLivraison = isLivraison;
-    }
+//    public Boolean getIsVendu() {
+//        return isVendu;
+//    }
+//
+//    public void setIsVendu(Boolean isVendu) {
+//        this.isVendu = isVendu;
+//    }
+//
+//    public Boolean getIsLivraison() {
+//        return isLivraison;
+//    }
+//
+//    public void setIsLivraison(Boolean isLivraison) {
+//        this.isLivraison = isLivraison;
+//    }
 
     public Salle getSalle() {
         return salle;

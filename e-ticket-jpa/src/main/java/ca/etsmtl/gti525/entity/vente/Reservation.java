@@ -21,13 +21,13 @@ public class Reservation extends EntityBaseLogs implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     private Long idReservation;
-    @Column(name = "IS_RESERVATION")
-    private Boolean isReservation;
     @Column(name = "DATE_RESERVATION")
     @Temporal(TemporalType.DATE)
     private Date dateReservation;
-    @Column(name = "IS_CONFIRMATION_ACHAT")
-    private Boolean isConfirmationAchat;
+//    @Column(name = "IS_RESERVATION")
+//    private Boolean isReservation;    
+//    @Column(name = "IS_CONFIRMATION_ACHAT")
+//    private Boolean isConfirmationAchat;
 
     
     public Long getIdReservation() {
@@ -46,19 +46,19 @@ public class Reservation extends EntityBaseLogs implements Serializable {
         this.dateReservation = dateReservation;
     }
 
-    public Boolean getIsReservation() {
-        return isReservation;
-    }
-
-    public void setIsReservation(Boolean isReservation) {
-        this.isReservation = isReservation;
-    }
-
-    public Boolean getIsConfirmationAchat() {
-        return isConfirmationAchat;
-    }
-
-    public void setIsConfirmationAchat(Boolean isConfirmationAchat) {
-        this.isConfirmationAchat = isConfirmationAchat;
-    }
+//    public Boolean getIsReservation() {
+//        return isReservation;
+//    }
+//
+//    public void setIsReservation(Boolean isReservation) {
+//        this.isReservation = isReservation;
+//    }
+//
+//    public Boolean getIsConfirmationAchat() {
+//        return isConfirmationAchat;
+//    }
+//
+//    public void setIsConfirmationAchat(Boolean isConfirmationAchat) {
+//        this.isConfirmationAchat = isConfirmationAchat;
+//    }
 }
