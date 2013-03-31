@@ -5,22 +5,27 @@ import ca.etsmtl.gti525.entity.vente.CarteCredit;
 import ca.etsmtl.gti525.entity.vente.Client;
 import ca.etsmtl.gti525.entity.vente.Reservation;
 import java.io.Serializable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import org.springframework.transaction.annotation.Transactional;
 
-
 @Transactional
 public class DaoJpaVente implements IDaoVente, Serializable {
 
-  private static final long serialVersionUID = 1L;
-  @PersistenceContext
-  private EntityManager em;
-  
-  
+    private static final long serialVersionUID = 1L;
+    @PersistenceContext
+    private EntityManager em;
+    private Object Client;
+
     @Override
     public void createClient(Client client) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        try {
+            em.persist(Client);
+        } catch (Exception ex) {
+            Logger.getLogger(DaoJpaVente.class.toString()).log(Level.SEVERE, ex.toString());
+        }
     }
 
     @Override
@@ -41,8 +46,7 @@ public class DaoJpaVente implements IDaoVente, Serializable {
     @Override
     public void createReservation(Reservation reservation) {
         throw new UnsupportedOperationException("Not supported yet.");
-    }  
-
+    }
 //  // liste des clients
 //  @Override
 //  public List<Artiste> getAllArtistes() {
@@ -73,10 +77,8 @@ public class DaoJpaVente implements IDaoVente, Serializable {
 //        return null;
 //    }
 //  }
-  
-
-  // liste des créneaux horaires d'un médecin donné
-  // medecin : le médecin
+    // liste des créneaux horaires d'un médecin donné
+    // medecin : le médecin
 //  public List<Creneau> getAllCreneaux(Medecin medecin) {
 //    try {
 //      return em.createQuery("select rc from Creneau rc join rc.medecin m where m.id=:idMedecin").setParameter("idMedecin", medecin.getId()).getResultList();
@@ -84,7 +86,6 @@ public class DaoJpaVente implements IDaoVente, Serializable {
 //      throw new RdvMedecinsException(th, 3);
 //    }
 //  }
-
 //  // liste des Rv d'un médecin donné, un jour donné
 //  // medecin : le médecin
 //  // jour : le jour
@@ -159,5 +160,4 @@ public class DaoJpaVente implements IDaoVente, Serializable {
 //      throw new RdvMedecinsException(th, 6);
 //    }
 //  }
-
 }
