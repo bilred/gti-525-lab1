@@ -38,8 +38,8 @@ public class BilletBatch extends InitDao {
 
                     Billet billet = new Billet();
                     billet.setIdBillet(Long.valueOf(nextLine[ID])); //pour les listes ne mes pas ID (même pour la BD deja)
-                    billet.setIsVendu(Boolean.valueOf(nextLine[IS_VENDU]));
-                    billet.setIsLivraison(Boolean.valueOf(nextLine[IS_LIVRAISON]));
+//                    billet.setIsVendu(Boolean.valueOf(nextLine[IS_VENDU]));
+//                    billet.setIsLivraison(Boolean.valueOf(nextLine[IS_LIVRAISON]));
 
                     
                     billet.setRepresentation( stubsDaoPresentation.findRepresentation(  Long.valueOf(nextLine[ID_REPRESENTATION]))  );
