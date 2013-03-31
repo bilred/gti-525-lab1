@@ -39,7 +39,7 @@ public class Representation implements Serializable {
     @Column(name = "NB_BILLETS_DISPO")
     private Integer nbBilletsDispo;
     @Column(name = "QTE_SELECTED")
-    private Integer QTE;
+    private Integer QTE=0;
     @Column(name = "PRIX")
     private Float prix;
     
@@ -121,8 +121,11 @@ public class Representation implements Serializable {
     }
     
     
-    public void verfierDispo(){    
-      if(this.nbBilletsDispo<this.QTE){  }
-       CommunService.addWarn("ATTENTION !", "Le nombre de billets disponible est insuffisant");
+    public void verfierDispo(){
+        CommunService.addWarn("QTE !", ""+this.QTE);
+      if(this.nbBilletsDispo<this.QTE){  
+      CommunService.addWarn("ATTENTION !", "Le nombre de billets disponible est insuffisant");
+      }
+       
     }
 }
