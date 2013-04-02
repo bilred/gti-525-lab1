@@ -6,6 +6,7 @@ import ca.etsmtl.gti525.entity.vente.CarteCredit;
 import ca.etsmtl.gti525.entity.vente.Client;
 import ca.etsmtl.gti525.entity.vente.Reservation;
 import java.io.Serializable;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -43,6 +44,16 @@ public class StubDaoVente implements IDaoVente, Serializable {
 
     @Override
     public void createReservation(Reservation reservation) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public Client findClient(Long id) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public List<Client> findAllClient() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 }

@@ -5,10 +5,12 @@ import ca.etsmtl.gti525.entity.vente.CarteCredit;
 import ca.etsmtl.gti525.entity.vente.Client;
 import ca.etsmtl.gti525.entity.vente.Reservation;
 import java.io.Serializable;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.criteria.CriteriaQuery;
 import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
@@ -23,10 +25,38 @@ public class DaoJpaVente implements IDaoVente, Serializable {
     public void createClient(Client client) {
         try {
             em.persist(client);
+            //em.flush();
         } catch (Exception ex) {
             Logger.getLogger(DaoJpaVente.class.toString()).log(Level.SEVERE, ex.toString());
         }
     }
+    
+    @Override
+    public Client findClient(Long id) {
+        try {
+            return em.find(Client.class, id);
+        } catch (Exception ex) {
+            Logger.getLogger(DaoJpaVente.class.toString()).log(Level.SEVERE, ex.toString());
+            return null;
+        }
+    } 
+    
+    /**
+     * Pour un SELECT * FROM laTable.<br/>
+     * @return 
+     */
+    @Override
+    public List<Client> findAllClient() {
+        try {
+            CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
+            cq.select(cq.from(Client.class));
+            return em.createQuery(cq).getResultList();
+        } catch (Exception ex) {
+            Logger.getLogger(DaoJpaVente.class.toString()).log(Level.SEVERE, ex.toString());
+            return null;
+        }
+    }
+    
 
     @Override
     public Adresse findAdresse(Long id) {
