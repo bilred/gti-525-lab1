@@ -13,7 +13,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public abstract class InitDao {
 
     //@Ingection couche model et métier
-    protected static IDaoPresentation daoPresentation;
+    protected IDaoPresentation daoPresentation;
     protected IDaoVente daoVente;
     
     protected static IDaoPresentation stubsDaoPresentation;
@@ -27,8 +27,8 @@ public abstract class InitDao {
     }
 
     public void initVante() {
-        ApplicationContext ctx = new ClassPathXmlApplicationContext("spring-config-dao.xml");
-        daoVente = (IDaoVente) ctx.getBean("daoVente");
+        ApplicationContext ctx = new ClassPathXmlApplicationContext(new String[] {"spring-config-dao.xml"});
+        daoVente = (IDaoVente) ctx.getBean("customerServiceProxy2");
     }
 
     public void initStubsPresentation() {
