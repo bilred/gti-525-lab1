@@ -4,6 +4,7 @@ import ca.etsmtl.gti525.beans.paiement.PanierBeans;
 import ca.etsmtl.gti525.commun.AbstractControleur;
 import ca.etsmtl.gti525.commun.CommunService;
 import ca.etsmtl.gti525.dao.paiement.PaiementDAO;
+import ca.etsmtl.gti525.entity.presentation.Billet;
 import ca.etsmtl.gti525.entity.vente.CarteCredit;
 import ca.etsmtl.gti525.entity.vente.Client;
 import ca.etsmtl.utils.DateUtils;
@@ -12,12 +13,15 @@ import gti525.paiement.ReponseSystemePaiementTO;
 import gti525.paiement.RequeteAuthorisationTO;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 import javax.faces.event.ActionEvent;
+import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.primefaces.event.FlowEvent;
 
@@ -53,7 +57,8 @@ public class ProcessPaiementControleur extends AbstractControleur implements Ser
    @PostConstruct
     public void init() {
         // instanciation couche [métier de payment]
-        super.initStubsPresentation(); //InitDao.stubsDaoJpaPaiement est inistalisé
+        super.initVante(); //InitDao.stubsDaoJpaPaiement est inistalisé
+        //super.initPresentation();
    }
     @PreDestroy
     public void destroy(){
@@ -81,17 +86,24 @@ public class ProcessPaiementControleur extends AbstractControleur implements Ser
         String statut = this.finalReponse.getStatus();
         if(statut.equals("Completed")){
             this.disableInfoPaiment = Boolean.TRUE;
+            
+                try {
+                //rest a cree par représantation
+//                this.panierCtrl.getPaniers().size(); //nb représantation dans le panier. + QT ?    
+//                List<Billet> bis = new ArrayList<Billet>();  client.setBillets(bis);
+
+                this.daoVente.createClient(client);
+                } catch (Exception e) {
+                    logger.log(Level.ERROR, "Message: "+e.getMessage(), e);
+                }    
+                    
             CommunService.addInfo("Succes", "Méthode «approuverTransaction();»");        
             CommunService.addInfo("Successful", "Merci Mr. :"+ client.getNom()+", pour votre payement");
             this.destroy();
         }else{
-            CommunService.addInfo(this.finalReponse.getMessage(), "Méthode «approuverTransaction();»");
+            CommunService.addInfo(this.finalReponse.getMessage(), " sur Méthode «approuverTransaction();»");
         }
-        //RequeteAuthorisationTO requeteAuth = new RequeteAuthorisationTO(); requeteAuth.setApi_key("myKeys"); //...
-        //ReponseSystemePaiementTO reponseSystemePaiementTO = InitDao.stubsDaoJpaPaiement.approuverTransaction(requeteAuth);
-        //reponseSystemePaiementTO
-        
-        
+       
     }  
       
   
@@ -138,12 +150,9 @@ public class ProcessPaiementControleur extends AbstractControleur implements Ser
            //reponseSystemePaiementTO
            //if (statut.equals("Accepted")){
                CommunService.addInfo(statut, "Méthode «effectuerPreauthorisation();»");
-               if (!statut.equals("Accepted"))
+               if ( statut.isEmpty()) // || !statut.equals("Accepted")
                    return "tickets";
-               
-                   
-                   
-               
+   
            //}
            
         }

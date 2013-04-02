@@ -12,12 +12,12 @@ public abstract class AbstractControleur extends InitDao{
     //@Ingection couche model et métier
       //Fait dans InitDAO
     
-
+    private static Class<?> cl = null;
     
     @Override
     public void initPresentation() {
         try {
-            Class.forName("org.apache.derby.jdbc.ClientDriver");
+            if(cl == null ) Class.forName("org.apache.derby.jdbc.ClientDriver");
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(AbstractControleur.class.getName()).log(Level.SEVERE, "!! SEVERE : dans le cas ou vous utilisé Derby", ex);
         }
@@ -28,7 +28,7 @@ public abstract class AbstractControleur extends InitDao{
     @Override
     public void initVante() {
         try {
-            Class.forName("org.apache.derby.jdbc.ClientDriver");
+            if(cl == null ) this.cl = Class.forName("org.apache.derby.jdbc.ClientDriver");
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(AbstractControleur.class.getName()).log(Level.SEVERE, "!! SEVERE : dans le cas ou vous utilisé Derby.", ex);
         }
