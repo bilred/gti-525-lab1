@@ -122,7 +122,7 @@ public class Representation implements Serializable {
     
     
     public void verfierDispo(){
-        CommunService.addWarn("QTE !", ""+this.QTE);
+//      CommunService.addWarn("QTE !", ""+this.QTE);
       if(this.nbBilletsDispo<this.QTE){  
       CommunService.addWarn("ATTENTION !", "Le nombre de billets disponible est insuffisant");
       }
