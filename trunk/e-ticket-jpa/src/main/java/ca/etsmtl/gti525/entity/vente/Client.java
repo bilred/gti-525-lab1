@@ -1,5 +1,6 @@
 package ca.etsmtl.gti525.entity.vente;
 
+import ca.etsmtl.gti525.entity.audit.EntityBaseLogs;
 import ca.etsmtl.gti525.entity.presentation.Billet;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "VENTE_CLIENT")
-public class Client implements Serializable {
+public class Client extends EntityBaseLogs implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -47,7 +48,8 @@ public class Client implements Serializable {
     
     @OneToOne(cascade= CascadeType.PERSIST)
     private Adresse adresse;
-    @OneToOne(cascade= CascadeType.PERSIST)
+    
+    @OneToOne(cascade= CascadeType.PERSIST) // => transfomer en beans
     private CarteCredit carteCredit;
     
 

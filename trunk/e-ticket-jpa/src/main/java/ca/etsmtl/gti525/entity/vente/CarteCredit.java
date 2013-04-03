@@ -39,7 +39,7 @@ public class CarteCredit extends EntityBaseLogs  implements Serializable {
     
 //    @Size(max=4, message="La taille du NUM_SECURITE doit etre entre au max de 4.")
 //    @NotNull(message="Champ NUM_SECURITE ne doit pas etre Vide")    
-    @Column(name="NUM_SECURITE")
+    @Column(name="NUM_SECURITE", insertable=false)
     private int numSecurite; //G�n�ralement les 5 d�rnier chifre de la carte.
     
     @Column(name="DATE_TRANSACTION")

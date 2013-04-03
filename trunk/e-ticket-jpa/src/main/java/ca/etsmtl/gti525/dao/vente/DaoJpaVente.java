@@ -1,7 +1,6 @@
 package ca.etsmtl.gti525.dao.vente;
 
 import ca.etsmtl.gti525.entity.vente.Adresse;
-import ca.etsmtl.gti525.entity.vente.CarteCredit;
 import ca.etsmtl.gti525.entity.vente.Client;
 import ca.etsmtl.gti525.entity.vente.Reservation;
 import java.io.Serializable;
@@ -68,10 +67,10 @@ public class DaoJpaVente implements IDaoVente, Serializable {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    @Override
-    public void createCarteCredit(CarteCredit carteCredit) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+//    @Override
+//    public void createCarteCredit(CarteCredit carteCredit) {
+//        throw new UnsupportedOperationException("Not supported yet.");
+//    }
 
     @Override
     public void createReservation(Reservation reservation) {
