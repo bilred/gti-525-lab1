@@ -1,4 +1,4 @@
-INSERT INTO show_salle (adresse, nb_place, NAME) VALUES ('Montréal', 30000, 'Centre Bell');
+INSERT INTO show_salle (adresse, nb_place, NAME) VALUES ('Montreal', 30000, 'Centre Bell');
 INSERT INTO show_salle (adresse, nb_place, NAME) VALUES ('Ontario', 30000, 'Ontario Hall');
 INSERT INTO show_salle (adresse, nb_place, NAME) VALUES ('Vancouver', 30000, 'Vancouver Mega-Center');
 
