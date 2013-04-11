@@ -4,6 +4,7 @@ import ca.etsmtl.gti525.beans.paiement.PanierBeans;
 import ca.etsmtl.gti525.commun.AbstractControleur;
 import ca.etsmtl.gti525.commun.CommunService;
 import ca.etsmtl.gti525.dao.paiement.PaiementDAO;
+import ca.etsmtl.gti525.entity.presentation.Billet;
 import ca.etsmtl.gti525.entity.vente.CarteCredit;
 import ca.etsmtl.gti525.entity.vente.Client;
 import ca.etsmtl.utils.DateUtils;
@@ -12,6 +13,8 @@ import gti525.paiement.ReponseSystemePaiementTO;
 import gti525.paiement.RequeteAuthorisationTO;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.faces.bean.ManagedBean;
@@ -85,10 +88,14 @@ public class ProcessPaiementControleur extends AbstractControleur implements Ser
             this.disableInfoPaiment = Boolean.TRUE;
             
                 try {
-                //rest a cree par représantation
-//                this.panierCtrl.getPaniers().size(); //nb représantation dans le panier. + QT ?    
-//                List<Billet> bis = new ArrayList<Billet>();  client.setBillets(bis);
-
+                //Creeation du client et des billet aprés payement
+                List<Billet> bis = new ArrayList<Billet>();
+                    for (PanierBeans panier : this.panierCtrl.getPaniers()) {
+                     Billet bil = new Billet();    
+                     bis.add(bil);
+                    }
+                client.setBillets(bis);
+                
                 this.daoVente.createClient(client);
                 } catch (Exception e) {
                     logger.log(Level.ERROR, "Message: "+e.getMessage(), e);
@@ -109,10 +116,8 @@ public class ProcessPaiementControleur extends AbstractControleur implements Ser
         logger.info("Current wizard step:" + event.getOldStep());  
         logger.info("Next step:" + event.getNewStep());  
         
-        
         //informationsPaiementTO.setMonth(10);
         //informationsPaiementTO.setYear(2016);
-        
         
         if(event.getNewStep().equals("client")) { //step creditCard
 
@@ -123,10 +128,7 @@ public class ProcessPaiementControleur extends AbstractControleur implements Ser
             informationsPaiementTO.setLast_name(this.client.getPrenom());
             informationsPaiementTO.setAmount(new BigDecimal(this.panierCtrl.getTotal()));
             CommunService.addInfo("Successful", "Merci Mr. :"+ client.getNom());
-            
-            
-           
-            
+  
             CommunService.addInfo("Succes", "Next step: " + event.getNewStep() );
         }
         if (event.getNewStep().equals("confirm")) { //step client 
@@ -141,27 +143,17 @@ public class ProcessPaiementControleur extends AbstractControleur implements Ser
            preReponse=pay.effectuerPreauthorisation(informationsPaiementTO);
            String statut = preReponse.getStatus();
            //CommunService.addInfo("Successful", ""+DateUtils.getMonth(this.carteCredit.getDateExpiration()));
-           //System.out.print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"+preReponse.getStatus()+"ZZZZZZZZZZZZZZZZZZZZ");
-           //...
-           //ReponseSystemePaiementTO reponseSystemePaiementTO = InitDao.stubsDaoJpaPaiement.effectuerPreauthorisation(infoPaiement);
-           //reponseSystemePaiementTO
            //if (statut.equals("Accepted")){
                CommunService.addInfo(statut, "Méthode «effectuerPreauthorisation();»");
                if ( statut.isEmpty()) // || !statut.equals("Accepted")
                    return "tickets";
-   
            //}
-           
         }
 
         if("undefined".equals(event.getNewStep())) return "tickets";
         
-        if(skip) {  
-            skip = false; return "tickets";  //reset in case user goes back
-        }
-        else {  
-            return event.getNewStep();  
-        }
+        if(skip) {skip = false; return "tickets";}  //reset in case user goes back
+         else return event.getNewStep();
     }
     
     
@@ -206,6 +198,5 @@ public class ProcessPaiementControleur extends AbstractControleur implements Ser
     public Boolean getDisableInfoPaiment() {
         return disableInfoPaiment;
     }
-        
-    
+   
 }
