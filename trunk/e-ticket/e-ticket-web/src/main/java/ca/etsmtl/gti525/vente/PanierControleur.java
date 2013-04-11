@@ -13,7 +13,6 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
 import org.springframework.scheduling.annotation.Async;
@@ -87,9 +86,10 @@ public class PanierControleur extends AbstractControleur implements Serializable
             this.cacheSessionPresentation.setDisablePanier(Boolean.TRUE); //Désactiver le panier (le réactivé si d'autre selection)
             this.cacheSessionPresentation.setDisablePaiement(Boolean.FALSE); //Activer le le paiement
             
-            FacesContext context = FacesContext.getCurrentInstance();
-            session = (HttpSession) context.getExternalContext().getSession(false);
-            this.initTimeur(); //600 *(1000 de la méthode) = 2minut
+            //Appel au timeur :
+//            FacesContext context = FacesContext.getCurrentInstance();
+//            session = (HttpSession) context.getExternalContext().getSession(false);
+//            this.initTimeur(); //600 *(1000 de la méthode) = 2minut
             log.info("Panier increment(), valeur initial: " + count);
         } catch (Exception ex) {
             log.warn("Vous devez avoir séléctionné des représentations pour faire des ajouté dans le panier.");
