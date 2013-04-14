@@ -67,6 +67,7 @@ public class ProcessPaiementControleur extends AbstractControleur implements Ser
       //this.setClient( new Client());
       this.panierCtrl.getCacheSessionPresentation().setRepresentationSelected( null );
       this.panierCtrl.setPaniers( null );
+      this.panierCtrl.setTotal(0F);
       this.getPanierCtrl().getCacheSessionPresentation().setDisablePanier(Boolean.FALSE);
       this.panierCtrl.setCount(0);
       logger.info("@PreDestroy : Information Client et Paiement utiliser dans le processus son détruite.");
