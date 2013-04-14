@@ -78,7 +78,7 @@ public class StubDaoPresentation implements IDaoPresentation, Serializable {
     }
     
     @Override
-     public Representation findRepresentationByID(long id){
+     public Representation findRepresentationByID(Long id){
         /*int index = (int)id ;
         return this.sp.getRepresentations().get(index);*/
           

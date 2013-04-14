@@ -26,6 +26,6 @@ public interface IDaoPresentation {
   public void createArtist(Artiste artist);
   
   
-  public Representation findRepresentationByID(long id);
+  public Representation findRepresentationByID(Long id);
   
 }
