@@ -74,6 +74,8 @@ public class ProcessPaiementControleur extends AbstractControleur implements Ser
     public void onSelectionerOfEditer(PanierBeans row){
        logger.info("onSelectionerOfEditer A modifier la quantite de : "+row.getNomSpectacle());
        CommunService.addInfo("Succes", "Modification de la quantite du «"+row.getNomSpectacle()+"» avec la valeur de «"+row.getQuantity()+"»");
+       row.setPrix(row.getQuantity()*25F);
+       panierCtrl.majTotal();
     }
     
     public void save(ActionEvent actionEvent) {  
@@ -91,8 +93,17 @@ public class ProcessPaiementControleur extends AbstractControleur implements Ser
                 //Creeation du client et des billet aprés payement
                 List<Billet> bis = new ArrayList<Billet>();
                     for (PanierBeans panier : this.panierCtrl.getPaniers()) {
-                     Billet bil = new Billet();    
-                     bis.add(bil);
+                        for (int i = 0; i < panier.getQuantity();i++)
+                        {
+                            Billet bil = new Billet();
+                            bil.setAdresse(panier.getVille());
+                            bil.setDateRepresentation(panier.getDateRepresentation());
+                            bil.setNomSpec(panier.getNomSpectacle());
+                            Long idRep = panier.getIdRep();
+                            //bil.setRepresentation(this.daoPresentation.findRepresentationByID(idRep));
+                            bis.add(bil);
+                        }
+                        
                     }
                 client.setBillets(bis);
                 

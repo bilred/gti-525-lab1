@@ -13,6 +13,7 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
 import org.springframework.scheduling.annotation.Async;
@@ -72,6 +73,7 @@ public class PanierControleur extends AbstractControleur implements Serializable
                 panier.setPrix(repSelect.get(i).getPrix()*repSelect.get(i).getQTE());
                 panier.setQuantity(repSelect.get(i).getQTE());
                 panier.setVille(repSelect.get(i).getSalle().getAdresse());
+                panier.setIdRep(repSelect.get(i).getId());
                 //+ nombre de biller dispo
                 this.total=total+panier.getPrix();
                 this.getPaniers().add(panier);
@@ -87,9 +89,9 @@ public class PanierControleur extends AbstractControleur implements Serializable
             this.cacheSessionPresentation.setDisablePaiement(Boolean.FALSE); //Activer le le paiement
             
             //Appel au timeur :
-//            FacesContext context = FacesContext.getCurrentInstance();
-//            session = (HttpSession) context.getExternalContext().getSession(false);
-//            this.initTimeur(); //600 *(1000 de la méthode) = 2minut
+            FacesContext context = FacesContext.getCurrentInstance();
+            session = (HttpSession) context.getExternalContext().getSession(false);
+            this.initTimeur(); //600 *(1000 de la méthode) = 2minut
             log.info("Panier increment(), valeur initial: " + count);
         } catch (Exception ex) {
             log.warn("Vous devez avoir séléctionné des représentations pour faire des ajouté dans le panier.");
@@ -171,6 +173,11 @@ public class PanierControleur extends AbstractControleur implements Serializable
             somme = somme + this.paniers.get(i).getQuantity();
         }
         return somme;
+    }
+    public void majTotal(){
+        total=0F;
+        for (int i =0; i<paniers.size();i++)
+            total = total+paniers.get(i).getPrix();
     }
 
     @Async
