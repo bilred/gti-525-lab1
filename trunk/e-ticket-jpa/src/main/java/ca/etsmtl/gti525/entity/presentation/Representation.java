@@ -15,7 +15,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 /**
- * Remarque : peu importe la date et l'heur une représantation ce fait que dans une seul salle a la fois. (pour un même spectacle)
+ * Remarque : peu importe la date et l'heure une représantation ce fait que dans une seul salle a la fois. (pour un même spectacle)
  * @author REDOUANE
  *
  */
