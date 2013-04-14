@@ -20,7 +20,9 @@ public class PanierBeans implements ColonneTableModel, Serializable  {
     private Date dateRepresentation;
 //    private String heurRepresantation;
     private Float prix;
+    private Long idRep;
 
+   
     public PanierBeans() { 
     super();
     }
@@ -44,6 +46,7 @@ public class PanierBeans implements ColonneTableModel, Serializable  {
 
     public void setQuantity(Integer quantity) {
         if(quantity==null) quantity = new Integer(0);
+        
         this.quantity = quantity;
     }
 
@@ -94,6 +97,13 @@ public class PanierBeans implements ColonneTableModel, Serializable  {
     public void setId(int id) {
         this.id = id;
     }
-    
+     public Long getIdRep() {
+        return idRep;
+    }
+
+    public void setIdRep(Long idRep) {
+        this.idRep = idRep;
+    }
+
 
 }
