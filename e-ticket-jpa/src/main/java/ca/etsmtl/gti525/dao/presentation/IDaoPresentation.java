@@ -6,7 +6,7 @@ import ca.etsmtl.gti525.entity.presentation.Billet;
 import ca.etsmtl.gti525.entity.presentation.Representation;
 import ca.etsmtl.gti525.entity.presentation.Salle;
 import ca.etsmtl.gti525.entity.presentation.Spectacle;
-import ca.etsmtl.gti525.entity.vente.Reservation;
+//import ca.etsmtl.gti525.entity.vente.Reservation;
 import java.util.List;
 
 
@@ -18,7 +18,7 @@ public interface IDaoPresentation {
 
   public Representation findRepresentation(Long id);
   public Salle findSalle(Long id);
-  public Reservation findReservation(Long id);
+//  public Reservation findReservation(Long id);
   public void createBillet(Billet billet);
   public void createRepresentation(Representation representation);
   public void createSalle(Salle salle);
