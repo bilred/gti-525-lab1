@@ -5,7 +5,7 @@ import ca.etsmtl.gti525.entity.presentation.Billet;
 import ca.etsmtl.gti525.entity.presentation.Representation;
 import ca.etsmtl.gti525.entity.presentation.Salle;
 import ca.etsmtl.gti525.entity.presentation.Spectacle;
-import ca.etsmtl.gti525.entity.vente.Reservation;
+//import ca.etsmtl.gti525.entity.vente.Reservation;
 import java.io.Serializable;
 import java.util.List;
 import java.util.logging.Level;
@@ -56,6 +56,7 @@ public class DaoJpaPresentation implements IDaoPresentation, Serializable {
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
             cq.select(cq.from(Representation.class));
+            
             return em.createQuery(cq).getResultList();
 
         } catch (Exception ex) {
@@ -92,10 +93,7 @@ public class DaoJpaPresentation implements IDaoPresentation, Serializable {
         return null;
     }
 
-    @Override
-    public Reservation findReservation(Long id) {
-        return null;
-    }
+
 
     @Override
     public void createRepresentation(Representation representation) {
@@ -120,6 +118,7 @@ public class DaoJpaPresentation implements IDaoPresentation, Serializable {
     @Override
     public Representation findRepresentationByID(Long id) {
         try {
+            System.out.println(em+"|||||||||||||||||"+id+"\\\\\\\\\\\\");
             return em.find(Representation.class, id);
         } catch (Exception ex) {
             //getLogger().log(Level.WARNING, "Exception lors de l''appel au service " + entityClass + " Impl.find {0} : ", ex.getMessage());

@@ -6,7 +6,7 @@ import ca.etsmtl.gti525.entity.presentation.Billet;
 import ca.etsmtl.gti525.entity.presentation.Representation;
 import ca.etsmtl.gti525.entity.presentation.Salle;
 import ca.etsmtl.gti525.entity.presentation.Spectacle;
-import ca.etsmtl.gti525.entity.vente.Reservation;
+//import ca.etsmtl.gti525.entity.vente.Reservation;
 import java.io.Serializable;
 import java.util.List;
 
@@ -52,11 +52,11 @@ public class StubDaoPresentation implements IDaoPresentation, Serializable {
         return stubDataBase.salles.get(index);
     }
 
-    @Override
-    public Reservation findReservation(Long id) {
-        int index = id.intValue() - 1;
-        return stubDataBase.reservations.get(index);
-    }
+//    @Override
+//    public Reservation findReservation(Long id) {
+//        int index = id.intValue() - 1;
+//        return stubDataBase.reservations.get(index);
+//    }
     @Override
     public void createRepresentation(Representation representation) {
         stubDataBase.representations.add(representation);
