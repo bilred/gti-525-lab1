@@ -5,7 +5,7 @@ import ca.etsmtl.gti525.entity.presentation.Representation;
 import ca.etsmtl.gti525.entity.presentation.Salle;
 import ca.etsmtl.gti525.entity.vente.Adresse;
 import ca.etsmtl.gti525.entity.vente.Client;
-import ca.etsmtl.gti525.entity.vente.Reservation;
+//import ca.etsmtl.gti525.entity.vente.Reservation;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +21,7 @@ public class StubDataBase {
     //DataBase Presentation
     public List<Representation> representations = new ArrayList<Representation>();
     public List<Salle> salles = new ArrayList<Salle>();
-    public List<Reservation> reservations = new ArrayList<Reservation>();
+    //public List<Reservation> reservations = new ArrayList<Reservation>();
     public List<Billet> billets = new ArrayList<Billet>();
    
     //DataBase Presentation vente
