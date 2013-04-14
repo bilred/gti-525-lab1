@@ -2,7 +2,7 @@ package ca.etsmtl.gti525.dao.vente;
 
 import ca.etsmtl.gti525.entity.vente.Adresse;
 import ca.etsmtl.gti525.entity.vente.Client;
-import ca.etsmtl.gti525.entity.vente.Reservation;
+//import ca.etsmtl.gti525.entity.vente.Reservation;
 import java.util.List;
 
 
@@ -15,6 +15,6 @@ public interface IDaoVente {
   public Adresse findAdresse(Long id);
   public void createAdresse(Adresse adresse);
 //  public void createCarteCredit(CarteCredit carteCredit);
-  public void createReservation(Reservation reservation);
+  //public void createReservation(Reservation reservation);
   
 }
