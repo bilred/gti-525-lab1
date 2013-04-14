@@ -5,6 +5,7 @@ import ca.etsmtl.gti525.commun.AbstractControleur;
 import ca.etsmtl.gti525.commun.CommunService;
 import ca.etsmtl.gti525.dao.paiement.PaiementDAO;
 import ca.etsmtl.gti525.entity.presentation.Billet;
+import ca.etsmtl.gti525.entity.presentation.Representation;
 import ca.etsmtl.gti525.entity.vente.CarteCredit;
 import ca.etsmtl.gti525.entity.vente.Client;
 import ca.etsmtl.utils.DateUtils;
@@ -58,7 +59,7 @@ public class ProcessPaiementControleur extends AbstractControleur implements Ser
     public void init() {
         // instanciation couche [métier de payment]
         super.initVante(); //InitDao.stubsDaoJpaPaiement est inistalisé
-        //super.initPresentation();
+        super.initPresentation();
    }
     @PreDestroy
     public void destroy(){
@@ -100,7 +101,9 @@ public class ProcessPaiementControleur extends AbstractControleur implements Ser
                             bil.setDateRepresentation(panier.getDateRepresentation());
                             bil.setNomSpec(panier.getNomSpectacle());
                             Long idRep = panier.getIdRep();
-                            //bil.setRepresentation(this.daoPresentation.findRepresentationByID(idRep));
+                            Representation rep = this.daoPresentation.findRepresentationByID(idRep);
+                            bil.setRepresentation(rep);
+                            bil.setSalle(rep.getSalle());
                             bis.add(bil);
                         }
                         
