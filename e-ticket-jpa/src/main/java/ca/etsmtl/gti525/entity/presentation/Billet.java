@@ -1,6 +1,6 @@
 package ca.etsmtl.gti525.entity.presentation;
 
-import ca.etsmtl.gti525.entity.vente.Reservation;
+//import ca.etsmtl.gti525.entity.vente.Reservation;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
